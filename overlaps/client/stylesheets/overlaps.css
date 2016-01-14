@@ -3,8 +3,13 @@
 	background-size: cover;
 	margin-top: 0px;
 }
-#navbar-brand:hover{
-	background-color: white;
+
+/*
+doesn't work, hover color
+*/
+.toptab:hover{
+	background-color: yellow;
+	color: red
 }
 #navbartop{
 	background-color: #0bb5ff;
@@ -14,6 +19,10 @@
 
 .navbartext{
 	color: white;
+}
+
+.navbar-brand{
+	font-weight: bold;
 }
 
 #login-dropdown-list{
