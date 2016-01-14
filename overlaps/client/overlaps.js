@@ -1,21 +1,10 @@
-if (Meteor.isClient) {
+
   // counter starts at 0
   Session.setDefault('counter', 0);
 
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get('counter');
-    }
-  });
 
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set('counter', Session.get('counter') + 1);
-    }
-  });
 
-  Template.body.events({
+  Template.overlaps.events({
     "submit .form": function (event) {
       // Prevent default browser form submit
       event.preventDefault();
@@ -25,7 +14,7 @@ if (Meteor.isClient) {
       var user_description = $(".description").val();
       // Insert a task into the collection
       
-      Classes.insert({
+      classes.insert({
         subject: user_subject,
         description: user_description,
         createdAt: new Date() // current time
@@ -37,10 +26,8 @@ if (Meteor.isClient) {
       }
     
   });
- Accounts.ui.config({
-	     passwordSignupFields: "USERNAME_ONLY"
-	   });
-}
-Classes = new Mongo.Collection("classes");
+
+
+
 
 
