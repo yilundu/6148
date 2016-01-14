@@ -3,14 +3,15 @@ Router.configure({
 });
 
 Router.route('/', {
-  title: 'Home'//set title of html (displayed in tab) here to be set later (see Router.after)
+  title: 'Home',//set title of html (displayed in tab) here to be set later (see Router.after)
+  name: 'home'
 });
 
-Router.route('/loginpage', {
+Router.route('/login', {
   title: 'Login'
 });
 
-Router.route('/registerpage',{
+Router.route('/register',{
   title: 'Register'
 });
 
