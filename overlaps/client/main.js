@@ -43,8 +43,4 @@ if (Meteor.isClient) {
 }
 Classes = new Mongo.Collection("classes");
 
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
-  });
-}
+
