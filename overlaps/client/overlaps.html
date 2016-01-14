@@ -1,30 +1,8 @@
 
 
-<body>
-{{> mainpage}}
-</body>
 
-<template name="mainpage">
-	<nav class = "navbar container-fluid">
-<div class = "navbar-header">
-<button class = "navbar-toggle" data-toggle = "collapse"
-  data-target="#NavBar"> Menu
-</button>
-<a class = "navbar-brand" href = "../"> Overlaps </a>
-</div>
-
-<div class = "navbar-collapse" id = "NavBar">
-<ul class = "nav navbar-nav">
-  <li> <a href = "#"> About </a></li>
-  <li> <a href = "#"> How It Works </a></li>
-  <li> <a href = "#"> Page </a></li>
-  </ul>
-<ul class = "nav navbar-right navbar-nav">
-  <li><a href = "#"> Sign In </a></li>
-  <li> {{>loginButtons}}</li>
-  </ul>
-</div>
-</nav>
+<template name="overlaps">
+	
 
 <form class="form">
     <input type="text" class="subject" name="subject" placeholder="Please Type the subject you are teaching."/>
@@ -32,11 +10,5 @@
     <input type="submit">
 </form>
 
-<br><br><br><br><br><br>
-  
-
-
-  <button>Click Me</button>
-	<p>You've pressed the button {{counter}} times.</p>
 
 </template>
