@@ -20,7 +20,7 @@ autopublish             # Publish all data to the clients (for prototyping)
 insecure                # Allow all DB writes from clients (for prototyping)
 less
 nemo64:bootstrap
-accounts-ui
 accounts-password
 iron:router
 twbs:bootstrap
+ian:accounts-ui-bootstrap-3
