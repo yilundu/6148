@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+=======
 <html lang="en">
+</html>
+>>>>>>> 4d147c55b60703e285fe2056cdcda74619aeab95
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -53,6 +57,9 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
   </body>
+<<<<<<< HEAD:overlaps/client/choose-college.html
   <template name="registerpage">
   </template>
 </html>
+=======
+>>>>>>> 83890cd6313fa951e8606d0725b4dd01fb27a267:overlaps/internal-pages/choose-college.html
