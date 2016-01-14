@@ -48,6 +48,6 @@ if (Meteor.isServer) {
     // code to run on server at startup
   });
 }
-Router.route('registerpage')
-Router.route('loginpage')
-Router.route('mainpage')
+Router.route('/registerpage');
+Router.route('/loginpage');
+Router.route('/mainpage');
