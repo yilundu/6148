@@ -23,3 +23,4 @@ nemo64:bootstrap
 accounts-ui
 accounts-password
 iron:router
+twbs:bootstrap
