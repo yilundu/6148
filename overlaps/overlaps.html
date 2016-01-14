@@ -5,23 +5,27 @@
 
 <body>
 
-<div class="container">
-<ul class="list-inline">
-  <li><a href="#">About</a></li>
-  <li><a href="#">How It Works</a></li>
-  <li> {{> loginButtons}} </li>
-<li class="dropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Contact
-    <span class="caret"></span></a>
-    <ul class="dropdown-menu">
-      <li><a href="#">Phone</a></li>
-      <li><a href="#">Email</a></li>
-      <li><a href="#">Schedule Appointment</a></li>
-    </ul>
-  </li>
-  <li><a href="#">Shop</a></li>
-</ul>
+<nav class = "navbar container-fluid">
+<div class = "navbar-header">
+<button class = "navbar-toggle" data-toggle = "collapse"
+	data-target="#NavBar"> Menu
+</button>
+<a class = "navbar-brand" href = "../"> Overlaps </a>
 </div>
+
+<div class = "navbar-collapse" id = "NavBar">
+<ul class = "nav navbar-nav">
+	<li> <a href = "#"> About </a></li>
+	<li> <a href = "#"> How It Works </a></li>
+	<li> <a href = "#"> Page </a></li>
+	</ul>
+<ul class = "nav navbar-right navbar-nav">
+	<li><a href = "#"> Sign In </a></li>
+	<li> {{> loginButtons}}</li>
+	</ul>
+</div>
+</nav>
+
 
 
 
