@@ -25,7 +25,15 @@
 
   {{> yield}}
 <br><br><br><br><br><br>
-  
+
+    {{#if currentUser}}
+            {{> dashboard}}
+	        {{else}}
+		        {{> register}}
+			        {{> login}}
+				    {{/if}}
+
+
 
 
   <button>Click Me</button>
