@@ -4,7 +4,7 @@
 
 
 
-  Template.overlaps.events({
+  Template.home.events({
     "submit .form": function (event) {
       // Prevent default browser form submit
       event.preventDefault();
