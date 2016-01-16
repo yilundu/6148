@@ -4,7 +4,7 @@
 
 
 
-  Template.overlaps.events({
+  Template.home.events({
     "submit .form": function (event) {
       // Prevent default browser form submit
       event.preventDefault();
@@ -28,6 +28,6 @@
   });
 
 
-
+$('#carouselimage').carousel({ interval: 2000, cycle: true });
 
 

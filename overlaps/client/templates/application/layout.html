@@ -2,15 +2,16 @@
 
 
 <template name="layout">
+<header class = "navbar" >
 	<nav class = "navbar container-fluid" id = "navbartop">
 <div class = "navbar-header">
 <button class = "navbar-toggle" data-toggle = "collapse"
-  data-target="#NavBar"> Menu
+  data-target="#NavBar"> <span class="glyphicon glyphicon-th-list"></span>
 </button>
 <a class = "navbar-brand navbartext" href = "../"> Overlaps </a>
 </div>
 
-<div class = "navbar-collapse" id = "NavBar">
+<div class = "navbar-collapse collapse" id = "NavBar">
 <ul class = "nav navbar-nav" >
   <li class = "toptab"> <a href = "#" class = "navbartext"> About </a></li>
   <li> <a href = "#" class = "navbartext"> How It Works </a></li>
@@ -21,11 +22,13 @@
   </ul>
 </div>
 </nav>
+</header>
 
 
   {{> yield}}
-<br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
+<!--
     {{#if currentUser}}
             {{> dashboard}}
 	        {{else}}
@@ -33,10 +36,6 @@
 			        {{> login}}
 				    {{/if}}
 
-
-
-
-  <button>Click Me</button>
-	<p>You've pressed the button {{counter}} times.</p>
+-->
 
 </template>
