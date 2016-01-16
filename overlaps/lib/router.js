@@ -20,6 +20,10 @@ Router.route('/find',{
   title: 'Find Services'
 });
 
+Router.route('/editprofile',{
+  name: "editProfile",
+  title: 'Edit Profile'
+});
 
 Router.after(function(){
   if(this.route.options.title)
