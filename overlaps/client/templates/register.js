@@ -6,7 +6,10 @@ if (Meteor.isClient) {
 	    var passwordVar = event.targt.registerPassword.value;
  	    Accounts.createUser({
             	email: emailVar,
-            	password: passwordVar
+            	password: passwordVar,
+		date: new Date(),
+		level: 'O',
+		experience: '0'
         });
         }
     });
