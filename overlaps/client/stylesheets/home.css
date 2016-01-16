@@ -1,0 +1,28 @@
+#carouselimage{
+	top: 0px;
+	position: absolute;
+	z-index: 0;
+	
+}
+
+.imgslide img{
+	height: 200px;
+	width: auto;
+	max-height: 200px;
+}
+
+#home{
+	height: 100vh;
+	background-position:center;
+	background-attachment:scroll;
+	background-size: cover;
+	background-repeat: no-repeat;
+
+}
+
+.cover{
+	margin-top: 10px;
+	margin-left: 40%;
+	z-index: 10;
+	position: absolute;
+}
