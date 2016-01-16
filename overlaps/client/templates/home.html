@@ -2,17 +2,42 @@
 
 
 <template name="home">
+	<div id="carouselimage" class="carousel slide" data-ride="carousel" data-interval="3000">
+		<ol class="carousel-indicators">
+			<li data-target="#carouselimage" data-slide-to="0" class="active"></li>
+			<li data-target="#carouselimage" data-slide-to="1"></li>
+			<li data-target="#carouselimage" data-slide-to="2"></li>
+			<li data-target="#carouselimage" data-slide-to="3"></li>
+		</ol>
+		<div class="carousel-inner" role="listbox">
+			<div class="item active">
+				<img src="Bikeground.png" alt="First">
+			</div>
 
+			<div class="item">
+				<img src="Bikeground.png" alt="Second">
+			</div>
+			<div class="item">
+				<img src="Bikeground.png" alt="Third">
+			</div>
+			<div class="item">
+				<img src="Bikeground.png" alt="Fourth">
+			</div>
+		</div>
+		<a class="left carousel-control" href="#carouselimage" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carouselimage" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+	</div>
 
-<header id = "bg-image-id" class="intro-header" style="background-image: url('bckground.png')">
-
-</header>
-HOME
-<form class="form">
-    <input type="text" class="subject" name="subject" placeholder="Please Type the subject you are teaching."/>
-    <input type="text" class="description" name="description" placeholder="Please Type a brief discription of the subject you are teaching. "/>
-    <input type="submit">
-</form>
+	HOME
+	<form class="form">
+		<input type="text" class="subject" name="subject" placeholder="Please Type the subject you are teaching."/>
+		<input type="text" class="description" name="description" placeholder="Please Type a brief discription of the subject you are teaching. "/>
+		<input type="submit">
+	</form>
 
 
 </template>

@@ -1,7 +1,13 @@
 #bg-image-id{
-	height: 350px;
+	height: 100vh;
 	background-size: cover;
 	margin-top: 0px;
+}
+
+.navbar{
+	top: 0;
+	position: static;
+	width: 100%;
 }
 
 /*
@@ -12,10 +18,11 @@ doesn't work, hover color
 	color: red
 }
 #navbartop{
-	background-color: #0bb5ff;
+	background-color: rgba( 11, 181, 250, .5);
 	margin-bottom: 0px;
 	border-radius: 1px;
-	opacity: .7;
+	opacity: .9;
+	z-index: 100;
 }
 
 .navbartext{
