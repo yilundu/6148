@@ -4,6 +4,11 @@
 	z-index: 0;
 	
 }
+.logoimage{
+	height: 35px;
+	margin-top: 7px;
+	width: 35px;
+}
 #banner{
 	background-color: blue;
 	
