@@ -26,3 +26,5 @@ twbs:bootstrap
 ian:accounts-ui-bootstrap-3
 reactive-var
 meteorhacks:search-source
+check
+ejson
