@@ -4,6 +4,15 @@
 	z-index: 0;
 	
 }
+#banner{
+	background-color: blue;
+	
+	margin-bottom: -10%;
+	display: block;
+	height: 10%;
+	width: 100%;
+	z-index: 40;
+}
 @media screen and (min-width: 900px){
 	#title{
 		font-size: 150px;
@@ -23,11 +32,23 @@
 		font-size: 50px;
 	}
 
+
 }
 .imgslide{
 	min-height: 400px;
 	height: 500px;
 	width: auto;
+}
+.registerBar{
+	z-index: 20;
+	position: absolute;
+	left: 20%;
+	right: 20%;
+	top: 70%;
+	font-family: "Andale Mono";
+	color: white;
+	margin: auto;
+	opacity: 0.5;
 }
 #title{
 	font-family: "Andale Mono";
@@ -35,7 +56,10 @@
 	color: white;
 }
 
-
+#registerlabel{
+	margin: auto;
+	font-size: 50px;
+}
 #home{
 	height: 100vh;
 	background-position:center;
@@ -47,7 +71,7 @@
 
 .cover{
 	margin-top: 5px;
-	top: 25%;
+	top: 10%;
 	margin-top: 10%;
 	margin-left: 35%;
 	z-index: 10;
