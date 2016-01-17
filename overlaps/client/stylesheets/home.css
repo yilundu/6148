@@ -52,6 +52,11 @@
     margin:0px;
     padding:0px;
 }
+
+.class_form select {
+	margin-top: 3px;
+	margin-bottom: -5px;
+}
 .class_form li{
     padding:12px; 
     border-bottom:1px solid #eee;
@@ -122,7 +127,7 @@
 }
 .class_form textarea {padding:8px; width:300px;}
 .class_form button {margin-left:156px;}
-
+.subject {margin-left: 156px;}
 .class_form li:first-child, .class_form li:last-child {
     border-bottom:1px solid #777;
 }

@@ -7,7 +7,7 @@ Template.find.helpers({
 //  var search1 = new ReactiveVar(new RegExp($(".subject").val(),'i'));
 //	var search2 = new ReactiveVar(new RegExp($(".description").val(),'i'));
 //	return classes.find({subject: search1, description: search2});
-	var search1 = new RegExp($(".subject").val(),'i');
+	var search1 = new RegExp($(".title").val(),'i');
 	var search2 = new RegExp($(".description").val(), 'i');
 	return classes.find({subject: search1, description: search2});
 	
@@ -27,13 +27,13 @@ Template.find.events({
 	
 //	search1.set(new RegExp($(".subject").val(),'i'));
 //	search2.set(new RegExp($(".description").val(), 'i'));
-	var search1 = new RegExp($(".subject").val(),'i');
+	var search1 = new RegExp($(".title").val(),'i');
 	var search2 = new RegExp($(".description").val(), 'i');
 	var json = classes.find({subject: search1, description: search2});
 	
 	$(".Test").text("");
 	 json.forEach(function(item){
-		$(".Test").append("<li> Subject:"+item.subject+"<br> Date: "+ item.createdAt+ "<br> Description: "+item.description+"<br></li>");
+		$(".Test").append("<li> Title:"+item.title+"<br> Date: "+ item.createdAt+ "<br> Description: "+item.description+"<br></li>");
 	});
 
 
