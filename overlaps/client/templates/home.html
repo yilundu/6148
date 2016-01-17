@@ -55,9 +55,12 @@
 		<h2>Teach a class now!</h2>
 		</li>
 		<li>
+		<label for="title">Title:</label>
 		<input type="text" class="title" name="title" placeholder="Title of Class"/>
+		<span class="form_hint"> Give a Title!</span>
 		</li>
 		<li>
+		<label for="subject">Subject:</label>
 		<select name="subject" class="subject">
 			<option value="Computer">Computer</option>
 			<option value="Science">Science</option>
@@ -68,11 +71,11 @@
 		</li>
 		<li>
 		<label for="description">Description:</label>
-		<input type="text" class="description" name="description" placeholder="Please Type a brief discription of the subject you are teaching. "/>
-		<span class="form_hint"> Please provide a 
+		<textarea name="description" cols="40" rows = "6"></textarea>
+		<span class="form_hint"> Describe Your Class! </span>
 		</li>
 		<li>
-		<input type="submit">
+		<button class="submit" type="submit">Submit Form</button>
 		</li>
 	</ul>
 	</form>

@@ -16,7 +16,7 @@
       // Insert a task into the collection
       
       classes.insert({
-        title: user_title
+        title: user_title,
         subject: user_subject,
         description: user_description,
         createdAt: new Date() // current time
