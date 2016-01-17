@@ -41,10 +41,14 @@
 }
 .registerBar{
 	z-index: 20;
-	position: relative;
+	position: absolute;
+	left: 20%;
+	right: 20%;
+	top: 55%;
 	font-family: "Andale Mono";
 	color: white;
 	margin: auto;
+	opacity: 0.5;
 }
 #title{
 	font-family: "Andale Mono";
@@ -52,7 +56,10 @@
 	color: white;
 }
 
-
+#registerlabel{
+	margin: auto;
+	font-size: 70px;
+}
 #home{
 	height: 100vh;
 	background-position:center;
@@ -64,7 +71,7 @@
 
 .cover{
 	margin-top: 5px;
-	top: 25%;
+	top: 10%;
 	margin-top: 10%;
 	margin-left: 35%;
 	z-index: 10;
