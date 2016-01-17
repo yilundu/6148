@@ -4,12 +4,35 @@
 	z-index: 0;
 	
 }
-
-.imgslide img{
-	height: 200px;
-	width: auto;
-	max-height: 200px;
+@media screen and (min-width: 900px){
+	#title{
+		font-size: 150px;
+	}
 }
+@media screen and (min-width: 768px){
+	#title{
+		font-size: 70px;
+	}
+}
+@media screen and (min-width: 480px){
+	.carousel-slide{
+		min-height:400px;
+
+	}
+	#title{
+		font-size: 50px;
+	}
+	.imgslide{
+		min-height: 400px;
+		width: auto;
+	}
+}
+#title{
+	font-family: "Andale Mono";
+	font-weight: 700;
+	color: white;
+}
+
 
 #home{
 	height: 100vh;
@@ -21,7 +44,8 @@
 }
 
 .cover{
-	margin-top: 10px;
+	margin-top: 5px;
+	top: 40%;
 	margin-left: 40%;
 	z-index: 10;
 	position: absolute;
