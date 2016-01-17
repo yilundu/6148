@@ -20,22 +20,22 @@
     </div>
 
     <div class="input-group">
-      <span class="input-group-addon" id="basic-addon1">Name</span>
-      <input type="text" class="form-control" placeholder="Ex: John Smith" aria-describedby="basic-addon1">
+      <span class="input-group-addon" id="basic-addon1">Display Name (separate from username)</span> <!-- Name inputted here will appear in top right accounts ui dropdown -->
+      <input type="text" class="form-control" id="name-field" placeholder="Ex: John Smith" aria-describedby="basic-addon1" value="{{name}}">
     </div>
 
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon2">Age</span>
-      <input type="text" class="form-control" placeholder="Ex: 23" aria-describedby="basic-addon2">
+      <input type="text" class="form-control" id="age-field" placeholder="Ex: 23" aria-describedby="basic-addon2" value={{age}}>
     </div>
 
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon3">About me:</span>
-      <input type="text" class="form-control" placeholder="Introduce yourself to start finding overlaps!" aria-describedby="basic-addon3">
+      <input type="text" class="form-control" id="about-field" placeholder="Introduce yourself to start finding overlaps!" aria-describedby="basic-addon3" value={{about}}>
     </div>
 
     <div class="btn-group">
-      <button type="button" class="btn btn-primary">Submit</button>
+      <button type="button" class="btn btn-primary" id="submit-btn">Submit</button>
     </div>
 
 
