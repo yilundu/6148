@@ -45,18 +45,24 @@
 	left: 20%;
 	right: 20%;
 	top: 80%;
-	font-family: "Andale Mono";
+	font-family: "Lato";
 	color: rgba(255, 255, 255, 1);
 	margin: auto;
 }
 #user1{
-	color: rgba(255, 255, 255, .5);
-	opacity: .5;
+	color: black;
+	opacity: .6;
 }
 #title{
-	font-family: "ADAM.CG PRO";
+	font-family: "Lato";
 	font-weight: 900;
 	color: white;
+	margin-bottom: 0px;
+}
+#titleunder{
+	color: white;
+	margin-top: 0px;
+	font-size: 25px;
 }
 
 #registerlabel{
