@@ -1,0 +1,48 @@
+
+/*
+.searchform input {
+	width: 120%;
+	height: 40px;
+	margin-left: 30%;
+	
+}
+*/
+.searchform label {
+    width:150px;
+    margin-top: 4px;
+    display:inline-block;
+    float:left;
+    padding:3px;
+    margin-left: 10%;
+}
+
+.searchform input {
+	height:40px;
+	width: 60%;
+}
+
+.searchform {
+	width: 100vw;
+}
+.searchform li{
+    padding:12px; 
+    border-bottom:1px solid #eee;
+    position:relative;
+}
+
+.searchform ul {
+    width:750px;
+    list-style-type:none;
+    list-style-position:outside;
+    margin:0px;
+    padding:0px;
+}
+
+.__find h1, h2{
+	text-align: center;
+}
+
+.__find .submit {
+	margin-left: 50%;
+}
+

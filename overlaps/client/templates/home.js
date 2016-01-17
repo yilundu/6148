@@ -20,7 +20,7 @@
         title: user_title,
         subject: user_subject,
         cost: user_cost,
-        teacher: this.userId, 
+        teacher: Meteor.user(), 
         description: user_description,
         createdAt: new Date(),
         studentNumber: 0 // current time
