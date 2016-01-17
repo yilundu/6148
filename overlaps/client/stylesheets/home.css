@@ -4,13 +4,28 @@
 	z-index: 0;
 	
 }
+#banner{
+	background-color: blue;
+	
+	margin-bottom: -10%;
+	display: block;
+	height: 10%;
+	width: 100%;
+	z-index: 40;
+}
 
 .imgslide img{
 	height: 200px;
 	width: auto;
 	max-height: 200px;
 }
-
+.registerBar{
+	z-index: 20;
+	position: relative;
+	font-family: "Andale Mono";
+	color: white;
+	margin: auto;
+}
 #home{
 	height: 100vh;
 	background-position:center;
