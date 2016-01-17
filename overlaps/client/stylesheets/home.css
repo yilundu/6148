@@ -44,7 +44,7 @@
 	position: absolute;
 	left: 20%;
 	right: 20%;
-	top: 55%;
+	top: 70%;
 	font-family: "Andale Mono";
 	color: white;
 	margin: auto;
@@ -58,7 +58,7 @@
 
 #registerlabel{
 	margin: auto;
-	font-size: 70px;
+	font-size: 50px;
 }
 #home{
 	height: 100vh;
