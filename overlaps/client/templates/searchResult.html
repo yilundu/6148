@@ -1,0 +1,17 @@
+<template name="searchResult">
+	<div name="__searchResult">
+		<div class="container">
+			Type a discription of your problem: <br>
+			<input type="text" id="search-box">
+		</div>
+		<div>
+			<ul>
+			{{#each getPackages}}
+			<li>Subject : {{subject}} <br>
+				Description : {{description}}
+			</li>
+			{{/each}}
+			</ul>
+		</div>
+	</div>
+</template>

@@ -1,7 +1,7 @@
 Router.configure({
   layoutTemplate: 'layout'
 });
-
+resultssearch = {};
 Router.configure({layoutTemplate: 'layout', notFoundTemplate: '404'});
 Router.route('/', {
   title: 'Home',//set title of html (displayed in tab) here to be set later (see Router.after)
