@@ -46,7 +46,7 @@
 	</div>
 	
 	
-	<!--
+	
 	<br><br><br><br><br><br>
 	{{#if currentUser}}
 	<form class="class_form">
@@ -56,12 +56,12 @@
 		</li>
 		<li>
 		<label for="title">Title:</label>
-		<input type="text" class="title" name="title" placeholder="Title of Class"/>
-		<span class="form_hint"> Give a Title!</span>
+		<input type="text" class="title" name="title" size="35" height="50" placeholder="Give a title to your class!" required/>
+	<!--	<span class="form_hint"> Give a Title!</span> -->
 		</li>
 		<li>
 		<label for="subject">Subject:</label>
-		<select name="subject" class="subject">
+		<select name="subject" class="form-control subject">
 			<option value="Computer">Computer</option>
 			<option value="Science">Science</option>
 			<option value="Cooking">Cooking</option>
@@ -70,16 +70,20 @@
 		</select>
 		</li>
 		<li>
-		<label for="description">Description:</label>
-		<textarea name="description" cols="40" rows = "6"></textarea>
-		<span class="form_hint"> Describe Your Class! </span>
+		<label for="cost">Cost: $</label>
+		<input type="number" class="cost" name="cost" height="50" pattern="(\d{3})([\.])(\d{2})" placeholder="Please Enter Cost" required/>
 		</li>
 		<li>
-		<button class="submit" type="submit">Submit Form</button>
+		<label for="description">Description:</label>
+		<textarea name="description" cols="40" rows = "6" placeholder="Describe your class!" minlength="12" required></textarea>
+		<span class="form_hint"> Give a Description(minimum 12 characters)!</span>
+		</li>
+		<li>
+			<button class="submit" type="submit">Submit Form</button>
 		</li>
 	</ul>
 	</form>
 	{{/if}}
-	-->
+
 
 </template>
