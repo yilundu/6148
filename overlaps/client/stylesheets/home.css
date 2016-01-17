@@ -46,19 +46,22 @@
 	right: 20%;
 	top: 70%;
 	font-family: "Andale Mono";
-	color: white;
+	color: rgba(255, 255, 255, 1);
 	margin: auto;
-	opacity: 0.5;
+}
+.user1{
+	color: rgba(255, 255, 255, .5);
+	opacity: .5;
 }
 #title{
 	font-family: "Andale Mono";
-	font-weight: 700;
+	font-weight: 900;
 	color: white;
 }
 
 #registerlabel{
 	margin: auto;
-	font-size: 50px;
+	font-size: 20px;
 }
 #home{
 	height: 100vh;
@@ -71,7 +74,7 @@
 
 .cover{
 	margin-top: 5px;
-	top: 10%;
+	top: 25%;
 	margin-top: 10%;
 	margin-left: 35%;
 	z-index: 10;
