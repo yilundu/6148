@@ -1,6 +1,6 @@
 <template name = "find">
   <title>Browse Sellers</title>
-  <form>
+  <form class="searchform">
 	  Subject <br>
 	  <input type="text" class="subject" name="subject" placeholder="Please describe the subject"><br>
 	  <input type="text" class="description" name="description" placeholder="Please give a brief description of class you want to find"><br>
@@ -10,13 +10,10 @@
   	<header>
   		<h1> Search Results </h1>
   	</header>
-  	<ul>
-	{{#each results}}
-		<li>The subject is {{subject}} <br> The description is {{description}}
-		</li>
-	{{/each}}
-	</ul>
+  	{{>searchResult}}
 
+	
+	<p class="Test"></p>
   </div>
 
 </template>

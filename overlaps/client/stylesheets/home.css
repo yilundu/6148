@@ -44,8 +44,12 @@
 }
 
 .cover{
+<<<<<<< HEAD
 	margin-top: 5px;
 	top: 40%;
+=======
+	margin-top: 10%;
+>>>>>>> 8accb012e7a280c2dee78b7e1ba47fae4ef4f12d
 	margin-left: 40%;
 	z-index: 10;
 	position: absolute;
