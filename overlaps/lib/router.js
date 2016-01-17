@@ -3,6 +3,7 @@ Router.configure({
 });
 resultssearch = {};
 Router.configure({layoutTemplate: 'layout', notFoundTemplate: '404'});
+
 Router.route('/', {
   title: 'Home',//set title of html (displayed in tab) here to be set later (see Router.after)
   name: 'home'
@@ -20,6 +21,10 @@ Router.route('/find',{
   title: 'Find Services'
 });
 
+Router.route('/editprofile',{
+  name: "editProfile",
+  title: 'Edit Profile'
+});
 
 Router.after(function(){
   if(this.route.options.title)

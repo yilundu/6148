@@ -1,0 +1,44 @@
+<!-- Page for user to change their profile info -->
+<template name = "editProfile">
+
+  <!-- Boilerplate div class to use in css scoping (so that input-group css can target only the ones in this template )-->
+  <div class = "__editProfile">
+
+
+    <div class = "page-header">
+      <h3>Profile Picture:</h3>
+    </div>
+
+
+
+    <!-- Note: apparently image url's are case sensitive -->
+    <img src = "/TIMBeaver.jpg" width="250px" height="250px" class="img-circle">
+
+
+    <div class = "page-header">
+      <h3>Basic Info:</h3>
+    </div>
+
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1">Name</span>
+      <input type="text" class="form-control" placeholder="Ex: John Smith" aria-describedby="basic-addon1">
+    </div>
+
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon2">Age</span>
+      <input type="text" class="form-control" placeholder="Ex: 23" aria-describedby="basic-addon2">
+    </div>
+
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon3">About me:</span>
+      <input type="text" class="form-control" placeholder="Introduce yourself to start finding overlaps!" aria-describedby="basic-addon3">
+    </div>
+
+    <div class="btn-group">
+      <button type="button" class="btn btn-primary">Submit</button>
+    </div>
+
+
+
+  </div>
+</template>
