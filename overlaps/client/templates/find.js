@@ -33,7 +33,7 @@ Template.find.events({
 	
 	$(".Test").text("");
 	 json.forEach(function(item){
-		$(".Test").append(item.subject+": "+item.description+"<br>");
+		$(".Test").append("<li> Subject:"+item.subject+"<br> Date: "+ item.createdAt+ "<br> Description: "+item.description+"<br></li>");
 	});
 
 

@@ -5,16 +5,18 @@
 
 
   Template.home.events({
-    "submit .form": function (event) {
+    "submit .class_form": function (event) {
       // Prevent default browser form submit
       event.preventDefault();
  
       // Get value from form element
+      var user_title = $(".title").val();
       var user_subject = $(".subject").val();
       var user_description = $(".description").val();
       // Insert a task into the collection
       
       classes.insert({
+        title: user_title
         subject: user_subject,
         description: user_description,
         createdAt: new Date() // current time

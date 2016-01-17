@@ -42,11 +42,35 @@
 	
 	
 	<br><br><br><br><br><br>
-	<form class="form">
-		<input type="text" class="subject" name="subject" placeholder="Please Type the subject you are teaching."/>
+	{{#if currentUser}}
+	<form class="class_form">
+	<ul>
+		<li>
+		<h2>Teach a class now!</h2>
+		</li>
+		<li>
+		<input type="text" class="title" name="title" placeholder="Title of Class"/>
+		</li>
+		<li>
+		<select name="subject" class="subject">
+			<option value="Computer">Computer</option>
+			<option value="Science">Science</option>
+			<option value="Cooking">Cooking</option>
+			<option value="Biking">Biking</option>
+			<option value="Misc">Misc</option>
+		</select>
+		</li>
+		<li>
+		<label for="description">Description:</label>
 		<input type="text" class="description" name="description" placeholder="Please Type a brief discription of the subject you are teaching. "/>
+		<span class="form_hint"> Please provide a 
+		</li>
+		<li>
 		<input type="submit">
+		</li>
+	</ul>
 	</form>
+	{{/if}}
 
 
 </template>
