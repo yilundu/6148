@@ -90,6 +90,48 @@
 	width: 300px;
 }
 }
+#Form .container{
+	padding-left: 0px;
+	padding-right:0px;
+
+}
+.subjectbox{
+	width: auto;
+}
+.labelclass{
+	margin-left: 5%;
+	color: white;
+	font-size: 1.5em;
+}
+
+#teachclass{
+	color: white;
+	text-align: center;
+	font-family: "lato";
+	font-size: 4em;
+	font-weight: 900;
+	letter-spacing: 6px;
+}
+.classText{
+	margin-left: 0;
+	font-size: 17px;
+	color: black;
+	background-color: rgba(255, 255, 255, .5);
+}
+.class_form .subject{
+	margin-left: 35%;
+}
+#Form{
+	background-image:url("classroomtall.jpg");
+	background-size: cover;
+	background-attachment: scroll;
+	background-repeat:no-repeat;
+	height: auto;
+}
+#class-image{
+	width: 100%;
+}
+
 @media screen and (min-width: 800px) and (max-width: 1000px){
 	._home .thumbnail{
 	height: 230px;
@@ -159,13 +201,13 @@
 }
 
 	::-webkit-input-placeholder {
-		color: #DDDDDD;
+		color: black;
 	}
 
 	.class_form *:focus {outline: none;}
 
 	.class_form ul {
-		width:750px;
+		width:1000px;
 		list-style-type:none;
 		list-style-position:outside;
 		margin:0px;
@@ -259,8 +301,8 @@
 		padding:5px 8px;
 	}
 	.class_form textarea {padding:8px; width:300px;}
-	.class_form button {margin-left:156px;}
-	.class_form .subject {margin-left: 156px;}
+	.class_form button {margin-left:25%;}
+	.class_form .subject {margin-left: 0%;}
 /*.class_form li:first-child, .class_form li:last-child {
 	border-bottom:1px solid #777;
 }

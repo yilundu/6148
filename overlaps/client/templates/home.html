@@ -112,7 +112,7 @@
 					<div class="row">
 
 						<div class="col-lg-12">
-							<h1 class="page-header">Topics</h1>
+							<h1 class="page-header">Learn About...</h1>
 						</div>
 
 						<div class="col-lg-4 col-md-4 col-xs-6 thumb">
@@ -171,7 +171,45 @@
 		<section>
 			<div class = "page-section" id = "Form">
 				<div class = "container">
-
+					<div id = "classpic_bar" class = "section">
+						{{#if currentUser}}
+						<form class="class_form">
+							<ul>
+								<li>
+									<h2 id = "teachclass">Teach a class now!</h2>
+								</li>
+								<li>
+									<label class = "labelclass" for="title">Title:</label>
+									<input type="text" class="title classText" name="title" size="35" height="50" placeholder="Give a title to your class!" required/>
+									<!--	<span class="form_hint"> Give a Title!</span> -->
+								</li>
+								<li>
+									<label class = "labelclass"  for="subject">Subject:</label>
+									<select name="subject" class="form-control subject classText subjectbox">
+										<option value="Computer">Computer</option>
+										<option value="Science">Science</option>
+										<option value="Cooking">Cooking</option>
+										<option value="Biking">Biking</option>
+										<option value="Misc">Misc</option>
+									</select>
+								</li>
+								<li>
+									<label class = "labelclass"  for="cost">Cost: $</label>
+									<input type="number" class="cost classText" name="cost" height="50" pattern="(\d{3})([\.])(\d{2})" placeholder="Please Enter Cost" required/>
+								</li>
+								<li>
+									<label class = "labelclass"  for="description">Description:</label>
+									<textarea name="description" cols="40" class="description classText" rows = "6" placeholder="Describe your class!" minlength="12" required></textarea>
+									<span class="form_hint"> Give a Description(minimum 12 characters)!</span>
+								</li>
+								<li>
+									<button class="submit" type="submit">Submit Form</button>
+								</li>
+							</ul>
+						</form>
+						{{/if}}
+						<br><br><br><br><br><br><br>
+					</div>
 				</div>
 			</div>
 		</section>
