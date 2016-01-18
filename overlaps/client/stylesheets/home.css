@@ -101,7 +101,7 @@
 	color: #DDDDDD;
 }
 
-*:focus {outline: none;}
+.class_form *:focus {outline: none;}
 
 .class_form ul {
 	width:750px;
@@ -127,6 +127,7 @@
 	float:left;
 	padding:3px;
 }
+
 .contact_form input, .contact_form textarea { 
 	border:1px solid #aaa;
 	box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
@@ -136,6 +137,15 @@
 	background: #fff; 
 	border:1px solid #555; 
 	box-shadow: 0 0 3px #aaa; 
+ input,  textarea { 
+    border:1px solid #aaa;
+    box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
+    border-radius:2px;
+}
+ input:focus,  textarea:focus {
+    background: #fff; 
+    border:1px solid #555; 
+    box-shadow: 0 0 3px #aaa; 
 }
 /* Button Style */
 .submit {
@@ -185,7 +195,7 @@
 }
 .class_form textarea {padding:8px; width:300px;}
 .class_form button {margin-left:156px;}
-.subject {margin-left: 156px;}
+.class_form .subject {margin-left: 156px;}
 .class_form li:first-child, .class_form li:last-child {
 	border-bottom:1px solid #777;
 }
@@ -214,10 +224,17 @@
 	-o-transition: padding .25s;
 	transition: padding .25s;
 }
+<<<<<<< HEAD
 .class_form input:required:valid, .class_form textarea:required:valid { /* when a field is considered valid by the browser */
 	background: #fff url(images/valid.png) no-repeat 98% center;
 	box-shadow: 0 0 5px #5cd053;
 	border-color: #28921f;
+=======
+ input:required:valid, textarea:required:valid { /* when a field is considered valid by the browser */
+    background: #fff url(images/valid.png) no-repeat 98% center;
+    box-shadow: 0 0 5px #5cd053;
+    border-color: #28921f;
+>>>>>>> 947ab7b1a946e94b06289994814b2416f4b7a641
 }
 .form_hint {
 	background: #d45252;
