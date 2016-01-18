@@ -72,3 +72,11 @@
     position:relative;
 }
 
+.results li .submit {
+	margin-right: 600px;
+}
+
+.results li:first-child{
+	visibility: hidden;
+}
+

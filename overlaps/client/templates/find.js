@@ -34,13 +34,23 @@ Template.find.events({
 	$(".Test").html("");
 
 	 json.forEach(function(item){
-		$(".Test").append("<div class='results'><ul><li> Title:"+item.title+"</li><li> ID: "+ item.teacher+ "</li><li> Date: "+ item.createdAt+ "</li><li> Description: "+item.description+"</li></ul></div>");
+		$(".Test").append("<div class='results'><ul><li>ID: "+item._id+"</li><li> Title:"+item.title+"</li><li> Students Enrolled:"+item.studentNumber+"</li><li> ID: "+ item.teacher+ "</li><li> Date: "+ item.createdAt+ "</li><li> Description: "+item.description+"</li><li><button class='submit'>Enroll!</button></li></ul></div>");
 	});
 
 
 
 
-}
+
+
+},
+    "click .results .submit": function(event) {
+    event.preventDefault();
+
+    classes.update({_id: this()})
+
+
+
+    }
 });
 
 /*
