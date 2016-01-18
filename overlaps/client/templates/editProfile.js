@@ -1,6 +1,6 @@
 Template.editProfile.events({
   'click #submit-btn': function(){
-    var name = "Hi "+ $("#name-field").val() +"!";//edit this so that Hi {Name}! appears in the accounts ui
+    var name = $("#name-field").val();
     var age = $("#age-field").val();
     var about = $("#about-field").val();
 
