@@ -34,8 +34,11 @@
       }
     
   });
+$(document).ready(function(){
+  var heightofcarousel = $("#icon-bar").height();
+ $('#icon-bar').css( "margin-top", 500);
 
+})
 
-$('#carouselimage').carousel({ interval: 2000, cycle: true });
 
 
