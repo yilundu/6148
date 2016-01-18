@@ -1,8 +1,11 @@
 Router.configure({
-  layoutTemplate: 'layout'
+  layoutTemplate: 'layout',
+  notFoundTemplate: '404',
+  loadingTemplate: 'loading'
 });
+
 resultssearch = {};
-Router.configure({layoutTemplate: 'layout', notFoundTemplate: '404'});
+
 
 Router.route('/', {
   title: 'Home',//set title of html (displayed in tab) here to be set later (see Router.after)
@@ -27,7 +30,15 @@ Router.route('/editprofile',{
 });
 
 Router.route('/sellerDashboard',{
-  title:"Seller Dashboard"
+  title:"Seller Dashboard",
+  waitOn: function(){
+    console.log("scubcrbiebd");
+    return Meteor.subscribe('users');
+  },
+  action: function(){
+    console.log("Called action");
+    this.render('sellerDashboard');
+  }
 });
 
 Router.after(function(){

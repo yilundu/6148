@@ -1,5 +1,5 @@
 <template name="sellerDashboard">
-  <div class = "_seller-dashboard"><!-- For css scoping in meteor -->
+  <div class = "_seller-dashboard container-fluid"><!-- For css scoping in meteor -->
 
 
     <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar1">
@@ -43,14 +43,47 @@
       </div>
     </div>
 
-    <div class = "main-section">
+    <div class = "main-section col-xs-6 col-sm-9">
 
-      {{#each classes}}
-        {{> class-dashboard-element}}
-      {{/each}}
+      {{#if numClasses}}
+        {{#each classes}}
+          {{> classDashboardElement}}
+        {{/each}}
+      {{else}}
+        {{ > classDashboardElementEmpty}}
+      {{/if}}
 
-      test test test
+      <div class="bs-callout bs-callout-primary">
+        <h1>Title:</h1>
+        <p>Subject:</p>
+        <p>Cost:</p>
+        <p>Description:</p>
+        <p>Number of Students:</p>
+      </div>
 
+      <div class="bs-callout bs-callout-primary">
+        <h1>Class A</h1>
+        sadkadjlasd
+        ashdlkhfdskfsd
+        fdskjfkdsa
+        sadkjsajlkdk
+      </div>
+
+      <div class="bs-callout bs-callout-primary">
+        <h1>Class A</h1>
+        sadkadjlasd
+        ashdlkhfdskfsd
+        fdskjfkdsa
+        sadkjsajlkdk
+      </div>
+
+      <div class="bs-callout bs-callout-primary">
+        <h1>Class A</h1>
+        sadkadjlasd
+        ashdlkhfdskfsd
+        fdskjfkdsa
+        sadkjsajlkdk
+      </div>
     </div>
 
   </div>
@@ -58,8 +91,27 @@
 
 </template>
 
-<!-- Represents one of the users classes on the main dashboard section-->
-<template name = "class-dashboard-element">
+<!-- Represents one of the users classes on the main dashboard section
+  **also note that template names (and likely helper names, etc.) cannot by hyphenated
+  -thanks slava - https://github.com/meteor/meteor/issues/1602
+-->
+<template name = "classDashboardElement">
 
+  <div class="bs-callout bs-callout-primary">
+    <h1>{{title}}</h1>
+    <p>{{subject}}</p>
+    <p>{{cost}}</p>
+    <p>{{description}}</p>
+    <p>{{studentNumber}}</p>
+  </div>
+
+</template>
+
+
+<template name = "classDashboardElementEmpty">
+  <div class="bs-callout bs-callout-warning">
+    <h1>Your not currently teaching any classes!</h1>
+    <button class="btn btn-primary">Teach Now!</button>
+  </div>
 
 </template>
