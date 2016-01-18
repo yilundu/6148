@@ -19,7 +19,6 @@ Template.find.helpers({
 }
 );
 
-
 Template.find.events({
 	"submit .searchform": function(event) {
 //	return classes.find();
@@ -44,9 +43,19 @@ Template.find.events({
 
 },
     "click .results .submit": function(event) {
-     alert("Succesfully Enrolled!");
+     
      event.preventDefault();
-     classes.update({_id:$(event.target).parent().parent().children().eq(0).text()},{$inc: {studentNumber: 1}});
+     var classid = $(event.target).parent().parent().children().eq(0).text();
+     if ((Meteor.users.find({id: Meteor.user()._id, classid: true}).count())===0){
+     	classes.update({_id:classid},{$inc: {studentNumber: 1}});
+     	Meteor.call('insertPlayerClass', classid);
+     	alert("Succesfully Enrolled!");
+     	location.reload();
+     	
+     }
+     else {
+     	alert("You have already been enrolled in this class!");
+ 	}
   //  $(".submit").eq(1).parent().parent().children().eq(0).text()
   //  classes.update({_id: $(this).parent().children(:first-child).val());
 
@@ -54,6 +63,9 @@ Template.find.events({
 
     }
 });
+
+
+
 
 /*
 results: [
