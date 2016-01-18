@@ -26,6 +26,10 @@ Router.route('/editprofile',{
   title: 'Edit Profile'
 });
 
+Router.route('/sellerDashboard',{
+  title:"Seller Dashboard"
+});
+
 Router.after(function(){
   if(this.route.options.title)
   {
