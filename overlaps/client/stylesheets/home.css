@@ -28,6 +28,12 @@
 	width: 35px;
 }
 
+._home .imagedescrip{
+	color: black;
+	font-weight: 100;
+	font-size: .5em;
+	letter-spacing: 1px;
+}
 ._home #banner{
 	background-color: blue;
 	
@@ -92,7 +98,7 @@
 		font-size: 70px;
 	}
 	#icon-bar{
-		height: 400px;
+		height: 500px;
 	}
 	#About-title{
 	margin-top: 430px;
