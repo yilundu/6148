@@ -34,7 +34,7 @@ Template.find.events({
 	$(".Test").html("");
 
 	 json.forEach(function(item){
-		$(".Test").append("<div class='results'><ul><li>ID: "+item._id+"</li><li> Title:"+item.title+"</li><li> Students Enrolled:"+item.studentNumber+"</li><li> ID: "+ item.teacher+ "</li><li> Date: "+ item.createdAt+ "</li><li> Description: "+item.description+"</li><li><button class='submit'>Enroll!</button></li></ul></div>");
+		$(".Test").append("<div class='results'><ul><li>"+item._id+"</li><li> Title:"+item.title+"</li><li> Students Enrolled:"+item.studentNumber+"</li><li> ID: "+ item.teacher+ "</li><li> Date: "+ item.createdAt+ "</li><li> Description: "+item.description+"</li><li><button class='submit'>Enroll!</button></li></ul></div>");
 	});
 
 
@@ -44,9 +44,11 @@ Template.find.events({
 
 },
     "click .results .submit": function(event) {
-    event.preventDefault();
-
-    classes.update({_id: this()})
+     alert("Succesfully Enrolled!");
+     event.preventDefault();
+     classes.update({_id:$("this").parent().parent().children().eq(0).text()},{$inc: {studentNumber: 1}});
+  //  $(".submit").eq(1).parent().parent().children().eq(0).text()
+  //  classes.update({_id: $(this).parent().children(:first-child).val());
 
 
 
