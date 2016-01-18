@@ -48,8 +48,8 @@ Template.find.events({
      var classid = $(event.target).parent().parent().children().eq(0).text();
      if ((Meteor.users.find({id: Meteor.user()._id, classid: true}).count())===0){
      	classes.update({_id:classid},{$inc: {studentNumber: 1}});
+     	Meteor.call('insertPlayerClass', classid);
      	alert("Succesfully Enrolled!");
-     	Meteor.users.update({id: Meteor.user()._id}, {$set: {classid: true}})
      	location.reload();
      	
      }
