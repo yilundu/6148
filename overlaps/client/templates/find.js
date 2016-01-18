@@ -46,7 +46,7 @@ Template.find.events({
     "click .results .submit": function(event) {
      alert("Succesfully Enrolled!");
      event.preventDefault();
-     classes.update({_id:$("event.target").parent().parent().children().eq(0).text()},{$inc: {studentNumber: 1}});
+     classes.update({_id:$(event.target).parent().parent().children().eq(0).text()},{$inc: {studentNumber: 1}});
   //  $(".submit").eq(1).parent().parent().children().eq(0).text()
   //  classes.update({_id: $(this).parent().children(:first-child).val());
 
