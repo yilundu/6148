@@ -45,4 +45,30 @@
 .__find .submit {
 	margin-left: 50%;
 }
+.__find .container {
+	width: 100vw;
+}
+.results {
+	margin: auto;
+}
+
+.results ul {
+    width:750px;
+    list-style-type:none;
+    list-style-position:outside;
+    margin:0px;
+    padding:0px;
+    text-align: center;
+    border-style: solid;
+    border-color: #a8d1ff;
+    margin-bottom: 20px;
+    border-width: small;
+    border-radius:30px;
+}
+
+.results li {
+    padding:12px; 
+    border-bottom:1px solid #eee;
+    position:relative;
+}
 

@@ -31,10 +31,12 @@ Template.find.events({
 	var search2 = new RegExp($("#description1").val(), 'i');
 	var json = classes.find({title: search1, description: search2});
 	
-	$(".Test").text("");
+	$(".Test").html("");
+
 	 json.forEach(function(item){
-		$(".Test").append("<li> Title:"+item.title+"<br> ID: "+ item.teacher+ "<br> Date: "+ item.createdAt+ "<br> Description: "+item.description+"<br></li>");
+		$(".Test").append("<div class='results'><ul><li> Title:"+item.title+"</li><li> ID: "+ item.teacher+ "</li><li> Date: "+ item.createdAt+ "</li><li> Description: "+item.description+"</li></ul></div>");
 	});
+
 
 
 
