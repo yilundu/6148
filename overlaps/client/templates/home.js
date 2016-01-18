@@ -2,7 +2,9 @@
   // counter starts at 0
   Session.setDefault('counter', 0);
 
-
+ 
+  $("#nameid").text(Meteor.user().profile.name);
+  
 
   Template.home.events({
     "submit .class_form": function (event) {
@@ -32,6 +34,8 @@
       $(".cost").val('');
       // Clear form
       }
+
+    
     
   });
 $(document).ready(function(){
