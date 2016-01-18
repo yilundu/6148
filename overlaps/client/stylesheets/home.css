@@ -31,8 +31,17 @@
 ._home .imagedescrip{
 	color: black;
 	font-weight: 100;
-	font-size: .5em;
+	font-size: .4em;
 	letter-spacing: 1px;
+	margin-top: 5px;
+}
+._home .imagedescriptitle{
+	color: black;
+	font-weight: 200;
+	font-size: .7em;
+	letter-spacing: 1px;
+	margin-bottom: 0px;
+	margin-top: 10px;
 }
 ._home #banner{
 	background-color: blue;
