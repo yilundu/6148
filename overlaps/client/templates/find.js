@@ -9,7 +9,7 @@ Template.find.helpers({
 //	return classes.find({subject: search1, description: search2});
 	var search1 = new RegExp($("#title1").val(),'i');
 	var search2 = new RegExp($("#description1").val(), 'i');
-	return classes.find({subject: search1, description: search2});
+	return {posts: classes.find({subject: search1, description: search2})};
 	
 
 
@@ -33,7 +33,7 @@ Template.find.events({
 	$(".Test").html("");
 
 	 json.forEach(function(item){
-		$(".Test").append("<div class='results'><ul><li>"+item._id+"</li><li> Title:"+item.title+"</li><li> Students Enrolled:"+item.studentNumber+"</li><li> ID: "+ item.teacher+ "</li><li> Date: "+ item.createdAt+ "</li><li> Description: "+item.description+"</li><li><button class='submit'>Enroll!</button></li></ul></div>");
+		$(".Test").append("<div class='results'><ul><li>"+item._id+"</li><li> Subject:"+item.subject+"</li><li> Title:"+item.title+"</li><li> Students Enrolled:"+item.studentNumber+"</li><li> ID: "+ item.teacher+ "</li><li> Date: "+ item.createdAt+ "</li><li> Description: "+item.description+"</li><li><button class='submit'>Enroll!</button></li></ul></div>");
 	});
 
 

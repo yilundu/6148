@@ -13,8 +13,14 @@ Router.route('/login', {
   title: 'Login'
 });
 
-Router.route('/register',{
-  title: 'Register'
+Router.route('/info/:_id', {
+  template: 'listresults',
+  data: function(){
+    var current = this.params._id;
+    return classes.findOne({'subject': current});
+  //  return {subject: "hi", description: "hi", title: "bye"}
+  }
+  
 });
 
 Router.route('/find',{
