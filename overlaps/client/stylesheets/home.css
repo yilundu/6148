@@ -137,7 +137,9 @@
 	background: #fff; 
 	border:1px solid #555; 
 	box-shadow: 0 0 3px #aaa; 
- input,  textarea { 
+}
+  
+  input,  textarea { 
     border:1px solid #aaa;
     box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
     border-radius:2px;
@@ -212,29 +214,29 @@
 	padding-right:70px;
 }
 
-.class_form input:focus:invalid, .contact_form textarea:focus:invalid { /* when a field is considered invalid by the browser */
+.class_form input:focus:invalid, .class_form textarea:focus:invalid { /* when a field is considered invalid by the browser */
 	background: #fff url(images/invalid.png) no-repeat 98% center;
 	box-shadow: 0 0 5px #d45252;
 	border-color: #b03535
 }
 
-.class_form input, .contact_form textarea { /* add this to the already existing style */
+.class_form input, .class_form textarea { /* add this to the already existing style */
 	-moz-transition: padding .25s; 
 	-webkit-transition: padding .25s; 
 	-o-transition: padding .25s;
 	transition: padding .25s;
 }
-<<<<<<< HEAD
+
 .class_form input:required:valid, .class_form textarea:required:valid { /* when a field is considered valid by the browser */
 	background: #fff url(images/valid.png) no-repeat 98% center;
 	box-shadow: 0 0 5px #5cd053;
 	border-color: #28921f;
-=======
+}
  input:required:valid, textarea:required:valid { /* when a field is considered valid by the browser */
     background: #fff url(images/valid.png) no-repeat 98% center;
     box-shadow: 0 0 5px #5cd053;
     border-color: #28921f;
->>>>>>> 947ab7b1a946e94b06289994814b2416f4b7a641
+
 }
 .form_hint {
 	background: #d45252;
