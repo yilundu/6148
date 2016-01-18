@@ -1,89 +1,118 @@
 
 <template name="home">
-	<header>
-	<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-	</header>
-	<div class = "page-section" id = "home">
-		
-		<div id="carouselimage" class="carousel slide" data-ride="carousel" data-interval="3000">
-			<div class = "registerBar">
-				<div class="form-group">
-  				<label id="registerlabel" for="user1">What would you like to learn?</label>
-  				<input type="text" class="form-control" id="user1">
+	<div class = "_home">
+		<header>
+			<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		</header>
+		<div class = "page-section" id = "home">
+
+			<div id="carouselimage" class="carousel slide" data-ride="carousel" data-interval="3000">
+				<div class = "registerBar">
+					<div class="form-group">
+						<label id="registerlabel" for="user1">What would you like to learn?</label>
+						<input type="text" class="form-control" id="user1">
+					</div>
+
 				</div>
 
-			</div>
-			
-			<div class="carousel-inner" role="listbox">
-				<div class="item active">
-					<img class = "imgslide" src="Biker.png" alt="First">
+				<div class="carousel-inner" role="listbox">
+					<div class="item active">
+						<img class = "imgslide" src="Biker.png" alt="First">
+					</div>
+					<div class="item">
+						<img class = "imgslide" src="food.png" alt="Second">
+					</div>
+					<div class="item">
+						<img class = "imgslide" src="exercising.png" alt="Third">
+					</div>
+					<div class="item">
+						<img class = "imgslide" src="guitar.png" alt="Fourth">
+					</div>
 				</div>
-				<div class="item">
-					<img class = "imgslide" src="food.png" alt="Second">
-				</div>
-				<div class="item">
-					<img class = "imgslide" src="exercising.png" alt="Third">
-				</div>
-				<div class="item">
-					<img class = "imgslide" src="guitar.png" alt="Fourth">
-				</div>
-			</div>
-			<a class="left carousel-control" href="#carouselimage" role="button" data-slide="prev">
-				<span class="glyphicon glyphicon-chevron-left"></span>
-			</a>
-			<a class="right carousel-control" href="#carouselimage" role="button" data-slide="next">
-				<span class="glyphicon glyphicon-chevron-right"></span>
-			</a>
-			<div class = "cover">
-				<div class = "content">
-					<h1 id = "title"> OVERLAPS </h1>
-					<h2 id = "titleunder"> &nbsp;&nbsp;&nbsp; learn for tomorrow </h2>
-				</div>
+				<a class="left carousel-control" href="#carouselimage" role="button" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left"></span>
+				</a>
+				<a class="right carousel-control" href="#carouselimage" role="button" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right"></span>
+				</a>
+				<div class = "cover">
+					<div class = "content">
+						<h1 id = "title"> OVERLAPS </h1>
+						<h2 id = "titleunder"> &nbsp;&nbsp;&nbsp; learn for tomorrow </h2>
+					</div>
 
+				</div>
+			</div>
+
+
+			<div id = "icon-bar" class = "section">
+				<h1 id = "About-title"> ABOUT </h1>
+
+			</div>
+
+
+			<div id = "classpic_bar" class = "section">
+				<img id = "class-image" src = "classroom.jpg">
 			</div>
 		</div>
 
-	</div>
-	
-	
-	
-	<br><br><br><br><br><br>
-	{{#if currentUser}}
-	<form class="class_form">
-	<ul>
-		<li>
-		<h2>Teach a class now!</h2>
-		</li>
-		<li>
-		<label for="title">Title:</label>
-		<input type="text" class="title" name="title" size="35" height="50" placeholder="Give a title to your class!" required/>
-	<!--	<span class="form_hint"> Give a Title!</span> -->
-		</li>
-		<li>
-		<label for="subject">Subject:</label>
-		<select name="subject" class="form-control subject">
-			<option value="Computer">Computer</option>
-			<option value="Science">Science</option>
-			<option value="Cooking">Cooking</option>
-			<option value="Biking">Biking</option>
-			<option value="Misc">Misc</option>
-		</select>
-		</li>
-		<li>
-		<label for="cost">Cost: $</label>
-		<input type="number" class="cost" name="cost" height="50" pattern="(\d{3})([\.])(\d{2})" placeholder="Please Enter Cost" required/>
-		</li>
-		<li>
-		<label for="description">Description:</label>
-		<textarea name="description" cols="40" class="description" rows = "6" placeholder="Describe your class!" minlength="12" required></textarea>
-		<span class="form_hint"> Give a Description(minimum 12 characters)!</span>
-		</li>
-		<li>
-			<button class="submit" type="submit">Submit Form</button>
-		</li>
-	</ul>
-	</form>
-	{{/if}}
 
+
+		<br><br><br><br><br><br>
+		{{#if currentUser}}
+		<form class="class_form">
+			<ul>
+				<li>
+					<h2>Teach a class now!</h2>
+				</li>
+				<li>
+					<label for="title">Title:</label>
+					<input type="text" class="title" name="title" size="35" height="50" placeholder="Give a title to your class!" required/>
+					<!--	<span class="form_hint"> Give a Title!</span> -->
+				</li>
+				<li>
+					<label for="subject">Subject:</label>
+					<select name="subject" class="form-control subject">
+						<option value="Computer">Computer</option>
+						<option value="Science">Science</option>
+						<option value="Cooking">Cooking</option>
+						<option value="Biking">Biking</option>
+						<option value="Misc">Misc</option>
+					</select>
+				</li>
+				<li>
+					<label for="cost">Cost: $</label>
+					<input type="number" class="cost" name="cost" height="50" pattern="(\d{3})([\.])(\d{2})" placeholder="Please Enter Cost" required/>
+				</li>
+				<li>
+					<label for="description">Description:</label>
+					<textarea name="description" cols="40" class="description" rows = "6" placeholder="Describe your class!" minlength="12" required></textarea>
+					<span class="form_hint"> Give a Description(minimum 12 characters)!</span>
+				</li>
+				<li>
+					<button class="submit" type="submit">Submit Form</button>
+				</li>
+			</ul>
+		</form>
+		{{/if}}
+
+	</div>
+	<script type = "text/javascript">
+				$(document).ready(function(){
+					var heightofcarousel = $(".imgslide").height() +100;
+					if(window.innerwidth > 900){
+						$('#About-title').css( "margin-top", 1300);
+
+					}
+					
+					$(window).resize(function(){
+						var heightofcarousel = $(".imgslide").height()-25;
+
+					$('#About-title').css( "margin-top", heightofcarousel);
+						$('#icon-bar').css( "margin-top", heightofcarousel);
+					})
+				})
+				
+			</script>
 
 </template>
