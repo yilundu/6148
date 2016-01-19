@@ -69,7 +69,7 @@
 ._home h4{
 	position: absolute;
 	color: white;
-	margin-left: 30%;
+	margin-left: 25%;
 	margin-top: -35%;
 	font-size: 2em;
 }
@@ -94,14 +94,30 @@
 	margin-left: auto;
 	margin-right: auto;
 }
+.relimage{
+	height: 100%;
+	width: 100%;
+	position: relative;
+}
+@media screen and (max-width: 1000px){
+	._home .thumbnail{
+	height: 160px;
+	width: 250px;
+}
+._home .img-responsive{
+	height: 100%;
+	width: 100%;
+}
+}
+
 @media screen and (min-width: 1000px){
 	._home .thumbnail{
 	height: 210px;
 	width: 310px;
 }
 ._home .img-responsive{
-	height: 200px;
-	width: 300px;
+	height: 100%;
+	width: 100%;
 }
 }
 #Form .container{
@@ -146,16 +162,7 @@
 	width: 100%;
 }
 
-@media screen and (min-width: 800px) and (max-width: 1000px){
-	._home .thumbnail{
-	height: 230px;
-	width: 360px;
-}
-._home .img-responsive{
-	height: 240px;
-	width: 370px;
-}
-}
+
 
 
 @media screen and (min-width: 1300px){
