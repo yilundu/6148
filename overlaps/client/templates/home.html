@@ -17,7 +17,7 @@
 
 				<div class = "navbar-collapse collapse" id = "NavBar">
 					<ul class = "nav navbar-nav" >
-						<li class = "toptab"> <a href = "#" class = "navbartext"> About </a></li>
+						<li class = "toptab"> <a href = "#about" class = " scroll-link navbartext" data-scroll> About </a></li>
 						<li> <a href = "#" class = "navbartext"> How It Works </a></li>
 						<li> <a href = "#" class = "navbartext"> Page </a></li>
 					</ul>
@@ -79,13 +79,13 @@
 			<div class = "page-section" id = "about">
 				<div class = "container">
 					<div id = "About-title">
-						<h1> ABOUT </h1> 
+						<h1 id = "abouttitle"> What is Overlaps? </h1> 
 						<div class="row">
 
 							<div class="col-xs-4" id = "iconvertical">
 								<img class = "icons" src="wrenchwhisk.png">
 								<h1 class = "imagedescriptitle"> Share Knowledge </h1>
-								<h3 class = "imagedescrip"> Learn useful skills, tips and tricks about anything from cooking up a great dinner to fixing up your bike. </h3>
+								<h3 class = "imagedescrip"> Learn useful skills, tips and tricks about anything from cooking up a quick dinner to fixing up your bike. Think of something you want to learn or teach, and post it!</h3>
 							</div>
 							<div class="col-xs-4" id = "iconvertical">
 								<img class = "icons" src="people.png">
@@ -215,7 +215,14 @@
 		</section>
 
 	</body>
-
+	<script>
+	$('a[href*=about]').click(function(){
+    $('html, body').animate({
+        scrollTop: $( $.attr(this, 'href') ).offset().top
+    }, 500);
+    return false;
+});
+	</script>
 
 
 
