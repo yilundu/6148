@@ -1,36 +1,67 @@
+var checkTextEmpty = function(element){
+  if($(element).val()){
+    $(element).parent().removeClass('has-error');
+    $(element).parent().addClass('has-success');
+    return true;
+  }
+  else{
+    $(element).parent().removeClass('has-success');
+    $(element).parent().addClass('has-error');
+    return false;
+  }
+};
 
+var checkNumberPositive = function(element){
+  var costInput = $(element).val();
+  if(costInput && costInput > 0){
+    $(element).parent().removeClass('has-error');
+    $(element).parent().addClass('has-success');
+    return true;
+  }
+  else{
+    $(element).parent().removeClass('has-success');
+    $(element).parent().addClass('has-error');
+    return false;
+  }
+};
 
 Template.createClass.events({
   "click #createBtn": function (event) {
 
     // Get value from form element
     var user_title = $("#titleField").val();
-    var user_subject = $('.list-group > .active').html()
     var user_cost = $("#costField").val();
     var user_description = $("#descField").val();
-    // Insert a task into the collection
+    var user_subject;
 
-    //validating input
-    if(!(user_title && user_subject && user_cost && user_description)){
-      console.log("input invalid");
-      return;
-    }
 
-    classes.insert({
-      title: user_title,
-      subject: user_subject,
-      cost: user_cost,
-      teacher: Meteor.user().profile.name,
-      description: user_description,
-      createdAt: new Date(),
-      studentNumber: 0, // current time
-      teacherId: Meteor.user()._id
+    $('.list-group-item').each(function(){
+      if($(this).hasClass('active')){
+        user_subject = $(this).html();
+      }
     });
 
-    //redirect to sellerDashboard
-    Router.go('/sellerDashboard');
+    //check fields
+    //NOTE: use singular & in order to avoid short-circuit evaluation: all methods must be called to label fields red as needed
+    if(checkTextEmpty($('#titleField')) &
+    checkTextEmpty($('#descField')) &
+    checkNumberPositive($('#costField'))){
 
-    // Clear form
+
+      classes.insert({
+        title: user_title,
+        subject: user_subject,
+        cost: user_cost,
+        teacher: Meteor.user().profile.name,
+        description: user_description,
+        createdAt: new Date(),
+        studentNumber: 0, // current time
+        teacherId: Meteor.user()._id
+      });
+
+      //redirect to sellerDashboard
+      Router.go('/sellerDashboard');
+    }
   },
 
   "click .list-group-item ": function(event){
@@ -39,36 +70,14 @@ Template.createClass.events({
   },
 
   "keyup #titleField": function(event){
-    if($(event.target).val()){
-      $(event.target).parent().removeClass('has-error');
-      $(event.target).parent().addClass('has-success');
-    }
-    else{
-      $(event.target).parent().removeClass('has-success');
-      $(event.target).parent().addClass('has-error');
-    }
+    checkTextEmpty(event.target);
   },
 
   "keyup #costField": function(event){
-    var costInput = $(event.target).val();
-    if(costInput && costInput > 0){
-      $(event.target).parent().removeClass('has-error');
-      $(event.target).parent().addClass('has-success');
-    }
-    else{
-      $(event.target).parent().removeClass('has-success');
-      $(event.target).parent().addClass('has-error');
-    }
+    checkNumberPositive(event.target);
   },
 
   "keyup #descField": function(event){
-    if($(event.target).val()){
-      $(event.target).parent().removeClass('has-error');
-      $(event.target).parent().addClass('has-success');
-    }
-    else{
-      $(event.target).parent().removeClass('has-success');
-      $(event.target).parent().addClass('has-error');
-    }
+    checkTextEmpty(event.target);
   }
 });
