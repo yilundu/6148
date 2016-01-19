@@ -1,7 +1,8 @@
 Router.configure({
   layoutTemplate: 'layout',
   notFoundTemplate: '404',
-  loadingTemplate: 'loading'
+  loadingTemplate: 'loading',
+  progress: false
 });
 
 resultssearch = {};
@@ -31,13 +32,9 @@ Router.route('/editprofile',{
 
 Router.route('/sellerDashboard',{
   title:"Seller Dashboard",
+  progress: true,
   waitOn: function(){
-    console.log("scubcrbiebd");
     return Meteor.subscribe('users');
-  },
-  action: function(){
-    console.log("Called action");
-    this.render('sellerDashboard');
   }
 });
 
