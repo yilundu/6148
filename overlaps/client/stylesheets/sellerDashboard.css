@@ -1,8 +1,22 @@
 ._seller-dashboard #sidebar1{
 
-  margin-top: 20px;
-  padding: 20px;
   width: auto;
+  padding: 20px;
 
-  background-color: gray;
+
+
+}
+
+._seller-dashboard .btn-group {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+._seller-dashboard #create-class-btn {
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+}
+
+._seller-dashboard .panel-body {
+  padding-bottom: 0px;
 }
