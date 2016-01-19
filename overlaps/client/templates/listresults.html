@@ -1,14 +1,29 @@
 <template name='listresults'>
 
-<p>Hello world!</p>
+<div class="__listresults container">
+<p>Search Results</p>
 
 {{#each posts}}
-<p>
-	{{subject}} <br>
-	{{title}} <br>
-	{{description}} <br>
+<div class = "textcontainer">
+<div class="textbox item2">
+	<div class="text">
+	<h4>{{title}}</h4>
+	<p> {{description}}</p>
+	</div>
+	<img src="thumbbook3.jpg">
+<!--
+	<li class="list-group-item">Subject: {{subject}}</li>
+	<li class="list-group-item">Titles: {{title}} </li>
+	<li class="list-group-item">Students Enrolled: {{studentNumber}}</li>
+	<li class="list-group-item">Teacher: {{teacher}}</li>
+	<li class="list-group-item">Date: {{createdAt}}</li>
+	<li class="list-group-item">Description: {{description}}</li>
+-->
 
-</p>
 
+
+</div>
+</div>
 {{/each}}
+</div>
 </template>
