@@ -1,10 +1,4 @@
 
-  // counter starts at 0
-  Session.setDefault('counter', 0);
-
-
-  $("#nameid").text(Meteor.user().profile.name);
-
 
   Template.home.events({
     "submit .class_form": function (event) {
@@ -12,6 +6,7 @@
       event.preventDefault();
 
       // Get value from form element
+      if($(this).valid){
       var user_title = $(".title").val();
       var user_subject = $(".subject").val();
       var user_cost = $(".cost").val();
@@ -33,14 +28,23 @@
       $(".description").val('');
       $(".title").val('');
       $(".cost").val('');
+      alert("Form Submitted");
+      }
+      else{
+        alert("Form is invalid(description must be longer than 12 characters) and cost positive)!")
+      }
       // Clear form
+      },
+      "click #editprofile": function(){
+        Router.go("/editprofile");
+      }
+      ,
+    "submit .search": function(event){
+        console.log("Hello!");
+        event.preventDefault();
+        Router.go("/find");
       }
 
 
 
   });
-$(document).ready(function(){
-  var heightofcarousel = $("#icon-bar").height();
- $('#icon-bar').css( "margin-top", 500);
-
-})

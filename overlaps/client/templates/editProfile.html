@@ -13,7 +13,7 @@
 
     <!-- Note: apparently image url's are case sensitive -->
     <img src = "/TIMBeaver.jpg" width="250px" height="250px" class="img-circle">
-
+    {{>drop}}
 
     <div class = "page-header">
       <h3>Basic Info:</h3>
@@ -37,8 +37,23 @@
     <div class="btn-group">
       <button type="button" class="btn btn-primary" id="submit-btn">Submit</button>
     </div>
+    <form id="propic">
+      <input type="file" name="pic" accept="image/*">
+      <input type="submit">
+    </form>
+    <div>
+
+    </div>
 
 
 
   </div>
+</template>
+
+<template name="drop">
+<!--  <span class = "btn btn-default btn-file"> -->
+<form>
+  <input id="fileInput" type = "image">
+</form> 
+<!--  </span> -->
 </template>

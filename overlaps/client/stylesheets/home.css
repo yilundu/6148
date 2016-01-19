@@ -260,12 +260,12 @@
 		padding:3px;
 	}
 
-	.contact_form input, .contact_form textarea { 
+	.class_form input, .class_form textarea { 
 		border:1px solid #aaa;
 		box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
 		border-radius:2px;
 	}
-	.contact_form input:focus, .contact_form textarea:focus {
+	.class_form input:focus, .class_form textarea:focus {
 		background: #fff; 
 		border:1px solid #555; 
 		box-shadow: 0 0 3px #aaa; 

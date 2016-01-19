@@ -25,7 +25,11 @@
 					</ul>
 					<ul class = "nav navbar-right navbar-nav">
 						<li> {{>loginButtons}}</li>
+						<li> <div class = "btn"> </div> </li>
 					</ul>
+					<script>
+					$(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='editprofile'> Edit Profile </button>");
+					</script>
 				</div>
 			</nav>
 		</header>
@@ -38,7 +42,10 @@
 						<div class = "registerBar">
 							<div class="form-group">
 								<label id="registerlabel" for="user1"><span id = "nameid"> </span> What would you like to learn?</label>
+								<form id="homesearchbar" class="search">
 								<input type="text" class="form-control" id="user1">
+								<input type="submit" class="submit">
+								</form>
 							</div>
 							<script>
 								$("#nameid").text(Meteor.user().profile.name);
@@ -122,9 +129,9 @@
 
 						<div class="col-lg-4 col-md-4 col-xs-6 thumb">
 
-							<a class="thumbnail" href="/info/biking">
+							<a class="thumbnail" href="/info/Biking">
 								<div class = "image relimage">
-								<img class="img-responsive" src="thumbbike.jpg" alt="">
+								<img class="img-responsive" src="/Biking.jpg" alt="">
 
 								<h4 class = "img-responsive-h">
 									Biking
@@ -134,9 +141,9 @@
 						</div>
 						<div class="col-lg-4 col-md-4 col-xs-6 thumb">
 
-							<a class="thumbnail" href="/info/cooking">
+							<a class="thumbnail" href="/info/Cooking">
 								<div class = "image relimage">
-								<img class="img-responsive" src="thumbcook.jpg" alt="">
+								<img class="img-responsive" src="/Cooking.jpg" alt="">
 
 								<h4 class = "img-responsive-h">
 									Cooking
@@ -146,9 +153,9 @@
 						</div>
 						<div class="col-lg-4 col-md-4 col-xs-6 thumb">
 
-							<a class="thumbnail" href="/info/coding">
+							<a class="thumbnail" href="/info/Coding">
 							<div class = "image relimage">
-								<img class="img-responsive" src="thumbcode.jpg" alt="">
+								<img class="img-responsive" src="/Coding.jpg" alt="">
 
 								<h4 class = "img-responsive-h">
 									Coding
@@ -158,9 +165,9 @@
 						</div>
 						<div class="col-lg-4 col-md-4 col-xs-6 thumb">
 
-							<a class="thumbnail" href="/info/academics">
+							<a class="thumbnail" href="/info/Academics">
 							<div class = "image relimage">
-								<img class="img-responsive" src="thumbbook.jpg" alt="">
+								<img class="img-responsive" src="/Academic.jpg" alt="">
 
 								<h4 class = "img-responsive-h">
 									Academics
@@ -170,9 +177,9 @@
 						</div>
 						<div class="col-lg-4 col-md-4 col-xs-6 thumb">
 
-							<a class="thumbnail" href="/info/music">
+							<a class="thumbnail" href="/info/Music">
 							<div class = "image relimage">
-								<img class="img-responsive" src="thumbguitar.jpg" alt="">
+								<img class="img-responsive" src="/Music.jpg" alt="">
 
 								<h4 class = "img-responsive-h">
 									Music
@@ -182,9 +189,9 @@
 						</div>
 						<div class="col-lg-4 col-md-4 col-xs-6 thumb">
 
-							<a class="thumbnail" href="/info/misc">
+							<a class="thumbnail" href="/info/Misc">
 							<div class = "image relimage">
-								<img class="img-responsive" src="thumbmisc.png" alt="">
+								<img class="img-responsive" src="/Misc.jpg" alt="">
 
 								<h4 class = "img-responsive-h">
 									Misc
@@ -218,16 +225,17 @@
 								<li>
 									<label class = "labelclass"  for="subject">Subject:</label>
 									<select name="subject" class="form-control subject classText subjectbox">
-										<option value="Computer">Computer</option>
-										<option value="Science">Science</option>
-										<option value="Cooking">Cooking</option>
 										<option value="Biking">Biking</option>
+										<option value="Cooking">Cooking</option>
+										<option value="Coding">Coding</option>
+										<option value="Academics">Academics</option>
+										<option value="Music">Music</option>
 										<option value="Misc">Misc</option>
 									</select>
 								</li>
 								<li>
 									<label class = "labelclass"  for="cost">Cost: $</label>
-									<input type="number" class="cost classText" name="cost" height="50" pattern="(\d{3})([\.])(\d{2})" placeholder="Please Enter Cost" required/>
+									<input type="number" class="cost classText" name="cost" min="0" height="50" pattern="(\d{3})([\.])(\d{2})" placeholder="Please Enter Cost" required/>
 								</li>
 								<li>
 									<label class = "labelclass"  for="description">Description:</label>
@@ -255,10 +263,10 @@
 		<script type='text/javascript'>
     $(document).ready(function() {
          $('#carouselimage').carousel({
-             interval: 2000
+             interval: 3000
          })
     });    
-</script>
+		</script>
 	</body>
 	<script>
 	$('a[href*=about]').click(function(){
