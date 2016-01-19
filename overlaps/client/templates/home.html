@@ -25,7 +25,11 @@
 					</ul>
 					<ul class = "nav navbar-right navbar-nav">
 						<li> {{>loginButtons}}</li>
+						<li> <div class = "btn"> </div> </li>
 					</ul>
+					<script>
+					$(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='editprofile'> Edit Profile </button>");
+					</script>
 				</div>
 			</nav>
 		</header>
@@ -255,7 +259,7 @@
 		<script type='text/javascript'>
     $(document).ready(function() {
          $('#carouselimage').carousel({
-             interval: 2000
+             interval: 3000
          })
     });    
 </script>

@@ -6,6 +6,7 @@
   $("#nameid").text(Meteor.user().profile.name);
 
 
+
   Template.home.events({
     "submit .class_form": function (event) {
       // Prevent default browser form submit
@@ -34,6 +35,9 @@
       $(".title").val('');
       $(".cost").val('');
       // Clear form
+      },
+      "click #editprofile": function(){
+        Router.go("/editprofile");
       }
 
 

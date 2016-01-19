@@ -31,3 +31,6 @@ ejson
 service-configuration
 pcooney10:accounts-venmo
 multiply:iron-router-progress
+raix:ui-dropped-event
+cfs:filesystem
+cfs:standard-packages
