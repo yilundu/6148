@@ -31,7 +31,10 @@ ejson
 service-configuration
 pcooney10:accounts-venmo
 multiply:iron-router-progress
+<<<<<<< HEAD
 weeger:image-upload
+=======
 raix:ui-dropped-event
 cfs:filesystem
 cfs:standard-packages
+>>>>>>> 973d114e0d66700153c389250a7b4bc4846f48f3

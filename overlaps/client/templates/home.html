@@ -18,21 +18,27 @@
 				<div class = "navbar-collapse collapse" id = "NavBar">
 					<ul class = "nav navbar-nav" >
 						<li class = "toptab"> <a href = "#about" class = " scroll-link navbartext" data-scroll> About </a></li>
-						<li> <a href = "#" class = "navbartext"> How It Works </a></li>
-						<li> <a href = "#" class = "navbartext"> Page </a></li>
+						<li> <a href = "#Topics" class = "navbartext scroll-link"> How It Works </a></li>
+						{{#if currentUser}}
+						<li> <a href = "#Form" class = "navbartext scroll-link"> Teach a Class </a></li>
+						{{/if}}
 					</ul>
 					<ul class = "nav navbar-right navbar-nav">
 						<li> {{>loginButtons}}</li>
+						<li> <div class = "btn"> </div> </li>
 					</ul>
+					<script>
+					$(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='editprofile'> Edit Profile </button>");
+					</script>
 				</div>
 			</nav>
 		</header>
 
-
+		<div>
 		<section>
 			<div class = "page-section" id = "home">
 				<div class = "container" id = "homecontainer">
-					<div id="carouselimage" class="carousel slide" data-ride="carousel" data-interval="3000">
+					<div id="carouselimage" class="carousel slide" data-ride="carousel">
 						<div class = "registerBar">
 							<div class="form-group">
 								<label id="registerlabel" for="user1"><span id = "nameid"> </span> What would you like to learn?</label>
@@ -74,7 +80,9 @@
 				</div>
 			</div>
 		</section>
+		</div>
 
+		<div>
 		<section>
 			<div class = "page-section" id = "about">
 				<div class = "container">
@@ -103,8 +111,9 @@
 				</div>
 			</div>
 		</section>
+		</div>
 
-
+		<div>
 		<section>
 			<div class = "page-section" id = "Topics">
 				<div class = "container">
@@ -117,74 +126,89 @@
 
 						<div class="col-lg-4 col-md-4 col-xs-6 thumb">
 
-							<a class="thumbnail" href="/info/Biking">
-								<img class="img-responsive" src="Biking.jpg" alt="">
+							<a class="thumbnail" href="/info/biking">
+								<div class = "image relimage">
+								<img class="img-responsive" src="thumbbike.jpg" alt="">
 
 								<h4 class = "img-responsive-h">
 									Biking
 								</h4>
+								</div>
 							</a>
 						</div>
 						<div class="col-lg-4 col-md-4 col-xs-6 thumb">
 
-							<a class="thumbnail" href="/info/Cooking">
-								<img class="img-responsive" src="Cooking.jpg" alt="">
+							<a class="thumbnail" href="/info/cooking">
+								<div class = "image relimage">
+								<img class="img-responsive" src="thumbcook.jpg" alt="">
 
 								<h4 class = "img-responsive-h">
 									Cooking
 								</h4>
+								</div>
 							</a>
 						</div>
 						<div class="col-lg-4 col-md-4 col-xs-6 thumb">
 
-							<a class="thumbnail" href="/info/Coding">
-								<img class="img-responsive" src="Coding.jpg" alt="">
+							<a class="thumbnail" href="/info/coding">
+							<div class = "image relimage">
+								<img class="img-responsive" src="thumbcode.jpg" alt="">
 
 								<h4 class = "img-responsive-h">
 									Coding
 								</h4>
+								</div>
 							</a>
 						</div>
 						<div class="col-lg-4 col-md-4 col-xs-6 thumb">
 
-							<a class="thumbnail" href="/info/Academics">
-								<img class="img-responsive" src="Academic.jpg" alt="">
+							<a class="thumbnail" href="/info/academics">
+							<div class = "image relimage">
+								<img class="img-responsive" src="thumbbook.jpg" alt="">
 
 								<h4 class = "img-responsive-h">
 									Academics
 								</h4>
+								</div>
 							</a>
 						</div>
 						<div class="col-lg-4 col-md-4 col-xs-6 thumb">
 
-							<a class="thumbnail" href="/info/Music">
-								<img class="img-responsive" src="Music.jpg" alt="">
+							<a class="thumbnail" href="/info/music">
+							<div class = "image relimage">
+								<img class="img-responsive" src="thumbguitar.jpg" alt="">
 
 								<h4 class = "img-responsive-h">
 									Music
 								</h4>
+								</div>
 							</a>
 						</div>
 						<div class="col-lg-4 col-md-4 col-xs-6 thumb">
 
-							<a class="thumbnail" href="/info/Misc">
-								<img class="img-responsive" src="Misc.jpg" alt="">
+							<a class="thumbnail" href="/info/misc">
+							<div class = "image relimage">
+								<img class="img-responsive" src="thumbmisc.png" alt="">
 
 								<h4 class = "img-responsive-h">
 									Misc
 								</h4>
+								</div>
 							</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
+		</div>
+		{{#if currentUser}}
 
+		<div>
 		<section>
 			<div class = "page-section" id = "Form">
 				<div class = "container">
 					<div id = "classpic_bar" class = "section">
-						{{#if currentUser}}
+						
 						<form class="class_form">
 							<ul>
 								<li>
@@ -198,11 +222,10 @@
 								<li>
 									<label class = "labelclass"  for="subject">Subject:</label>
 									<select name="subject" class="form-control subject classText subjectbox">
-										<option value="Biking">Biking</option>
+										<option value="Computer">Computer</option>
+										<option value="Science">Science</option>
 										<option value="Cooking">Cooking</option>
-										<option value="Coding">Coding</option>
-										<option value="Academi">Academic</option>
-										<option value="Music">Music</option>
+										<option value="Biking">Biking</option>
 										<option value="Misc">Misc</option>
 									</select>
 								</li>
@@ -220,16 +243,42 @@
 								</li>
 							</ul>
 						</form>
-						{{/if}}
+						
 						<br><br><br><br><br><br><br>
 					</div>
 				</div>
 			</div>
 		</section>
+		</div>
 
+		<div>
+
+</div>
+
+		{{/if}}
+		<script type='text/javascript'>
+    $(document).ready(function() {
+         $('#carouselimage').carousel({
+             interval: 3000
+         })
+    });    
+</script>
 	</body>
 	<script>
 	$('a[href*=about]').click(function(){
+    $('html, body').animate({
+        scrollTop: $( $.attr(this, 'href') ).offset().top
+    }, 500);
+    return false;
+});
+	$('a[href*=Topics]').click(function(){
+    $('html, body').animate({
+        scrollTop: $( $.attr(this, 'href') ).offset().top
+    }, 500);
+    return false;
+});
+
+	$('a[href*=Form]').click(function(){
     $('html, body').animate({
         scrollTop: $( $.attr(this, 'href') ).offset().top
     }, 500);

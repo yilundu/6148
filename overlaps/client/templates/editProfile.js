@@ -13,8 +13,16 @@ Template.editProfile.events({
     console.log("Logged submit click. " + name + age + about);
     console.log("New user value: " + JSON.stringify(Meteor.user().profile));
   }
-}
-);
+  ,
+
+  'change #fileInput': function(event)
+  {
+    console.log("File change!");
+    var file = event.target.files;
+    Meteor.users.update({_id: Meteor.user()._id},{$set: {profile:{"image": file}}});
+    
+    }
+ });
 
 
 Template.editProfile.helpers({
@@ -55,5 +63,5 @@ Template.editProfile.helpers({
     {
       return "";
     }
-  },
-});
+  }
+  });
