@@ -202,6 +202,12 @@
 
 	::-webkit-input-placeholder {
 		color: black;
+		opacity: 0.5;
+	}
+
+.class_form ::-webkit-input-placeholder {
+		color: black;
+		opacity: 1.0;
 	}
 
 	.class_form *:focus {outline: none;}
