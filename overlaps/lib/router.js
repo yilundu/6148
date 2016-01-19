@@ -33,9 +33,10 @@ Router.route('/editprofile',{
 Router.route('/sellerDashboard',{
   title:"Seller Dashboard",
   progress: true,
+  /* TODO: Make this work after MVP deadline
   waitOn: function(){
     return Meteor.subscribe('users');
-  }
+  }*/
 });
 
 Router.after(function(){
