@@ -1,8 +1,9 @@
+
+
 Meteor.methods({
-    'insertPlayerClass': function(classid){
-        var currentUserID = Meteor.user()._id;
-        alert("stuff happened");
-        Meteor.users.update({id: Meteor.user()._id}, {$set: {classid: true}});
+    'insertPlayerClass': function(id, classid){
+        console.log("stuff happened");
+        user.update({meteor: id}, {$push: {classes: classid}});
     }
 
 });
