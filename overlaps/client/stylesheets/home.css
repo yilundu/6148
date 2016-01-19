@@ -3,6 +3,10 @@
 	margin-top: 7px;
 	width: 35px;
 }
+._home #carouselimage{
+	z-index: 0;
+	
+}
 .navbar{
 	position: absolute;
 }
@@ -23,14 +27,23 @@
 	padding-right: 0px;
 	min-height: 350px;
 }
+
+#Topics .row{
+	margin-bottom: 60px;
+}
 .page-section{
 	padding: 0;
+}
+#abouttitle{
+	margin-top: 10vh;
+	margin-bottom: 5vh;
+	font-size: 1em;
 }
 #About-title{
 	color: #42C0FB;
 	text-align: center;
 	font-family: "lato";
-	font-size: 3em;
+	font-size: 4em;
 	font-weight: 300;
 	letter-spacing: 6px;
 }
@@ -74,6 +87,7 @@
 }
 ._home .container{
 	width: 100vw;
+	height: 100vh;
 }
 
 .thumbnail{
@@ -122,7 +136,7 @@
 	margin-left: 35%;
 }
 #Form{
-	background-image:url("classroomtall.jpg");
+	background-image:url("classroomblue.png");
 	background-size: cover;
 	background-attachment: scroll;
 	background-repeat:no-repeat;
