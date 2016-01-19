@@ -2,7 +2,7 @@
   **also note that template names (and likely helper names, etc.) cannot by hyphenated
   -thanks slava - https://github.com/meteor/meteor/issues/1602
 -->
-<template name = "classDashboardElement">
+<template name = "studentDashboardElement">
 
   <div class="bs-callout bs-callout-info">
     <h1>{{title}}</h1>
@@ -10,10 +10,9 @@
     <p>{{cost}}</p>
     <p>{{description}}</p>
     <p>{{studentNumber}}</p>
+    <p>{{teacher}}</p>
 
-    <!--TODO: implement update class-->
-    <button class="btn btn-primary disabled">Update Class</button>
-    <button class="btn btn-warning">Cancel Class</button>
+    <button class="btn btn-warning">Drop Class</button>
 
   </div>
 

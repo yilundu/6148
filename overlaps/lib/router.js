@@ -45,6 +45,10 @@ Router.route('/sellerDashboard',{
   }*/
 });
 
+Router.route('/studentDashboard',{
+  title: "Student Dashboard"
+});
+
 Router.route('/createClass',{
   title: "Create Class",
   progress: true,

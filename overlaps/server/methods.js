@@ -1,5 +1,4 @@
 
-
 Meteor.methods({
     'insertPlayerClass': function(id, classid){
         console.log("stuff happened");
