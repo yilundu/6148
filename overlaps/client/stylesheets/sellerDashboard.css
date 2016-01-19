@@ -20,3 +20,16 @@
 ._seller-dashboard .panel-body {
   padding-bottom: 0px;
 }
+
+._seller-dashboard .glyphicon-heart {
+  color: #FF1493;
+  font-size: 50pt;
+  margin: 20px;
+
+}
+
+._seller-dashboard #reviewValue {
+  font-family: Lato;
+  font-size: 50px;
+  color: darkturquoise;
+}

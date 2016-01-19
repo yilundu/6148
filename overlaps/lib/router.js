@@ -24,7 +24,7 @@ Router.route('/info/:_id', {
     return classes.findOne({'subject': current});
   //  return {subject: "hi", description: "hi", title: "bye"}
   }
-  
+
 });
 
 Router.route('/find',{
@@ -44,6 +44,11 @@ Router.route('/sellerDashboard',{
     return Meteor.subscribe('users');
   }*/
 });
+
+Router.route('/createClass',{
+  title: "Create Class",
+  progress: true,
+})
 
 Router.after(function(){
   if(this.route.options.title)
