@@ -1,11 +1,4 @@
 
-  // counter starts at 0
-  Session.setDefault('counter', 0);
-
-
-  $("#nameid").text(Meteor.user().profile.name);
-
-
 
   Template.home.events({
     "submit .class_form": function (event) {
@@ -39,12 +32,13 @@
       "click #editprofile": function(){
         Router.go("/editprofile");
       }
+      ,
+    "submit .search": function(event){
+        console.log("Hello!");
+        event.preventDefault();
+        Router.go("/find");
+      }
 
 
 
   });
-$(document).ready(function(){
-  var heightofcarousel = $("#icon-bar").height();
- $('#icon-bar').css( "margin-top", 500);
-
-})
