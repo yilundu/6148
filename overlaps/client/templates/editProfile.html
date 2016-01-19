@@ -12,9 +12,8 @@
 
 
     <!-- Note: apparently image url's are case sensitive -->
-    <img src = "/TIMBeaver.jpg" width="250px" height="250px" class="img-circle">
-    {{>drop}}
-
+    <img src = "{{picture}}" width="250px" height="250px" class="img-circle">
+    
     <div class = "page-header">
       <h3>Basic Info:</h3>
     </div>
@@ -33,14 +32,16 @@
       <span class="input-group-addon" id="basic-addon3">About me:</span>
       <input type="text" class="form-control" id="about-field" placeholder="Introduce yourself to start finding overlaps!" aria-describedby="basic-addon3" value={{about}}>
     </div>
-
+    {{>drop}}
     <div class="btn-group">
       <button type="button" class="btn btn-primary" id="submit-btn">Submit</button>
     </div>
-    <form id="propic">
+ <!--   <form id="propic">
       <input type="file" name="pic" accept="image/*">
       <input type="submit">
-    </form>
+    </form> -->
+    
+
     <div>
 
     </div>
@@ -53,7 +54,8 @@
 <template name="drop">
 <!--  <span class = "btn btn-default btn-file"> -->
 <form>
-  <input id="fileInput" type = "image">
+  <input type="file" id="fileInput" accept="image/*">
+  
 </form> 
 <!--  </span> -->
 </template>

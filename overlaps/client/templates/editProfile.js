@@ -12,20 +12,41 @@ Template.editProfile.events({
 
     console.log("Logged submit click. " + name + age + about);
     console.log("New user value: " + JSON.stringify(Meteor.user().profile));
-  }
-  ,
+  },
+  
 
   'change #fileInput': function(event)
   {
     console.log("File change!");
-    var file = event.target.files;
-    Meteor.users.update({_id: Meteor.user()._id},{$set: {profile:{"image": file}}});
-    
+    var file = event.target.files[0];
+    var reader = new FileReader();
+   reader.onload = function(event){
+    Meteor.users.update({_id: Meteor.user()._id},{$set: {profile: {binary: reader.result}}});
+     
+
     }
+    reader.readAsDataURL(file);
+ }
+ 
  });
 
 
+
 Template.editProfile.helpers({
+  picture: function()
+  {
+    if(Meteor.user())
+    {
+      console.log("Found picture!");
+      console.log(Meteor.user().profile.binary);
+      return Meteor.user().profile.binary;
+    }
+    else
+    {
+      console.log("Didn't find name!");
+      return "";
+    }
+  }, 
   name: function()
   {
     if(Meteor.user())
