@@ -4,16 +4,38 @@
 
     <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar1">
       <div class ="panel panel-default">
+
+
           <div class = "panel-heading">
             Class Management
           </div>
           <div class="panel-body">
+            <div class="row">
+              <div class="classes-overview col-xs-12">
+              Number of classes: <br/>
+              Total Revenue:<br/>
+              Number of Students:<br/>
+              Next Class Time:<br/>
+              New Students:<br/>
+            </div>
 
-            <button class="btn btn-default">Create a new Class!</button><br/>
-            <button class="btn btn-default">Create a new Class!</button><br/>
-            <button class="btn btn-default">Create a new Class!</button><br/>
-            <button class="btn btn-default">Create a new Class!</button>
+            <div class="btn-group col-xs-12">
+              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Filter by: <span class="caret"></span>
+              </button>
+
+              <ul class="dropdown-menu">
+                <li><a href="#">Name (A-Z)</a></li>
+                <li><a href="#">Students Enrolled (Ascending Order)</a></li>
+                <li><a href="#">Subject (A-Z)</a></li>
+              </ul>
+            </div>
+
+            <button class="btn btn-primary col-xs-12" id="create-class-btn">Create a new Class!</button>
+
           </div>
+
+        </div>
       </div>
 
       <div class ="panel panel-default">
@@ -22,10 +44,8 @@
           </div>
           <div class="panel-body">
 
-            <button class="btn btn-default">Create a new Class!</button><br/>
-            <button class="btn btn-default">Create a new Class!</button><br/>
-            <button class="btn btn-default">Create a new Class!</button><br/>
-            <button class="btn btn-default">Create a new Class!</button>
+
+
           </div>
       </div>
 
@@ -35,10 +55,10 @@
           </div>
           <div class="panel-body">
 
-            <button class="btn btn-default">Create a new Class!</button><br/>
-            <button class="btn btn-default">Create a new Class!</button><br/>
-            <button class="btn btn-default">Create a new Class!</button><br/>
-            <button class="btn btn-default">Create a new Class!</button>
+            <span style="font-family:Lato, font-size:50pt" id="reviewValue">4.5</span>
+            <span class="glyphicon glyphicon-heart DeepPink"></span>
+
+
           </div>
       </div>
     </div>
@@ -53,37 +73,6 @@
         {{ > classDashboardElementEmpty}}
       {{/if}}
 
-      <div class="bs-callout bs-callout-primary">
-        <h1>Title:</h1>
-        <p>Subject:</p>
-        <p>Cost:</p>
-        <p>Description:</p>
-        <p>Number of Students:</p>
-      </div>
-
-      <div class="bs-callout bs-callout-primary">
-        <h1>Class A</h1>
-        sadkadjlasd
-        ashdlkhfdskfsd
-        fdskjfkdsa
-        sadkjsajlkdk
-      </div>
-
-      <div class="bs-callout bs-callout-primary">
-        <h1>Class A</h1>
-        sadkadjlasd
-        ashdlkhfdskfsd
-        fdskjfkdsa
-        sadkjsajlkdk
-      </div>
-
-      <div class="bs-callout bs-callout-primary">
-        <h1>Class A</h1>
-        sadkadjlasd
-        ashdlkhfdskfsd
-        fdskjfkdsa
-        sadkjsajlkdk
-      </div>
     </div>
 
   </div>
@@ -97,12 +86,16 @@
 -->
 <template name = "classDashboardElement">
 
-  <div class="bs-callout bs-callout-primary">
+  <div class="bs-callout bs-callout-info">
     <h1>{{title}}</h1>
     <p>{{subject}}</p>
     <p>{{cost}}</p>
     <p>{{description}}</p>
     <p>{{studentNumber}}</p>
+
+    <button class="btn btn-primary">Update Class</button>
+    <button class="btn btn-warning">Cancel Class</button>
+
   </div>
 
 </template>
@@ -110,7 +103,7 @@
 
 <template name = "classDashboardElementEmpty">
   <div class="bs-callout bs-callout-warning">
-    <h1>Your not currently teaching any classes!</h1>
+    <h1>You are not currently teaching any classes!</h1>
     <button class="btn btn-primary">Teach Now!</button>
   </div>
 
