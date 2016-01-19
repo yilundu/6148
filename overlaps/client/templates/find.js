@@ -9,7 +9,7 @@ Template.find.helpers({
 //	return classes.find({subject: search1, description: search2});
 	var search1 = new RegExp($("#title1").val(),'i');
 	var search2 = new RegExp($("#description1").val(), 'i');
-	return classes.find({subject: search1, description: search2});
+	return {posts: classes.find({subject: search1, description: search2})};
 
 
 
@@ -33,7 +33,7 @@ Template.find.events({
 	$(".Test").html("");
 
 	 json.forEach(function(item){
-		$(".Test").append("<div class='results'><ul><li>"+item._id+"</li><li> Title:"+item.title+"</li><li> Students Enrolled:"+item.studentNumber+"</li><li> ID: "+ item.teacher+ "</li><li> Date: "+ item.createdAt+ "</li><li> Description: "+item.description+"</li><li><button class='submit'>Enroll!</button></li></ul></div>");
+		$(".Test").append("<div class='results'><ul><li>"+item._id+"</li><li> Subject:"+item.subject+"</li><li> Title:"+item.title+"</li><li> Students Enrolled:"+item.studentNumber+"</li><li> ID: "+ item.teacher+ "</li><li> Date: "+ item.createdAt+ "</li><li> Description: "+item.description+"</li><li><button class='submit'>Enroll!</button></li></ul></div>");
 	});
 
 
@@ -46,10 +46,16 @@ Template.find.events({
 			console.log("click .results .submit triggered");
      event.preventDefault();
      var classid = $(event.target).parent().parent().children().eq(0).text();
-     if ((Meteor.users.find({id: Meteor.user()._id, classid: true}).count())===0){
+
+     if ((user.find({meteor: Meteor.user()._id, classes: classid}).count())===0){
      	classes.update({_id:classid},{$inc: {studentNumber: 1}});
-			console.log("Called MEtoer.call");
-     	Meteor.call('insertPlayerClass', classid);
+     //	Meteor.call('insertPlayerClass', classid);
+     //	Meteor.users.update({profile.name: Meteor.user().profile.name}, {$set: {classid: true}});
+     	var empty= [];
+     	user.insert({meteor: Meteor.user()._id, classes: empty});
+     	var id = Meteor.user()._id;
+     	Meteor.call('insertPlayerClass', id, classid);
+     	//user.update({meteor: id}, {$set: {classid: true}});
      	alert("Succesfully Enrolled!");
      	location.reload();
 
