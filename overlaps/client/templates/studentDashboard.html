@@ -1,5 +1,5 @@
-<template name="sellerDashboard">
-  <div class = "_seller-dashboard container-fluid"><!-- For css scoping in meteor -->
+<template name="studentDashboard">
+  <div class = "_student-dashboard container-fluid"><!-- For css scoping in meteor -->
 
 
     <div class="col-xs-12 col-sm-6 col-md-3 sidebar-offcanvas" id="sidebar1">
@@ -23,42 +23,29 @@
 
               <!--TODO: Implement filtering-->
               <button type="button" class="btn btn-primary dropdown-toggle disabled" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Filter by: <span class="caret"></span>
+                Filter by: <span class="caret"></spa2n>
               </button>
 
               <ul class="dropdown-menu">
-                <li><a href="#">Name (A-Z)</a></li>
-                <li><a href="#">Students Enrolled (Ascending Order)</a></li>
-                <li><a href="#">Subject (A-Z)</a></li>
+                <li><a href="#">Price</a></li>
+                <li><a href="#">Time</a></li>
               </ul>
             </div>
 
-            <a class="btn btn-primary col-xs-12" id="create-class-btn" href="{{pathFor 'createClass'}}">Create a new Class!</a>
+            <a class="btn btn-primary col-xs-12" id="join-class-btn" href="{{pathFor 'find'}}">Sing up for a new class</a>
 
           </div>
 
         </div>
       </div>
 
-      <div class ="panel panel-default">
-          <div class ="panel-heading">
-            Money Management
-          </div>
-          <div class="panel-body">
-
-
-
-          </div>
-      </div>
 
       <div class ="panel panel-default">
           <div class = "panel-heading">
-            Reviews and Reputation
+            Notifications
           </div>
           <div class="panel-body">
 
-            <span style="font-family:Lato, font-size:50pt" id="reviewValue">4.5</span>
-            <span class="glyphicon glyphicon-heart DeepPink"></span>
 
 
           </div>
@@ -69,10 +56,10 @@
 
       {{#if numClasses}}
         {{#each classes}}
-          {{> classDashboardElement}}
+          {{> studentDashboardElement}}
         {{/each}}
       {{else}}
-        {{ > classDashboardElementEmpty}}
+        {{ > studentDashboardElementEmpty}}
       {{/if}}
 
     </div>

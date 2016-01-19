@@ -1,0 +1,23 @@
+._student-dashboard #sidebar1{
+
+  width: auto;
+  padding: 20px;
+
+
+
+}
+
+._student-dashboard .btn-group {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+._student-dashboard #join-class-btn {
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+  
+}
+
+._student-dashboard .panel-body {
+  padding-bottom: 0px;
+}

@@ -52,6 +52,7 @@ Template.find.events({
      //	Meteor.call('insertPlayerClass', classid);
      //	Meteor.users.update({profile.name: Meteor.user().profile.name}, {$set: {classid: true}});
      	var empty= [];
+			//TODO: Make better key names ie: not meteor
      	user.insert({meteor: Meteor.user()._id, classes: empty});
      	var id = Meteor.user()._id;
      	Meteor.call('insertPlayerClass', id, classid);
