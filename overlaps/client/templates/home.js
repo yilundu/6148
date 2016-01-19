@@ -36,7 +36,7 @@
       // Clear form
       },
       "click #editprofile": function(){
-        Router.go("/editprofile");
+        Router.go("/editprofile", {name: $(".form-control").val()});
       }
       ,
     "submit .search": function(event){
