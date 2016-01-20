@@ -28,6 +28,8 @@ var checkNumberPositive = function(element){
 Template.createClass.events({
   "click #createBtn": function (event) {
 
+    console.log("Clicked createBtn");
+
     // Get value from form element
     var user_title = $("#titleField").val();
     var user_cost = $("#costField").val();
