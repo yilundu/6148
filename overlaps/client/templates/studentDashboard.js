@@ -19,11 +19,10 @@ Template.studentDashboard.helpers({
   },
 
   numClasses: function(){
+
     //return number of classes taken by current user
-    return  user.findOne({meteor: Meteor.userId()}).classes.length;//there should only be one entry so use findOne()
+    return user.findOne({meteor: Meteor.userId()}).classes.length;//there should only be one entry so use findOne()
   },
 
-  numStudents: function(){
-    
-  }
+
 });
