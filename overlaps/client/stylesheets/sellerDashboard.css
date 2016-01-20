@@ -2,9 +2,13 @@
 
   width: auto;
   padding: 20px;
+  display: inline-block;
 
 
+}
 
+._seller-dashboard .main-section {
+  display: inline-block;
 }
 
 ._seller-dashboard .btn-group {
