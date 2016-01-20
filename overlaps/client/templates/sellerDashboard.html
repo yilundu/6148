@@ -1,82 +1,88 @@
 <template name="sellerDashboard">
   <div class = "_seller-dashboard container-fluid"><!-- For css scoping in meteor -->
 
+    <div class ="row">
 
-    <div class="col-xs-12 col-sm-6 col-md-3 sidebar-offcanvas" id="sidebar1">
-      <div class ="panel panel-default">
+      <div class="col-xs-12 col-sm-6 sidebar-offcanvas" id="sidebar1">
+        <div class ="panel panel-default">
 
 
-          <div class = "panel-heading">
-            Class Management
-          </div>
-          <div class="panel-body">
-            <div class="row">
-              <div class="classes-overview col-xs-12">
-              Number of classes: <br/>
-              Total Revenue:<br/>
-              Number of Students:<br/>
-              Next Class Time:<br/>
-              New Students:<br/>
+            <div class = "panel-heading">
+              Class Management
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="classes-overview col-xs-12">
+<!-- TODO: DO THIS
+                Number of classes: <br/>
+                Total Revenue:<br/>
+                Number of Students:<br/>
+                Next Class Time:<br/>
+                New Students:<br/>
+              -->
+              </div>
+
+              <div class="btn-group col-xs-12">
+
+                <!--TODO: Implement filtering-->
+                <button type="button" class="btn btn-primary dropdown-toggle disabled" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Filter by: <span class="caret"></span>
+                </button>
+
+                <ul class="dropdown-menu">
+                  <li><a href="#">Name (A-Z)</a></li>
+                  <li><a href="#">Students Enrolled (Ascending Order)</a></li>
+                  <li><a href="#">Subject (A-Z)</a></li>
+                </ul>
+              </div>
+
+              <a class="btn btn-primary col-xs-12" id="create-class-btn" href="{{pathFor 'createClass'}}">Create a new Class!</a>
+
             </div>
 
-            <div class="btn-group col-xs-12">
-
-              <!--TODO: Implement filtering-->
-              <button type="button" class="btn btn-primary dropdown-toggle disabled" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Filter by: <span class="caret"></span>
-              </button>
-
-              <ul class="dropdown-menu">
-                <li><a href="#">Name (A-Z)</a></li>
-                <li><a href="#">Students Enrolled (Ascending Order)</a></li>
-                <li><a href="#">Subject (A-Z)</a></li>
-              </ul>
-            </div>
-
-            <a class="btn btn-primary col-xs-12" id="create-class-btn" href="{{pathFor 'createClass'}}">Create a new Class!</a>
-
           </div>
+        </div>
 
+        <div class ="panel panel-default">
+            <div class ="panel-heading">
+              Money Management
+            </div>
+            <div class="panel-body">
+
+
+
+            </div>
+        </div>
+
+        <div class ="panel panel-default">
+            <div class = "panel-heading">
+              Reviews and Reputation
+            </div>
+            <div class="panel-body">
+              <!--
+              TODO: make this work
+              <span style="font-family:Lato, font-size:50pt" id="reviewValue">4.5</span>
+              <span class="glyphicon glyphicon-heart DeepPink"></span>
+              -->
+
+            </div>
         </div>
       </div>
 
-      <div class ="panel panel-default">
-          <div class ="panel-heading">
-            Money Management
-          </div>
-          <div class="panel-body">
+      <!-- Figure out why col-md doesn't work-->
+      <div class = "main-section col-xs-12 col-sm-6">
 
+        {{#if numClasses}}
+          {{#each classes}}
+            {{> classDashboardElement}}
+          {{/each}}
+        {{else}}
+          {{ > classDashboardElementEmpty}}
+        {{/if}}
 
-
-          </div>
       </div>
 
-      <div class ="panel panel-default">
-          <div class = "panel-heading">
-            Reviews and Reputation
-          </div>
-          <div class="panel-body">
-
-            <span style="font-family:Lato, font-size:50pt" id="reviewValue">4.5</span>
-            <span class="glyphicon glyphicon-heart DeepPink"></span>
-
-
-          </div>
-      </div>
     </div>
-
-    <div class = "main-section col-xs-12 col-sm-6 col-md-9">
-
-      {{#if numClasses}}
-        {{#each classes}}
-          {{> classDashboardElement}}
-        {{/each}}
-      {{else}}
-        {{ > classDashboardElementEmpty}}
-      {{/if}}
-
-    </div>
-
   </div>
 
 

@@ -2,7 +2,7 @@
   <div class = "_student-dashboard container-fluid"><!-- For css scoping in meteor -->
 
 
-    <div class="col-xs-12 col-sm-6 col-md-3 sidebar-offcanvas" id="sidebar1">
+    <div class="col-xs-12 col-sm-6  sidebar-offcanvas" id="sidebar1">
       <div class ="panel panel-default">
 
 
@@ -12,11 +12,7 @@
           <div class="panel-body">
             <div class="row">
               <div class="classes-overview col-xs-12">
-              Number of classes: <br/>
-              Total Revenue:<br/>
-              Number of Students:<br/>
-              Next Class Time:<br/>
-              New Students:<br/>
+              <!--TODO: Implement! Number of classes: {{numClasses}}<br/>--> 
             </div>
 
             <div class="btn-group col-xs-12">
@@ -52,7 +48,7 @@
       </div>
     </div>
 
-    <div class = "main-section col-xs-12 col-sm-6 col-md-9">
+    <div class = "main-section col-xs-12 col-sm-6 ">
 
       {{#if numClasses}}
         {{#each classes}}

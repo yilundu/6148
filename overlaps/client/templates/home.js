@@ -4,6 +4,7 @@
     }
   });
 
+
   Template.home.events({
     "submit .class_form": function (event) {
       // Prevent default browser form submit
@@ -38,9 +39,6 @@
         alert("Form is invalid(description must be longer than 12 characters) and cost positive)!")
       }*/
       // Clear form
-      },
-      "click #editprofile": function(){
-        Router.go("/editprofile", {name: $(".form-control").val()});
       }
       ,
     "submit .search": function(event){

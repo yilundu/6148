@@ -3,12 +3,40 @@
 
 <template name="layout">
 
+  <header class = "navbar">
+    <nav class = "navbar container-fluid" id = "navbartop">
+      <div class = "navbar-header">
+        <button class = "navbar-toggle" data-toggle = "collapse"
+        data-target="#NavBar"> <span class="glyphicon glyphicon-th-list"></span>
+      </button>
+      <img class = "logoimage" src="Logo.png">
+      <a class = "navbar-brand navbartext" href = "../"> Overlaps</a>
+    </div>
 
-  {{#unless currentUser}}
-      {{> home}}
-    {{else}}
-      {{>yield}}
-  {{/unless}}
+    <div class = "navbar-collapse collapse" id = "NavBar">
+      <ul class = "nav navbar-nav" >
+        <li class = "toptab"> <a href = "#about" class = " scroll-link navbartext" data-scroll> About </a></li>
+        <li> <a href = "#Topics" class = "navbartext scroll-link"> How It Works </a></li>
+        {{#if currentUser}}
+        <li> <a href = "#Form" class = "navbartext scroll-link"> Teach a Class </a></li>
+        {{/if}}
+      </ul>
+
+      <ul class = "nav navbar-right navbar-nav">
+        <li> <div class = "profpic">  <img class= "logoimage" src = "{{photoprof}}"> </div></li>
+        <li> {{>loginButtons}}</li>
+        <li> <div class = "btn"> </div> </li>
+      </ul>
+
+    </div>
+  </nav>
+
+
+</header>
+
+
+{{>yield}}
+
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 <!--
@@ -19,64 +47,64 @@
 			        {{> login}}
 				    {{/if}}
 
--->
+          -->
 
-<!-- Footer template is from http://tutorialzine.com/2015/01/freebie-5-responsive-footer-templates/ -->
-    <footer class="footer-distributed">
+          <!-- Footer template is from http://tutorialzine.com/2015/01/freebie-5-responsive-footer-templates/ -->
+          <footer class="footer-distributed">
 
-      <div class="footer-left">
+            <div class="footer-left">
 
-        <h3>Overlaps</h3>
+              <h3>Overlaps</h3>
 
-        <p class="footer-links">
-          <a href="#">Home</a>
-          ·
-          <a href="#">About</a>
-          ·
-          <a href="#">Faq</a>
-          ·
-          <a href="#">Contact</a>
-        </p>
+              <p class="footer-links">
+                <a href="#">Home</a>
+                ·
+                <a href="#">About</a>
+                ·
+                <a href="#">Faq</a>
+                ·
+                <a href="#">Contact</a>
+              </p>
 
-        <p class="footer-company-name">Company Name &copy; 2015</p>
-      </div>
+              <p class="footer-company-name">Company Name &copy; 2015</p>
+            </div>
 
-      <div class="footer-center">
+            <div class="footer-center">
 
-        <div>
-          <i class="fa fa-map-marker"></i>
-          <p><span>77 Massachusetts ave</span> Cambridge, MA</p>
-        </div>
+              <div>
+                <i class="fa fa-map-marker"></i>
+                <p><span>77 Massachusetts ave</span> Cambridge, MA</p>
+              </div>
 
-        <div>
-          <i class="fa fa-phone"></i>
-          <p>+1 123 4567</p>
-        </div>
+              <div>
+                <i class="fa fa-phone"></i>
+                <p>+1 123 4567</p>
+              </div>
 
-        <div>
-          <i class="fa fa-envelope"></i>
-          <p><a href="mailto:support@company.com">team@overlaps.com</a></p>
-        </div>
+              <div>
+                <i class="fa fa-envelope"></i>
+                <p><a href="mailto:support@company.com">team@overlaps.com</a></p>
+              </div>
 
-      </div>
+            </div>
 
-      <div class="footer-right">
+            <div class="footer-right">
 
-        <p class="footer-company-about">
-          <span>About us</span>
-          We are a platform for college students to learn useful skills from cooking to fixing up a bike. From quick demos to longer lessons, we want to allow everyone to share the diverse skills they have with others.
-        </p>
+              <p class="footer-company-about">
+                <span>About us</span>
+                We are a platform for college students to learn useful skills from cooking to fixing up a bike. From quick demos to longer lessons, we want to allow everyone to share the diverse skills they have with others.
+              </p>
 
-        <div class="footer-icons">
+              <div class="footer-icons">
 
-          <a href="#"><i class="fa fa-facebook"></i></a>
-          <a href="#"><i class="fa fa-twitter"></i></a>
-          <a href="#"><i class="fa fa-linkedin"></i></a>
-          <a href="#"><i class="fa fa-github"></i></a>
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-github"></i></a>
 
-        </div>
+              </div>
 
-      </div>
+            </div>
 
-    </footer>
-</template>
+          </footer>
+        </template>
