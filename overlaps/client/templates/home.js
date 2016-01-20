@@ -62,24 +62,7 @@ Template.home.helpers({
 
   });
 
-  $(".subject").val('');
-  $(".description").val('');
-  $(".title").val('');
-  $(".cost").val('');
-  alert("Form Submitted");
- /* }
-  else{
-    alert("Form is invalid(description must be longer than 12 characters) and cost positive)!")
-  }*/
-  // Clear form
-  }
-  ,
-"submit .search": function(event){
-    console.log("Hello!");
-    event.preventDefault();
-    Router.go("/find");
-  }
+ 
 
 
 
-});
