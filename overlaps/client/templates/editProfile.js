@@ -13,7 +13,7 @@ Template.editProfile.events({
     console.log("Logged submit click. " + name + age + about);
     console.log("New user value: " + JSON.stringify(Meteor.user().profile));
   },
-  
+
 
   'change #fileInput': function(event)
   {
@@ -22,12 +22,12 @@ Template.editProfile.events({
     var reader = new FileReader();
    reader.onload = function(event){
     Meteor.users.update({_id: Meteor.user()._id},{$set: {profile: {binary: reader.result}}});
-     
+
 
     }
     reader.readAsDataURL(file);
  }
- 
+
  });
 
 
@@ -46,7 +46,7 @@ Template.editProfile.helpers({
       console.log("Didn't find name!");
       return "";
     }
-  }, 
+  },
   name: function()
   {
     if(Meteor.user())
