@@ -1,6 +1,11 @@
-  Template.home.helper({
+  Template.home.helpers({
     name: function(){
+      if (Meteor.user()){
       return Meteor.user().profile.name;
+    }
+    else {
+      return "";
+    }
     }
   });
 
