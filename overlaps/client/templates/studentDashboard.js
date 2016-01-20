@@ -10,7 +10,7 @@ Template.studentDashboard.helpers({
     classIds = classIds.classes;
 
     for(var i = 0; i < classIds.length; ++i){
-      classResults.push(classes.find({_id: classIds[i]}));
+      classResults.push(classes.findOne({_id: classIds[i]}));
     }
 
 

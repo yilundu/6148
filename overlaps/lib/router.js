@@ -28,12 +28,14 @@ Router.route('/info/:_id', {
 });
 
 Router.route('/find',{
-  title: 'Find Services'
+  title: 'Find Services',
+  progress: true,
 });
 
 Router.route('/editprofile',{
   name: "editProfile",
-  title: 'Edit Profile'
+  title: 'Edit Profile',
+  progress: true,
 });
 
 Router.route('/sellerDashboard',{
@@ -46,17 +48,19 @@ Router.route('/sellerDashboard',{
 });
 
 Router.route('/studentDashboard',{
-  title: "Student Dashboard"
+  title: "Student Dashboard",
+  progress: true,
 });
 
 Router.route('/createClass',{
   title: "Create Class",
   progress: true,
-})
+});
+
 
 Router.after(function(){
   if(this.route.options.title)
   {
     document.title = this.route.options.title + ' - Overlaps';
   }
-})
+});
