@@ -5,7 +5,6 @@ Router.configure({
   progress: false
 });
 
-resultssearch = {};
 
 
 Router.route('/', {
