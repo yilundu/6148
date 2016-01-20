@@ -5,34 +5,7 @@
 		</head>
 
 		<body>
-			<header class = "navbar">
-				<nav class = "navbar container-fluid" id = "navbartop">
-					<div class = "navbar-header">
-						<button class = "navbar-toggle" data-toggle = "collapse"
-						data-target="#NavBar"> <span class="glyphicon glyphicon-th-list"></span>
-					</button>
-					<img class = "logoimage" src="Logo.png">
-					<a class = "navbar-brand navbartext" href = "../"> Overlaps</a>
-				</div>
-
-				<div class = "navbar-collapse collapse" id = "NavBar">
-					<ul class = "nav navbar-nav" >
-						<li class = "toptab"> <a href = "#about" class = " scroll-link navbartext" data-scroll> About </a></li>
-						<li> <a href = "#Topics" class = "navbartext scroll-link"> How It Works </a></li>
-						{{#if currentUser}}
-						<li> <a href = "#Form" class = "navbartext scroll-link"> Teach a Class </a></li>
-						{{/if}}
-					</ul>
-					<ul class = "nav navbar-right navbar-nav">
-						<li> {{>loginButtons}}</li>
-						<li> <div class = "btn"> </div> </li>
-					</ul>
-					<script>
-					$(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='editprofile'> Edit Profile </button>");
-					</script>
-				</div>
-			</nav>
-		</header>
+			
 
 		<div>
 		<section>
