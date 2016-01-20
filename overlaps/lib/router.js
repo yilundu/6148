@@ -98,7 +98,7 @@ Router.map({
 */
 Router.route('/', {
   title: 'Home',//set title of html (displayed in tab) here to be set later (see Router.after)
-  name: 'home', 
+  name: 'home',
 onAfterAction:function(pause){
   $(".navbar").css("position", "absolute");
 }
@@ -160,7 +160,7 @@ Router.route('/sellerDashboard',{
   /* TODO: Make this work after MVP deadline
   waitOn: function(){
     return Meteor.subscribe('users'); */
-  
+
 });
 
 Router.route('/studentDashboard',{
@@ -203,6 +203,6 @@ $(".navbar").css("position", "absolute");
   $(".navbar").css("position", "relative");
 }
 
-        
+
 
 });
