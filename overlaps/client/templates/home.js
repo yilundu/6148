@@ -1,9 +1,13 @@
 
 Template.home.helpers({
   username : function(){
-    if(Meteor.user() && Meteor.user().profile.name)
+    if(Meteor.user())
     {
-      return Meteor.user().profile.name;
+      if( Meteor.user().profile.name){
+        return Meteor.user().profile.name;
+      }else{
+        return Meteor.user().username;
+      }
     }
     else{
       return "";
