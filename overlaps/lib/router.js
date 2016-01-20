@@ -5,8 +5,97 @@ Router.configure({
   progress: false
 });
 
+/*
+Router.map({
+  this.route('home', {
+    title: 'Home',
+    progress: true,
+    path: '/'
 
+  });
 
+  this.route('listresults',{
+    path: '/info/:_id',
+    data: function(){
+    var current = this.params._id;
+    return classes.findOne({'subject': current});
+  //  return {subject: "hi", description: "hi", title: "bye"}
+  }
+  });
+
+  this.route('find',{
+    title: 'Find Services',
+    progress: true,
+    path: '/find'
+    onBeforeAction: function(pause) {
+    if (!Meteor.user()) {
+      this.render('find');
+
+    } else {
+    this.next();
+  }
+  }
+  });
+
+  this.route('editProfile',{
+    title: 'Edit Profile',
+    path: '/findprofile',
+    progress: true,
+    onBeforeAction: function(pause) {
+    if (!Meteor.user()) {
+      this.render('home');
+
+    } else {
+    this.next();
+  }
+  }
+  });
+
+  this.route('sellerDashboard',{
+      title: "Seller Dashboard",
+      progress: true,
+      path:'/sellerDashboard',
+      onBeforeAction: function(pause) {
+      if (!Meteor.user()) {
+        this.render('home');
+
+      } else {
+      this.next();
+  }
+  }
+  });
+
+  this.route('studentDashboard',{
+    title: "Student Dashboard",
+    path: '/studentDashboard',
+    progress: true,
+    onBeforeAction: function(pause) {
+    if (!Meteor.user()) {
+      this.render('home');
+
+    } else {
+    this.next();
+  }
+  }
+  });
+
+  this.route('createClass',{
+    title: "Create Class",
+    path: '/createClass',
+    progress: true,
+    onBeforeAction: function(pause) {
+    if (!Meteor.user()) {
+      this.render('home');
+
+    } else {
+    this.next();
+  }
+  }
+
+  });
+
+});
+*/
 Router.route('/', {
   title: 'Home',//set title of html (displayed in tab) here to be set later (see Router.after)
   name: 'home'
@@ -66,8 +155,8 @@ Router.route('/sellerDashboard',{
   }
   /* TODO: Make this work after MVP deadline
   waitOn: function(){
-    return Meteor.subscribe('users');
-  }*/
+    return Meteor.subscribe('users'); */
+  
 });
 
 Router.route('/studentDashboard',{
@@ -95,7 +184,6 @@ Router.route('/createClass',{
   }
   }
 });
-
 
 Router.after(function(){
   if(this.route.options.title)

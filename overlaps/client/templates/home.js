@@ -1,4 +1,8 @@
-
+  Template.home.helper({
+    name: function(){
+      return Meteor.user().profile.name;
+    }
+  });
 
   Template.home.events({
     "submit .class_form": function (event) {
