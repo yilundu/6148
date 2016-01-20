@@ -30,17 +30,41 @@ Router.route('/info/:_id', {
 Router.route('/find',{
   title: 'Find Services',
   progress: true,
+  onBeforeAction: function(pause) {
+    if (!Meteor.user()) {
+      this.render('find');
+
+    } else {
+    this.next();
+  }
+  }
 });
 
 Router.route('/editprofile',{
   name: "editProfile",
   title: 'Edit Profile',
   progress: true,
+  onBeforeAction: function(pause) {
+    if (!Meteor.user()) {
+      this.render('home');
+
+    } else {
+    this.next();
+  }
+  }
 });
 
 Router.route('/sellerDashboard',{
   title:"Seller Dashboard",
   progress: true,
+  onBeforeAction: function(pause) {
+    if (!Meteor.user()) {
+      this.render('home');
+
+    } else {
+    this.next();
+  }
+  }
   /* TODO: Make this work after MVP deadline
   waitOn: function(){
     return Meteor.subscribe('users');
@@ -50,11 +74,27 @@ Router.route('/sellerDashboard',{
 Router.route('/studentDashboard',{
   title: "Student Dashboard",
   progress: true,
+  onBeforeAction: function(pause) {
+    if (!Meteor.user()) {
+      this.render('home');
+
+    } else {
+    this.next();
+  }
+  }
 });
 
 Router.route('/createClass',{
   title: "Create Class",
   progress: true,
+  onBeforeAction: function(pause) {
+    if (!Meteor.user()) {
+      this.render('home');
+
+    } else {
+    this.next();
+  }
+  }
 });
 
 
