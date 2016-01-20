@@ -22,6 +22,6 @@ $("#navbartop").css("background-color", "rgba( 11, 181, 250, .09)");
 $(".navbar").css("position", "absolute");
 }else{
   $("#navbartop").css("background-color", "rgba( 11, 181, 250, .9)");
-  $(".navbar").css("position", "relative");
+  $(".navbar").css("position", "relative");g
 }
 });
