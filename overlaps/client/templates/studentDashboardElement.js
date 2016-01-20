@@ -20,7 +20,7 @@ Template.studentDashboardElement.events({
       user.update(getId, {$set: {classes: currentClasses}});
       //decrement student count in the class db
 
-      //classes.update({_id: this._id}, {$increment, {studentNumber: -1}});
+      classes.update(this._id, {$inc: {studentNumber: -1}});
       console.log("Successfully unenrolled user from class!");
     }
 
