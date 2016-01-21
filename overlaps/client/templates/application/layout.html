@@ -21,7 +21,8 @@
         <li> <a href = "#Topics" id = "toptabid2" class = "topicslink navbartext scroll-link"> How It Works </a></li>
 
         {{#if currentUser}}
-        <li> <a href = "#Form" id = "toptabid3" class = "navbartext scroll-link"> Teach a Class </a></li>
+        <li> <a href = "{{pathFor 'sellerDashboard'}}" id = "toptabid3" class = "navbartext scroll-link"> Teacher Dashboard</a></li>
+        <li> <a href = "{{pathFor 'studentDashboard'}}" id = "toptabid3" class = "navbartext scroll-link"> Student Dashboard</a></li>
         {{/if}}
       </ul>
     </div>
