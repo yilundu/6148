@@ -18,6 +18,7 @@ Template.editProfile.events({
   'change #fileInput': function(event)
   {
     console.log("File change!");
+    if (event.target.files[0]){
     var file = event.target.files[0];
     var reader = new FileReader();
    reader.onload = function(event){
@@ -26,6 +27,7 @@ Template.editProfile.events({
 
     }
     reader.readAsDataURL(file);
+  }
  }
 
  });

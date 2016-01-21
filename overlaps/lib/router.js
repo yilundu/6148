@@ -119,6 +119,14 @@ Router.route('/info/:_id', {
 
 });
 
+Router.route('/search/:_id', {
+  template: 'search',
+  data: function(){
+    return this.params._id;
+  }
+
+});
+
 Router.route('/find',{
   title: 'Find Services',
   progress: true,
