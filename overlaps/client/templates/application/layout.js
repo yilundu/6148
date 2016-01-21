@@ -10,19 +10,38 @@ Template.layout.events({
 	"click #editprofile": function(){
 		Router.go("/editprofile", {name: $(".form-control").val()});
 	},
-  "click #studentprofile": function(){
-    Router.go("/studentDashboard", {name: $(".form-control").val()});
-  },
-  "click #teacherprofile": function(){
-    Router.go("/sellerDashboard", {name: $(".form-control").val()});
-  }
+	"click #studentprofile": function(){
+		Router.go("/studentDashboard", {name: $(".form-control").val()});
+	},
+	"click #teacherprofile": function(){
+		Router.go("/sellerDashboard", {name: $(".form-control").val()});
+	},
+	"click #about": function(){
+		$('html, body').animate({
+			scrollTop: $( $.attr(this, 'href') ).offset().top
+		}, 500);
+		return false;
+		console.log("clickabout");
+	},
+	"click #Topics": function(){
+		$('html, body').animate({
+			scrollTop: $( $.attr(this, 'href') ).offset().top
+		}, 500);
+		return false;
+	},
+	"click #Mission": function(){
+		$('html, body').animate({
+			scrollTop: $( $.attr(this, 'href') ).offset().top
+		}, 500);
+		return false;
+	}
 
-})
+});
 
 Template._loginButtonsLoggedInDropdown.onRendered(function () {
 	$(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='editprofile'> Edit Profile </button>");
-  $(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='studentprofile'> Student Dashboard </button>");
-  $(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='teacherprofile'> Teacher Dashboard </button>");
+	$(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='studentprofile'> Student Dashboard </button>");
+	$(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='teacherprofile'> Teacher Dashboard </button>");
 });
 
 
@@ -59,18 +78,18 @@ Template.layout.helpers({
 			return true;
    //   var string = " <li class = 'toptab' id = 'toptabid'> <a href = '#about' class = 'scroll-link navbartext' data-scroll> About </a></li> <li> <a href = '#Topics' id = 'toptabid2' class = 'topicslink navbartext scroll-link'> How It Works </a></li>";
 	//		return string;
-		}else{
-			return false;
-		}
-	},
-	toptabid33:function(){
-		if (Router.current().route.path() === "/"){
-			return true;
+}else{
+	return false;
+}
+},
+toptabid33:function(){
+	if (Router.current().route.path() === "/"){
+		return true;
 	//		return "<li> <a href = '#Form' id = 'toptabid3' class = 'navbartext scroll-link'> Teach a Class </a></li>";
-		}else{
-			return false;
-		}
-	}
+}else{
+	return false;
+}
+}
 });
 
 
