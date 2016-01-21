@@ -1,0 +1,29 @@
+<template name='search'>
+
+<div class="__listresults container">
+<p>Search Results</p>
+
+{{#each posts}}
+
+<div class="class">
+	
+<h4 class="well well-sm">{{title}}</h4>
+<p class="well well-lg"> {{description}}</p>
+
+	
+<!--
+	<li class="list-group-item">Subject: {{subject}}</li>
+	<li class="list-group-item">Titles: {{title}} </li>
+	<li class="list-group-item">Students Enrolled: {{studentNumber}}</li>
+	<li class="list-group-item">Teacher: {{teacher}}</li>
+	<li class="list-group-item">Date: {{createdAt}}</li>
+	<li class="list-group-item">Description: {{description}}</li>
+-->
+
+
+
+</div>
+
+{{/each}}
+</div>
+</template>
