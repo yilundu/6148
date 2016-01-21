@@ -4,11 +4,26 @@
 	margin-top: 0px;
 }
 
-.navbar{
+.navbarhome{
 	top: 0;
 	width: 100%;
 	margin-bottom: 0px;
 	border: 0px;
+	position: absolute;
+}
+
+.navbarnothome{
+	top: 0;
+	width: 100%;
+	margin-bottom: 0px;
+	border: 0px;
+	position: relative;
+}
+
+.NavBar{
+	position: absolute;
+	width: 100%;
+	background-color: rgba( 11, 181, 250, .8);
 }
 
 /*
@@ -18,8 +33,15 @@ doesn't work, hover color
 	background-color: yellow;
 	color: red
 }
-#navbartop{
+#navbartophome{
 	background-color: rgba( 11, 181, 250, .09);
+	margin-bottom: 0px;
+	border-radius: 1px;
+	opacity: .9;
+	z-index: 1000000;
+}
+#navbartopnothome{
+	background-color: rgba( 11, 181, 250, .9);
 	margin-bottom: 0px;
 	border-radius: 1px;
 	opacity: .9;
