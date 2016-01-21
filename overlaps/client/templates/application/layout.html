@@ -3,8 +3,8 @@
 
 <template name="layout">
 
-  <header class = "navbar">
-    <nav class = "navbar container-fluid" id = "navbartop">
+  <header class = "{{navbarhelper}}">
+    <nav class = "{{navbarhelper}} container-fluid" id = "{{navbartophelper}}">
       <div class = "navbar-header">
         <button class = "navbar-toggle" data-toggle = "collapse"
         data-target="#NavBar"> <span class="glyphicon glyphicon-th-list"></span>
@@ -13,16 +13,20 @@
       <a class = "navbar-brand navbartext" href = "../"> Overlaps</a>
     </div>
 
-    <div class = "navbar-collapse collapse" id = "NavBar">
+    <div class = "navbar-collapse collapse" id = "{{NavBarHelper}}">
     <div id = "leftpart">
       <ul class = "nav navbar-nav" id = "navtopclass">
+        {{#if toptabid12}}
+        <li class = 'toptab' id = 'toptabid'> <a href = '#about' class = ' scroll-link navbartext' data-scroll> About </a></li>
+      <li> <a href = '#Topics' id = 'toptabid2' class = 'topicslink navbartext scroll-link'> How It Works </a></li>
+        {{/if}}
 
-        <li class = "toptab" id = "toptabid"> <a href = "#about" class = " scroll-link navbartext" data-scroll> About </a></li>
-        <li> <a href = "#Topics" id = "toptabid2" class = "topicslink navbartext scroll-link"> How It Works </a></li>
 
         {{#if currentUser}}
-        <li> <a href = "{{pathFor 'sellerDashboard'}}" id = "toptabid3" class = "navbartext scroll-link"> Teacher Dashboard</a></li>
-        <li> <a href = "{{pathFor 'studentDashboard'}}" id = "toptabid3" class = "navbartext scroll-link"> Student Dashboard</a></li>
+        {{#if toptabid33}}
+        <li> <a href = '#Mission' id = 'toptabid3' class = 'navbartext scroll-link'> Mission </a></li>
+        {{/if}}
+
         {{/if}}
       </ul>
     </div>
@@ -34,7 +38,26 @@
 
     </div>
   </nav>
-
+<script>
+$('a[href*=about]').click(function(){
+    $('html, body').animate({
+        scrollTop: $( $.attr(this, 'href') ).offset().top
+    }, 500);
+    return false;
+});
+$('a[href*=Topics]').click(function(){
+    $('html, body').animate({
+        scrollTop: $( $.attr(this, 'href') ).offset().top
+    }, 500);
+    return false;
+});
+$('a[href*=Mission]').click(function(){
+    $('html, body').animate({
+        scrollTop: $( $.attr(this, 'href') ).offset().top
+    }, 500);
+    return false;
+});
+ </script>
 
 </header>
 
