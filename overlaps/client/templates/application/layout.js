@@ -46,17 +46,16 @@ Template.layout.helpers({
 	},
 	toptabid12:function(){
 		if (Router.current().route.path() === "/"){
-			return " <li class = 'toptab' id = 'toptabid'> <a href = '#about' class = 'scroll-link navbartext' data-scroll> About </a></li>
-			<li> <a href = '#Topics' id = 'toptabid2' class = 'topicslink navbartext scroll-link'> How It Works </a></li>";
+			return true;
 		}else{
-			return "";
+			return false;
 		}
 	},
 	toptabid33:function(){
 		if (Router.current().route.path() === "/"){
-			return "<li> <a href = '#Form' id = 'toptabid3' class = 'navbartext scroll-link'> Teach a Class </a></li>";
+			return true;
 		}else{
-			return "";
+			return false;
 		}
 	}
 });
