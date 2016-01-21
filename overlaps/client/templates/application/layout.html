@@ -16,11 +16,16 @@
     <div class = "navbar-collapse collapse" id = "{{NavBarHelper}}">
     <div id = "leftpart">
       <ul class = "nav navbar-nav" id = "navtopclass">
-        {{toptabid12}}
+        {{#if toptabid12}}
+        <li class = 'toptab' id = 'toptabid'> <a href = '#about' class = ' scroll-link navbartext' data-scroll> About </a></li>
+      <li> <a href = '#Topics' id = 'toptabid2' class = 'topicslink navbartext scroll-link'> How It Works </a></li>
+        {{/if}}
        
 
         {{#if currentUser}}
-        {{toptabid33}}
+        {{#if toptabid33}}
+        <li> <a href = '#Form' id = 'toptabid3' class = 'navbartext scroll-link'> Teach a Class </a></li>
+        {{/if}}
         
         {{/if}}
       </ul>
@@ -33,7 +38,20 @@
 
     </div>
   </nav>
-
+<script>
+$('a[href*=about]').click(function(){
+    $('html, body').animate({
+        scrollTop: $( $.attr(this, 'href') ).offset().top
+    }, 500);
+    return false;
+});
+$('a[href*=Topics]').click(function(){
+    $('html, body').animate({
+        scrollTop: $( $.attr(this, 'href') ).offset().top
+    }, 500);
+    return false;
+});
+ </script>
 
 </header>
 
@@ -112,6 +130,3 @@
           </footer>
         </template>
 
-        <template name="askdlfjkaldsf">
-        <div class="asjdfkljsdklf fekfe {{myHelperFigureOutTheClass}}"></div>
-        </template>
