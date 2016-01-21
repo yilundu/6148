@@ -3,8 +3,8 @@
 
 <template name="layout">
 
-  <header class = "navbar">
-    <nav class = "navbar container-fluid" id = "navbartop">
+  <header class = "{{navbarhelper}}">
+    <nav class = "{{navbarhelper}} container-fluid" id = "{{navbartophelper}}">
       <div class = "navbar-header">
         <button class = "navbar-toggle" data-toggle = "collapse"
         data-target="#NavBar"> <span class="glyphicon glyphicon-th-list"></span>
@@ -13,15 +13,15 @@
       <a class = "navbar-brand navbartext" href = "../"> Overlaps</a>
     </div>
 
-    <div class = "navbar-collapse collapse" id = "NavBar">
+    <div class = "navbar-collapse collapse" id = "{{NavBarHelper}}">
     <div id = "leftpart">
       <ul class = "nav navbar-nav" id = "navtopclass">
-
-        <li class = "toptab" id = "toptabid"> <a href = "#about" class = " scroll-link navbartext" data-scroll> About </a></li>
-        <li> <a href = "#Topics" id = "toptabid2" class = "topicslink navbartext scroll-link"> How It Works </a></li>
+        {{toptabid12}}
+       
 
         {{#if currentUser}}
-        <li> <a href = "#Form" id = "toptabid3" class = "navbartext scroll-link"> Teach a Class </a></li>
+        {{toptabid33}}
+        
         {{/if}}
       </ul>
     </div>
@@ -110,4 +110,8 @@
             </div>
 
           </footer>
+        </template>
+
+        <template name="askdlfjkaldsf">
+        <div class="asjdfkljsdklf fekfe {{myHelperFigureOutTheClass}}"></div>
         </template>
