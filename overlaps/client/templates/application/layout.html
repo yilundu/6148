@@ -14,14 +14,17 @@
     </div>
 
     <div class = "navbar-collapse collapse" id = "NavBar">
-      <ul class = "nav navbar-nav" >
-        <li class = "toptab"> <a href = "#about" class = " scroll-link navbartext" data-scroll> About </a></li>
-        <li> <a href = "#Topics" class = "navbartext scroll-link"> How It Works </a></li>
+    <div id = "leftpart">
+      <ul class = "nav navbar-nav" id = "navtopclass">
+
+        <li class = "toptab" id = "toptabid"> <a href = "#about" class = " scroll-link navbartext" data-scroll> About </a></li>
+        <li> <a href = "#Topics" id = "toptabid2" class = "topicslink navbartext scroll-link"> How It Works </a></li>
+
         {{#if currentUser}}
-        <li> <a href = "#Form" class = "navbartext scroll-link"> Teach a Class </a></li>
+        <li> <a href = "#Form" id = "toptabid3" class = "navbartext scroll-link"> Teach a Class </a></li>
         {{/if}}
       </ul>
-
+    </div>
       <ul class = "nav navbar-right navbar-nav">
         <li> <div class = "profpic">  <img class= "logoimage" src = "{{photoprof}}"> </div></li>
         <li> {{>loginButtons}}</li>

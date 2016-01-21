@@ -20,8 +20,14 @@ Template.layout.onRendered(function () {
   if (Router.current().route.path() === "/"){
 $("#navbartop").css("background-color", "rgba( 11, 181, 250, .09)");
 $(".navbar").css("position", "absolute");
+
 }else{
   $("#navbartop").css("background-color", "rgba( 11, 181, 250, .9)");
-  $(".navbar").css("position", "relative");g
+  $(".navbar").css("position", "relative");
+  $("#toptabid").remove();
+  $("#toptabid2").remove();
+  $("#toptabid3").remove();
+  $("#leftpart ul").append('<li><a href = "/createclass" class = "navbartext"> Teach a Class </a></li>');
+
 }
 });

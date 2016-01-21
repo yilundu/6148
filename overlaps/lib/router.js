@@ -107,13 +107,6 @@ Router.after(function(){
     document.title = this.route.options.title + ' - Overlaps';
   }
 
-  if (Router.current().route.path() === "/"){
-$("#navbartop").css("background-color", "rgba( 11, 181, 250, .09)");
-$(".navbar").css("position", "absolute");
-}else{
-  $("#navbartop").css("background-color", "rgba( 11, 181, 250, .9)");
-  $(".navbar").css("position", "relative");
-}
 
         
 
