@@ -14,7 +14,8 @@
 
 
   
-Template.layout.onRendered(function () {
+Template.layout.rendered = function () {
+  if (!this.rendered){
  $(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='editprofile'> Edit Profile </button>");
           
   if (Router.current().route.path() === "/"){
@@ -30,4 +31,6 @@ $(".navbar").css("position", "absolute");
   $("#leftpart ul").append('<li><a href = "/createclass" class = "navbartext"> Teach a Class </a></li>');
 
 }
-});
+  this.rendered = true;
+}
+};

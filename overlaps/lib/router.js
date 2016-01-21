@@ -99,7 +99,7 @@ Router.map({
 Router.route('/', {
   title: 'Home',//set title of html (displayed in tab) here to be set later (see Router.after)
   name: 'home',
-onAfterAction:function(pause){
+  onAfterAction:function(pause){
   $(".navbar").css("position", "absolute");
 }
 
@@ -127,9 +127,10 @@ Router.route('/search/:_id', {
 
 });
 
-Router.route('/find',{
+Router.route('/search',{
   title: 'Find Services',
   progress: true,
+  template: 'find',
   onBeforeAction: function(pause) {
     if (!Meteor.user()) {
       this.render('find');
