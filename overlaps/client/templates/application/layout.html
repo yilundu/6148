@@ -24,7 +24,7 @@
 
         {{#if currentUser}}
         {{#if toptabid33}}
-        <li> <a href = '#Form' id = 'toptabid3' class = 'navbartext scroll-link'> Teach a Class </a></li>
+        <li> <a href = '#Mission' id = 'toptabid3' class = 'navbartext scroll-link'> Mission </a></li>
         {{/if}}
         
         {{/if}}
@@ -46,6 +46,12 @@ $('a[href*=about]').click(function(){
     return false;
 });
 $('a[href*=Topics]').click(function(){
+    $('html, body').animate({
+        scrollTop: $( $.attr(this, 'href') ).offset().top
+    }, 500);
+    return false;
+});
+$('a[href*=Mission]').click(function(){
     $('html, body').animate({
         scrollTop: $( $.attr(this, 'href') ).offset().top
     }, 500);
