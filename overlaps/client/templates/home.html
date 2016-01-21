@@ -5,7 +5,7 @@
 		</head>
 
 		<body>
-			
+
 
 		<div>
 		<section>
@@ -14,16 +14,15 @@
 					<div id="carouselimage" class="carousel slide" data-ride="carousel">
 						<div class = "registerBar">
 							<div class="form-group">
-								<label id="registerlabel" for="user1"><span id = "nameid"> </span> What would you like to learn?</label>
+
+								<label id="registerlabel" for="user1"><span id = "nameid"> {{username}} - </span> What would you like to learn?</label>
+
 								<form id="homesearchbar" class="search">
 								<input type="text" class="form-control" id="user1">
 								<input type="submit" class="submit">
 								</form>
 							</div>
-					<!--		<script>
-								$("#nameid").text(Meteor.user().profile.name);
-							</script>
-					-->
+
 						</div>
 
 						<div class="carousel-inner" role="listbox">
@@ -64,7 +63,7 @@
 			<div class = "page-section" id = "about">
 				<div class = "container">
 					<div id = "About-title">
-						<h1 id = "abouttitle"> What is Overlaps? </h1> 
+						<h1 id = "abouttitle"> What is Overlaps? </h1>
 						<div class="row">
 
 							<div class="col-xs-4" id = "iconvertical">
@@ -185,7 +184,7 @@
 			<div class = "page-section" id = "Form">
 				<div class = "container">
 					<div id = "classpic_bar" class = "section">
-						
+
 						<form class="class_form">
 							<ul>
 								<li>
@@ -221,7 +220,7 @@
 								</li>
 							</ul>
 						</form>
-						
+
 						<br><br><br><br><br><br><br>
 					</div>
 				</div>
@@ -239,7 +238,7 @@
          $('#carouselimage').carousel({
              interval: 3000
          })
-    });    
+    });
 		</script>
 	</body>
 	<script>
