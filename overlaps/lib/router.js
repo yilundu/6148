@@ -198,6 +198,10 @@ Router.route('/createClass',{
   }
 });
 
+Router.route('/classInfoPage',{
+  title: "Test Class Info Page"
+});
+
 Router.after(function(){
   if(this.route.options.title)
   {
