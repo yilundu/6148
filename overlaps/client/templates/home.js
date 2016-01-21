@@ -56,13 +56,8 @@ Template.home.helpers({
         console.log("Hello!");
         event.preventDefault();
         Router.go("/find");
-      }
+    }
 
 
 
   });
-
- 
-
-
-
