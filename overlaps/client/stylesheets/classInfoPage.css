@@ -61,8 +61,8 @@
   align-self: center;
 }
 
-._classInfoPage .secondary-class-info .row {
-
+._classInfoPage .main-body {
+  margin: 50px;
 }
 
 ._classInfoPage .secondary-class-info span {
