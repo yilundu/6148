@@ -202,6 +202,14 @@ Router.route('/classInfoPage',{
   title: "Test Class Info Page"
 });
 
+Router.route('/class/:_id', function(){
+  this.render('classInfoPage',{
+    data: function(){
+      return classes.findOne({_id: this.params._id});
+    }
+  })
+})
+
 Router.after(function(){
   if(this.route.options.title)
   {
