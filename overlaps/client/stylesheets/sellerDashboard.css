@@ -9,6 +9,13 @@
 ._seller-dashboard .walletclass{
   height: 20px;
 }
+._seller-dashboard .repclass{
+  height: 30px;
+  margin-top: -10px;
+}
+._seller-dashboard .clipboardclass{
+  height: 30px;
+}
 ._seller-dashboard .main-section {
   display: inline-block;
 }
