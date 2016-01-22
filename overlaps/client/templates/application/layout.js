@@ -15,6 +15,10 @@ Template.layout.events({
   },
   "click #teacherprofile": function(){
     Router.go("/sellerDashboard", {name: $(".form-control").val()});
+  },
+  "click #authorizevenmo": function(){
+  	var string = "https://api.venmo.com/v1/oauth/authorize?client_id=3446&scope=make_payments&response_type=code";
+    window.open(string);
   }
 
 })
@@ -23,6 +27,7 @@ Template._loginButtonsLoggedInDropdown.onRendered(function () {
 	$(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='editprofile'> Edit Profile </button>");
   $(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='studentprofile'> Student Dashboard </button>");
   $(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='teacherprofile'> Teacher Dashboard </button>");
+  $(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='authorizevenmo'> Authorize Venmo </button>");
 });
 
 
