@@ -4,11 +4,11 @@
 
     <!-- Top Level Class Info -->
     <div class = "jumbotron">
-      <h2><hr>Introduction to Algorithms<hr></h2>
+      <h2><hr>{{title}}<hr></h2>
       <div class = "row">
         <!-- TODO: Animate numbers flick up, model accelereation and decelleration -->
-        <span class="col-sm-4">6 <small>students</small></span>
-        <span class="col-sm-4">$6 <small>per hr</small></span>
+        <span class="col-sm-4"> {{studentNumber}}<small>students</small></span>
+        <span class="col-sm-4">{{cost}} <small>per hr</small></span>
         <span class="col-sm-4">4.65 <small>stars</small></span>
       </div>
     </div>
@@ -16,7 +16,7 @@
     <div class="secondary-class-info">
       <div class = "row">
         <!-- TODO: Animate numbers flick up, model accelereation and decelleration -->
-        <span class="col-sm-6">Yilun Du<small> teaching</small></span>
+        <span class="col-sm-6">{{teacher}}<small> teaching</small></span>
         <span class="col-sm-6">7th<small> week</small></span>
 
       </div>
@@ -27,17 +27,53 @@
 
     <!-- Main Class Content -->
     <div class="main-body">
-      <div class = "media">
-        <div class ="media-left">
-          <a href="#" >
-            <img class ="media-object" src="food.png" width="40px" height="40px">
-          </a>
-        </div>
-        <div class ="media-body">
-          <h4 class="media-heading">Media heading</h4>
-          TEST TESTakdjalksfhkadjsadlsajdlsadjlkasjdakjldj
-        </div>
+
+      <div class="page-header">
+        <h1>Class Announcements</h1>
       </div>
+      <div class="teacher-announcements">
+
+        <div class = "media">
+          <div class ="media-left">
+            <a href="#" >
+              <img class ="media-object" src="food.png" width="40px" height="40px">
+            </a>
+          </div>
+          <div class ="media-body">
+            <h4 class="media-heading">Media heading</h4>
+            TEST TESTakdjalksfhkadjsadlsajdlsadjlkasjdakjldj
+          </div>
+
+        </div>
+
+        <button class="btn btn-primary">Post:</button>
+
+      </div>
+
+
+
+      <div class="page-header">
+        <h1>Student Comments</h1>
+      </div>
+
+      <div class="student-comments">
+
+        <div class = "media">
+          <div class ="media-left">
+            <a href="#" >
+              <img class ="media-object" src="food.png" width="40px" height="40px">
+            </a>
+          </div>
+          <div class ="media-body">
+            <h4 class="media-heading">Media heading</h4>
+            TEST TESTakdjalksfhkadjsadlsajdlsadjlkasjdakjldj
+          </div>
+
+        </div>
+        <button class="btn btn-primary">Post</button>
+      </div>
+
+
     </div>
 
   </div>

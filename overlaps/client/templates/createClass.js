@@ -58,7 +58,9 @@ Template.createClass.events({
         description: user_description,
         createdAt: new Date(),
         studentNumber: 0, // current time
-        teacherId: Meteor.user()._id
+        teacherId: Meteor.user()._id,
+        classAnnouncements: [],//empty at creation
+        studentComments: []//empty at creation
       });
 
       //redirect to sellerDashboard

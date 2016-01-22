@@ -203,6 +203,14 @@ Router.route('/classInfoPage',{
 });
 
 
+Router.route('/class/:_id', function(){
+  this.render('classInfoPage',{
+    data: function(){
+      return classes.findOne({_id: this.params._id});
+    }
+  })
+});
+
 
 Router.route('/_oauth/venmo', {
   where: 'server',
