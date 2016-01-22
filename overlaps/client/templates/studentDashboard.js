@@ -1,5 +1,11 @@
 Template.studentDashboard.helpers({
   classes: function(){
+
+    //check if db is available
+    if(!user){
+      return [];
+    }
+
     var classIds = user.findOne({meteor: Meteor.userId()});//there should only be one entry so use findOne()
     var classResults = [];//students classes
 
@@ -19,9 +25,18 @@ Template.studentDashboard.helpers({
   },
 
   numClasses: function(){
-
-    //return number of classes taken by current user
-    return user.findOne({meteor: Meteor.userId()}).classes.length;//there should only be one entry so use findOne()
+    //check if user db is available
+    if(!user){
+      return 0;
+    }
+    var results = user.findOne({meteor: Meteor.userId()});
+    if(results){
+      //return number of classes taken by current user
+      return results.classes.length;//there should only be one entry so use findOne()
+    }
+    else{
+      return 0;
+    }
   },
 
 
