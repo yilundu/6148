@@ -33,6 +33,9 @@
       </div>
       <div class="teacher-announcements">
 
+        {{#each classAnnouncements}}
+          {{> postTemplate}}
+        {{/each}}
         <div class = "media">
           <div class ="media-left">
             <a href="#" >
@@ -46,8 +49,8 @@
 
         </div>
 
-        <button class="btn btn-primary">Post:</button>
-
+        <button class="btn btn-primary" id="teacherPostBtn" visible="{{isTeacher}}">Post:</button>
+        <input type="text" class="form-control" width = "90%" id="teacherPostField">
       </div>
 
 
@@ -70,7 +73,8 @@
           </div>
 
         </div>
-        <button class="btn btn-primary">Post</button>
+        <button class="btn btn-primary" id="studentPostBtn">Post</button>
+        <input type="text" class="form-control" width = "90%" id="studentPostField">
       </div>
 
 
