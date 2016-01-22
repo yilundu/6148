@@ -1,7 +1,15 @@
 
 Template.layout.helpers({
 	photoprof: function(){
-		return Meteor.user().profile.binary;
+		//check if user is loaded or logged in - avoids exceptions
+		if(Meteor.user()){
+
+			return Meteor.user().profile.binary;
+
+		}
+		else{
+			return "";
+		}
 	},
 
 });
@@ -22,7 +30,7 @@ Template.layout.events({
     window.open(string);
   },
 
-	
+
 	"click .aboutlink": function(e, template){
 		console.log("clickabout");
 		e.preventDefault();
@@ -106,8 +114,3 @@ toptabid33:function(){
 }
 }
 });
-
-
-
-
-

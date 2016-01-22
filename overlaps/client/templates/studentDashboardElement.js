@@ -1,6 +1,17 @@
 Template.studentDashboardElement.events({
   "click .btn.btn-warning": function(){
-    var currentClasses = user.findOne({meteor: Meteor.userId()}).classes;//TODO: Make sure there is really only one matching user document
+    if(!user){
+      alert("User db not loaded!");
+      return;
+    }
+
+
+    var currentClasses = user.findOne({meteor: Meteor.userId()});//TODO: Make sure there is really only one matching user document
+    if(!currentClasses){
+      alert('No matching classes!')
+      return;
+    }
+
     var indexOfClass = currentClasses.indexOf(this._id);
     if(indexOfClass === -1)
     {
