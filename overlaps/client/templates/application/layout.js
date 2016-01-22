@@ -16,23 +16,28 @@ Template.layout.events({
 	"click #teacherprofile": function(){
 		Router.go("/sellerDashboard", {name: $(".form-control").val()});
 	},
-	"click #about": function(){
-		$('html, body').animate({
-			scrollTop: $( $.attr(this, 'href') ).offset().top
-		}, 500);
-		return false;
+	"click .aboutlink": function(e, template){
 		console.log("clickabout");
-	},
-	"click #Topics": function(){
+		e.preventDefault();
 		$('html, body').animate({
-			scrollTop: $( $.attr(this, 'href') ).offset().top
+			scrollTop: $("#about").offset().top
 		}, 500);
+		console.log("clickabout");
+		return false;
+
+	},
+	"click .topicslink": function(e, template){
+		e.preventDefault();
+		$('html, body').animate({
+			scrollTop: $("#Topics").offset().top
+		}, 600);
 		return false;
 	},
-	"click #Mission": function(){
+	"click .missionlink": function(e, template){
+		e.preventDefault();
 		$('html, body').animate({
-			scrollTop: $( $.attr(this, 'href') ).offset().top
-		}, 500);
+			scrollTop: $("#Mission").offset().top
+		}, 700);
 		return false;
 	}
 
