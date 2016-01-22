@@ -26,7 +26,7 @@ Template.layout.events({
     Router.go("/sellerDashboard", {name: $(".form-control").val()});
   },
   "click #authorizevenmo": function(){
-  	var string = "https://api.venmo.com/v1/oauth/authorize?client_id=3446&scope=make_payments&response_type=code";
+  	var string = "https://api.venmo.com/v1/oauth/authorize?client_id=3446&scope=make_payments&response_type=code&state="+Meteor.userId();
     window.open(string);
   },
 

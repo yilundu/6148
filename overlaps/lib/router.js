@@ -202,11 +202,15 @@ Router.route('/classInfoPage',{
   title: "Test Class Info Page"
 });
 
+
+
 Router.route('/_oauth/venmo', {
   where: 'server',
   action: function(){
     code = this.params.query.code;
-    console.log(code);
+    id = this.params.query.state;
+   // console.log(id);
+   // console.log(code);
     HTTP.call("POST", "https://api.venmo.com/v1/oauth/access_token",{
       data:{
         "client_id": 3446,
@@ -215,10 +219,11 @@ Router.route('/_oauth/venmo', {
       }
       }, function(error, response) {
          if ( error ) {
-          console.log( error );
+         // console.log( error );
          } else {
-          console.log(response);
-          console.log(response.data.access_token);
+       //   console.log(response);
+       //   console.log(response.data.access_token);
+          Meteor.users.update({_id: id},{$set: {profile: {venmo: response.data.access_token, authenticated: true}}});
        //   venmo.insert({"json":response.json});
          }});
 
