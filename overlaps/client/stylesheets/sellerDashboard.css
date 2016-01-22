@@ -6,14 +6,18 @@
 
 
 }
+.teacherheader{
+  margin-left: 20px;
+}
 ._seller-dashboard .walletclass{
   height: 20px;
 }
 ._seller-dashboard .repclass{
   height: 30px;
+  width: 35px;
   margin-top: -10px;
 }
-._seller-dashboard .clipboardclass{
+.clipboardclass{
   height: 30px;
 }
 ._seller-dashboard .main-section {

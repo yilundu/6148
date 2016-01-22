@@ -170,6 +170,9 @@
 	#title{
 		font-size: 80px;
 	}
+	._home .registerBar{
+		top: 80%;
+	}
 }
 @media screen and (min-width: 1150px)  and (max-width: 1300px){
 	#title{
@@ -177,6 +180,9 @@
 	}
 	#icon-bar{
 		height: 700px;
+	}
+	._home .registerBar{
+		top: 80%;
 	}
 }
 @media screen and (min-width: 1025px)  and (max-width: 1150px){
@@ -186,6 +192,9 @@
 	#icon-bar{
 		height: 700px;
 	}
+	._home .registerBar{
+		top: 80%;
+	}
 }
 @media screen and (min-width: 900px) and (max-width: 1025px){
 	#title{
@@ -194,6 +203,9 @@
 	#icon-bar{
 		height: 700px;
 	}
+	._home .registerBar{
+		top: 77%;
+	}
 }
 @media screen and (min-width: 768px) and ( max-width: 900px){
 	#title{
@@ -201,6 +213,9 @@
 	}
 	._home .icons{
 		height: 150px;
+	}
+	._home .registerBar{
+		top: 75%;
 	}
 
 }
@@ -214,9 +229,15 @@
 	._home .icons{
 		height: 140px;
 	}
+	._home .registerBar{
+		top: 74%;
+	}
 	
 }
 @media screen and (max-width: 480px){
+	._home .registerBar{
+		top: 74%;
+	}
 	._home .icons{
 		height: 80px;
 	}
@@ -404,7 +425,6 @@ input:required:valid, textarea:required:valid { /* when a field is considered va
 	position: absolute;
 	left: 20%;
 	right: 20%;
-	top: 80%;
 	font-family: "Lato";
 	color: rgba(255, 255, 255, 1);
 	margin: auto;
@@ -436,7 +456,7 @@ input:required:valid, textarea:required:valid { /* when a field is considered va
 	margin-top: 5px;
 	top: 25%;
 	margin-top: 10%;
-	margin-left: 35%;
+	margin-left: 30%;
 	z-index: 10;
 	position: absolute;
 }
