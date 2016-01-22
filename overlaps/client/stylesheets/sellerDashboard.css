@@ -6,7 +6,9 @@
 
 
 }
-
+._seller-dashboard .walletclass{
+  height: 20px;
+}
 ._seller-dashboard .main-section {
   display: inline-block;
 }
