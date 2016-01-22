@@ -208,7 +208,34 @@ Router.route('/class/:_id', function(){
       return classes.findOne({_id: this.params._id});
     }
   })
-})
+});
+
+Router.route('/_oauth/venmo', {
+  where: 'server',
+  action: function(){
+    code = this.params.query.code;
+    console.log(code);
+    HTTP.call("POST", "https://api.venmo.com/v1/oauth/access_token",{
+      data:{
+        "client_id": 3446,
+        "client_secret": "eEmfXPZgjcLFWfYJtG3hxMM4EG8PPkhG",
+        "code": code
+      }
+      }, function(error, response) {
+         if ( error ) {
+          console.log( error );
+         } else {
+          console.log(response);
+          console.log(response.data.access_token);
+       //   venmo.insert({"json":response.json});
+         }});
+
+    this.response.setHeader('access-control-allow-origin', '*');
+    this.response.writeHead(200, {});
+    this.response.end();
+  }
+
+});
 
 Router.after(function(){
   if(this.route.options.title)
