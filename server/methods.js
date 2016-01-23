@@ -4,9 +4,10 @@ Meteor.methods({
         //add class to user's class list
        var classStudentList = classes.findOne(classid);
         if(classStudentList){
-          classStudentList = classes.studentList;
+          classStudentList = classStudentList.studentList;
           console.log("classList is " + classStudentList);
-          classStudentList.unshift(classid);
+          //insert the students id into the class's studentList
+          classStudentList.unshift(id);
           classes.update(classid, {$set : {studentList : classStudentList}});
         }
         else{
@@ -35,8 +36,9 @@ Meteor.methods({
       });
     },
     'incrementStudentNumber': function(classid){
-      console.log(classid);
+        console.log(classes.findOne(classid,{studentNumber: 1, _id: 0}));
     	classes.update({_id:classid},{$inc: {studentNumber: 1}});
+        console.log(classes.findOne(classid,{studentNumber: 1, _id: 0}));
     },
     'editUserInfo': function(user_id, name, age, about){
     	 Meteor.users.update({_id: user_id}, {$set: {"profile.name": name, "profile.age": age, "profile.about": about}});
