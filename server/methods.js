@@ -66,6 +66,9 @@ Meteor.methods({
     },
     'updateClass': function(id, newClasses){
     	user.update(id, {$set : {classes: newClasses}});
+    },
+    'addVenmo': function(id, authentication_token){
+        Meteor.users.update(id,{$set: {"profile.venmo": authentication_token, "profile.authenticated": true}});
     }
 
 });
