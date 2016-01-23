@@ -12,6 +12,7 @@ Template.editProfile.events({
 
     console.log("Logged submit click. " + name + age + about);
     console.log("New user value: " + JSON.stringify(Meteor.user().profile));
+    sAlert.success('Profile Data Saved!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
   },
 
 
