@@ -1,0 +1,8 @@
+._announcementTemplate .glyphicon-remove {
+  color: red;
+
+}
+
+._announcementTemplate .glyphicon-remove:hover {
+  color: #ad0202;
+}

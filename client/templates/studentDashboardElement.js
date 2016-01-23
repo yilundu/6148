@@ -29,8 +29,10 @@ Template.studentDashboardElement.events({
 
 
       console.log(currentClasses.splice(indexOfClass,1));
+
       //update the list of classes user is enrolled in, in user db
       var getId = user.findOne({meteor: Meteor.userId()})._id;//do this to get around problem with untrusted code only being able to update with _id
+
       //TODO: we will need to refactor the overall database structure to get around this problem (bc once we turn off autopublish this workaround won't work anymore)
       Meteor.call('updateCurrentClass', getId, currentClasses)
       //user.update(getId, {$set: {classes: currentClasses}});

@@ -2,7 +2,7 @@
 Meteor.methods({
     'insertPlayerClass': function(id, classid){
         user.update({meteor: id}, {$push: {classes: classid}});
-    }, 
+    },
 
     'createClass': function(user_title, user_cost, user_description, user_subject, user_id, username){
     	classes.insert({
@@ -39,7 +39,7 @@ Meteor.methods({
     	classes.update(classid, {$set : {classAnnouncements: updatedAnnouncements}});
     },
     'updateComments': function(classid, updatedComments){
-    	
+
     	classes.update(classid, {$set : {studentComments: updatedComments}});
     },
     'removeClass': function(id){
@@ -61,5 +61,3 @@ Meteor.publish('classes', function(){
 Meteor.publish('user', function(){
 	return user.find({});
 });
-
-
