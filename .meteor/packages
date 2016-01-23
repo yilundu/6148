@@ -32,7 +32,8 @@ weeger:image-upload
 raix:ui-dropped-event
 cfs:filesystem
 cfs:standard-packages
-autopublish
-insecure
 http
 email
+dburles:google-maps
+juliancwirko:s-alert
+juliancwirko:s-alert-genie

@@ -3,7 +3,8 @@ Template.classDashboardElement.events({
     console.log("attempted to remove class with id =" + this._id);
 
     //remove class from class db
-    classes.remove({_id: this._id});
+    Meteor.call('removeClass', this._id);
+    //classes.remove({_id: this._id});
     //unenroll all enrolled users
     var enrolledUsers = user.find().fetch();
     for(var i = 0 ; i < enrolledUsers.length ; i++){
@@ -12,7 +13,8 @@ Template.classDashboardElement.events({
       var index = newClasses.indexOf(this._id);
       //remove class from user's class list
       newClasses.splice(index,1);
-      user.update(currUser._id, {$set : {classes: newClasses}});
+      Meteor.call('updateClass', currUser._id, newClasses);
+      //user.update(currUser._id, {$set : {classes: newClasses}});
     }
   }
 });

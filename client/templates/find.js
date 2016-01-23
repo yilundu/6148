@@ -9,10 +9,10 @@ Template.find.helpers({
 //	return classes.find({subject: search1, description: search2});
 	var search1 = new RegExp($("#title1").val(),'i');
 	var search2 = new RegExp($("#description1").val(), 'i');
-	return {posts: classes.find({subject: search1, description: search2})};
+	//return {posts: classes.find({subject: search1, description: search2})};
 
 
-
+	return classes.find({}, {limit: 10, sort: {studentNumber: -1}});
 //	return classes.find({subject: {regex: "/"+$(".subject").val()+"/i"}, description: {regex: "/"+$(".description").val()+"/i"}});
 
 	}
@@ -50,21 +50,21 @@ Template.find.events({
 		 console.log(classid);
 
      if ((user.find({meteor: Meteor.user()._id, classes: classid}).count())===0){
-     	classes.update({_id:classid},{$inc: {studentNumber: 1}});
-     	//	Meteor.call('insertPlayerClass', classid);
-     	//	Meteor.users.update({profile.name: Meteor.user().profile.name}, {$set: {classid: true}});
+     	Meteor.call('incrementStudentNumber', classid);
+     //	Meteor.call('insertPlayerClass', classid);
+     //	Meteor.users.update({profile.name: Meteor.user().profile.name}, {$set: {classid: true}});
      	var empty= [];
 			//TODO: Make better key names ie: not meteor
      	user.insert({meteor: Meteor.user()._id, classes: empty});
      	var id = Meteor.user()._id;
      	Meteor.call('insertPlayerClass', id, classid);
      	//user.update({meteor: id}, {$set: {classid: true}});
-     	alert("Succesfully Enrolled!");
-     	location.reload();
+     	sAlert.success('Succesfully Enrolled!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
+
 
      }
      else {
-     	alert("You have already been enrolled in this class!");
+     	sAlert.error('You have already enrolled!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
  	}
   //  $(".submit").eq(1).parent().parent().children().eq(0).text()
   //  classes.update({_id: $(this).parent().children(:first-child).val());

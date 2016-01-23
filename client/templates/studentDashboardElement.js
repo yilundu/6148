@@ -9,12 +9,13 @@ Template.studentDashboardElement.events({
     var currentClasses = user.findOne({meteor: Meteor.userId()});//TODO: Make sure there is really only one matching user document
     if(!currentClasses){
       alert('No matching classes!')
+
       return;
     }
     else {
       currentClasses = currentClasses.classes;
     }
-
+    console.log(currentClasses);
     var indexOfClass = currentClasses.indexOf(this._id);
     if(indexOfClass === -1)
     {
@@ -33,16 +34,11 @@ Template.studentDashboardElement.events({
       var getId = user.findOne({meteor: Meteor.userId()})._id;//do this to get around problem with untrusted code only being able to update with _id
 
       //TODO: we will need to refactor the overall database structure to get around this problem (bc once we turn off autopublish this workaround won't work anymore)
-      user.update(getId, {$set: {classes: currentClasses}});
-
+      Meteor.call('updateCurrentClass', getId, currentClasses)
+      //user.update(getId, {$set: {classes: currentClasses}});
       //decrement student count in the class db
-      classes.update(this._id, {$inc: {studentNumber: -1}});
-
-      //remove student from class studentList
-      var studentList = classes.findOne(this._id).studentList;
-      studentList.splice(studentList.indexOf(Meteor.userId(),1));
-      classes.update(this._id, {$set : {studentList : studentList}});
-
+      Meteor.call('decrementStudentNumber', this._id);
+      //classes.update(this._id, {$inc: {studentNumber: -1}});
       console.log("Successfully unenrolled user from class!");
     }
 

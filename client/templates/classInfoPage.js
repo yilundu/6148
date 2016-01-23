@@ -16,8 +16,8 @@ Template.classInfoPage.events({
       userId: Meteor.userId(),
       postText: postText,
       timePosted: new Date()});
-
-    classes.update(this._id, {$set : {classAnnouncements: updatedAnnouncements}});
+    Meteor.call('updatedAnnouncements', this._id, updatedAnnouncements);
+    //classes.update(this._id, {$set : {classAnnouncements: updatedAnnouncements}});
 
   },
   'click #studentPostBtn' : function(){
@@ -39,8 +39,8 @@ Template.classInfoPage.events({
       userId: Meteor.userId(),
       postText: postText,
       timePosted: new Date()});
-
-    classes.update(this._id, {$set : {studentComments: updatedComments}});
+    Meteor.call('updateComments', this._id, updatedComments);
+   // classes.update(this._id, {$set : {studentComments: updatedComments}});
 
   }
 });
