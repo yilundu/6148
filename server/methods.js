@@ -1,7 +1,17 @@
 
 Meteor.methods({
     'insertPlayerClass': function(id, classid){
+        //add class to user's class list
         user.update({meteor: id}, {$push: {classes: classid}});
+        //add user to studentList of class
+        var classStudentList = classes.findOne(classid);
+        if(classStudentList){
+          classStudentList = classes.studentList;
+          console.log("classList is " + classStudentList);
+          classStudentList.unshift(id);
+          classes.update(classid, {$set : {studentList : classStudentList}});
+        }
+
     },
 
     'createClass': function(user_title, user_cost, user_description, user_subject, user_id, username){
@@ -15,7 +25,8 @@ Meteor.methods({
         studentNumber: 0, // current time
         teacherId: user_id,
         classAnnouncements: [],//empty at creation
-        studentComments: []//empty at creation
+        studentComments: [],//empty at creation
+        studentList: []//empty at creation
       });
     },
     'incrementStudentNumber': function(classid){
@@ -28,10 +39,18 @@ Meteor.methods({
     	 Meteor.users.update({_id: user_id},{$set: {"profile.binary": photo}});
 
     },
+
+    //updates class list of user with 'user_id'
     'updateCurrentClass': function(user_id, currentClasses){
     	user.update(user_id, {$set: {classes: currentClasses}});
 
     },
+
+    //updates student list of class with classid
+    'updateStudentList': function(class_id, studentList){
+      classes.update(class_id, {$set: {studentList: studentList}});
+    },
+
     'decrementStudentNumber': function(classid){
     	classes.update({_id:classid},{$inc: {studentNumber: -1}});
     },
