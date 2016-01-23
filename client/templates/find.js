@@ -57,12 +57,12 @@ Template.find.events({
      	var id = Meteor.user()._id;
      	Meteor.call('insertPlayerClass', id, classid);
      	//user.update({meteor: id}, {$set: {classid: true}});
-     	sAlert.success('Succesfully Enrolled!',  {effect: 'genie', position: 'bottom-right', timeout: 2000, onRouteClose: false, stack: true, offset: '100px'});
+     	sAlert.success('Succesfully Enrolled!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
  
 
      }
      else {
-     	sAlert.error('You have already enrolled!',  {effect: 'genie', position: 'bottom-right', timeout: 2000, onRouteClose: false, stack: true, offset: '100px'});
+     	sAlert.error('You have already enrolled!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
  	}
   //  $(".submit").eq(1).parent().parent().children().eq(0).text()
   //  classes.update({_id: $(this).parent().children(:first-child).val());
