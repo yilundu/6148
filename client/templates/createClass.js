@@ -49,19 +49,8 @@ Template.createClass.events({
     checkTextEmpty($('#descField')) &
     checkNumberPositive($('#costField'))){
 
+     Meteor.call('createClass', user_title, user_cost, user_description, user_subject, Meteor.user()._id, Meteor.user().profile.name);
 
-      classes.insert({
-        title: user_title,
-        subject: user_subject,
-        cost: user_cost,
-        teacher: Meteor.user().profile.name,
-        description: user_description,
-        createdAt: new Date(),
-        studentNumber: 0, // current time
-        teacherId: Meteor.user()._id,
-        classAnnouncements: [],//empty at creation
-        studentComments: []//empty at creation
-      });
 
       //redirect to sellerDashboard
       Router.go('/sellerDashboard');
