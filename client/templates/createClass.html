@@ -40,7 +40,17 @@
 
       <button class="btn btn-primary" id="createBtn">Create this class!</button>
       <a class="btn btn-warning" href="{{pathFor 'sellerDashboard'}}">Back to Dashboard</a>
-
+      <form class = "mapform">
+        <input type = "text" id = "mapidform">
+      </form>
+      <form id = "fillform">
+        Latitude:   <input name="lat" type="text" value="">
+        Longitude:  <input name="lng" type="text" value="">
+        Address:    <input name="formatted_address" type="text" value="">
+      </form>
+      <div class="map-container" id="my_map">
+        {{> googleMap name="exampleMap" options=exampleMapOptions}}
+      </div>
     </div>
 
   </div>

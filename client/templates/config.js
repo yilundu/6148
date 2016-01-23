@@ -27,7 +27,11 @@ Meteor.startup(function () {
         // onClose: function() { 
         //     /* Code here will be executed once the alert closes. */ 
         // } 
-    });
+    }),
+    GoogleMaps.load({
+    key: 'AIzaSyAL46_D20KBsAqUgDigLBQetRCJO3tiByM',
+    libraries: 'places'  // also accepts an array if you need more than one
+  });
  
 });
 
