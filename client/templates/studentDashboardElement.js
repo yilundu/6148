@@ -34,7 +34,7 @@ Template.studentDashboardElement.events({
       //remove the student from the class student list
       var classStudentList = classes.findOne(this._id);
       if(classStudentList){
-        classStudentList = classes.studentList;
+        classStudentList = classStudentList.studentList;
         console.log("classList is " + classStudentList);
 
         //find indexof user in student list of class

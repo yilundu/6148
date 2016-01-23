@@ -1,29 +1,51 @@
+<template name ="register">
 
-  <template name="register">
+  <div class="_register">
 
-    <div class="container">
-      <div class ="row">
+    <div class="panel panel-default">
 
-        <div class = "jumbotron college-div col-md-8 col-">
-              <div class="page-header">
-                <h1 class="college-header">Choose your college! </h1>
-              </div>
-	<form>
-		<input type="email" name="registerEmail">
-		<input type="password" name="registerPassword">
-		<input type="submit" value="Register">
-	</form>
-            <div class="list-group">
-              <button type="button" class="list-group-item">Massachusetts Institute of Technology</button>
-            </div>
-
-        </div>
-
+      <div class="page-header">
+        <h1>Create Account:</h1>
       </div>
+
+      <div class="input-group">
+        <span class="input-group-addon" id="addon1">Title:</span>
+        <input type="text" class="form-control" placeholder="Ex: 8.01" aria-describedby="addon1" id="titleField" autofocus>
+      </div>
+
+
+      <div class="input-group">
+        <span class="input-group-addon" id="addon3">Cost:</span>
+        <input type="number" class="form-control" placeholder="" aria-describedby="addon3" id="costField">
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-addon" id="addon4">Description:</span>
+        <input type="text" class="form-control" placeholder="" aria-describedby="addon4" id="descField">
+      </div>
+
+      <div class="page-header">
+        <h3>Subject:</h3>
+      </div>
+
+      <div class="list-group">
+
+        <a href="#" class="list-group-item active">Biking</a>
+        <a href="#" class="list-group-item">Cooking</a>
+        <a href="#" class="list-group-item">Coding</a>
+        <a href="#" class="list-group-item">Academics</a>
+        <a href="#" class="list-group-item">Music</a>
+        <a href="#" class="list-group-item">Misc.</a>
+      </div>
+
+      <button class="btn btn-primary" id="createBtn">Create this class!</button>
+      <a class="btn btn-warning" href="{{pathFor 'sellerDashboard'}}">Back to Dashboard</a>
 
     </div>
 
-   
+  </div>
 
-  </template>
 
+
+
+</template>
