@@ -85,7 +85,11 @@ Template.layout.helpers({
 
 		if (Router.current().route.path() === "/" ){
 			return 'navbartophome';
-		} else {
+		}else if (Router.current().route.path() === "/404" ){
+			console.log("fuc")
+			return 'navbartopnothome';
+		}
+		else {
 			return 'navbartopnothome';
 		}
 	},navbarhelper:function(){

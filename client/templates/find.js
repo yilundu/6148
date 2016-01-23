@@ -47,11 +47,13 @@ Template.find.events({
 		event.preventDefault();
 		var classid = $(event.target).parent().parent().children().eq(0).text();
 
-		console.log(classid);
+		 console.log(classid);
+		 if (!user.findOne({meteor: Meteor.user()._id})){
+		 	Meteor.call('addNewUser', Meteor.userId());
+		 }
 
-		if ((user.find({meteor: Meteor.user()._id, classes: classid}).count())===0){
-			console.log("inside if statement");
-			Meteor.call('incrementStudentNumber', classid);
+     if ((user.find({meteor: Meteor.user()._id, classes: classid}).count())===0){
+     	Meteor.call('incrementStudentNumber', classid);
 
 			var id = Meteor.user()._id;
 			Meteor.call('insertPlayerClass', id, classid);
