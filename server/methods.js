@@ -41,6 +41,12 @@ Meteor.methods({
     'updateComments': function(classid, updatedComments){
     	
     	classes.update(classid, {$set : {studentComments: updatedComments}});
+    },
+    'removeClass': function(id){
+    	classes.remove({_id: id});
+    },
+    'updateClass': function(id, newClasses){
+    	user.update(id, {$set : {classes: newClasses}});
     }
 
 });
