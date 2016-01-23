@@ -29,12 +29,15 @@
 	min-height: 350px;
 }
 #Topics{
-	background-color: #36D7B7;
+	background-color: #f5f5f5;
 }
 #Topics .row{
-	margin-bottom: 60px;
-	margin-left: 0px;
-	margin-right: 0px;
+	margin-bottom: 1%;
+	margin-left: 4%;
+	margin-right: 0%;
+}
+.spacercol{
+	width: 3%;
 }
 .page-section{
 	padding: 0;
@@ -42,13 +45,13 @@
 #about{
 	background-color: #428eff;
 }
-#abouttitle{
+#abouttitle, #learntitle{
 	margin-top: 10vh;
 	margin-bottom: 5vh;
 	font-size: .7em;
 }
-#About-title{
-	color: white;
+#About-title, #learn-title{
+	color: #428eff;
 	text-align: center;
 	font-family: 'Nunito', sans-serif;
 	font-size: 6em;
@@ -86,12 +89,8 @@
 	margin-top: -35%;
 	font-size: 2em;
 }
-._home .page-header {
-	font-weight: 500;
-	color: green;
-	text-align: center;
-	letter-spacing: .5px;
-	font-family: "Lato";
+#topicontainer{
+	height: auto;
 }
 
 .iconvertical{
@@ -102,7 +101,9 @@
 	width: 100vw;
 	height: 100vh;
 }
+
 .thumb{
+	height: 100%;
 	padding-left:2px;
 	padding-right: 2px;
 	padding-top: 10px;
@@ -111,6 +112,7 @@
 .thumbnail1{
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: 2px;
 }
 .thumbnail2{
 	margin-left: auto;
