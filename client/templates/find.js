@@ -48,7 +48,7 @@ Template.find.events({
      var classid = $(event.target).parent().parent().children().eq(0).text();
 
      if ((user.find({meteor: Meteor.user()._id, classes: classid}).count())===0){
-     	classes.update({_id:classid},{$inc: {studentNumber: 1}});
+     	Meteor.call('incrementStudentNumber', classid);
      //	Meteor.call('insertPlayerClass', classid);
      //	Meteor.users.update({profile.name: Meteor.user().profile.name}, {$set: {classid: true}});
      	var empty= [];

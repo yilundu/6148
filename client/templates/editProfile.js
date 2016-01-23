@@ -5,10 +5,10 @@ Template.editProfile.events({
     var about = $("#about-field").val();
 
 
-
+    Meteor.call('editUserInfo', Meteor.user()._id, name, age, about);
     //Note: Setting a name key within the profile will display the name value in the account ui
     //note: Meteor.userId throws a 403 not permmitted exception so use Meteor.user()._id
-    Meteor.users.update({_id: Meteor.user()._id}, {$set: {profile: {name: name, age: age, about: about}}});
+    //Meteor.users.update({_id: Meteor.user()._id}, {$set: {profile: {name: name, age: age, about: about}}});
 
     console.log("Logged submit click. " + name + age + about);
     console.log("New user value: " + JSON.stringify(Meteor.user().profile));
@@ -22,9 +22,9 @@ Template.editProfile.events({
     if (event.target.files[0]){
     var file = event.target.files[0];
     var reader = new FileReader();
-   reader.onload = function(event){
-    Meteor.users.update({_id: Meteor.user()._id},{$set: {profile: {binary: reader.result}}});
-
+    reader.onload = function(event){
+   // Meteor.users.update({_id: Meteor.user()._id},{$set: {profile: {binary: reader.result}}});
+    Meteor.call('editUserPhoto', Meteor.user()._id, reader.result);
 
     }
     reader.readAsDataURL(file);
