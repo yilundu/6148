@@ -1,6 +1,6 @@
 <template name = "classInfoPage">
 
-  <div class ="_classInfoPage">
+  <div class ="_classInfoPage container-fluid">
 
     <!-- Top Level Class Info -->
     <div class = "jumbotron">
@@ -26,7 +26,7 @@
     <button class="btn btn-primary">Enroll me!</button>
 
     <!-- Main Class Content -->
-    <div class="main-body">
+    <div class="main-body row">
 
       <div class="page-header">
         <h1>Class Announcements</h1>
@@ -36,18 +36,6 @@
         {{#each classAnnouncements}}
           {{> announcementTemplate}}
         {{/each}}
-        <div class = "media">
-          <div class ="media-left">
-            <a href="#" >
-              <img class ="media-object" src="food.png" width="40px" height="40px">
-            </a>
-          </div>
-          <div class ="media-body">
-            <h4 class="media-heading">Media heading</h4>
-            TEST TESTakdjalksfhkadjsadlsajdlsadjlkasjdakjldj
-          </div>
-
-        </div>
 
         <button class="btn btn-primary" id="teacherPostBtn" visible="{{isTeacher}}">Post:</button>
         <input type="text" class="form-control" width = "90%" id="teacherPostField">
@@ -60,30 +48,25 @@
       </div>
 
       <div class="student-comments">
-
-
-
         {{#each studentComments}}
           {{> commentTemplate}}
         {{/each}}
-
-        <div class = "media">
-          <div class ="media-left">
-            <a href="#" >
-              <img class ="media-object" src="food.png" width="40px" height="40px">
-            </a>
-          </div>
-          <div class ="media-body">
-            <h4 class="media-heading">Media heading</h4>
-            TEST TESTakdjalksfhkadjsadlsajdlsadjlkasjdakjldj
-          </div>
-
-        </div>
         <button class="btn btn-primary" id="studentPostBtn">Post</button>
         <input type="text" class="form-control" width = "90%" id="studentPostField">
       </div>
 
 
+    </div>
+
+    <div class ="student-list col-md-6 col-xs-12">
+      {{#each studentList}}
+        {{> studentBanner}}
+      {{/each}}
+    </div>
+
+    <div class ="review-list col-md-6 col-xs-12">
+      TEST TEST TEST <br/>
+      TEST TEST TESt
     </div>
 
   </div>

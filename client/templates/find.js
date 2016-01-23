@@ -47,10 +47,12 @@ Template.find.events({
      event.preventDefault();
      var classid = $(event.target).parent().parent().children().eq(0).text();
 
+		 console.log(classid);
+
      if ((user.find({meteor: Meteor.user()._id, classes: classid}).count())===0){
      	classes.update({_id:classid},{$inc: {studentNumber: 1}});
-     //	Meteor.call('insertPlayerClass', classid);
-     //	Meteor.users.update({profile.name: Meteor.user().profile.name}, {$set: {classid: true}});
+     	//	Meteor.call('insertPlayerClass', classid);
+     	//	Meteor.users.update({profile.name: Meteor.user().profile.name}, {$set: {classid: true}});
      	var empty= [];
 			//TODO: Make better key names ie: not meteor
      	user.insert({meteor: Meteor.user()._id, classes: empty});
