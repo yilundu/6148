@@ -48,7 +48,10 @@ Template.find.events({
      var classid = $(event.target).parent().parent().children().eq(0).text();
 
 		 console.log(classid);
-
+	 if (!user.findOne({meteor: Meteor.user()._id})){
+	 	Meteor.call('addNewUser', Meteor.userId());
+	 }
+	 
      if ((user.find({meteor: Meteor.user()._id, classes: classid}).count())===0){
      	Meteor.call('incrementStudentNumber', classid);
 
