@@ -15,7 +15,7 @@ Meteor.methods({
 
         user.update({meteor: id}, {$push: {classes: classid}});
         //add user to studentList of class
-        
+
 
     },
 
