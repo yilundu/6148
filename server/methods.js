@@ -32,7 +32,9 @@ Meteor.methods({
       });
     },
     'incrementStudentNumber': function(classid){
+        console.log(classes.findOne(classid,{studentNumber: 1, _id: 0}));
     	classes.update({_id:classid},{$inc: {studentNumber: 1}});
+        console.log(classes.findOne(classid,{studentNumber: 1, _id: 0}));
     },
     'editUserInfo': function(user_id, name, age, about){
     	 Meteor.users.update({_id: user_id}, {$set: {"profile.name": name, "profile.age": age, "profile.about": about}});

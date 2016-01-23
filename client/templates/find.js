@@ -47,7 +47,7 @@ Template.find.events({
      event.preventDefault();
      var classid = $(event.target).parent().parent().children().eq(0).text();
 
-		 console.log(classid);
+		// console.log(classid);
 	 if (!user.findOne({meteor: Meteor.user()._id})){
 	 	Meteor.call('addNewUser', Meteor.userId());
 	 }
