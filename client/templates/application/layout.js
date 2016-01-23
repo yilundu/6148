@@ -64,10 +64,10 @@ Template._loginButtonsLoggedInDropdown.onRendered(function () {
   $(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='studentprofile'> Student Dashboard </button>");
   $(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='teacherprofile'> Teacher Dashboard </button>");
   if (Meteor.user().profile.authenticated === true){
-  	
+  	$(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block btn-success' id='authorizevenmo'> Venmo Authenticated </button>");
   }
   else {
-  	$(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='authorizevenmo'> Authorize Venmo </button>");
+  	$(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block btn-danger' id='authorizevenmo'> Authorize Venmo </button>");
   }
   
 
