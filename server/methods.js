@@ -50,3 +50,13 @@ Meteor.methods({
     }
 
 });
+
+Meteor.publish('classes', function(){
+	return classes.find({});
+});
+
+Meteor.publish('user', function(){
+	return user.find({});
+});
+
+

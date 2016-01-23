@@ -32,7 +32,6 @@ weeger:image-upload
 raix:ui-dropped-event
 cfs:filesystem
 cfs:standard-packages
-autopublish
 http
 email
 dburles:google-maps
