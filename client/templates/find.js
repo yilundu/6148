@@ -9,10 +9,10 @@ Template.find.helpers({
 //	return classes.find({subject: search1, description: search2});
 	var search1 = new RegExp($("#title1").val(),'i');
 	var search2 = new RegExp($("#description1").val(), 'i');
-	return {posts: classes.find({subject: search1, description: search2})};
+	//return {posts: classes.find({subject: search1, description: search2})};
 
 
-
+	return classes.find({}, {limit: 10, sort: {studentNumber: -1}});
 //	return classes.find({subject: {regex: "/"+$(".subject").val()+"/i"}, description: {regex: "/"+$(".description").val()+"/i"}});
 
 	}
