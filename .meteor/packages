@@ -33,7 +33,6 @@ raix:ui-dropped-event
 cfs:filesystem
 cfs:standard-packages
 autopublish
-insecure
 http
 email
 dburles:google-maps
