@@ -93,11 +93,18 @@
 	margin-bottom: 30px;
 	margin-top: 10px;
 }
-._home h4{
+._home .img-responsive-h{
 	position: absolute;
 	color: white;
-	margin-left: 25%;
-	margin-top: -35%;
+	margin-left: 35%;
+	margin-top: -40%;
+	font-size: 2em;
+}
+._home .img-responsive-h2{
+	position: absolute;
+	color: white;
+	margin-left: 35%;
+	margin-top: -25%;
 	font-size: 2em;
 }
 #topicontainer{
