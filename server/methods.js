@@ -22,10 +22,10 @@ Meteor.methods({
     	classes.update({_id:classid},{$inc: {studentNumber: 1}});
     },
     'editUserInfo': function(user_id, name, age, about){
-    	 Meteor.users.update({_id: user_id}, {$set: {profile: {name: name, age: age, about: about}}});
+    	 Meteor.users.update({_id: user_id}, {$set: {"profile.name": name, "profile.age": age, "profile.about": about}});
     },
     'editUserPhoto': function(user_id, photo){
-    	 Meteor.users.update({_id: user_id},{$set: {profile: {binary: photo}}});
+    	 Meteor.users.update({_id: user_id},{$set: {"profile.binary": photo}});
 
     },
     'updateCurrentClass': function(user_id, currentClasses){
