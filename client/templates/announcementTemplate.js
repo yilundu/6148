@@ -1,10 +1,10 @@
-Template.postTemplate.events({
-  'mouseenter ._postTemplate' : function(){
+Template.announcementTemplate.events({
+  'mouseenter ._announcementTemplate' : function(){
     console.log("mouseenter");
     //waiting on piazza //$('.glyphicon-remove').show();
   },
 
-  'mouseleave ._postTemplate' : function(){
+  'mouseleave ._announcementTemplate' : function(){
     console.log('mouseleave');
     //waiting on piazza //$('.glyphicon-remove').hide();
   },
