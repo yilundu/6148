@@ -11,6 +11,9 @@ Meteor.methods({
           classStudentList.unshift(id);
           classes.update(classid, {$set : {studentList : classStudentList}});
         }
+        else{
+          throw "matching class not found";
+        }
 
     },
 
@@ -30,6 +33,7 @@ Meteor.methods({
       });
     },
     'incrementStudentNumber': function(classid){
+      console.log(classid);
     	classes.update({_id:classid},{$inc: {studentNumber: 1}});
     },
     'editUserInfo': function(user_id, name, age, about){
