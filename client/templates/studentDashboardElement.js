@@ -24,19 +24,41 @@ Template.studentDashboardElement.events({
     }
     else{
 
-      //remove the class
+      /*Do all the necessary database updates to unenroll the user form class*/
+
+      //remove the class from the array
+      //then, update the server side db document with the updated currentClasses array
       currentClasses.splice(indexOfClass,1);
+      Meteor.call('updateCurrentClass', Meteor.userId(), currentClasses)
 
+      //remove the student from the class student list
+      var classStudentList = classes.findOne(this._id);
+      if(classStudentList){
+        classStudentList = classes.studentList;
+        console.log("classList is " + classStudentList);
 
-      console.log(currentClasses.splice(indexOfClass,1));
-      //update the list of classes user is enrolled in, in user db
-      var getId = user.findOne({meteor: Meteor.userId()})._id;//do this to get around problem with untrusted code only being able to update with _id
-      //TODO: we will need to refactor the overall database structure to get around this problem (bc once we turn off autopublish this workaround won't work anymore)
-      Meteor.call('updateCurrentClass', getId, currentClasses)
-      //user.update(getId, {$set: {classes: currentClasses}});
+        //find indexof user in student list of class
+        var indexOf = classStudentList.indexOf(Meteor.userId());
+        if(indexOf == -1){
+          throw "userid not found in classStudentList "
+        }
+        //splice matching index out of classStudentList
+        classStudentList.splice(indexOf, 1);
+
+        //call server side method to update student list of class with this._id
+        Meteor.call('updateStudentList', this._id, classStudentList);
+
+      }
+      else{
+
+        throw "Error: No class found matching the given classid - can't remove student from class studnetlist!";
+      }
+
       //decrement student count in the class db
       Meteor.call('decrementStudentNumber', this._id);
-      //classes.update(this._id, {$inc: {studentNumber: -1}});
+
+
+
       console.log("Successfully unenrolled user from class!");
     }
 

@@ -41,7 +41,7 @@ Template.editProfile.helpers({
     if(Meteor.user())
     {
       console.log("Found picture!");
-      console.log(Meteor.user().profile.binary);
+      console.log(Meteor.user().binary);
       return Meteor.user().profile.binary;
     }
     else

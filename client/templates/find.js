@@ -47,18 +47,17 @@ Template.find.events({
      event.preventDefault();
      var classid = $(event.target).parent().parent().children().eq(0).text();
 
+		 console.log(classid);
+
      if ((user.find({meteor: Meteor.user()._id, classes: classid}).count())===0){
      	Meteor.call('incrementStudentNumber', classid);
-     //	Meteor.call('insertPlayerClass', classid);
-     //	Meteor.users.update({profile.name: Meteor.user().profile.name}, {$set: {classid: true}});
-     	var empty= [];
-			//TODO: Make better key names ie: not meteor
-     	user.insert({meteor: Meteor.user()._id, classes: empty});
+
      	var id = Meteor.user()._id;
      	Meteor.call('insertPlayerClass', id, classid);
-     	//user.update({meteor: id}, {$set: {classid: true}});
+
+		 	//user.update({meteor: id}, {$set: {classid: true}});
      	sAlert.success('Succesfully Enrolled!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
- 
+
 
      }
      else {
