@@ -2,13 +2,14 @@
 Meteor.methods({
     'insertPlayerClass': function(id, classid){
         //add class to user's class list
-       var classStudentList = classes.findOne(classid);
+        var classStudentList = classes.findOne(classid);
         if(classStudentList){
           classStudentList = classStudentList.studentList;
           console.log("classList is " + classStudentList);
           //insert the students id into the class's studentList
           classStudentList.unshift(id);
           classes.update(classid, {$set : {studentList : classStudentList}});
+
         }
         else{
           throw "matching class not found";
@@ -81,6 +82,9 @@ Meteor.methods({
     },
     'addNewUser': function(id){
         user.insert({meteor: id});
+    },
+    'setCash': function(id){
+        Meteor.users.update(id, {$set: {"profile.balance": 0.00}});
     }
 });
 

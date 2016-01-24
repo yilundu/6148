@@ -43,7 +43,7 @@ Template.find.events({
 
 },
     "click .results .submit": function(event) {
-			console.log("click .results .submit triggered");
+	 if (Meteor.user()){
      event.preventDefault();
      var classid = $(event.target).parent().parent().children().eq(0).text();
 
@@ -65,6 +65,10 @@ Template.find.events({
      }
      else {
      	sAlert.error('You have already enrolled!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
+ 	}}
+ 	else {
+ 		event.preventDefault();
+ 		Router.go('/register')
  	}
   //  $(".submit").eq(1).parent().parent().children().eq(0).text()
   //  classes.update({_id: $(this).parent().children(:first-child).val());

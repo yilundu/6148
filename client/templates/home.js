@@ -5,7 +5,8 @@ Template.home.helpers({
     {
       if( Meteor.user().profile.name){
         return Meteor.user().profile.name;
-      }else{
+      }
+      else{
         return Meteor.user().username;
       }
     }
