@@ -52,6 +52,33 @@
 	margin: auto;
 }
 
+.__find .outsidesearch{
+    background-color: #428eff;
+    border-radius: 20px;
+    width: 95vw;
+}
+.__find .insidesearch{
+    list-style-type: none;
+     margin-bottom: 10px;
+    padding-bottom: 20px;
+    padding-right: 30px;
+    padding-left: 30px;
+    background-color: white;
+    padding-top: 20px;
+    margin-top: 10px;
+    width: 94%;
+    margin-left: auto;
+    margin-right: auto;
+}
+#hidethis{
+    height: 0px;
+}
+#classliid{
+    color: #1F3A93;
+    font-size: 2em;
+    font-weight: 400;
+}
+/*
 .results ul {
     width:750px;
     list-style-type:none;
@@ -71,7 +98,7 @@
     border-bottom:1px solid #eee;
     position:relative;
 }
-
+*/
 .results li .submit {
 	margin-right: 600px;
 }
