@@ -2,17 +2,22 @@
 Meteor.methods({
     'insertPlayerClass': function(id, classid){
         //add class to user's class list
-       /*var classStudentList = classes.findOne(classid);
+        var classStudentList = classes.findOne(classid);
         if(classStudentList){
-          classStudentList = classes.studentList;
+          classStudentList = classStudentList.studentList;
           console.log("classList is " + classStudentList);
-          classStudentList.unshift(classid);
+          //insert the students id into the class's studentList
+          classStudentList.unshift(id);
           classes.update(classid, {$set : {studentList : classStudentList}});
-        }*/
+
+        }
+        else{
+          throw "matching class not found";
+        }
 
         user.update({meteor: id}, {$push: {classes: classid}});
         //add user to studentList of class
-        
+
 
     },
 

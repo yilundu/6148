@@ -1,0 +1,33 @@
+._register .panel {
+
+  width: 600px;
+  height: auto;
+  margin: auto;
+  margin-top: 100px;
+
+
+}
+
+._register > .panel > * {
+  margin: 20px;
+}
+
+._register .correct {
+	background: #fff url(images/valid.png) no-repeat 98% center;
+	box-shadow: 0 0 5px #5cd053;
+	border-color: #28921f;
+
+}
+
+._register .incorrect {
+	background: #fff url(images/invalid.png) no-repeat 98% center;
+	box-shadow: 0 0 5px #d45252;
+	border-color: #b03535
+
+}
+
+ #confirm_password input:required:valid  {
+ 	background: none;
+ 	box-shadow: none;
+ 	border-color: none;
+ }
