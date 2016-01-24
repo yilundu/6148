@@ -85,7 +85,9 @@ Template.createClass.onRendered(function() {
       map: "#my_map"
     }).bind("geocode:result", function(event, result){
       console.log(result.formatted_address);
-      console.log("lel");
+      var geo = new GeoCoder();
+      var result1 = geo.geocode(result.formatted_address);
+      console.log(result1);
     });
     }
   });
