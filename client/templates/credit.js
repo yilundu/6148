@@ -39,7 +39,7 @@ Template.credit.events({
 		}
 
 		if (transaction+change >= 0) {
-			string = string + "Your balance will be $"+(transaction+change)+ " after transaction.";
+			string = string + "Your balance will be $"+ (transaction+change).toFixed(2)+ " after transaction.";
 
 		
 		bootbox.confirm(string, function(result){
