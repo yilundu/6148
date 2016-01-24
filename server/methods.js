@@ -49,8 +49,9 @@ Meteor.methods({
     },
 
     //updates class list of user with 'user_id'
+    //note _id of user IS NOT the same as Meteor.userId() - use meteor instead
     'updateCurrentClass': function(user_id, currentClasses){
-    	user.update(user_id, {$set: {classes: currentClasses}});
+    	user.update({meteor: user_id}, {$set: {classes: currentClasses}});
 
     },
 
