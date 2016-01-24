@@ -1,0 +1,39 @@
+.modal-dialog{
+	    margin-top: 200px;
+}
+
+.inputgroupGroup{
+width: 30%;
+}
+#financetitle{
+	font-family: "Nunito";
+
+}
+._credit{
+	font-family: "Nunito";
+}
+.venmo{
+	margin-bottom: 3px;
+}
+._credit{
+	margin-left: 20px;
+	margin-right: 20px;
+}
+.input-group{
+	margin-bottom: 3px;
+}
+.input-group-addon{
+	border: none;
+	    color: white;
+    background-color: #3C763D;
+}
+
+#basic-addon1{
+	background-color: #3C763D;
+}
+#basic-addon3{
+	background-color: #3C763D;
+}
+#submit-btn{
+	margin-top: 10px;
+}
