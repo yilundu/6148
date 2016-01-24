@@ -16,7 +16,9 @@ Template.classInfoPage.events({
       userId: Meteor.userId(),
       postText: postText,
       timePosted: new Date()});
-    Meteor.call('updatedAnnouncements', this._id, updatedAnnouncements);
+
+    console.log("entered click techaerpostbtn");
+    Meteor.call('updateAnnouncements', this._id, updatedAnnouncements);
     //classes.update(this._id, {$set : {classAnnouncements: updatedAnnouncements}});
 
   },

@@ -65,7 +65,7 @@ Meteor.methods({
     	classes.update({_id:classid},{$inc: {studentNumber: -1}});
     },
     'updateAnnouncements': function(classid, classAnnouncements){
-    	classes.update(classid, {$set : {classAnnouncements: updatedAnnouncements}});
+    	classes.update(classid, {$set : {classAnnouncements: classAnnouncements}});
     },
     'updateComments': function(classid, updatedComments){
 

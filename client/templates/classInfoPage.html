@@ -33,12 +33,14 @@
       </div>
       <div class="teacher-announcements">
 
+        <button class="btn btn-primary" id="teacherPostBtn" visible="{{isTeacher}}">Post:</button>
+        <input type="text" class="form-control" width = "90%" id="teacherPostField">
+
         {{#each classAnnouncements}}
           {{> announcementTemplate}}
         {{/each}}
 
-        <button class="btn btn-primary" id="teacherPostBtn" visible="{{isTeacher}}">Post:</button>
-        <input type="text" class="form-control" width = "90%" id="teacherPostField">
+
       </div>
 
 
@@ -48,11 +50,14 @@
       </div>
 
       <div class="student-comments">
+        
+        <button class="btn btn-primary" id="studentPostBtn">Post</button>
+        <input type="text" class="form-control" width = "90%" id="studentPostField">
+
         {{#each studentComments}}
           {{> commentTemplate}}
         {{/each}}
-        <button class="btn btn-primary" id="studentPostBtn">Post</button>
-        <input type="text" class="form-control" width = "90%" id="studentPostField">
+
       </div>
 
 
