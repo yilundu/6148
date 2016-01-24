@@ -47,7 +47,7 @@
 #about{
 	background-color: #428eff;
 }
-#abouttitle, #learntitle, .searchtitle{
+#abouttitle, #learntitle{
 	margin-top: 10vh;
 	margin-bottom: 5vh;
 	font-size: .7em;
@@ -73,6 +73,7 @@
 	margin-top: 10px;
 }
 ._home .imagedescrip{
+	margin-left: 10px;
 	text-align: left;
 	color: white;
 	font-weight: 100;
@@ -81,6 +82,7 @@
 }
 
 ._home .imagedescriptitle{
+	margin-left: 10px;
 	text-align: left;
 	color: white;
 	font-weight: 200;

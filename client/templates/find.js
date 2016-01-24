@@ -36,8 +36,8 @@ Template.find.events({
 		$(".Test").append(
 			"<div class='results'>"
 			+"<ul class = 'jumbotron insidesearch'>"
-			+"<li id = 'hidethis'>"+item._id+"</li>"
-			+"<li id = 'classliid'>"+item.title+"</li>"
+			+"<li class = 'hidethis'>"+item._id+"</li>"
+			+"<li class= 'classliid'>"+item.title+"</li>"
 			+"<li> Description: "+item.description+"</li>"
 			+"<li> Subject: "+item.subject+"</li>"
 			+"<li> Teacher: "+ item.teacher+ "</li><li> Date: "+ item.createdAt+ "</li>"
