@@ -11,7 +11,7 @@
        <p class = "searchinfo"> Welcome to the search bar! Please enter a short description of the title and description. </p>
        <ul>
         <li>
-          <input type="text" id="title1" name="title" placeholder="What do you want to learn? (Ex. cooking, guitar)" value={{this}}><br>
+          <input type="text" id="title1" name="title" placeholder="What do you want to learn? (Ex. cooking, guitar)" value={{this.search}}><br>
         </li>
         
         <li>
@@ -39,6 +39,7 @@
            <li>Teacher: {{teacher}}</li>
            <li>Student Number: {{studentNumber}}</li>
            <li>Date: {{createdAt}}</li>
+     <!--     <li>Map: {{>googleMap name="Map" options= "{center: new google.maps.LatLng({{latitude}}, {{longitude}})}" }}</li>  -->
            
            <li><button class="submit">Enroll!</button></li>
 

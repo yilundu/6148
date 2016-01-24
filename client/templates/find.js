@@ -14,24 +14,24 @@ Template.find.helpers({
 //	var search2 = new ReactiveVar(new RegExp($(".description").val(),'i'));
 //	return classes.find({subject: search1, description: search2});
 	
-	if(this){
-	var search = this;
+	if(this.search){
+	var search = this.search;
 	var parts = search.trim().split(/[ \-\:]+/);
     var searchregex = new RegExp("(" + parts.join('|') + ")", "ig");
     $("#title1").val(search);
 	return classes.find({$or: [{title: searchregex}, {description: searchregex}, {subject: searchregex}]}, {limit: 10, sort: {studentNumber: -1}});
 	}
 	else{
-	var search1 = new RegExp($("#title1").val(),'i');
+	//var search1 = new RegExp($("#title1").val(),'i');
 	//return {posts: classes.find({subject: search1, description: search2})};
 
 
 	return classes.find({}, {limit: 10, sort: {studentNumber: -1}});
 //	return classes.find({subject: {regex: "/"+$(".subject").val()+"/i"}, description: {regex: "/"+$(".description").val()+"/i"}});
 	}
-	}
-}
-);
+	},
+
+});
 
 Template.find.events({
 	"submit .searchform": function(event) {
@@ -102,8 +102,8 @@ Template.find.events({
 
 
     }
+    
 });
-
 
 
 
