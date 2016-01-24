@@ -81,6 +81,9 @@ Meteor.methods({
     },
     'addNewUser': function(id){
         user.insert({meteor: id});
+    },
+    'setCash': function(id){
+        Meteor.users.update(id, {$set: {"profile.balance": 0.00}});
     }
 });
 

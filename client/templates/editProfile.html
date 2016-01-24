@@ -20,6 +20,20 @@
       <h3>Basic Info:</h3>
     </div>
 
+
+    {{#if authenticated}}
+    <div>
+      <a class = "btn btn-success venmo" href= "#">Venmo Authenticated</a>
+    </div>
+    
+    {{else}}
+    <div>
+      <a class = "btn btn-danger venmo" href= "{{url}}">Authenticate Venmo</a>
+    </div>
+    
+    {{/if}}
+
+
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1">Display Name (separate from username)</span> <!-- Name inputted here will appear in top right accounts ui dropdown -->
       <input type="text" class="form-control" id="name-field" placeholder="Ex: John Smith" aria-describedby="basic-addon1" value="{{name}}">
@@ -34,19 +48,18 @@
       <span class="input-group-addon" id="basic-addon3">About me:</span>
       <input type="text" class="form-control" id="about-field" placeholder="Introduce yourself to start finding overlaps!" aria-describedby="basic-addon3" value={{about}}>
     </div>
-    {{#if authenticated}}
-    <div>
-      <a class = "btn btn-success venmo" href= "#">Venmo Authenticated</a>
+
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon3">Account Credit $:</span>
+      <input type="text" class="form-control" id="about-field" aria-describedby="basic-addon3" value={{cash}} readonly>
     </div>
-    <br>
-    <br>
-    {{else}}
+
     <div>
-      <a class = "btn btn-danger venmo" href= "{{url}}">Authenticate Venmo</a>
+      <a class = "btn btn-danger" id="addcredit" href= "#">Add Credit</a>
     </div>
+
     <br>
     <br>
-    {{/if}}
 
     <div class="btn-group">
       <button type="button" class="btn btn-primary" id="submit-btn">Submit</button>
