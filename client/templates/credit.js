@@ -49,7 +49,30 @@ Template.credit.events({
 			 	console.log(result);
 			 }
 			 else{
-			 HTTP.call("POST", "https://api.venmo.com/v1/payments",{
+
+			
+			 $.ajax({
+			 	url: "/payvenmo",
+			 	type: "GET",
+			 	data:{
+		        "access_token": Meteor.user().profile.venmo,
+		        "id": Meteor.user()._id,
+		        "amount": change
+		      },
+		     
+		      	success: function(data){
+		      		sAlert.success('Transaction Recieved!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
+		         	Meteor.call('addCash', Meteor.user()._id, change);
+
+		      	},
+		      	error: function(data){
+		      		sAlert.error('Error in Venmo transaction. Please reauthenticate.',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
+		         	console.log(error);
+		      	}
+			 });
+
+			
+			 /*HTTP.call("POST", "https://api.venmo.com/v1/payments",{
 		      data:{
 		        "access_token": Meteor.user().profile.venmo,
 		        "phone": "307-399-6339",
@@ -70,11 +93,14 @@ Template.credit.events({
 		        
 		          //Meteor.users.update({_id: id},{$set: {"profile.venmo": response.data.access_token, "profile.authenticated": true}});
 		       //   venmo.insert({"json":response.json});
-		         }});
+		         }
 
-			this.response.setHeader('access-control-allow-origin', '*');
+		    this.response.setHeader('access-control-allow-origin', '*');
 			this.response.writeHead(200, {});
     		this.response.end();
+		     });*/
+
+			
 			}
 		});
 	}

@@ -21,7 +21,8 @@ Meteor.methods({
 
     },
 
-    'createClass': function(user_title, user_cost, user_description, user_subject, user_id, username){
+    'createClass': function(user_title, user_cost, user_description, user_subject, user_id, username, actualusername){
+    	if(username){
     	classes.insert({
         title: user_title,
         subject: user_subject,
@@ -35,6 +36,24 @@ Meteor.methods({
         studentComments: [],//empty at creation
         studentList: []//empty at creation
       });
+    }
+    	else{
+    		Meteor.users.update(user_id,{$set:{"profile.name": actualusername}});
+    		classes.insert({
+	        title: user_title,
+	        subject: user_subject,
+	        cost: user_cost,
+	        teacher: actualusername,
+	        description: user_description,
+	        createdAt: new Date(),
+	        studentNumber: 0, // current time
+	        teacherId: user_id,
+	        classAnnouncements: [],//empty at creation
+	        studentComments: [],//empty at creation
+	        studentList: []//empty at creation
+	      });
+
+    	}
     },
     'incrementStudentNumber': function(classid){
         console.log(classes.findOne(classid,{studentNumber: 1, _id: 0}));

@@ -49,7 +49,7 @@ Template.createClass.events({
     checkTextEmpty($('#descField')) &
     checkNumberPositive($('#costField'))){
 
-     Meteor.call('createClass', user_title, user_cost, user_description, user_subject, Meteor.user()._id, Meteor.user().profile.name);
+     Meteor.call('createClass', user_title, user_cost, user_description, user_subject, Meteor.user()._id, Meteor.user().profile.name, Meteor.user().username);
 
 
       //redirect to sellerDashboard
