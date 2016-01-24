@@ -73,13 +73,7 @@ Template.createClass.events({
   "keyup #descField": function(event){
     checkTextEmpty(event.target);
   },
-  'click #find': function() {
-    // Trigger geocoding request.
-    $("#mapidform").trigger("geocode");
-    // $("#mapidform").geocomplete({
-    //   map: "#my_map"
-    // });
-  }
+
 });
 
 
@@ -90,8 +84,8 @@ Template.createClass.onRendered(function() {
       $("#mapidform").geocomplete({
       map: "#my_map"
     }).bind("geocode:result", function(event, result){
-      console.log(result);
-      console.log("lel")
+      console.log(result.formatted_address);
+      console.log("lel");
     });
     }
   });
