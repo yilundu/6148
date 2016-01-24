@@ -39,9 +39,8 @@ juliancwirko:s-alert
 juliancwirko:s-alert-genie
 autopublish
 jeremy:geocomplete
-aldeed:geocoder
-mizzao:bootboxjs
 <<<<<<< HEAD
-
+aldeed:geocoder
 =======
->>>>>>> 023d1c2cc8903ad6d5f7f2a37b8570062ee79656
+mizzao:bootboxjs
+>>>>>>> aae784f52ed5210f8eecbc39e507b484bc3b47c6
