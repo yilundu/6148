@@ -1,21 +1,23 @@
 <template name="credit">
+<head>
+<link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+</head>
+<div class = "containercred">
 <div class = "_credit">
 <div class = "page-header">
-<h1>Financial Managment</h1>
+<h1 id = "financetitle">Financial Managment</h1>
 </div>
 
 {{#if authenticated}}
-    <div>
-      <a class = "btn btn-success venmo" href= "#">Venmo Authenticated</a>
-    </div>
-    
+
+    <div class = "inputgroupGroup">
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1">Current Balance $</span> <!-- Name inputted here will appear in top right accounts ui dropdown -->
       <input type="number" class="form-control" id="name-field" aria-describedby="basic-addon1" value={{cash}} readonly>
     </div>
 
     <div class="input-group">
-      <span class="input-group-addon" id="basic-addon2">Add Balance $</span>
+      <span class="input-group-addon" id="basic-addon2">Add Balance $&nbsp; &nbsp;</span>
       <input type="number" class="form-control" id="addvalue" placeholder="Ex: 20.00"  min="0.01" step="0.01" max="2500" value=0.00>
     </div>
 
@@ -27,6 +29,7 @@
      <div class="btn-group">
       <button type="button" class="btn btn-primary" id="submit-btn">Confirm</button>
     </div>
+    </div>
 
 {{else}}
     <div>
@@ -35,5 +38,6 @@
     
 {{/if}}
 
+</div>
 </div>
 </template>
