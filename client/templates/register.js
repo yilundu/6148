@@ -6,7 +6,8 @@
                 password = $('#password').val();
                 Accounts.createUser({
                     username: username,
-                    password: password
+                    password: password,
+                    profile: {}
 
                 });
 
