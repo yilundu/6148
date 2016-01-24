@@ -21,7 +21,7 @@ Meteor.methods({
 
     },
 
-    'createClass': function(class_date, user_title, user_cost, user_description, user_subject, user_id, username, actualusername){
+    'createClass': function(class_date, user_title, user_cost, user_description, user_subject, user_id, username, actualusername, latitude, longitude){
     	if(username){
     	classes.insert({
         title: user_title,
@@ -34,7 +34,9 @@ Meteor.methods({
         teacherId: user_id,
         classAnnouncements: [],//empty at creation
         studentComments: [],//empty at creation
-        studentList: []//empty at creation
+        studentList: [],//empty at creation
+        latitude: latitude,
+        longitude: longitude
       });
     }
     	else{
