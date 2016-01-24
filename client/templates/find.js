@@ -33,8 +33,19 @@ Template.find.events({
 	$(".Test").html("");
 
 	 json.forEach(function(item){
-		$(".Test").append("<div class='results'><ul><li>"+item._id+"</li><li> Subject:"+item.subject+"</li><li> Title:"+item.title+"</li><li> Students Enrolled:"+item.studentNumber+"</li><li> ID: "+ item.teacher+ "</li><li> Date: "+ item.createdAt+ "</li><li> Description: "+item.description+"</li><li><button class='submit'>Enroll!</button></li></ul></div>");
+		$(".Test").append(
+			"<div class='results'>"
+			+"<ul class = 'jumbotron insidesearch'>"
+			+"<li id = 'hidethis'>"+item._id+"</li>"
+			+"<li id = 'classliid'>"+item.title+"</li>"
+			+"<li> Subject: "+item.subject+"</li>"
+			+"<li> Students Enrolled: "+item.studentNumber+"</li>"
+			+"<li> ID: "+ item.teacher+ "</li><li> Date: "+ item.createdAt+ "</li>"
+			+"<li> Description: "+item.description+"</li>"
+			+"<li><button class='submit'>Enroll!</button></li>"
+			+"</ul></div>");
 	});
+	 $( ".__find .container" ).addClass( "jumbotron outsidesearch" );
 
 
 
