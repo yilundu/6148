@@ -57,5 +57,15 @@ Template.classInfoPage.helpers({
       return false;
     }
   },
+  studentList: function(){
+    if(this.studentList)
+    {
+      console.log(this.studentList);
+      return this.studentList;
+    }
+    else{
+      return [];
+    }
+  }
 
 });
