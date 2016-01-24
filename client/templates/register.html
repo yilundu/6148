@@ -9,37 +9,23 @@
       </div>
 
       <div class="input-group">
-        <span class="input-group-addon" id="addon1">Title:</span>
-        <input type="text" class="form-control" placeholder="Ex: 8.01" aria-describedby="addon1" id="titleField" autofocus>
+        <span class="input-group-addon" id="addon1">Username:</span>
+        <input type="text" class="form-control" placeholder="Ex: GANDALF" aria-describedby="addon1" id="titleField" autofocus required>
       </div>
 
 
       <div class="input-group">
-        <span class="input-group-addon" id="addon3">Cost:</span>
-        <input type="number" class="form-control" placeholder="" aria-describedby="addon3" id="costField">
+        <span class="input-group-addon" >Password:</span>
+        <input type="password" class="form-control" placeholder="" aria-describedby="addon3" id="password" minlength='6' required>
       </div>
 
       <div class="input-group">
-        <span class="input-group-addon" id="addon4">Description:</span>
-        <input type="text" class="form-control" placeholder="" aria-describedby="addon4" id="descField">
+        <span class="input-group-addon" >Password(Again):</span>
+        <input type="password" class="form-control" placeholder="" aria-describedby="addon4" id="confirm_password" minlength='6'>
       </div>
 
-      <div class="page-header">
-        <h3>Subject:</h3>
-      </div>
-
-      <div class="list-group">
-
-        <a href="#" class="list-group-item active">Biking</a>
-        <a href="#" class="list-group-item">Cooking</a>
-        <a href="#" class="list-group-item">Coding</a>
-        <a href="#" class="list-group-item">Academics</a>
-        <a href="#" class="list-group-item">Music</a>
-        <a href="#" class="list-group-item">Misc.</a>
-      </div>
-
-      <button class="btn btn-primary" id="createBtn">Create this class!</button>
-      <a class="btn btn-warning" href="{{pathFor 'sellerDashboard'}}">Back to Dashboard</a>
+      <button class="btn btn-primary" id="createBtn">Register Account!</button>
+      <a class="btn btn-warning" href="{{pathFor 'sellerDashboard'}}">Back to Home Page</a>
 
     </div>
 

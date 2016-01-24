@@ -87,5 +87,26 @@ Template.editProfile.helpers({
     {
       return "";
     }
+  },
+
+  authenticated: function(){
+    return Meteor.user().profile.authenticated;
+
+  },
+
+  url: function(){
+    var string = "https://api.venmo.com/v1/oauth/authorize?client_id=3446&scope=make_payments&response_type=code&state="+Meteor.userId();
+    return string;
+  },
+
+  cash: function(){
+    if (Meteor.user().profile.balance){
+      return Meteor.user().profile.balance;
+    }
+    else{
+      Meteor.call('setCash', Meteor.user()._id)
+      return Meteor.user().profile.balance;
+    }
   }
+
   });

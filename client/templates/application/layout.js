@@ -54,6 +54,15 @@ Template.layout.events({
 			scrollTop: $("#Mission").offset().top
 		}, 700);
 		return false;
+	},
+	"click #createClass": function(e,template){
+		e.preventDefault();
+		if(Meteor.user()){
+			Router.go('/createClass');
+		}
+		else{
+			Router.go('/register');
+		}
 	}
 
 
@@ -76,7 +85,7 @@ Template._loginButtonsLoggedInDropdown.onRendered(function () {
 
 
 Template.layout.onRendered(function(){
-	$("#leftpart ul").append('<li><a href = "/createclass" class = "navbartext"> Teach a Class </a></li>');
+	$("#leftpart ul").append('<li><a href = "#" id = "createClass" class = "navbartext"> Teach a Class </a></li>');
 
 });
 
