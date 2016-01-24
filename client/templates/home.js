@@ -58,7 +58,7 @@ Template.home.helpers({
         console.log("Hello!");
         event.preventDefault();
         var path = $('#user1').val();
-        path = "/search/" + path;
+        path = "/search?search=" + path;
         Router.go(path);
     }
 

@@ -129,4 +129,6 @@
 .results li:first-child{
 	visibility: hidden;
 }
-
+#title1{
+    color: black;
+}

@@ -52,7 +52,9 @@ Meteor.methods({
 	        teacherId: user_id,
 	        classAnnouncements: [],//empty at creation
 	        studentComments: [],//empty at creation
-	        studentList: []//empty at creation
+	        studentList: [],//empty at creation
+            latitude: latitude,
+            longitude: longitude
 	      });
 
     	}
