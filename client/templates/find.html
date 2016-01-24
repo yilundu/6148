@@ -11,7 +11,7 @@
        <p class = "searchinfo"> Welcome to the search bar! Please enter a short description of the title and description. </p>
        <ul>
         <li>
-          <input type="text" id="title1" name="title" placeholder="What do you want to learn? (Ex. cooking, guitar) "><br>
+          <input type="text" id="title1" name="title" placeholder="What do you want to learn? (Ex. cooking, guitar)" value={{this}}><br>
         </li>
         
         <li>
@@ -26,7 +26,7 @@
     </header>
     <!--{{>searchResult}} Not working right now-->
 
-    <div class="container" id = "fourpushdown">
+    <div class="container jumbotron outsidesearch" id = "fourpushdown">
      <p class="Test">
 
        {{#each results}} 
