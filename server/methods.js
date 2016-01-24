@@ -21,7 +21,7 @@ Meteor.methods({
 
     },
 
-    'createClass': function(user_title, user_cost, user_description, user_subject, user_id, username, actualusername){
+    'createClass': function(class_date, user_title, user_cost, user_description, user_subject, user_id, username, actualusername){
     	if(username){
     	classes.insert({
         title: user_title,
@@ -29,7 +29,7 @@ Meteor.methods({
         cost: user_cost,
         teacher: username,
         description: user_description,
-        createdAt: new Date(),
+        createdAt: class_date,
         studentNumber: 0, // current time
         teacherId: user_id,
         classAnnouncements: [],//empty at creation
