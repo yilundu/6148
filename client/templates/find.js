@@ -38,10 +38,10 @@ Template.find.events({
 			+"<ul class = 'jumbotron insidesearch'>"
 			+"<li id = 'hidethis'>"+item._id+"</li>"
 			+"<li id = 'classliid'>"+item.title+"</li>"
-			+"<li> Subject: "+item.subject+"</li>"
-			+"<li> Students Enrolled: "+item.studentNumber+"</li>"
-			+"<li> ID: "+ item.teacher+ "</li><li> Date: "+ item.createdAt+ "</li>"
 			+"<li> Description: "+item.description+"</li>"
+			+"<li> Subject: "+item.subject+"</li>"
+			+"<li> Teacher: "+ item.teacher+ "</li><li> Date: "+ item.createdAt+ "</li>"
+			+"<li> Students Enrolled: "+item.studentNumber+"</li>"
 			+"<li><button class='submit'>Enroll!</button></li>"
 			+"</ul></div>");
 	});

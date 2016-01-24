@@ -35,6 +35,7 @@ Template.createClass.events({
     var user_cost = $("#costField").val();
     var user_description = $("#descField").val();
     var user_subject;
+    var class_date = $("#dateField").val();
 
 
     $('.list-group-item').each(function(){
@@ -42,18 +43,41 @@ Template.createClass.events({
         user_subject = $(this).html();
       }
     });
+    var address=$('#mapidform').val();
+    var latitude = 0;
+    var longitude = 0;
+    $.ajax({
+        url: "https://maps.googleapis.com/maps/api/geocode/json",
+        type: "GET",
+        data:{
+            "address": address,
+            "key": "AIzaSyAL46_D20KBsAqUgDigLBQetRCJO3tiByM"
+          },
+         
+            success: function(data){
+              latitude = data.results[0].geometry.location.lat;
+              longitude = data.results[0].geometry.location.lng;
+          //    sAlert.success('Transaction Recieved!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
+          //    Meteor.call('addCash', Meteor.user()._id, change);
 
+
+            },
+            error: function(data){
+          //    sAlert.error('Error in Venmo transaction. Please reauthenticate.',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
+          //    console.log(error);
+            }
+       });
     //check fields
     //NOTE: use singular & in order to avoid short-circuit evaluation: all methods must be called to label fields red as needed
     if(checkTextEmpty($('#titleField')) &
     checkTextEmpty($('#descField')) &
     checkNumberPositive($('#costField'))){
 
-     Meteor.call('createClass', user_title, user_cost, user_description, user_subject, Meteor.user()._id, Meteor.user().profile.name, Meteor.user().username);
+     Meteor.call('createClass',class_date, user_title, user_cost, user_description, user_subject, Meteor.user()._id, Meteor.user().profile.name, Meteor.user().username, latitude, longitude);
 
 
       //redirect to sellerDashboard
-      Router.go('/sellerDashboard');
+    //  Router.go('/sellerDashboard');
     }
   },
 
