@@ -11,7 +11,12 @@
 	border: 0px;
 	position: absolute;
 }
-
+.fa-spin-hover:hover {
+  -webkit-animation: spin 2s infinite linear;
+  -moz-animation: spin 2s infinite linear;
+  -o-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+}
 .navbarnothome{
 	top: 0;
 	width: 100%;

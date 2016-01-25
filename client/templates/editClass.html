@@ -27,6 +27,7 @@
       <div class="input-group">
         <span class="input-group-addon" id="addon5">Date of Class:</span>
         <input type="datetime-local" value="{{createdAt}}" class="form-control" placeholder="" aria-describedby="addon5" id="dateField">
+        Created At: {{createdAt}}
       </div>
 
 
@@ -36,12 +37,13 @@
 
       <div class="list-group">
 
-        <a href="#" class="list-group-item active">Biking</a>
-        <a href="#" class="list-group-item">Cooking</a>
-        <a href="#" class="list-group-item">Coding</a>
-        <a href="#" class="list-group-item">Academics</a>
-        <a href="#" class="list-group-item">Music</a>
-        <a href="#" class="list-group-item">Misc.</a>
+        <a href="#" class="list-group-item" id="biking">Biking</a>
+        <a href="#" class="list-group-item" id="cooking">Cooking</a>
+        <a href="#" class="list-group-item" id="coding">Coding</a>
+        <a href="#" class="list-group-item" id="academics">Academics</a>
+        <a href="#" class="list-group-item" id="music">Music</a>
+        <a href="#" class="list-group-item" id="misc">Misc.</a>
+
       </div>
 
       <button class="btn btn-primary" id="createBtn">Create this class!</button>

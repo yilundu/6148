@@ -40,7 +40,7 @@ Template.studentDashboard.helpers({
   },
 
   transactionHistory: function(){
-    return Meteor.user().profile.transactionhistory;
+    return Meteor.user().profile.transactionhistory.reverse();
   }
 
 

@@ -56,5 +56,10 @@ Template.classDashboardElement.events({
     }
   });
 
+},
+
+  "click .btn-primary": function(){
+    Router.go('/editClass/'+this._id);
   }
+
 });
