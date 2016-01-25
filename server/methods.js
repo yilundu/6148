@@ -217,12 +217,28 @@ Meteor.methods({
     },
 
     'addCash': function(id, amount){
-        Meteor.users.update(id, {$inc: {"profile.balance": amount}});
 
+        if (Meteor.users.findOne(id).profile.balance){
+        Meteor.users.update(id, {$inc: {"profile.balance": amount}});
+      }
+      else {
+        Meteor.users.update(id, {$set: {"profile.balance": 0.00}});
+        Meteor.users.update(id, {$inc: {"profile.balance": amount}});
+      }
 
     },
     'setnewCash': function(id, amount){
        classes.update({_id: id},{$set: {newcost: amount}});
+    },
+    'transactionHistory': function(id, transaction){
+      if (Meteor.users.findOne(id).profile.transactionhistory){
+      Meteor.users.update(id, {$push: {'profile.transactionhistory': transaction}});
+    }
+      else {
+        var array = [];
+        Meteor.users.update(id, {$set: {'profile.transactionhistory': array}});
+        Meteor.users.update(id, {$push: {'profile.transactionhistory': transaction}});
+      }
     }
 
 });
