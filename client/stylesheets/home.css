@@ -241,8 +241,8 @@ padding-bottom: 20%;
 	margin-left: 35%;
 }*/
 #Mission{
-	background-image:url("classroomblue2.png");
-	background-size: cover;
+	background-image:url("quotefixe.png");
+	background-size: 100% 100%;
 	background-attachment: scroll;
 	background-repeat:no-repeat;
 	height: auto;
