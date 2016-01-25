@@ -23,6 +23,11 @@ Template.studentDashboardElement.events({
       return;
     }
     else{
+      string = "Are you sure you want to drop this class?";
+      bootbox.confirm(string, function(result)
+    {
+
+      if (result===true){
 
       /*Do all the necessary database updates to unenroll the user form class*/
 
@@ -66,6 +71,11 @@ Template.studentDashboardElement.events({
 
 
       console.log("Successfully unenrolled user from class!");
+    }
+    else{
+
+    }
+    })
     }
 
 
