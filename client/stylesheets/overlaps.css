@@ -64,3 +64,17 @@ doesn't work, hover color
 .dropdown-toggle{
 	color: white;
 }
+
+.glyphicon-bullhorn {
+	color: yellow;
+	height: 35px;
+	width: 35px;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.money {
+	color: white;
+	font-size: 25pt;
+	margin-right: 20px;
+}
