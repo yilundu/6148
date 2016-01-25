@@ -69,6 +69,13 @@ Template.layout.events({
 		}, 600);
 		return false;
 	},
+	"click .pricelink": function(e, template){
+		e.preventDefault();
+		$('html, body').animate({
+			scrollTop: $("#pricing").offset().top
+		}, 600);
+		return false;
+	},
 	"click .missionlink": function(e, template){
 		e.preventDefault();
 		$('html, body').animate({
@@ -113,11 +120,18 @@ Template._loginButtonsLoggedInDropdown.onRendered(function () {
 
 Template.layout.onRendered(function(){
 	$("#leftpart ul").append('<li><a href = "#" id = "createClass" class = "navbartext"> Teach a Class </a></li>');
-	$("#leftpart ul").append('<li><a href = "#" id = "search" class = "navbartext"> Search </a></li>');
 
 });
 
 Template.layout.helpers({
+	searchbarhelper: function(){
+		if (Router.current().route.path() !== "/"){
+			return "<a href = '#' id = 'search' class = 'navbartext'> Search </a>";
+
+		}else{
+			return "";
+		}
+	},
 	navbartophelper: function () {
 
 		if (Router.current().route.path() === "/" ){
