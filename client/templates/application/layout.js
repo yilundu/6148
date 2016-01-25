@@ -63,6 +63,10 @@ Template.layout.events({
 		else{
 			Router.go('/register');
 		}
+	},
+	"click #search": function(e,template){
+			e.preventDefault();
+			Router.go('/search');
 	}
 
 
@@ -86,6 +90,7 @@ Template._loginButtonsLoggedInDropdown.onRendered(function () {
 
 Template.layout.onRendered(function(){
 	$("#leftpart ul").append('<li><a href = "#" id = "createClass" class = "navbartext"> Teach a Class </a></li>');
+	$("#leftpart ul").append('<li><a href = "#" id = "search" class = "navbartext"> Search </a></li>');
 
 });
 

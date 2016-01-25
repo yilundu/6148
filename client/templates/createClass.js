@@ -73,11 +73,11 @@ Template.createClass.events({
     checkTextEmpty($('#descField')) &
     checkNumberPositive($('#costField'))){
 
-     Meteor.call('createClass',class_date, user_title, user_cost, user_description, user_subject, Meteor.user()._id, Meteor.user().profile.name, Meteor.user().username, latitude, longitude);
+     Meteor.call('createClass', address, class_date, user_title, user_cost, user_description, user_subject, Meteor.user()._id, Meteor.user().profile.name, Meteor.user().username, latitude, longitude);
 
 
       //redirect to sellerDashboard
-    //  Router.go('/sellerDashboard');
+      Router.go('/sellerDashboard');
     }
   },
 

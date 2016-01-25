@@ -25,20 +25,46 @@
 
     <button class="btn btn-primary">Enroll me!</button>
 
+
     <!-- Main Class Content -->
     <div class="main-body row">
+
+      <div class ="page-header">
+        <h2>Your review:</h2>
+      </div>
+      <div class="user-review">
+        Your Rating:
+        <!-- Star rating widget - source: http://codepen.io/jamesbarnett/pen/vlpkh-->
+        <div class="rating-stars">
+
+        </div>
+        Review Text:
+        <input class="form-control" id="reviewField" text="{{userReviewText}}">
+          {{#if currentUser}}
+            {{#if userHasReviewed}}
+              <button class="btn btn-primary" id="editReviewBtn">Edit</button>
+              <button class="btn btn-warning" id="deleteReviewBtn">Delete</button>
+            {{else}}
+              <button class="btn btn-primary" id="saveReviewBtn">Save</button>
+            {{/if}}
+          {{/if}}
+      </div>
+
 
       <div class="page-header">
         <h1>Class Announcements</h1>
       </div>
       <div class="teacher-announcements">
 
-        {{#each classAnnouncements}}
-          {{> announcementTemplate}}
-        {{/each}}
 
-        <button class="btn btn-primary" id="teacherPostBtn" visible="{{isTeacher}}">Post:</button>
-        <input type="text" class="form-control" width = "90%" id="teacherPostField">
+        {{#if currentUser}}
+          <button class="btn btn-primary" id="teacherPostBtn" visible="{{isTeacher}}">Post:</button>
+          <input type="text" class="form-control" width = "90%" id="teacherPostField" visible="{{isTeacher}}">
+          {{#each classAnnouncements}}
+            {{> announcementTemplate}}
+          {{/each}}
+        {{/if}}
+
       </div>
 
 
@@ -48,23 +74,28 @@
       </div>
 
       <div class="student-comments">
-        {{#each studentComments}}
-          {{> commentTemplate}}
-        {{/each}}
-        <button class="btn btn-primary" id="studentPostBtn">Post</button>
-        <input type="text" class="form-control" width = "90%" id="studentPostField">
+        {{#if currentUser}}
+          <button class="btn btn-primary" id="studentPostBtn">Post</button>
+          <input type="text" class="form-control" width = "90%" id="studentPostField">
+
+          {{#each studentComments}}
+            {{> commentTemplate}}
+          {{/each}}
+        {{/if}}
       </div>
 
 
     </div>
 
     <div class ="student-list col-md-6 col-xs-12">
+      Students Enrolled:
       {{#each studentList}}
         {{> studentBanner}}
       {{/each}}
     </div>
 
     <div class ="review-list col-md-6 col-xs-12">
+      Reviews:
       TEST TEST TEST <br/>
       TEST TEST TESt
     </div>
