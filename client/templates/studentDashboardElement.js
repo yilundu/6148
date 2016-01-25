@@ -30,7 +30,7 @@ Template.studentDashboardElement.events({
       //then, update the server side db document with the updated currentClasses array
       currentClasses.splice(indexOfClass,1);
       Meteor.call('updateCurrentClass', Meteor.userId(), currentClasses)
-
+      date = new Date();
       //remove the student from the class student list
       var classStudentList = classes.findOne(this._id);
       if(classStudentList){
@@ -45,9 +45,15 @@ Template.studentDashboardElement.events({
         //splice matching index out of classStudentList
         classStudentList.splice(indexOf, 1);
 
+
         //call server side method to update student list of class with this._id
         Meteor.call('updateStudentList', this._id, classStudentList);
-
+        var string1 = "Refunded $"+this.newcost+" for dropping class "+classes.findOne(classid).title+"("+ classid + ") at time: "+time;
+        Meteor.call('addCash', Meteor.user()._id, this.newcost);
+        Meteor.call('transactionHistory', Meteor.user()._id, string1);
+        var string2 = "Refunded $-"+this.newcost+" for  student dropping class "+classes.findOne(classid).title+"("+ classid + ") at time: "+time;
+        Meteor.call('addCash', Meteor.user()._id, (-1*this.newcost));
+        Meteor.call('transactionHistory', Meteor.user()._id, string2);
       }
       else{
 
