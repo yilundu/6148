@@ -3,8 +3,11 @@ Template.layout.helpers({
 	photoprof: function(){
 		//check if user is loaded or logged in - avoids exceptions
 		if(Meteor.user()){
-
-			return Meteor.user().profile.binary;
+			if (Meteor.user().profile.binary){
+			return Meteor.user().profile.binary;}
+			else{
+				return '/default.jpg';
+			}
 
 		}
 		else{
