@@ -28,7 +28,7 @@
 
     <div class="container jumbotron outsidesearch" id = "fourpushdown">
      <p class="Test">
-
+       {{#if results}}
        {{#each results}} 
        <div class= 'results'>
          <ul class = "jumbotron insidesearch">
@@ -40,7 +40,7 @@
            <li>Student Number: {{studentNumber}}</li>
            <li>Date: {{createdAt}}</li>
            <li>Address: {{address}}</li>
-           <li>Map: {{>googleMap name="Map" options=exampleMapOptions }}</li>
+       <!--    <li>Map: {{>googleMap name="Map" options=exampleMapOptions }}</li> -->
            <li>Cost: <span class='strikethrough'>${{cost}}</span> ${{newcost}}</li>
      <!--     <li>Map: {{>googleMap name="Map" options= "{center: new google.maps.LatLng({{latitude}}, {{longitude}})}" }}</li>  -->
            
@@ -51,6 +51,9 @@
        </div>
 
        {{/each}}
+       {{else}}
+       <p> Sorry, but no results were found for your query. Create this <a href="/createClass"> class </a> now!</p>
+       {{/if}}
      </p>
    </div>
  </div>
