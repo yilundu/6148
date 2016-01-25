@@ -22,6 +22,7 @@
 ._student-dashboard{
 	height: 100vh;
 	background-image: url("bookshelf1.png");
+  background-repeat: repeat;
 	background-size: cover;
 }
 
