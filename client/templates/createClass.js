@@ -119,6 +119,7 @@ Template.createClass.onRendered(function() {
     });
     }
   });
+  
 });
 
 Template.createClass.helpers({
@@ -138,7 +139,7 @@ Template.createClass.onCreated(function() {
   GoogleMaps.ready('exampleMap', function(map) {
     // Add a marker to the map once it's ready
     var marker = new google.maps.Marker({
-      position: map.options.center,
+      position: map.options.center(new google.maps.LatLng(-37.8136, 144.9631)),
       map: map.instance
     });
   });

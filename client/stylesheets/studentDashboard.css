@@ -1,6 +1,6 @@
 ._student-dashboard #sidebar1{
 
-  width: auto;
+  width: 40%;
   padding: 20px; 
 
 
@@ -25,6 +25,15 @@
   margin-top: 0px;
   margin-bottom: 0px;
 }
+.transaction_history{
+	padding: 15px;
+	list-style: none;
+}
+#signupdiv{
+	height: 78px;
+	width: 100%
+	border-radius: 4px;
+}
 ._student-dashboard .panel-heading{
 	background-color: #DFF0D8
 }
@@ -37,8 +46,21 @@
 ._student-dashboard #join-class-btn {
   border-top-right-radius: 0px;
   border-top-left-radius: 0px;
+      margin-left: auto;
+    width: auto;
+    margin-bottom: 10px;
+    margin-right: auto;
   
 }
+._student-dashboard #join-class-btn2 {
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+  
+}
+
+
+
+
 ._student-dashboard{
 	min-height: 100vh;
 	background-repeat: repeat;
