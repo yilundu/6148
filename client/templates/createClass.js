@@ -53,7 +53,7 @@ Template.createClass.events({
             "address": address,
             "key": "AIzaSyAL46_D20KBsAqUgDigLBQetRCJO3tiByM"
           },
-         
+
             success: function(data){
               latitude = data.results[0].geometry.location.lat;
               longitude = data.results[0].geometry.location.lng;
