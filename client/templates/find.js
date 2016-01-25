@@ -15,7 +15,7 @@ Template.find.helpers({
 //	return classes.find({subject: search1, description: search2});
 	classes.find({}).forEach(
 		function(elem){
-			var newcost =(2*elem.cost*(elem.studentNumber/2+2)/(elem.studentNumber/2+1)/3).toFixed(2);	
+			var newcost =(1*elem.cost*(elem.studentNumber/3+2)/(elem.studentNumber/3+1)/2).toFixed(2);	
 			Meteor.call('setnewCash',elem._id, newcost);
 
 		}
@@ -68,7 +68,7 @@ Template.find.events({
 	$(".Test").html("");
 	classes.find({}).forEach(
 		function(elem){
-			var newcost =(2*elem.cost*(elem.studentNumber/2+2)/(elem.studentNumber/2+1)/3).toFixed(2);
+			var newcost =(1*elem.cost*(elem.studentNumber/3+2)/(elem.studentNumber/3+1)/2).toFixed(2);
 			Meteor.call('setnewCash',elem._id, newcost);
 		}
 
@@ -76,7 +76,7 @@ Template.find.events({
 		);
 
 	 json.forEach(function(item){
-	 	var newCost = ((item.cost/2)*(item.studentNumber/2+2)/(item.studentNumber/2+1)/3).toFixed(2);
+	 	var newCost = ((item.cost/2)*(item.studentNumber/3+2)/(item.studentNumber/3+1)).toFixed(2);
 		$(".Test").append(
 			"<div class='results' id='" + item._id+"''>"
 			+"<ul class = 'jumbotron insidesearch'>"
