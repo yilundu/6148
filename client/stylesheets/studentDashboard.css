@@ -11,11 +11,18 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
-
+._student-dashboard .panel-heading{
+	background-color: #DFF0D8
+}
 ._student-dashboard #join-class-btn {
   border-top-right-radius: 0px;
   border-top-left-radius: 0px;
   
+}
+._student-dashboard{
+	height: 100vh;
+	background-image: url("bookshelf1.png");
+	background-size: cover;
 }
 
 ._student-dashboard .panel-body {

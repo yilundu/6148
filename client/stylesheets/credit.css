@@ -7,10 +7,27 @@ width: 30%;
 }
 #financetitle{
 	font-family: "Nunito";
+	margin-top: 0px;
+	    color: #3C763D;
+	    text-align: center;
+	        margin-right: auto;
+    margin-left: auto;
+        background-color: #dff0d8;
 
 }
 ._credit{
 	font-family: "Nunito";
+}
+._credit .page-header{
+	margin-top: 20px;
+}
+.containercred{
+	/*<a href='http://www.freepik.com/free-vector/piggybank-with-money_789915.htm'>Designed by Freepik</a>
+	*/
+	background-image: url("piggy.jpg");
+	background-size: cover;
+	position: absolute;
+	height: 100vh;
 }
 .venmo{
 	margin-bottom: 3px;
