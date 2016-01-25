@@ -102,7 +102,7 @@ Template.classInfoPage.events({
    Meteor.call('editClassReview',this._id, reviewer, starRating, reviewText, reviewTime);
 
  },
- 'click #removeReviewBtn' : function(){
+ 'click #deleteReviewBtn' : function(){
    console.log("clicked remove review");
    Meteor.call('removeClassReview',this._id, Meteor.userId());
  }

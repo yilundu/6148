@@ -126,7 +126,7 @@ Meteor.methods({
         {
           index = i;
         }
-        
+
       }
 
       console.log("check 2 i="+index);
@@ -165,7 +165,7 @@ Meteor.methods({
       //remove previous version of review
       for(var i = 0; i < reviews.length ; i++)
       {
-        if(reviews[i].reviewer === reviewerUserId)
+        if(reviews[i].reviewer === userId)
         {
           index = i;
         }
@@ -180,7 +180,7 @@ Meteor.methods({
         reviews.splice(index, 1);
       }
 
-      classes.update({_id: classId}, {$set : {studentReviews: reviews}})[0];
+      classes.update({_id: classId}, {$set : {studentReviews: reviews}});
     }
 
 
