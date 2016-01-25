@@ -8,15 +8,8 @@ Template.classDashboardElement.events({
 
     //if teacher confirmed cancellation of class - proceed with cancellation procedure
     if (result===true){
-      //unenroll all enrolled users
-      var enrolledUsers = user.find().fetch();
-      classes.find({}).forEach(
-        function(elem){
-          var newcost =(1*elem.cost*(elem.studentNumber/3+2)/(elem.studentNumber/3+1)/2).toFixed(2);
-          Meteor.call('setnewCash',elem._id, newcost);
 
-        }
-      );
+      var enrolledUsers = user.find().fetch();
       //go through the formerly enrolled users and update their class lists and refund their money
       for(var i = 0 ; i < enrolledUsers.length ; i++){
         var currUser = enrolledUsers[i];
@@ -35,6 +28,15 @@ Template.classDashboardElement.events({
         Meteor.call('transactionHistory', Meteor.user()._id, string);
         //user.update(currUser._id, {$set : {classes: newClasses}});
       }
+
+      //unenroll all enrolled users
+      classes.find({}).forEach(
+        function(elem){
+          var newcost =(1*elem.cost*(elem.studentNumber/3+2)/(elem.studentNumber/3+1)/2).toFixed(2);
+          Meteor.call('setnewCash',elem._id, newcost);
+
+        }
+      );
 
       //finally remove the class from the classes db
       Meteor.call('removeClass', thisContext._id);
