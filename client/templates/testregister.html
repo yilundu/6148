@@ -1,0 +1,37 @@
+<template name ="testregister">
+
+  <div class="_register">
+
+    <div class="panel panel-default">
+
+      <div class="page-header">
+        <h1>Create Account:</h1>
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-addon" id="addon1">Username:</span>
+        <input type="text" class="form-control" placeholder="Ex: GANDALF" aria-describedby="addon1" id="titleField" autofocus required>
+      </div>
+
+
+      <div class="input-group">
+        <span class="input-group-addon" >Password:</span>
+        <input type="password" class="form-control" placeholder="" aria-describedby="addon3" id="password" minlength='6' required>
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-addon" >Password(Again):</span>
+        <input type="password" class="form-control" placeholder="" aria-describedby="addon4" id="confirm_password" minlength='6'>
+      </div>
+
+      <button class="btn btn-primary" id="createBtn2">Register Account!</button>
+      <a class="btn btn-warning" href="{{pathFor 'sellerDashboard'}}">Back to Home Page</a>
+
+    </div>
+
+  </div>
+
+
+
+
+</template>

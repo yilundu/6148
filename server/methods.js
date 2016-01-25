@@ -40,7 +40,7 @@ Meteor.methods({
         longitude: longitude,
         address: address,
         studentReviews: [],
-        newcost: 2*user_cost
+        newcost: user_cost
       });
     }
     	else{
@@ -61,7 +61,7 @@ Meteor.methods({
             longitude: longitude,
             address: address,
           studentReviews: [],
-          newcost: 2*user_cost
+          newcost: user_cost
 	      });
 
     	}

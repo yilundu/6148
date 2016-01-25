@@ -71,7 +71,7 @@ Template.createClass.events({
     //NOTE: use singular & in order to avoid short-circuit evaluation: all methods must be called to label fields red as needed
     if(checkTextEmpty($('#titleField')) &
     checkTextEmpty($('#descField')) &
-    checkNumberPositive($('#costField'))&checkTextEmpty($('#dateField'))&checkTextEmpty($('#mapidformA'))){
+    checkNumberPositive($('#costField'))&checkTextEmpty($('#dateField'))&checkTextEmpty($('#mapidform'))){
 
      Meteor.call('createClass', address, class_date, user_title, user_cost, user_description, user_subject, Meteor.user()._id, Meteor.user().profile.name, Meteor.user().username, latitude, longitude);
 
