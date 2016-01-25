@@ -14,13 +14,16 @@
 ._student-dashboard .panel-heading{
 	background-color: #DFF0D8
 }
+._student-dashboard .bs-callout{
+    background-color: rgba(255, 255, 255, .8);
+}
 ._student-dashboard #join-class-btn {
   border-top-right-radius: 0px;
   border-top-left-radius: 0px;
   
 }
 ._student-dashboard{
-	height: 100vh;
+	background-repeat: repeat-y;
 	background-image: url("bookshelf1.png");
 	background-size: cover;
 }
