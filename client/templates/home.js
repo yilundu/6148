@@ -60,7 +60,7 @@ Template.home.helpers({
         var path = $('#user1').val();
         path = "/search?search=" + path;
         Router.go(path);
-    }
+    },
 
 
 

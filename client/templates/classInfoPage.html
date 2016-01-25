@@ -59,8 +59,10 @@
 
 
         {{#if currentUser}}
-          <button class="btn btn-primary" id="teacherPostBtn" visible="{{isTeacher}}">Post:</button>
-          <input type="text" class="form-control" width = "90%" id="teacherPostField" visible="{{isTeacher}}">
+          {{#if isTeacher}}
+            <button class="btn btn-primary" id="teacherPostBtn" visible="{{isTeacher}}">Post:</button>
+            <input type="text" class="form-control" width = "90%" id="teacherPostField" visible="{{isTeacher}}">
+          {{/if}}
           {{#each classAnnouncements}}
             {{> announcementTemplate}}
           {{/each}}

@@ -8,13 +8,26 @@
         </a>
       </div>
       <div class ="media-body">
-        <h4 class="media-heading">{{timePosted}}: {{displayName}} said - </h4>
-        {{postText}}
+
+        {{#if flagged}}
+          <h4 class="media-heading flagged-text">{{timePosted}}: {{displayName}} said - <b>hidden by teacher</b></h4>
+          <span class="flagged-text"></span>
+        {{else}}
+          <h4 class="media-heading">{{timePosted}}: {{displayName}} said - </h4>
+          {{postText}}
+        {{/if}}
       </div>
       <div class ="media-right">
+        {{#if canDelete}}
+          {{#if isTeacher}}
+            {{#if isOwnComment}}
+              <span class="glyphicon glyphicon-remove" title="remove"></span>
+            {{else}}
+              <span class="glyphicon glyphicon-alert" title="flag and hide"></span>
+            {{/if}}
+          {{/if}}
 
-        <span class="glyphicon glyphicon-remove"></span>
-
+        {{/if}}
       </div>
     </div>
 
