@@ -118,6 +118,11 @@ Template.find.events({
 	 	Meteor.call('addNewUser', Meteor.userId());
 	 }
 	 
+	 if (classes.findOne(classid).newcost < Meteor.user().profile.balance){
+	 	var cost = classes.findOne(classid).newcost;
+	 	var negativecost = -1*cost;
+	 	Meteor.call('addCash', Meteor.user()._id, negativecost);
+	 	Meteor.call('addCash', classes.findOne(classid).teacherId, cost);
      if ((user.find({meteor: Meteor.user()._id, classes: classid}).count())===0){
      	Meteor.call('incrementStudentNumber', classid);
 
@@ -132,6 +137,11 @@ Template.find.events({
      else {
      	sAlert.error('You have already enrolled!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
  	}}
+ 	else{
+ 		sAlert.error('You do not have enough credit!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
+
+ 	}
+ 	}
  	else {
  		event.preventDefault();
  		Router.go('/register')
