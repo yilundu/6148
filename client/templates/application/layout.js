@@ -44,6 +44,9 @@ Template.layout.events({
   	var string = "https://api.venmo.com/v1/oauth/authorize?client_id=3446&scope=make_payments&response_type=code&state="+Meteor.userId();
     window.location.replace(string);
   },
+  "click #moneymanage": function(){
+  	Router.go("/credit", {name: $(".form-control").val()});
+  },
 
 
 	"click .aboutlink": function(e, template){
@@ -88,9 +91,11 @@ Template.layout.events({
 });
 
 Template._loginButtonsLoggedInDropdown.onRendered(function () {
+	 $(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='moneymanage'> Account Finances </button>");
 	$(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='editprofile'> Edit Profile </button>");
   $(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='studentprofile'> Student Dashboard </button>");
   $(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='teacherprofile'> Teacher Dashboard </button>");
+ 
   if (Meteor.user().profile.authenticated === true){
   	$(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block btn-success' id='authorizevenmo'> Venmo Authenticated </button>");
   }
