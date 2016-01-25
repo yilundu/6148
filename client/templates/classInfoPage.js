@@ -166,9 +166,12 @@ Template.classInfoPage.helpers({
       return false;
     }
     else{
-      return getUserReview(getClassId()).text.length !== 0;
+      return (getUserReview(getClassId()).text.length !== 0);
     }
 
+  },
+  allClassReviews: function(){
+    return this.studentReviews;
   }
 
 });

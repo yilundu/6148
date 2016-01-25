@@ -228,3 +228,7 @@ Meteor.publish('classes', function(){
 Meteor.publish('user', function(){
 	return user.find({});
 });
+
+Meteor.publish('Meteor.users', function(){
+  return user.find({},{"username":1, "profile.name":1})
+});

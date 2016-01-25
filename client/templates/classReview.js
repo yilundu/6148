@@ -1,5 +1,9 @@
 Template.classReview.helpers({
   displayName : function(){
-    return Meteor.user().profile.name || Meteor.user().username;//if profile.name is set use that - else use username
+    if(!Meteor.user)
+      return "";
+    var thisUser = Meteor.users.findOne(this.review.reviewer);
+
+    return thisUser.profile.name || thisUser.username;//if profile.name is set use that - else use username
   }
 })

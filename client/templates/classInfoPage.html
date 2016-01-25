@@ -30,7 +30,13 @@
     <div class="main-body row">
 
       <div class ="page-header">
+
+
         <h2>Your review: {{userReviewText}}</h2>
+
+        {{#if userHasReviewed}}
+          {{> classReview review = userReview}}
+        {{/if}}
       </div>
       <div class="user-review">
         Your Rating:
@@ -99,8 +105,11 @@
 
     <div class ="review-list col-md-6 col-xs-12">
       Reviews:
-      TEST TEST TEST <br/>
-      TEST TEST TESt
+      {{#each studentReviews}}
+
+        {{> classReview review = this}}
+
+      {{/each}}
     </div>
 
   </div>
