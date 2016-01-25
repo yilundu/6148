@@ -39,5 +39,9 @@ Template.studentDashboard.helpers({
     }
   },
 
+  transactionHistory: function(){
+    return Meteor.user().profile.transactionhistory;
+  }
+
 
 });
