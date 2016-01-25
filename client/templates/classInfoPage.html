@@ -30,7 +30,7 @@
     <div class="main-body row">
 
       <div class ="page-header">
-        <h2>Your review:</h2>
+        <h2>Your review: {{userReviewText}}</h2>
       </div>
       <div class="user-review">
         Your Rating:
@@ -39,8 +39,9 @@
 
         </div>
         Review Text:
-        <input class="form-control" id="reviewField" text="{{userReviewText}}">
+        <input class="form-control" id="reviewField" value={{userReviewText}}>
           {{#if currentUser}}
+
             {{#if userHasReviewed}}
               <button class="btn btn-primary" id="editReviewBtn">Edit</button>
               <button class="btn btn-warning" id="deleteReviewBtn">Delete</button>
