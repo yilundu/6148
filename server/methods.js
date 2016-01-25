@@ -33,7 +33,8 @@ Meteor.methods({
         teacherId: user_id,
         classAnnouncements: [],//empty at creation
         studentComments: [],//empty at creation
-        studentList: []//empty at creation
+        studentList: [],//empty at creati       on
+        studentReviews: []//empty at creation
       });
     },
     'incrementStudentNumber': function(classid){
@@ -85,7 +86,104 @@ Meteor.methods({
     },
     'setCash': function(id){
         Meteor.users.update(id, {$set: {"profile.balance": 0.00}});
+    },
+    'addClassReview': function(classId, reviewerUserId, rating, text, time){
+      var reviews = classes.findOne(classId);
+      console.log("called added class review on server");
+
+      if(!reviews){
+        throw "no matching class found";
+        return;
+      }
+
+      reviews = reviews.studentReviews;
+
+      reviews.push({
+        reviewer: reviewerUserId,
+        rating: rating,
+        text: text,
+        timeReviewed: time});
+
+      classes.update({_id: classId}, {$set : {studentReviews: reviews}});
+    },
+    'editClassReview' : function(classId, reviewerUserId, rating, text, time){
+      var reviews = classes.findOne(classId);
+      console.log("called edited class review on server");
+
+      if(!reviews){
+        console.log("no matching class found");
+        throw "no matching class found";
+        return;
+      }
+      console.log("check 1");
+      reviews = reviews.studentReviews;
+
+      var index = -1;
+      //remove previous version of review
+      for(var i = 0; i < reviews.length ; i++)
+      {
+        if(reviews[i].reviewer == reviewerUserId)
+        {
+          index = i;
+        }
+        
+      }
+
+      console.log("check 2 i="+index);
+      if(index < 0)
+      {
+        console.log("previous review not found");
+        throw "previous review not found";
+      }
+      else{
+        reviews.splice(index, 1);
+      }
+
+
+      //add new version of review
+      reviews.push({
+        reviewer: reviewerUserId,
+        rating: rating,
+        text: text,
+        timeReviewed: time});
+
+      console.log("check 3");
+      console.log("edited review - new reviews is now: "+reviews);
+      classes.update({_id: classId}, {$set : {studentReviews: reviews}});
+    },
+    'removeClassReview' : function(classId, userId){
+      var reviews = classes.findOne(classId);
+      console.log("class id in removeclassreview = "+classId);
+      if(!reviews){
+        throw "no matching class found";
+        return;
+      }
+
+      reviews = reviews.studentReviews;
+
+      var index = -1;
+      //remove previous version of review
+      for(var i = 0; i < reviews.length ; i++)
+      {
+        if(reviews[i].reviewer === reviewerUserId)
+        {
+          index = i;
+        }
+        return;
+      }
+
+      if(index < 0)
+      {
+        console.log("previous review not found");
+      }
+      else{
+        reviews.splice(index, 1);
+      }
+
+      classes.update({_id: classId}, {$set : {studentReviews: reviews}})[0];
     }
+
+
 });
 
 Meteor.publish('classes', function(){
