@@ -17,11 +17,11 @@ Template.layout.helpers({
 			if(!Meteor.user().profile.balance)
 			{
 				Meteor.call('setCash', Meteor.user()._id);
-				return 0;
+				return 0.00;
 			}
 			else
 			{
-				return Meteor.user().profile.balance;
+				return Math.round(Meteor.user().profile.balance*100)/100;
 			}
 
 		}

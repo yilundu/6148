@@ -133,6 +133,7 @@ Template.classInfoPage.helpers({
     {
       return null;
     }
+    /*
     var studentReviews = classes.findOne(this._id).studentReviews;
     for(var i = 0 ; i < studentReviews.length ; i++)
     {
@@ -143,7 +144,8 @@ Template.classInfoPage.helpers({
       }
 
     }
-
+*/
+    
     console.log("No user reviews found!");
     return null;
 
