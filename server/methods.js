@@ -300,5 +300,5 @@ Meteor.publish('user', function(){
 });
 
 Meteor.publish("allUserData", function () {
-    return Meteor.users.find({}, {fields: {'profile.binary': 1,'profile.name':1, 'username':1, 'profile.age':1, 'profile.about':1}});
+    return Meteor.users.find({}, {fields: {'profile.binary': 1,'profile.name':1, 'username':1, 'profile.age':1, 'profile.about':1, 'profile.balance':1}});
 });
