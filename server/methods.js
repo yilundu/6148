@@ -287,6 +287,9 @@ Meteor.methods({
         Meteor.users.update(id, {$set: {'profile.transactionhistory': array}});
         Meteor.users.update(id, {$push: {'profile.transactionhistory': transaction}});
       }
+    },
+    'removeClasses': function(classid){
+      user.update({},{$pull: {classes: classid}});
     }
 
 });
