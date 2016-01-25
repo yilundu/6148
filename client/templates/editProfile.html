@@ -14,7 +14,7 @@
     <!-- Note: apparently image url's are case sensitive -->
    
     <img src = "{{picture}}" width="250px" height="250px" class="img-circle">
-
+    {{>drop}}
     
     <div class = "page-header">
       <h3>Basic Info:</h3>
@@ -22,9 +22,6 @@
 
 
     {{#if authenticated}}
-    <div>
-      <a class = "btn btn-success venmo" href= "#">Venmo Authenticated</a>
-    </div>
     
     {{else}}
     <div>
@@ -68,7 +65,7 @@
     <br>
     <br>
 
-    {{>drop}}
+    
  <!--   <form id="propic">
       <input type="file" name="pic" accept="image/*">
       <input type="submit">
