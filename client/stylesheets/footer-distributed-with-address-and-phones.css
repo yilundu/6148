@@ -1,6 +1,12 @@
+/* Adapted from 
+ http://tutorialzine.com/2015/01/freebie-5-responsive-footer-templates/
+ */
+
+
 .footer-distributed{
 	position: relative;
-	background-color: #292c2f;
+	background-size: cover;
+	background-image: url("footer2.png");
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
 	box-sizing: border-box;
 	width: 100%;
@@ -9,6 +15,10 @@
 
 	padding: 55px 50px;
 
+}
+#footerh{
+	font-size: 4em;
+	font-family: "Nunito";
 }
 
 .footer-distributed .footer-left,
@@ -19,7 +29,7 @@
 }
 
 /* Footer left */
-
+     
 .footer-distributed .footer-left{
 	width: 40%;
 }
@@ -110,7 +120,7 @@
 
 .footer-distributed .footer-company-about{
 	line-height: 20px;
-	color:  #92999f;
+	color:  white;
 	font-size: 13px;
 	font-weight: normal;
 	margin: 0;
@@ -119,7 +129,7 @@
 .footer-distributed .footer-company-about span{
 	display: block;
 	color:  #ffffff;
-	font-size: 14px;
+	font-size: 20px;
 	font-weight: bold;
 	margin-bottom: 20px;
 }
