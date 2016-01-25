@@ -92,7 +92,7 @@ Meteor.methods({
     'decrementStudentNumber': function(classid){
     	classes.update({_id:classid},{$inc: {studentNumber: -1}});
     },
-    'updateAnnouncements': function(id, classid, classAnnouncements){
+    'updateAnnouncements': function(classid, classAnnouncements){
     	classes.update(classid, {$set : {classAnnouncements: classAnnouncements}});
     },
     'updateComments': function(classid, updatedComments){
@@ -200,7 +200,7 @@ Meteor.methods({
         {
           index = i;
         }
-        
+
       }
 
       if(index < 0)
