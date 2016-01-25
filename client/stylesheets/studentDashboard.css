@@ -6,7 +6,21 @@
 
 
 }
-
+._student-dashboard #studentdashtitle, #sellerdashtitle{
+	    color: #3c763d;
+	font-family: "Nunito";
+	text-align: center;
+	font-size: 3em;
+	margin-top: -20px;
+}
+#dashtitlejum, #selldashjum{
+	    margin-top: 20px;
+	    background-color: rgba(223, 240, 216, .5);
+    width: 97%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 50px;
+}
 ._student-dashboard .btn-group {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -14,8 +28,11 @@
 ._student-dashboard .panel-heading{
 	background-color: #DFF0D8
 }
-._student-dashboard .bs-callout{
-    background-color: rgba(255, 255, 255, .8);
+._seller-dashboard .panel-heading{
+	background-color: rgba(0, 239, 255, .12)
+}
+.bs-callout{
+    background-color: rgba(255, 255, 255, .93);
 }
 ._student-dashboard #join-class-btn {
   border-top-right-radius: 0px;
@@ -25,6 +42,7 @@
 ._student-dashboard{
 	min-height: 100vh;
 	background-repeat: repeat;
+	background-attachment: fixed;
 	background-image: url("bookshelf1.png");
 	width: 100%;
 }

@@ -6,6 +6,32 @@
 
 
 }
+@media screen and (min-width: 1000px){
+  .main-section{
+    margin-left: 40%;
+  }
+}
+@media screen and (min-width: 750px) and (max-width: 1000px){
+  .main-section{
+    margin-left: 45%;
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 750px){
+  .main-section{
+    margin-left: 50%;
+  }
+}
+.sidebar-offcanvas{
+  position: fixed;
+}
+._seller-dashboard{
+  background-attachment: fixed;
+  background-image:url("bookshelfcactus.jpg");
+  min-height: 100vh;
+  background-repeat: repeat;
+  width: 100%;
+
+}
 .teacherheader{
   margin-left: 20px;
 }
