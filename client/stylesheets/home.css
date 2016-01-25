@@ -16,6 +16,35 @@
 	z-index: 0;
 	
 }
+/* http://bavotasan.com/2011/a-simple-fade-with-css3/
+fade reference
+*/
+.fade {
+   opacity: 1;
+   transition: opacity .25s ease-in-out;
+   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;
+   }
+
+   .fade:hover {
+      opacity: 0.7;
+      }
+
+.fadein {
+   opacity: 0;
+   transition: opacity .25s ease-out;
+   -moz-transition: opacity .25s ease-out;
+   -webkit-transition: opacity .25s ease-out;
+   }
+
+   .fadein:hover {
+      opacity: 1;
+      }
+
+#iconvertical, #iconleft {
+  -webkit-animation-duration: 1s;
+  -webkit-animation-delay: 0.05s;
+}
 
 #pathways{
 	width: 100%;
@@ -100,16 +129,22 @@
 ._home .img-responsive-h{
 	position: absolute;
 	color: white;
-	margin-left: 35%;
-	margin-top: -40%;
-	font-size: 2em;
+	padding: 30%;
+
+    margin-left: 10%;
+    margin-top: -75%;
+	font-size: 3em;
 }
 ._home .img-responsive-h2{
 	position: absolute;
 	color: white;
-	margin-left: 35%;
-	margin-top: -25%;
-	font-size: 2em;
+padding-bottom: 20%;
+    padding-top: 20%;
+    padding-right: 50%;
+    padding-left: 40%;
+    margin-left: 0%;
+    margin-top: -45%;
+	font-size: 3em;
 }
 #topicontainer{
 	height: auto;
