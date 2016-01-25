@@ -6,6 +6,7 @@ Template.classDashboardElement.events({
     bootbox.confirm(string, function(result)
     {
 
+
     //if teacher confirmed cancellation of class - proceed with cancellation procedure
     if (result===true){
 
@@ -27,6 +28,7 @@ Template.classDashboardElement.events({
         string = "Refunded $"+removedClassObject.newCost+"for class "+classes.findOne(classid).title+"("+ classid + ") at time: "+time;
         Meteor.call('transactionHistory', Meteor.user()._id, string);
         //user.update(currUser._id, {$set : {classes: newClasses}});
+
       }
 
       //unenroll all enrolled users
@@ -46,5 +48,6 @@ Template.classDashboardElement.events({
 
     }
   });
+
   }
 });
