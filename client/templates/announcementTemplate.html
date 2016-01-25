@@ -9,12 +9,12 @@
       </div>
       <div class ="media-body">
         <h4 class="media-heading">{{timePosted}}: {{displayName}} said - </h4>
-        {{postText}}
       </div>
       <div class ="media-right">
 
-        <span class="glyphicon glyphicon-remove"></span>
-
+        {{#if isTeacher}}
+          <span class="glyphicon glyphicon-remove"></span>
+        {{/if}}
       </div>
     </div>
 
