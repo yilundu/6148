@@ -1,2 +1,64 @@
 <template name="profile">
+
+<div class = "__Profile">
+
+	<div class = "page-header">
+      <h1>Profile for: {{username}}</h1>
+    </div>
+
+    <div class = "page-header">
+      <h3>Profile Picture:</h3>
+    </div>
+
+
+
+    <!-- Note: apparently image url's are case sensitive -->
+   
+    <img src = "{{binary}}" width="250px" height="250px" class="img-circle">
+    
+    <div class = "page-header">
+      <h3>Basic Info:</h3>
+    </div>
+
+
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1">Display Name (separate from username)</span> <!-- Name inputted here will appear in top right accounts ui dropdown -->
+      <input type="text" class="form-control" id="name-field" placeholder="Ex: John Smith" aria-describedby="basic-addon1" value="{{name}}" readonly>
+    </div>
+
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon2">Age</span>
+      <input type="text" class="form-control" id="age-field" aria-describedby="basic-addon2" value={{age}} readonly>
+    </div>
+
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon3">About me:</span>
+      <input type="text" class="form-control" id="about-field" placeholder="Introduce yourself to start finding overlaps!" aria-describedby="basic-addon3" value={{about}} readonly>
+    </div>
+
+    <div class = "page-header">
+    	<h3>Classes Taught:</h3>
+    </div>
+
+    {{#if numClasses}}
+          {{#each classes}}
+            {{> profileDashboardElement}}
+          {{/each}}
+    {{/if}}
+  
+
+    
+ <!--   <form id="propic">
+      <input type="file" name="pic" accept="image/*">
+      <input type="submit">
+    </form> -->
+    
+
+    <div>
+
+    </div>
+
+
+
+  </div>
 </template>
