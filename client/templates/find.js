@@ -15,7 +15,7 @@ Template.find.helpers({
 //	return classes.find({subject: search1, description: search2});
 	classes.find({}).forEach(
 		function(elem){
-			var newcost =(2*elem.cost*(elem.studentNumber/5+2)/(elem.studentNumber/5+1)/3).toFixed(2);			
+			var newcost =(2*elem.cost*(elem.studentNumber/2+2)/(elem.studentNumber/2+1)/3).toFixed(2);	
 			Meteor.call('setnewCash',elem._id, newcost);
 
 		}
@@ -68,7 +68,7 @@ Template.find.events({
 	$(".Test").html("");
 	classes.find({}).forEach(
 		function(elem){
-			var newcost =(2*elem.cost*(elem.studentNumber/5+2)/(elem.studentNumber/5+1)/3).toFixed(2);
+			var newcost =(2*elem.cost*(elem.studentNumber/2+2)/(elem.studentNumber/2+1)/3).toFixed(2);
 			Meteor.call('setnewCash',elem._id, newcost);
 		}
 
@@ -76,7 +76,7 @@ Template.find.events({
 		);
 
 	 json.forEach(function(item){
-	 	var newCost = (item.cost/2)*(item.studentNumber/5+2)/(item.studentNumber);
+	 	var newCost = ((item.cost/2)*(item.studentNumber/2+2)/(item.studentNumber/2+1)/3).toFixed(2);
 		$(".Test").append(
 			"<div class='results' id='" + item._id+"''>"
 			+"<ul class = 'jumbotron insidesearch'>"
@@ -112,6 +112,9 @@ Template.find.events({
 	 if (Meteor.user()){
      event.preventDefault();
      var classid = $(event.target).parent().parent().children().eq(0).text();
+     var string = "";
+     var string2 = "";
+     var time = new Date();
 
 		// console.log(classid);
 	 if (!user.findOne({meteor: Meteor.user()._id})){
@@ -119,11 +122,16 @@ Template.find.events({
 	 }
 	 
 	 if (classes.findOne(classid).newcost < Meteor.user().profile.balance){
-	 	var cost = classes.findOne(classid).newcost;
+	 	
+     if ((user.find({meteor: Meteor.user()._id, classes: classid}).count())===0){
+     	var cost = classes.findOne(classid).newcost;
 	 	var negativecost = -1*cost;
 	 	Meteor.call('addCash', Meteor.user()._id, negativecost);
+	 	string = "Paid $"+cost+"for class "+classes.findOne(classid).title+"("+ classid + ") at time: "+time;
+	 	Meteor.call('transactionHistory', Meteor.user()._id, string);
 	 	Meteor.call('addCash', classes.findOne(classid).teacherId, cost);
-     if ((user.find({meteor: Meteor.user()._id, classes: classid}).count())===0){
+	 	string2 = "Recieved $"+cost+" for class "+classes.findOne(classid).title+"("+ classid + ") at time: "+time;
+	 	Meteor.call('transactionHistory', classes.findOne(classid).teacherId, string2);
      	Meteor.call('incrementStudentNumber', classid);
 
      	var id = Meteor.user()._id;

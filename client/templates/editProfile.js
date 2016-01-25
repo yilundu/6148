@@ -40,9 +40,12 @@ Template.editProfile.helpers({
   {
     if(Meteor.user())
     {
-      console.log("Found picture!");
-      console.log(Meteor.user().binary);
-      return Meteor.user().profile.binary;
+      
+      if (Meteor.user().profile.binary){
+      return Meteor.user().profile.binary;}
+      else {
+        return '/default.jpg';
+      }
     }
     else
     {
