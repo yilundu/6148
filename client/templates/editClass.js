@@ -77,7 +77,7 @@ Template.editClass.events({
     if(checkTextEmpty($('#titleField')) &
     checkTextEmpty($('#descField')) &
     checkNumberPositive($('#costField')) &
-    checkTextEmpty($('#dateField')){
+    checkTextEmpty($('#dateField'))){
 
      Meteor.call('editClass', classId, address, class_date, user_title, user_cost, user_description, user_subject, Meteor.user()._id, Meteor.user().profile.name, Meteor.user().username, latitude, longitude);
 
