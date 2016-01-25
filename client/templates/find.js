@@ -31,6 +31,18 @@ Template.find.helpers({
 	}
 	},
 
+	exampleMapOptions: function() {
+    // Make sure the maps API has loaded
+    if (GoogleMaps.loaded()) {
+      // Map initialization options
+      return {
+        center: new google.maps.LatLng(-37.8136, 144.9631),
+        zoom: 8
+      };
+    }
+  }
+
+
 });
 
 Template.find.events({
@@ -49,7 +61,7 @@ Template.find.events({
 
 	 json.forEach(function(item){
 		$(".Test").append(
-			"<div class='results'>"
+			"<div class='results' id='" + item._id+"''>"
 			+"<ul class = 'jumbotron insidesearch'>"
 			+"<li class = 'hidethis'>"+item._id+"</li>"
 			+"<li class= 'classliid'>"+item.title+"</li>"
@@ -57,9 +69,19 @@ Template.find.events({
 			+"<li> Subject: "+item.subject+"</li>"
 			+"<li> Teacher: "+ item.teacher+ "</li><li> Date: "+ item.createdAt+ "</li>"
 			+"<li> Students Enrolled: "+item.studentNumber+"</li>"
+			+"<li> Address: "+ item.address +"</li>"
 			+"<li><button class='submit'>Enroll!</button></li>"
 			+"</ul></div>");
+		/*GoogleMaps.create({
+  			name: 'Map',
+  			element: document.getElementById(item._id),
+  			options: {
+    		center: new google.maps.LatLng(-37.8136, 144.9631),
+    		zoom: 8
+  			}
+		});*/
 	});
+
 	 $( ".__find .container" ).addClass( "jumbotron outsidesearch" );
 
 
@@ -104,7 +126,6 @@ Template.find.events({
     }
     
 });
-
 
 
 /*
