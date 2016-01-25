@@ -15,7 +15,7 @@ Template.find.helpers({
 //	return classes.find({subject: search1, description: search2});
 	classes.find({}).forEach(
 		function(elem){
-			var newcost =(2*elem.cost*(elem.studentNumber/2+2)/(elem.studentNumber/2+1)/3).toFixed(2);	
+			var newcost =(1*elem.cost*(elem.studentNumber/3+2)/(elem.studentNumber/3+1)/2).toFixed(2);	
 			Meteor.call('setnewCash',elem._id, newcost);
 
 		}
@@ -27,17 +27,18 @@ Template.find.helpers({
 	var parts = search.trim().split(/[ \-\:]+/);
     var searchregex = new RegExp("(" + parts.join('|') + ")", "ig");
     $("#title1").val(search);
-	return classes.find({$or: [{title: searchregex}, {description: searchregex}, {subject: searchregex}]}, {limit: 10, sort: {studentNumber: -1}});
+	return classes.find({$or: [{title: searchregex}, {description: searchregex}, {subject: searchregex}]}, {limit: 10, sort: {studentNumber: -1}}).fetch();
 	}
 	else{
 	//var search1 = new RegExp($("#title1").val(),'i');
 	//return {posts: classes.find({subject: search1, description: search2})};
 
 
-	return classes.find({}, {limit: 10, sort: {studentNumber: -1}});
+	return classes.find({}, {limit: 10, sort: {studentNumber: -1}}).fetch();
 //	return classes.find({subject: {regex: "/"+$(".subject").val()+"/i"}, description: {regex: "/"+$(".description").val()+"/i"}});
 	}
 	},
+
 
 	exampleMapOptions: function() {
     // Make sure the maps API has loaded
@@ -68,15 +69,16 @@ Template.find.events({
 	$(".Test").html("");
 	classes.find({}).forEach(
 		function(elem){
-			var newcost =(2*elem.cost*(elem.studentNumber/2+2)/(elem.studentNumber/2+1)/3).toFixed(2);
+			var newcost =(1*elem.cost*(elem.studentNumber/3+2)/(elem.studentNumber/3+1)/2).toFixed(2);
 			Meteor.call('setnewCash',elem._id, newcost);
 		}
 
 
 		);
-
+	var counter = 0;
 	 json.forEach(function(item){
-	 	var newCost = ((item.cost/2)*(item.studentNumber/2+2)/(item.studentNumber/2+1)/3).toFixed(2);
+	 	counter++;
+	 	var newCost = ((item.cost/2)*(item.studentNumber/3+2)/(item.studentNumber/3+1)).toFixed(2);
 		$(".Test").append(
 			"<div class='results' id='" + item._id+"''>"
 			+"<ul class = 'jumbotron insidesearch'>"
@@ -99,6 +101,9 @@ Template.find.events({
   			}
 		});*/
 	});
+	 if (counter===0){
+	 	$(".Test").append("<p> Sorry, but no results were found for your query. Create this <a href='/createClass'> class </a> now!</p>")
+	 }
 
 	 $( ".__find .container" ).addClass( "jumbotron outsidesearch" );
 

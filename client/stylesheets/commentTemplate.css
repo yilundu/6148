@@ -6,3 +6,17 @@
 ._commentTemplate .glyphicon-remove:hover {
   color: #ad0202;
 }
+
+._commentTemplate .glyphicon-alert {
+  color: #f5ce45;
+}
+
+
+._commentTemplate .glyphicon-alert:hover {
+  color: #c49900;
+}
+
+._commentTemplate .flagged-text {
+  font-style: italic;
+  color: #a7a7a7;  
+}

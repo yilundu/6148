@@ -30,7 +30,13 @@
     <div class="main-body row">
 
       <div class ="page-header">
+
+
         <h2>Your review: {{userReviewText}}</h2>
+
+        {{#if userHasReviewed}}
+          {{> classReview review = userReview}}
+        {{/if}}
       </div>
       <div class="user-review">
         Your Rating:
@@ -59,8 +65,10 @@
 
 
         {{#if currentUser}}
-          <button class="btn btn-primary" id="teacherPostBtn" visible="{{isTeacher}}">Post:</button>
-          <input type="text" class="form-control" width = "90%" id="teacherPostField" visible="{{isTeacher}}">
+          {{#if isTeacher}}
+            <button class="btn btn-primary" id="teacherPostBtn" visible="{{isTeacher}}">Post:</button>
+            <input type="text" class="form-control" width = "90%" id="teacherPostField" visible="{{isTeacher}}">
+          {{/if}}
           {{#each classAnnouncements}}
             {{> announcementTemplate}}
           {{/each}}
@@ -97,8 +105,11 @@
 
     <div class ="review-list col-md-6 col-xs-12">
       Reviews:
-      TEST TEST TEST <br/>
-      TEST TEST TESt
+      {{#each studentReviews}}
+
+        {{> classReview review = this}}
+
+      {{/each}}
     </div>
 
   </div>

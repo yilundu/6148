@@ -40,8 +40,56 @@ Meteor.methods({
         longitude: longitude,
         address: address,
         studentReviews: [],
-        newcost: 2*user_cost
+        newcost: user_cost
       });
+    }
+    	else{
+    		Meteor.users.update(user_id,{$set:{"profile.name": actualusername}});
+    		classes.insert({
+	        title: user_title,
+	        subject: user_subject,
+	        cost: user_cost,
+	        teacher: actualusername,
+	        description: user_description,
+	        createdAt: new Date(),
+	        studentNumber: 0, // current time
+	        teacherId: user_id,
+	        classAnnouncements: [],//empty at creation
+	        studentComments: [],//empty at creation
+	        studentList: [],//empty at creation
+            latitude: latitude,
+            longitude: longitude,
+            address: address,
+          studentReviews: [],
+          newcost: user_cost
+	      });
+
+    	}
+    },
+    'editClass': function(classId,address, class_date, user_title, user_cost, user_description, user_subject, user_id, username, actualusername, latitude, longitude){
+
+
+
+      if(username){
+    	classes.update(classId,{$set : {
+        title: user_title,
+        subject: user_subject,
+        cost: user_cost,
+        teacher: username,
+        description: user_description,
+        createdAt: class_date,
+        studentNumber: 0, // current time
+        teacherId: user_id,
+        classAnnouncements: [],//empty at creation
+        studentComments: [],//empty at creation
+        studentList: [],//empty at creation
+        studentReviews: [],
+        latitude: latitude,
+        longitude: longitude,
+        address: address,
+        studentReviews: [],
+        newcost: 2*user_cost
+      }});
     }
     	else{
     		Meteor.users.update(user_id,{$set:{"profile.name": actualusername}});
@@ -94,7 +142,7 @@ Meteor.methods({
     'decrementStudentNumber': function(classid){
     	classes.update({_id:classid},{$inc: {studentNumber: -1}});
     },
-    'updateAnnouncements': function(id, classid, classAnnouncements){
+    'updateAnnouncements': function(classid, classAnnouncements){
     	classes.update(classid, {$set : {classAnnouncements: classAnnouncements}});
     },
     'updateComments': function(classid, updatedComments){
@@ -202,7 +250,7 @@ Meteor.methods({
         {
           index = i;
         }
-        
+
       }
 
       if(index < 0)

@@ -52,7 +52,7 @@ Template.classInfoPage.events({
       postText: postText,
       timePosted: new Date()});
 
-    console.log("entered click techaerpostbtn");
+    console.log("entered click teacherPostBtn, this._id = "+this._id);
     Meteor.call('updateAnnouncements', this._id, updatedAnnouncements);
     //classes.update(this._id, {$set : {classAnnouncements: updatedAnnouncements}});
 
@@ -103,7 +103,7 @@ Template.classInfoPage.events({
 
  },
  'click #deleteReviewBtn' : function(){
-   console.log("clicked remove review");
+   console.log("clicked remove review. this._id = "+ this._id);
    Meteor.call('removeClassReview',this._id, Meteor.userId());
  }
 });
@@ -168,9 +168,12 @@ Template.classInfoPage.helpers({
       return false;
     }
     else{
-      return getUserReview(getClassId()).text.length !== 0;
+      return (getUserReview(getClassId()).text.length !== 0);
     }
 
+  },
+  allClassReviews: function(){
+    return this.studentReviews;
   }
 
 });

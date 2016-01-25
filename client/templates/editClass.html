@@ -4,27 +4,55 @@
 
     <div class="panel panel-default">
 
-      <div class="input-group">
-        <span class="input-group-addon" id="addon1">Title:</span>
-        <input type="text" class="form-control" placeholder="Ex: 8.01" aria-describedby="addon1" value="{{title}}">
+      <div class="page-header">
+        <h1>Edit class:</h1>
       </div>
 
       <div class="input-group">
-        <span class="input-group-addon" id="addon2">Subject:</span>
-        <input type="text" class="form-control" placeholder="" aria-describedby="addon2" value="{{subject}}">
+        <span class="input-group-addon" id="addon1">Title:</span>
+        <input type="text" class="form-control" value="{{title}}" placeholder="Ex: 8.01" aria-describedby="addon1" id="titleField" autofocus>
       </div>
+
 
       <div class="input-group">
         <span class="input-group-addon" id="addon3">Cost:</span>
-        <input type="text" class="form-control" placeholder="" aria-describedby="addon3" value="{{cost}}">
+        <input type="number" class="form-control" value={{cost}} placeholder="" aria-describedby="addon3" id="costField">
       </div>
 
       <div class="input-group">
         <span class="input-group-addon" id="addon4">Description:</span>
-        <input type="text" class="form-control" placeholder="" aria-describedby="addon4" value="{{description}}">
+        <input type="text" class="form-control" value= "{{description}}" placeholder="" aria-describedby="addon4" id="descField">
       </div>
 
-      <button class="btn btn-primary">Push Updates!</button>
+      <div class="input-group">
+        <span class="input-group-addon" id="addon5">Date of Class:</span>
+        <input type="datetime-local" value="{{createdAt}}" class="form-control" placeholder="" aria-describedby="addon5" id="dateField">
+      </div>
+
+
+      <div class="page-header">
+        <h3>Subject:</h3>
+      </div>
+
+      <div class="list-group">
+
+        <a href="#" class="list-group-item active">Biking</a>
+        <a href="#" class="list-group-item">Cooking</a>
+        <a href="#" class="list-group-item">Coding</a>
+        <a href="#" class="list-group-item">Academics</a>
+        <a href="#" class="list-group-item">Music</a>
+        <a href="#" class="list-group-item">Misc.</a>
+      </div>
+
+      <button class="btn btn-primary" id="createBtn">Create this class!</button>
+      <a class="btn btn-warning" href="{{pathFor 'sellerDashboard'}}">Back to Dashboard</a>
+      <form class = "mapform">
+        <input type = "text" value="{{address}}" id = "mapidform">
+      </form>
+
+      <div class="map-container" id="my_map">
+        {{> googleMap name="exampleMap" options=exampleMapOptions}}
+      </div>
     </div>
 
   </div>

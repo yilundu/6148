@@ -14,7 +14,7 @@
 }
 ._home #carouselimage{
 	z-index: 0;
-	
+
 }
 /* http://bavotasan.com/2011/a-simple-fade-with-css3/
 fade reference
@@ -324,7 +324,7 @@ padding-bottom: 20%;
 	._home .registerBar{
 		top: 74%;
 	}
-	
+
 }
 @media screen and (max-width: 480px){
 	._home .registerBar{
@@ -358,7 +358,7 @@ padding-bottom: 20%;
 	}
 
 	.class_form li{
-		padding:12px; 
+		padding:12px;
 		/*border-bottom:1px solid #eee;*/
 		position:relative;
 	}
@@ -371,26 +371,26 @@ padding-bottom: 20%;
 		padding:3px;
 	}
 
-	.class_form input, .class_form textarea { 
+	.class_form input, .class_form textarea {
 		border:1px solid #aaa;
 		box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
 		border-radius:2px;
 	}
 	.class_form input:focus, .class_form textarea:focus {
-		background: #fff; 
-		border:1px solid #555; 
-		box-shadow: 0 0 3px #aaa; 
+		background: #fff;
+		border:1px solid #555;
+		box-shadow: 0 0 3px #aaa;
 	}
 
-	input,  textarea { 
+	input,  textarea {
 		border:1px solid #aaa;
 		box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
 		border-radius:2px;
 	}
 	input:focus,  textarea:focus {
-		background: #fff; 
-		border:1px solid #555; 
-		box-shadow: 0 0 3px #aaa; 
+		background: #fff;
+		border:1px solid #555;
+		box-shadow: 0 0 3px #aaa;
 	}
 	/* Button Style */
 	.submit {
@@ -421,11 +421,11 @@ padding-bottom: 20%;
 	}
 	.submit:hover {
 		opacity:.85;
-		cursor: pointer; 
+		cursor: pointer;
 	}
 	.submit:active {
 		border: 1px solid #20911e;
-		box-shadow: 0 0 10px 5px #356b0b inset; 
+		box-shadow: 0 0 10px 5px #356b0b inset;
 		-webkit-box-shadow:0 0 10px 5px #356b0b inset ;
 		-moz-box-shadow: 0 0 10px 5px #356b0b inset;
 		-ms-box-shadow: 0 0 10px 5px #356b0b inset;
@@ -434,8 +434,8 @@ padding-bottom: 20%;
 	}
 
 	.class_form input {
-		height:40px; 
-		width:220px; 
+		height:40px;
+		width:220px;
 		padding:5px 8px;
 	}
 	.class_form textarea {padding:8px; width:300px;}
@@ -464,8 +464,8 @@ padding-bottom: 20%;
 }
 
 .class_form input, .class_form textarea { /* add this to the already existing style */
-	-moz-transition: padding .25s; 
-	-webkit-transition: padding .25s; 
+	-moz-transition: padding .25s;
+	-webkit-transition: padding .25s;
 	-o-transition: padding .25s;
 	transition: padding .25s;
 }
@@ -554,4 +554,49 @@ input:required:valid, textarea:required:valid { /* when a field is considered va
 	margin-left: 30%;
 	z-index: 10;
 	position: absolute;
+}
+
+/*****       Card Flipping Adapted from here:   https://davidwalsh.name/css-flip         *****/
+
+/* entire container, keeps perspective */
+.flip-container {
+	perspective: 1000;
+}
+	/* flip the pane when hovered */
+	.flip-container:hover .flipper, .flip-container.hover .flipper {
+		transform: rotateY(180deg);
+	}
+
+.flip-container, .front, .back {
+	width: 320px;
+	height: 480px;
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
 }
