@@ -41,6 +41,7 @@
            <li>Date: {{createdAt}}</li>
            <li>Address: {{address}}</li>
            <li>Map: {{>googleMap name="Map" options=exampleMapOptions }}</li>
+           <li>Cost: <span class='strikethrough'>${{cost}}</span> ${{newcost}}</li>
      <!--     <li>Map: {{>googleMap name="Map" options= "{center: new google.maps.LatLng({{latitude}}, {{longitude}})}" }}</li>  -->
            
            <li><button class="submit">Enroll!</button></li>

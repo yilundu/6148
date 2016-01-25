@@ -21,7 +21,7 @@ Template.layout.helpers({
 			}
 			else
 			{
-				return Meteor.user().profile.balance;
+				return Math.round(Meteor.user().profile.balance*100)/100;
 			}
 
 		}

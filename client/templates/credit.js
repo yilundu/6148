@@ -4,11 +4,11 @@ Template.credit.helpers({
 	},
 	cash: function(){
     if (Meteor.user().profile.balance){
-      return Meteor.user().profile.balance;
+      return Math.round(Meteor.user().profile.balance*100)/100;
     }
     else{
       Meteor.call('setCash', Meteor.user()._id);
-      return Meteor.user().profile.balance;
+      return Math.round(Meteor.user().profile.balance*100)/100;
     }
   },
    url: function(){
@@ -63,6 +63,8 @@ Template.credit.events({
 		      	success: function(data){
 		      		sAlert.success('Transaction Recieved!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
 		         	Meteor.call('addCash', Meteor.user()._id, change);
+		         	$('#addvalue').val(0.00);
+		         	$('#removevalue').val(0.00);
 
 		      	},
 		      	error: function(data){
