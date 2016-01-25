@@ -39,7 +39,8 @@ Meteor.methods({
         latitude: latitude,
         longitude: longitude,
         address: address,
-        studentReviews: []
+        studentReviews: [],
+        newcost: 2*user_cost
       });
     }
     	else{
@@ -59,7 +60,8 @@ Meteor.methods({
             latitude: latitude,
             longitude: longitude,
             address: address,
-          studentReviews: []
+          studentReviews: [],
+          newcost: 2*user_cost
 	      });
 
     	}
@@ -217,6 +219,10 @@ Meteor.methods({
     'addCash': function(id, amount){
         Meteor.users.update(id, {$inc: {"profile.balance": amount}});
 
+
+    },
+    'setnewCash': function(id, amount){
+       classes.update({_id: id},{$set: {newcost: amount}});
     }
 
 });

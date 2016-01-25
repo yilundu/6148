@@ -7,6 +7,9 @@
 	
 }
 */
+.strikethrough{
+    text-decoration: line-through;
+}
 .searchform{
         color: white;
     font-weight: 500;

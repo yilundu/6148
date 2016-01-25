@@ -2,7 +2,9 @@
 
 
 <template name="layout">
-
+<head>
+<link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+</head>
   <header class = "{{navbarhelper}}">
     <nav class = "{{navbarhelper}} container-fluid" id = "{{navbartophelper}}">
       <div class = "navbar-header">
@@ -18,20 +20,22 @@
       <ul class = "nav navbar-nav" id = "navtopclass">
         {{#if toptabid12}}
         <li class = 'toptab' id = 'toptabid'> <a href = '#about' class = 'aboutlink scroll-link navbartext' data-scroll> Why Overlaps? </a></li>
+        <li class = 'toptab' id = 'toptabid15'> <a href = '#pricing' class = 'pricelink scroll-link navbartext' data-scroll> Pricing Model </a></li>
       <li> <a href = '#Topics' id = 'toptabid2' class = 'topicslink navbartext scroll-link'> How It Works </a></li>
         {{/if}}
 
 
         {{#if currentUser}}
         {{#if toptabid33}}
-        <li> <a href = '#Mission' id = 'toptabid3' class = 'missionlink navbartext scroll-link'> Mission </a></li>
+        <li> <a href = '#Mission' id = 'toptabid3' class = 'missionlink navbartext scroll-link'> Testimonials </a></li>
         {{/if}}
 
         {{/if}}
+        <li>{{{searchbarhelper}}}</li>
       </ul>
     </div>
       <ul class = "nav navbar-right navbar-nav">
-        <li><span>$</span><span class = "money">22</span></li>
+        <li><span class = "money">${{money}}</span></li>
         <li> <div class = "profpic">  <img class= "logoimage" src = "{{photoprof}}"> </div></li>
         <li> {{>loginButtons}}</li>
         <li> <div class = "btn"> </div> </li>
@@ -62,26 +66,16 @@
 
             <div class="footer-left">
 
-              <h3>Overlaps</h3>
+              <h3 id = "footerh">Overlaps <img class = "logoimage2" src="/Logo.png"></h3>
 
-              <p class="footer-links">
-                <a href="#">Home</a>
-                ·
-                <a href="#">About</a>
-                ·
-                <a href="#">Faq</a>
-                ·
-                <a href="#">Contact</a>
-              </p>
-
-              <p class="footer-company-name">Company Name &copy; 2015</p>
+              <p class="footer-company-name">Overlaps &copy; 2015</p>
             </div>
 
             <div class="footer-center">
 
               <div>
                 <i class="fa fa-map-marker"></i>
-                <p><span>77 Massachusetts ave</span> Cambridge, MA</p>
+                <p> 500 Memorial Drive <br> Cambridge, MA</p>
               </div>
 
               <div>
@@ -92,6 +86,7 @@
               <div>
                 <i class="fa fa-envelope"></i>
                 <p><a href="mailto:team@overlaps.com">team@overlaps.com</a></p>
+                <p> Some of the art is original. Some art from freepik.com, flaticon.com, etc. </p>
               </div>
 
             </div>
@@ -103,14 +98,7 @@
                 We are a platform for college students to learn useful skills from cooking to fixing up a bike. From quick demos to longer lessons, we want to allow everyone to share the diverse skills they have with others.
               </p>
 
-              <div class="footer-icons">
-
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-linkedin"></i></a>
-                <a href="#"><i class="fa fa-github"></i></a>
-
-              </div>
+ 
 
             </div>
 

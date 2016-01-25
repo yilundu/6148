@@ -33,7 +33,7 @@
        <div class= 'results'>
          <ul class = "jumbotron insidesearch">
            <li class = "hidethis">{{_id}}</li>
-            <li class = 'classliid'>Title: {{title}}</li>
+            <li class = 'classliid'>{{title}}</li>
             <li>Description: {{description}}</li>
            <li>Subject: {{subject}}</li>
            <li>Teacher: {{teacher}}</li>
@@ -41,6 +41,7 @@
            <li>Date: {{createdAt}}</li>
            <li>Address: {{address}}</li>
            <li>Map: {{>googleMap name="Map" options=exampleMapOptions }}</li>
+           <li>Cost: <span class='strikethrough'>${{cost}}</span> ${{newcost}}</li>
      <!--     <li>Map: {{>googleMap name="Map" options= "{center: new google.maps.LatLng({{latitude}}, {{longitude}})}" }}</li>  -->
            
            <li><button class="submit">Enroll!</button></li>

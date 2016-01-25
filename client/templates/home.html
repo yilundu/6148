@@ -1,9 +1,11 @@
 <template name="home">
-	<div class = "_home">
-		<head>
-			<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+	<head>
+		<link rel="stylesheet" href="animate.min.css">
+		<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 			<link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
-		</head>
+	</head>
+	<div class = "_home">
+
 
 		<body>
 
@@ -69,9 +71,9 @@
 								<div class="row">
 
 									<div class="col-xs-8" id = "iconvertical">
-										<img class = "icons" src="/pathwayrev.png">
+										<img class = "icons animated slideInLeft wow" id = "iconleft" src="/pathwayrev.png">
 									</div>
-									<div class="col-xs-3" id = "iconvertical">
+									<div class="col-xs-3 animated slideInUp wow" id = "iconvertical">
 										<h1 class = "imagedescriptitle"> Earn Money </h1>
 										<h3 class = "imagedescrip"> Think of interesting topics you would like to teach, while browsing for a wide variety of classes to take. Overlaps has a unique pricing system that allows teachers to earn profits while keeping costs for students low. </h3>
 									</div>
@@ -83,10 +85,33 @@
 					</div>
 				</section>
 			</div>
-
 			<div>
 				<section>
-					<div class = "page-section" id = "Topics">
+					<div class = "page-section" id = "pricing">
+						<div class = "container">
+							<div id = "price-title">
+								<h1 id = "pricetitle"> Our Pricing Model </h1>
+								<!-- <img id = "pathways" src = "pathways.png">-->
+								<div class="row">
+									<div class="col-xs-3 animated slideInUp wow" id = "iconvertical">
+										<h1 class = "imagedescriptitle"> Learn and Save with Others </h1>
+										<h3 class = "imagedescrip"> With our pricing model, teachers earn more money by attracting more students, while students save when classes grow larger. This way, everyone benefits! Teachers also build up their reputation through student submitted reviews, helping future students select their classes. </h3>
+									</div>
+									<div class="col-xs-8" id = "iconvertical">
+										<img class = "icons animated slideInLeft wow" id = "iconleft" src="/piggyscale.png">
+									</div>
+									
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div>
+				<section>
+					<div class = "page-section1" id = "Topics">
 						<div class = "container" id = "topicontainer">
 							<!-- referenced http://startbootstrap.com/template-overviews/thumbnail-gallery/ -->
 							<div class="row">
@@ -98,26 +123,26 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-lg-4 col-md-4 col-xs-4 thumb">
+								<div class="col-lg-4 col-md-4 col-xs-4 thumb fade">
 
-									<a class="thumbnail1" href="/search?search=Biking">
+									<a class="thumbnail1" href="/search?search=Biking" target="_top">
 										<div class = "image relimage">
 											<img class="img-responsive" src="/tilebike.png" alt="">
 
-											<h4 class = "img-responsive-h">
+											<h4 class = "img-responsive-h fadein">
 												Biking
 											</h4>
 										</div>
 									</a>
 								</div>
 								<div class="col-lg-1 col-md-1 col-xs-1 thumb spacercol"></div>
-								<div class="col-lg-7 col-md-7 col-xs-7 thumb">
+								<div class="col-lg-7 col-md-7 col-xs-7 thumb fade">
 
-									<a class="thumbnail2" href="/search?search=Music">
+									<a class="thumbnail2" href="/search?search=Music" target="_top">
 										<div class = "image relimage">
 											<img class="img-responsive" src="/tileguitar1.png" alt="">
 
-											<h4 class = "img-responsive-h2">
+											<h4 class = "img-responsive-h2 fadein">
 												Music
 											</h4>
 										</div>
@@ -125,26 +150,26 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-lg-7 col-md-7 col-xs-7 thumb">
+								<div class="col-lg-7 col-md-7 col-xs-7 thumb fade">
 
-									<a class="thumbnail2" href="/search?search=Academics">
+									<a class="thumbnail2" href="/search?search=Academics"  target="_top">
 										<div class = "image relimage">
 											<img class="img-responsive" src="/tilebook2.png" alt="">
 
-											<h4 class = "img-responsive-h2">
+											<h4 class = "img-responsive-h2 fadein">
 												Academics
 											</h4>
 										</div>
 									</a>
 								</div>
 								<div class="col-lg-1 col-md-1 col-xs-1 thumb spacercol"></div>
-								<div class="col-lg-4 col-md-4 col-xs-4 thumb">
+								<div class="col-lg-4 col-md-4 col-xs-4 thumb fade">
 
-									<a class="thumbnail1" href="/search?search=Coding">
+									<a class="thumbnail1" href="/search?search=Coding"  target="_top">
 										<div class = "image relimage">
 											<img class="img-responsive" src="/tilecomp.png" alt="">
 
-											<h4 class = "img-responsive-h">
+											<h4 class = "img-responsive-h fadein">
 												Coding
 											</h4>
 										</div>
@@ -152,26 +177,26 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-lg-4 col-md-4 col-xs-4 thumb">
+								<div class="col-lg-4 col-md-4 col-xs-4 thumb fade">
 
-									<a class="thumbnail1" href="/search?search=Cooking">
+									<a class="thumbnail1" href="/search?search=Cooking"  target="_top">
 										<div class = "image relimage">
 											<img class="img-responsive" src="/tilecook3.png" alt="">
 
-											<h4 class = "img-responsive-h">
+											<h4 class = "img-responsive-h fadein">
 												Cooking
 											</h4>
 										</div>
 									</a>
 								</div>
 								<div class="col-lg-1 col-md-1 col-xs-1 thumb spacercol"></div>
-								<div class="col-lg-7 col-md-7 col-xs-7 thumb">
+								<div class="col-lg-7 col-md-7 col-xs-7 thumb fade">
 
-									<a class="thumbnail2" href="/search?search=Misc.">
+									<a class="thumbnail2" href="/search?search=Misc."  target="_top">
 										<div class = "image relimage">
 											<img class="img-responsive" src="/tilemisc1.png" alt="">
 
-											<h4 class = "img-responsive-h2">
+											<h4 class = "img-responsive-h2 fadein">
 												Misc
 											</h4>
 										</div>
@@ -251,6 +276,7 @@
 		})
 	});
 </script>
+<script src="js/wow.min.js"></script>
 </body>
 
 

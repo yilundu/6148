@@ -17,11 +17,11 @@ Template.layout.helpers({
 			if(!Meteor.user().profile.balance)
 			{
 				Meteor.call('setCash', Meteor.user()._id);
-				return 0;
+				return 0.00;
 			}
 			else
 			{
-				return Meteor.user().profile.balance;
+				return Math.round(Meteor.user().profile.balance*100)/100;
 			}
 
 		}
@@ -44,6 +44,9 @@ Template.layout.events({
   	var string = "https://api.venmo.com/v1/oauth/authorize?client_id=3446&scope=make_payments&response_type=code&state="+Meteor.userId();
     window.location.replace(string);
   },
+  "click #moneymanage": function(){
+  	Router.go("/credit", {name: $(".form-control").val()});
+  },
 
 
 	"click .aboutlink": function(e, template){
@@ -60,6 +63,13 @@ Template.layout.events({
 		e.preventDefault();
 		$('html, body').animate({
 			scrollTop: $("#Topics").offset().top
+		}, 600);
+		return false;
+	},
+	"click .pricelink": function(e, template){
+		e.preventDefault();
+		$('html, body').animate({
+			scrollTop: $("#pricing").offset().top
 		}, 600);
 		return false;
 	},
@@ -88,9 +98,11 @@ Template.layout.events({
 });
 
 Template._loginButtonsLoggedInDropdown.onRendered(function () {
+	 $(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='moneymanage'> Account Finances </button>");
 	$(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='editprofile'> Edit Profile </button>");
   $(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='studentprofile'> Student Dashboard </button>");
   $(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='teacherprofile'> Teacher Dashboard </button>");
+ 
   if (Meteor.user().profile.authenticated === true){
   	$(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block btn-success' id='authorizevenmo'> Venmo Authenticated </button>");
   }
@@ -105,11 +117,18 @@ Template._loginButtonsLoggedInDropdown.onRendered(function () {
 
 Template.layout.onRendered(function(){
 	$("#leftpart ul").append('<li><a href = "#" id = "createClass" class = "navbartext"> Teach a Class </a></li>');
-	$("#leftpart ul").append('<li><a href = "#" id = "search" class = "navbartext"> Search </a></li>');
 
 });
 
 Template.layout.helpers({
+	searchbarhelper: function(){
+		if (Router.current().route.path() !== "/"){
+			return "<a href = '#' id = 'search' class = 'navbartext'> Search </a>";
+
+		}else{
+			return "";
+		}
+	},
 	navbartophelper: function () {
 
 		if (Router.current().route.path() === "/" ){

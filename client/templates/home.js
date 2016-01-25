@@ -17,6 +17,11 @@ Template.home.helpers({
   });
 
 
+Template.home.onRendered( function(){
+  new WOW().init();
+});
+
+  
 
   Template.home.events({
     "submit .class_form": function (event) {
