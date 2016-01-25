@@ -100,15 +100,22 @@ fade reference
 #pricing{
 	    background-color: #AA7947;
 }
+.form-control{
+	display: inline;
+	width: 70%;
+}
 #learn-title{
 	color: #428eff;
+}
+#homesearchbar{
+	margin-left: 15%;
 }
 #About-title, #learn-title, .searchtitle, #price-title{
 	text-align: center;
 	font-family: 'Nunito', sans-serif;
 	font-size: 6em;
 	font-weight: 300;
-	letter-spacing: 6px;
+	letter-spacing: 2px;
 }
 ._home .icons{
 	margin-left: 30px;
@@ -239,7 +246,7 @@ padding-bottom: 20%;
 	font-family: "lato";
 	font-size: 4em;
 	font-weight: 900;
-	letter-spacing: 6px;
+	letter-spacing: 2px;
 }
 /*
 .classText{
@@ -523,6 +530,9 @@ input:required:valid, textarea:required:valid { /* when a field is considered va
 	color: white;
 	margin-bottom: 0px;
 }
+._home #twopix{
+	margin-bottom: 2px;
+}
 ._home #titleunder{
 	color: white;
 	margin-top: 0px;
@@ -532,6 +542,7 @@ input:required:valid, textarea:required:valid { /* when a field is considered va
 
 ._home #registerlabel{
 	margin: auto;
+	margin-left: 15%;
 	font-size: 20px;
 }
 
