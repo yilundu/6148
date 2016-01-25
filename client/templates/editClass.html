@@ -46,15 +46,22 @@
 
       </div>
 
-      <button class="btn btn-primary" id="createBtn">Create this class!</button>
-      <a class="btn btn-warning" href="{{pathFor 'sellerDashboard'}}">Back to Dashboard</a>
-      <form class = "mapform">
-        <input type = "text" value="{{address}}" id = "mapidform">
-      </form>
+
+      <div class="input-group">
+        <span class="input-group-addon" id="addon9">Location of Class</span>
+
+          <input type = "text" class = "form-control" id = "mapidform" >
+      </div>
 
       <div class="map-container" id="my_map">
         {{> googleMap name="exampleMap" options=exampleMapOptions}}
       </div>
+
+
+
+      <button class="btn btn-primary" id="createBtn">Create this class!</button>
+      <a class="btn btn-warning" href="{{pathFor 'sellerDashboard'}}">Back to Dashboard</a>
+
     </div>
 
   </div>
