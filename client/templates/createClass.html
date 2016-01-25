@@ -24,6 +24,12 @@
         <input type="text" class="form-control" placeholder="" aria-describedby="addon4" id="descField">
       </div>
 
+      <div class="input-group">
+        <span class="input-group-addon" id="addon5">Date of Class:</span>
+        <input type="datetime-local" class="form-control" placeholder="" aria-describedby="addon5" id="dateField">
+      </div>
+
+
       <div class="page-header">
         <h3>Subject:</h3>
       </div>
@@ -43,11 +49,7 @@
       <form class = "mapform">
         <input type = "text" id = "mapidform">
       </form>
-      <form id = "fillform">
-        Latitude:   <input name="lat" type="text" value="">
-        Longitude:  <input name="lng" type="text" value="">
-        Address:    <input name="formatted_address" type="text" value="">
-      </form>
+
       <div class="map-container" id="my_map">
         {{> googleMap name="exampleMap" options=exampleMapOptions}}
       </div>

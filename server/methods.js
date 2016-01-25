@@ -21,21 +21,45 @@ Meteor.methods({
 
     },
 
-    'createClass': function(user_title, user_cost, user_description, user_subject, user_id, username){
+    'createClass': function(address, class_date, user_title, user_cost, user_description, user_subject, user_id, username, actualusername, latitude, longitude){
+    	if(username){
     	classes.insert({
         title: user_title,
         subject: user_subject,
         cost: user_cost,
         teacher: username,
         description: user_description,
-        createdAt: new Date(),
+        createdAt: class_date,
         studentNumber: 0, // current time
         teacherId: user_id,
         classAnnouncements: [],//empty at creation
         studentComments: [],//empty at creation
-        studentList: [],//empty at creati       on
-        studentReviews: []//empty at creation
+        studentList: [],//empty at creation
+        studentReviews: [],
+        latitude: latitude,
+        longitude: longitude,
+        address: address
       });
+    }
+    	else{
+    		Meteor.users.update(user_id,{$set:{"profile.name": actualusername}});
+    		classes.insert({
+	        title: user_title,
+	        subject: user_subject,
+	        cost: user_cost,
+	        teacher: actualusername,
+	        description: user_description,
+	        createdAt: new Date(),
+	        studentNumber: 0, // current time
+	        teacherId: user_id,
+	        classAnnouncements: [],//empty at creation
+	        studentComments: [],//empty at creation
+	        studentList: [],//empty at creation
+            latitude: latitude,
+            longitude: longitude
+	      });
+
+    	}
     },
     'incrementStudentNumber': function(classid){
         console.log(classes.findOne(classid,{studentNumber: 1, _id: 0}));
@@ -181,8 +205,12 @@ Meteor.methods({
       }
 
       classes.update({_id: classId}, {$set : {studentReviews: reviews}});
-    }
+    },
 
+    'addCash': function(id, amount){
+        Meteor.users.update(id, {$inc: {"profile.balance": amount}});
+
+    }
 
 });
 

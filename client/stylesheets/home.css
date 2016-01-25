@@ -52,13 +52,13 @@
 	margin-bottom: 5vh;
 	font-size: .7em;
 }
-#About-title{
+#About-title, .searchtitle{
 	color: white;
 }
 #learn-title{
 	color: #428eff;
 }
-#About-title, #learn-title{
+#About-title, #learn-title, .searchtitle{
 	text-align: center;
 	font-family: 'Nunito', sans-serif;
 	font-size: 6em;
@@ -73,6 +73,7 @@
 	margin-top: 10px;
 }
 ._home .imagedescrip{
+	margin-left: 10px;
 	text-align: left;
 	color: white;
 	font-weight: 100;
@@ -81,6 +82,7 @@
 }
 
 ._home .imagedescriptitle{
+	margin-left: 10px;
 	text-align: left;
 	color: white;
 	font-weight: 200;

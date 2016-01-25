@@ -1,5 +1,6 @@
 accounts-base@1.2.2
 accounts-password@1.1.4
+aldeed:geocoder@0.3.8
 anti:i18n@0.4.3
 autoupdate@1.2.4
 babel-compiler@5.8.24_1
@@ -76,6 +77,7 @@ meteorhacks:picker@1.0.3
 meteorhacks:search-source@1.4.2
 minifiers@1.1.7
 minimongo@1.0.10
+mizzao:bootboxjs@4.4.0
 mobile-experience@1.0.1
 mobile-status-bar@1.0.6
 mongo@1.1.3
