@@ -13,6 +13,6 @@ Template.commentTemplate.events({
     var comments = Template.parentData().studentComments;
     var indexOf = comments.indexOf(this);
     comments.splice(indexOf, 1);
-    classes.update(Template.parentData()._id, {$set : {studentComments: comments}});
+    Meteor.call('updateComments',Template.parentData()._id, comments);
   }
 });

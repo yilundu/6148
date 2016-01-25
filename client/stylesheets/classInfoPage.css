@@ -86,3 +86,8 @@
 ._classInfoPage .secondary-class-info span small {
   font-size: 10pt;
 }
+
+._classInfoPage .glyphicon-star{
+  color: #f1c40f;
+  font-size: 200%;
+}

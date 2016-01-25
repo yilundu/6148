@@ -13,7 +13,7 @@ Template.announcementTemplate.events({
     var announcements = Template.parentData().classAnnouncements;
     var indexOf = announcements.indexOf(this);
     announcements.splice(indexOf, 1);
-    classes.update(Template.parentData()._id, {$set : {classAnnouncements: announcements}});
+    Meteor.call('updateAnnouncements',Template.parentData()._id, announcements);
 
   }
 });
