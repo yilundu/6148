@@ -11,6 +11,21 @@ Template.layout.helpers({
 			return "";
 		}
 	},
+	money: function(){
+		if(Meteor.user())
+		{
+			if(!Meteor.user().profile.balance)
+			{
+				Meteor.call('setCash', Meteor.user()._id);
+				return 0;
+			}
+			else
+			{
+				return Meteor.user().profile.balance;
+			}
+
+		}
+	}
 
 });
 
@@ -82,7 +97,7 @@ Template._loginButtonsLoggedInDropdown.onRendered(function () {
   else {
   	$(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block btn-danger' id='authorizevenmo'> Authorize Venmo </button>");
   }
-  
+
 
 });
 

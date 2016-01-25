@@ -38,7 +38,8 @@ Meteor.methods({
         studentReviews: [],
         latitude: latitude,
         longitude: longitude,
-        address: address
+        address: address,
+        studentReviews: []
       });
     }
     	else{
@@ -56,7 +57,9 @@ Meteor.methods({
 	        studentComments: [],//empty at creation
 	        studentList: [],//empty at creation
             latitude: latitude,
-            longitude: longitude
+            longitude: longitude,
+            address: address,
+          studentReviews: []
 	      });
 
     	}
@@ -89,7 +92,7 @@ Meteor.methods({
     'decrementStudentNumber': function(classid){
     	classes.update({_id:classid},{$inc: {studentNumber: -1}});
     },
-    'updateAnnouncements': function(classid, classAnnouncements){
+    'updateAnnouncements': function(id, classid, classAnnouncements){
     	classes.update(classid, {$set : {classAnnouncements: classAnnouncements}});
     },
     'updateComments': function(classid, updatedComments){
@@ -112,16 +115,20 @@ Meteor.methods({
         Meteor.users.update(id, {$set: {"profile.balance": 0.00}});
     },
     'addClassReview': function(classId, reviewerUserId, rating, text, time){
-      var reviews = classes.findOne(classId);
+      var ratedClass = classes.findOne(classId);
       console.log("called added class review on server");
-
-      if(!reviews){
+/*
+      if(!ratedClass){
         throw "no matching class found";
         return;
+      }*/
+      //var reviews = ratedClass.studentReview;
+      if (ratedClass.studentReviews) {
+        reviews = ratedClass.studentReviews;
       }
-
-      reviews = reviews.studentReviews;
-
+      else{
+        reviews = [];
+      }
       reviews.push({
         reviewer: reviewerUserId,
         rating: rating,
@@ -193,7 +200,7 @@ Meteor.methods({
         {
           index = i;
         }
-        return;
+        
       }
 
       if(index < 0)
@@ -203,7 +210,7 @@ Meteor.methods({
       else{
         reviews.splice(index, 1);
       }
-
+      console.log("deleted review - new reviews is now: "+reviews);
       classes.update({_id: classId}, {$set : {studentReviews: reviews}});
     },
 
