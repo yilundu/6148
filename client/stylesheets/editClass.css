@@ -1,0 +1,13 @@
+._editClass .panel {
+
+  width: 600px;
+  height: auto;
+  margin: auto;
+  margin-top: 100px;
+
+
+}
+
+._editClass > .panel > * {
+  margin: 20px;
+}

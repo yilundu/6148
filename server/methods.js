@@ -230,5 +230,5 @@ Meteor.publish('user', function(){
 });
 
 Meteor.publish('Meteor.users', function(){
-  return user.find({},{"username":1, "profile.name":1})
+  return Meteor.users.find({},{fields:{"username":1, "profile.name":1}})
 });
