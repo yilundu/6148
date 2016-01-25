@@ -23,9 +23,11 @@
   
 }
 ._student-dashboard{
-	background-repeat: repeat-y;
+	min-height: 100vh;
+	background-repeat: repeat;
 	background-image: url("bookshelf1.png");
-	background-size: cover;
+	width: 100%;
+
 }
 
 ._student-dashboard .panel-body {
