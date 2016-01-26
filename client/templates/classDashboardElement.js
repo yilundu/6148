@@ -3,6 +3,8 @@
     var thisContext = this;
     var string = "Are you sure you want to remove this class? All payments will be refunded."
     //remove class from class db
+    if (thisContext.unixtime > moment().unix()){
+    console.log(thisContext.unixtime);
     bootbox.confirm(string, function(result)
     {
 
@@ -55,8 +57,12 @@
     else
     {
 
+    }});
+}
+    else{
+    sAlert.error('Class has already occured!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
+
     }
-  });
 
 },
 
