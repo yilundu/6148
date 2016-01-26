@@ -13,7 +13,7 @@ Template.find.helpers({
 //  var search1 = new ReactiveVar(new RegExp($(".subject").val(),'i'));
 //	var search2 = new ReactiveVar(new RegExp($(".description").val(),'i'));
 //	return classes.find({subject: search1, description: search2});
-	classes.find({}).forEach(
+	classes.find({triggered: false}).forEach(
 		function(elem){
 			var newcost =(1*elem.cost*(elem.studentNumber/3+2)/(elem.studentNumber/3+1)/2).toFixed(2);	
 			Meteor.call('setnewCash',elem._id, newcost);
@@ -34,7 +34,7 @@ Template.find.helpers({
 	//return {posts: classes.find({subject: search1, description: search2})};
 
 
-	return classes.find({}, {limit: 10, sort: {studentNumber: -1}}).fetch();
+	return classes.find({triggered: false}, {limit: 10, sort: {studentNumber: -1}}).fetch();
 //	return classes.find({subject: {regex: "/"+$(".subject").val()+"/i"}, description: {regex: "/"+$(".description").val()+"/i"}});
 	}
 	},
@@ -81,7 +81,7 @@ Template.find.events({
 	 	var newCost = ((item.cost/2)*(item.studentNumber/3+2)/(item.studentNumber/3+1)).toFixed(2);
 		$(".Test").append(
 			"<div class='results' id='" + item._id+"''>"
-			+"<ul class = 'jumbotron insidesearch'>"
+			+"<ul class = 'jumbotron "+item.triggered+ " insidesearch'>"
 			+"<li class = 'hidethis'>"+item._id+"</li>"
 			+"<li class= 'classliid'>"+item.title+"</li>"
 			+"<li> Description: "+item.description+"</li>"

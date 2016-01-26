@@ -49,7 +49,11 @@
     margin:auto;
     padding:0px;
 }
-
+/*
+.__find .true {
+    opacity: 0.5;
+}
+*/
 .__find h1, h2{
 	text-align: center;
 }
