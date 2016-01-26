@@ -4,13 +4,13 @@ var performEndClass = function()
 {
   console.log("Ran check");
   var results = FutureTasks.find({triggered: false}).fetch();
-  console.log(results.length);
-  console.log(results);
+  //console.log(results.length);
+  //console.log(results);
   for(var i = 0 ; i < results.length ; i++){
     var each = results[i];
-    console.log(each);
-    console.log("Result.date = "+each.date);
-    console.log("Current Unix Time: "+moment().unix());
+    //console.log(each);
+    //console.log("Result.date = "+each.date);
+    //console.log("Current Unix Time: "+moment().unix());
 
     if(moment().unix() > each.date)
     {
@@ -226,7 +226,7 @@ Meteor.methods({
         }
       }
       //set up listener to fire when class date occurs
-      updateScheduledClass({date: unixtime, class_id: classid, triggered: false});
+      updateScheduledClass({date: unixtime, class_id: classId, triggered: false});
 
     },
     'incrementStudentNumber': function(classid){
@@ -286,7 +286,7 @@ Meteor.methods({
 
     	classes.update(classid, {$set : {studentComments: updatedComments}});
 
-      var thisClass = classes.findOne(classId);
+      var thisClass = classes.findOne(classid);
       //notify teacher that user has commented
       //push notificaton to the teacher that one of their classes has received a comment
       var title = thisClass.title+": new student comment!";
@@ -425,10 +425,11 @@ Meteor.methods({
       else {
         reviewerName = reviewerObject.username;
       }
+      console.log("check 4 +"+reviewerName);
       var message = reviewerName + "gave your class "+rating+" stars - saying: " + text;
       var type = "teacher";
       var options = null;
-      Meteor.call('pushNotification',reviews.teacherId, title, message, type, options);
+      Meteor.call('pushNotification',classes.findOne(classId).teacherId, title, message, type, options);
       console.log("Sent push notification!");
 
 
@@ -442,6 +443,7 @@ Meteor.methods({
         return;
       }
 
+      console.log("removeClassReview check 1");
       reviews = reviews.studentReviews;
 
       var index = -1;
@@ -454,7 +456,7 @@ Meteor.methods({
         }
 
       }
-
+      console.log("removeClassReview check 2");
       if(index < 0)
       {
         console.log("previous review not found");
@@ -462,13 +464,14 @@ Meteor.methods({
       else{
         reviews.splice(index, 1);
       }
-      console.log("deleted review - new reviews is now: "+reviews);
+      console.log(reviews);
+      console.log("deleted review - new reviews is now: "+ reviews);
       classes.update({_id: classId}, {$set : {studentReviews: reviews}});
 
       //push notificaton to the teacher that they have been reviewed
       var title = "Review for "+reviews.title+" removed!";
       var reviewerName;
-      var reviewerObject = Meteor.users.findOne(reviewerUserId);
+      var reviewerObject = Meteor.users.findOne(userId);
       if(reviewerObject && reviewerObject.profile && reviewerObject.profile.name)
       {
         reviewerName = reviewerObject.profile.name;
@@ -479,7 +482,7 @@ Meteor.methods({
       var message = reviewerName + " removed their rating from your class.";
       var type = "teacher";
       var options = null;
-      Meteor.call('pushNotification',reviews.teacherId, title, message, type, options);
+      Meteor.call('pushNotification',classes.findOne(classId).teacherId, title, message, type, options);
       console.log("Sent push notification!");
 
     },
@@ -541,7 +544,7 @@ Meteor.methods({
           type: type,
           options: options,
           seen: false,
-          time: new Date()
+          time: moment().unix()
         }
       }});
 

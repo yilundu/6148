@@ -25,7 +25,7 @@ TODO: DO THIS
                 Number of Students:<br/>
                 Next Class Time:<br/>
                 New Students:<br/>
-              
+
             </div>
 
             <div class="btn-group col-xs-12">
@@ -70,7 +70,7 @@ TODO: DO THIS
              <img class = "repclass" src = "iconrep1.png"> &nbsp; &nbsp; Reviews and Reputation
            </div>
            <div class="panel-body" id = "transscroll2">
-            
+
              <ul class = "transaction_history">
               {{#each reviews}}
               <li class = "jumbotron translist" id = "jumbotrans"> {{this}} </li>
@@ -84,6 +84,26 @@ TODO: DO THIS
 
           </div>
         </div>
+
+        <div class ="panel panel-default">
+          <div class = "panel-heading">
+            Notifications
+
+          </div>
+          <div class="panel-body notification-body">
+            <div id ="transscroll">
+
+              {{#each notifications}}
+
+                  {{> notificationsTemplate}}
+
+              {{/each}}
+
+
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <!-- Figure out why col-md doesn't work-->

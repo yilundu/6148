@@ -11,6 +11,20 @@ var checkTextEmpty = function(element){
   }
 };
 
+var checkDateNaN = function(element){
+  var time = $(element).val();
+  time = moment(time).unix();
+
+  if(time !== NaN){
+    return true;
+  }
+  else{
+    $(element).parent().removeClass('has-success');
+    $(element).parent().addClass('has-error');
+    return false;
+  }
+};
+
 var checkNumberPositive = function(element){
   var costInput = $(element).val();
   if(costInput && costInput > 0){
@@ -24,6 +38,7 @@ var checkNumberPositive = function(element){
     return false;
   }
 };
+
 
 Template.createClass.events({
   "click #createBtn": function (event) {
@@ -74,7 +89,7 @@ Template.createClass.events({
     //NOTE: use singular & in order to avoid short-circuit evaluation: all methods must be called to label fields red as needed
     if(checkTextEmpty($('#titleField')) &
     checkTextEmpty($('#descField')) &
-    checkNumberPositive($('#costField'))&checkTextEmpty($('#dateField'))&checkTextEmpty($('#mapidform'))){
+    checkNumberPositive($('#costField'))&checkTextEmpty($('#dateField'))&checkDateNaN($('#dateField'))&checkTextEmpty($('#mapidform'))){
 
      Meteor.call('createClass', address, class_date, user_title, user_cost, user_description, user_subject, Meteor.user()._id, Meteor.user().profile.name, Meteor.user().username, latitude, longitude, unixtime);
 

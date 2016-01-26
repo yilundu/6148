@@ -7,6 +7,12 @@
 
 }
 
+
+._seller-dashboard .notification-body  #transscroll {
+    padding: 15px;
+}
+
+
 #transscroll2{
   height: 100px;
   overflow-y: scroll;

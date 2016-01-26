@@ -52,7 +52,7 @@ Template.classInfoPage.events({
       postText: postText,
       timePosted: moment().format("MMMM Do YYYY, h:mm a")});
 
-    console.log("entered click teacherPostBtn, this._id = "+this._id);
+    console.log("entered click teacherPostBtn, this._id = "+this._id+" postText= "+postText);
     Meteor.call('updateAnnouncements', this._id, updatedAnnouncements);
     //classes.update(this._id, {$set : {classAnnouncements: updatedAnnouncements}});
     sAlert.success('Information Updated!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
@@ -87,6 +87,10 @@ Template.classInfoPage.events({
  'click #saveReviewBtn' : function(){
    var reviewText = $('#reviewField').val();
    var starRating = $('#rating').data('userrating');//TODO: implement front end input of star rating
+   if(starRating == undefined || !starRating)
+   {
+     starRating = 0;
+   }
    var reviewer = Meteor.userId();//the user who wrote the review
 
    var reviewTime = new Date();
@@ -112,11 +116,12 @@ Template.classInfoPage.events({
  },
  'click #deleteReviewBtn' : function(){
   var string = "Are you sure you want to delete your review?" ;
+  var thisContext = this;
   bootbox.confirm(string, function(result){
        if (result === false) {}
         else{
-   console.log("clicked remove review. this._id = "+ this._id);
-   Meteor.call('removeClassReview',this._id, Meteor.userId());
+   console.log("clicked remove review. this._id = "+ thisContext._id);
+   Meteor.call('removeClassReview',thisContext._id, Meteor.userId());
  }});
  }
 });
@@ -124,7 +129,8 @@ Template.classInfoPage.events({
 Template.classInfoPage.helpers({
   isTeacher : function(){
     if(Meteor.user()){//make sure user is loaded
-      return Meteor.userId() === this.teacherId;
+      console.log("isteacher: " + Meteor.userId() +"/"+ this.teacherId);
+      return (Meteor.userId() === this.teacherId);
     }
     else
     {
@@ -137,8 +143,14 @@ Template.classInfoPage.helpers({
     for(var i = 0; i < avgreview.length; i++) {
         total += avgreview[i].rating;
     }
-    var avg = total / avgreview.length
-    return avg;
+    if(total == 0)
+    {
+      return "(No Ratings)";
+    }
+    else{
+      var avg = total / avgreview.length
+      return avg;
+    }
   },
   studentList: function(){
     if(this.studentList)
@@ -155,7 +167,7 @@ Template.classInfoPage.helpers({
     {
       return null;
     }
-   
+
     var studentReviews = classes.findOne(this._id).studentReviews;
     for(var i = 0 ; i < studentReviews.length ; i++)
     {
@@ -167,7 +179,7 @@ Template.classInfoPage.helpers({
 
     }
 
-    
+
     console.log("No user reviews found!");
     return null;
 
@@ -185,16 +197,16 @@ Template.classInfoPage.helpers({
 
   userHasReviewed: function(){
    // var review = getUserReview(getClassId());
-    var classid = getClassId();
+    var classid = this._id;
     var specificclass = classes.findOne(classid);
-    
+
     for (var i=0; i<specificclass.studentReviews.length ;i++){
       if (specificclass.studentReviews[i].reviewer == Meteor.user()._id){
         return true;
       //  console.log("Has Reviewed!")
       }
     }
-    
+
     return false;
 
   },

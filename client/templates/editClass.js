@@ -16,6 +16,21 @@ var checkTextEmpty = function(element){
   }
 };
 
+var checkDateNaN = function(element){
+  var time = $(element).val();
+  time = moment(time).unix();
+
+  if(time !== NaN){
+    return true;
+  }
+  else{
+    $(element).parent().removeClass('has-success');
+    $(element).parent().addClass('has-error');
+    return false;
+  }
+};
+
+
 var checkNumberPositive = function(element){
   var costInput = $(element).val();
   if(costInput && costInput > 0){
@@ -86,7 +101,8 @@ Template.editClass.events({
     checkTextEmpty($('#descField')) &
     checkNumberPositive($('#costField')) &
     checkTextEmpty($('#dateField')) &
-    checkTextEmpty($('#mapidform'))){
+    checkTextEmpty($('#mapidform'))&
+    checkDateNaN($('#dateField'))){
 
      Meteor.call('editClass', this._id, address, class_date, user_title, user_cost, user_description, user_subject, Meteor.user()._id, Meteor.user().profile.name, Meteor.user().username, latitude, longitude. unixtime);
 
