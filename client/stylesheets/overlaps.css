@@ -11,6 +11,24 @@
 	width: 50%;
 	display:inline-block;
 }
+@media screen and (min-width: 1000px){
+	#guidebut{
+    font-size: .4em;
+	}
+}
+@media screen and (max-width: 1000px){
+	#guidebut{
+    font-size: .3em;
+	}
+}
+#guidebut{
+	    font-weight: 700;
+    border-radius: 15px;
+    color: #428EFF;
+    background-color: white;
+    height: 70px;
+    width: 100%;
+}
 .navbarhome{
 	top: 0;
 	width: 100%;

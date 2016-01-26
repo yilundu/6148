@@ -1,0 +1,32 @@
+#jump1{
+	    min-height: 1300px;
+    background-color: #f5f5f5;
+    margin-bottom: 0px;
+}
+
+#jump2{
+	margin-bottom: 0px;
+	min-height: 1200px;
+    border-radius: 30px;
+    margin-left: 50px;
+    margin-right: 50px;
+    background-image: url("kite.png");
+}
+#topusertitle{
+	margin-top: 0px;
+    text-align: center;
+    font-family: "Nunito";
+    color: #333;
+}
+
+.panelcla{
+	    text-align: center;
+	    margin-top: 20px;
+    border: none;
+    background-color: rgba(255, 255, 255, .5);
+    margin-left: 40px;
+    margin-right: 40px;
+        font-size: 20px;
+    font-weight: 400;
+    border-radius: 25px;
+}
