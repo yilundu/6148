@@ -155,7 +155,7 @@ Meteor.methods({
     }
     	else{
     		Meteor.users.update(user_id,{$set:{"profile.name": actualusername}});
-    		classes.insert({
+    		classes.update(classId,{$set: {
 	        title: user_title,
 	        subject: user_subject,
 	        cost: user_cost,
@@ -172,7 +172,8 @@ Meteor.methods({
             address: address,
           studentReviews: [],
           newcost: 2*user_cost
-	      });
+	      }
+        });
 
     	}
     },
@@ -332,18 +333,19 @@ Meteor.methods({
 
     'addCash': function(id, amount){
 
-      try{
+     // try{
         if (Meteor.users.findOne(id).profile.balance){
-          Meteor.users.update(id, {$inc: {"profile.balance": amount}});
+          Meteor.users.update(id, {$inc: {"profile.balance": parseInt(amount)}});
+          console.log("Money Updated!")
         }
         else {
           Meteor.users.update(id, {$set: {"profile.balance": 0.00}});
-          Meteor.users.update(id, {$inc: {"profile.balance": amount}});
+          Meteor.users.update(id, {$inc: {"profile.balance": parseInt(amount)}});
         }
-      }
+   /*   }
       catch(err){
         console.log("caught exception - no biggie - carry on");
-      }
+      }*/
     },
     'setnewCash': function(id, amount){
        classes.update({_id: id},{$set: {newcost: amount}});

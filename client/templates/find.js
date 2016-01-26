@@ -86,7 +86,7 @@ Template.find.events({
 			+"<li class= 'classliid'>"+item.title+"</li>"
 			+"<li> Description: "+item.description+"</li>"
 			+"<li> Subject: "+item.subject+"</li>"
-			+"<li> Teacher: "+ item.teacher+ "</li><li> Date: "+ item.createdAt+ "</li>"
+			+"<li> Teacher: "+ item.teacher+ "</li><li> Date: "+ moment.format(item.createdAt)+ "</li>"
 			+"<li> Students Enrolled: "+item.studentNumber+"</li>"
 			+"<li> Address: "+ item.address +"</li>"
 			+"<li> Cost: <span class='strikethrough'>$"+ item.cost +"</span>  $"+ item.newcost +"</li>"
@@ -129,14 +129,14 @@ Template.find.events({
 	 if (classes.findOne(classid).newcost < Meteor.user().profile.balance){
 	 	
      if ((user.find({meteor: Meteor.user()._id, classes: classid}).count())===0){
-     	var cost = classes.findOne(classid).newcost;
+     	var cost = classes.findOne(classid).cost;
 	 	var negativecost = -1*cost;
 	 	Meteor.call('addCash', Meteor.user()._id, negativecost);
-	 	string = "Paid $"+cost+" for class "+classes.findOne(classid).title+"("+ classid + ") at time: "+time;
+	 	string = "Paid temporary $"+cost+" for class "+classes.findOne(classid).title+"("+ classid + ") at time: "+time;
 	 	Meteor.call('transactionHistory', Meteor.user()._id, string);
-	 	Meteor.call('addCash', classes.findOne(classid).teacherId, cost);
-	 	string2 = "Received $"+cost+" for class "+classes.findOne(classid).title+"("+ classid + ") at time: "+time;
-	 	Meteor.call('transactionHistory', classes.findOne(classid).teacherId, string2);
+	 	//Meteor.call('addCash', classes.findOne(classid).teacherId, cost);
+	 	//string2 = "Recieved $"+cost+" for class "+classes.findOne(classid).title+"("+ classid + ") at time: "+time;
+	 	//Meteor.call('transactionHistory', classes.findOne(classid).teacherId, string2);
      	Meteor.call('incrementStudentNumber', classid);
 
      	var id = Meteor.user()._id;
@@ -151,7 +151,7 @@ Template.find.events({
      	sAlert.error('You have already enrolled!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
  	}}
  	else{
- 		sAlert.error('You do not have enough credit!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
+ 		sAlert.error('You do not have enough credit! Please authenticate venmo to add credit.',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
 
  	}
  	}

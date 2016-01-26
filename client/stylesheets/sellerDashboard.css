@@ -22,7 +22,7 @@
   }
 }
 .sidebar-offcanvas{
-  position: fixed;
+  position: absolute;
 }
 ._seller-dashboard{
   background-attachment: fixed;

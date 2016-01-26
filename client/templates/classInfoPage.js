@@ -55,6 +55,7 @@ Template.classInfoPage.events({
     console.log("entered click teacherPostBtn, this._id = "+this._id);
     Meteor.call('updateAnnouncements', this._id, updatedAnnouncements);
     //classes.update(this._id, {$set : {classAnnouncements: updatedAnnouncements}});
+    sAlert.success('Information Updated!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
 
   },
   'click #studentPostBtn' : function(){
@@ -76,35 +77,47 @@ Template.classInfoPage.events({
       userId: Meteor.userId(),
       postText: postText,
       timePosted: new Date()});
+      //rating: $('#rating').data('userrating');
     Meteor.call('updateComments', this._id, updatedComments);
+    sAlert.success('Information Updated!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
+
    // classes.update(this._id, {$set : {studentComments: updatedComments}});
 
  },
  'click #saveReviewBtn' : function(){
    var reviewText = $('#reviewField').val();
-   var starRating = 4;//TODO: implement front end input of star rating
+   var starRating = $('#rating').data('userrating');//TODO: implement front end input of star rating
    var reviewer = Meteor.userId();//the user who wrote the review
 
    var reviewTime = new Date();
 
    console.log("Called savereviewbtn");
    Meteor.call('addClassReview',this._id, reviewer, starRating, reviewText, reviewTime);
+   sAlert.success('Information Updated!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
+
 
  },
  'click #editReviewBtn' : function(){
    console.log("click #editReviewBtn");
    var reviewText = $('#reviewField').val();
-   var starRating = 4;//TODO: implement front end input of star rating
+   var starRating = $('#rating').data('userrating');//TODO: implement front end input of star rating
    var reviewer = Meteor.userId();//the user who wrote the review
    var reviewTime = new Date();
 
    console.log("in click #editreview this_id = "+this._id);
    Meteor.call('editClassReview',this._id, reviewer, starRating, reviewText, reviewTime);
+   sAlert.success('Information Updated!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
+
 
  },
  'click #deleteReviewBtn' : function(){
+  var string = "Are you sure you want to delete your review?" ;
+  bootbox.confirm(string, function(result){
+       if (result === false) {}
+        else{
    console.log("clicked remove review. this._id = "+ this._id);
    Meteor.call('removeClassReview',this._id, Meteor.userId());
+ }});
  }
 });
 
@@ -117,6 +130,15 @@ Template.classInfoPage.helpers({
     {
       return false;
     }
+  },
+  review: function(){
+    var avgreview = classes.findOne(this._id).studentReviews;
+    var total = 0;
+    for(var i = 0; i < avgreview.length; i++) {
+        total += avgreview[i];
+    }
+    var avg = total / avgreview.length
+    return avg;
   },
   studentList: function(){
     if(this.studentList)
@@ -133,7 +155,7 @@ Template.classInfoPage.helpers({
     {
       return null;
     }
-    /*
+   
     var studentReviews = classes.findOne(this._id).studentReviews;
     for(var i = 0 ; i < studentReviews.length ; i++)
     {
@@ -144,7 +166,7 @@ Template.classInfoPage.helpers({
       }
 
     }
-*/
+
     
     console.log("No user reviews found!");
     return null;

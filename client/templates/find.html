@@ -33,15 +33,15 @@
        <div class= 'results'>
          <ul class = "jumbotron insidesearch">
            <li class = "hidethis">{{_id}}</li>
-            <li class = 'classliid'>{{title}}</li>
-            <li>Description: {{description}}</li>
-           <li>Subject: {{subject}}</li>
-           <li>Teacher: {{teacher}}</li>
-           <li>Student Number: {{studentNumber}}</li>
-           <li>Date: {{createdAt}}</li>
-           <li>Address: {{address}}</li>
+            <li class = 'classliid'><span class = "boldspan" > {{title}}</span></li>
+            <li><span class = "boldspan" >Description:</span> {{description}}</li>
+           <li><span class = "boldspan" >Subject:</span> {{subject}}</li>
+           <li><span class = "boldspan" >Teacher:</span> {{teacher}}</li>
+           <li><span class = "boldspan" >Student Number:</span> {{studentNumber}}</li>
+           <li><span class = "boldspan" >Date:</span> {{createdAt}}</li>
+           <li><span class = "boldspan" > Address:</span> {{address}}</li>
        <!--    <li>Map: {{>googleMap name="Map" options=exampleMapOptions }}</li> -->
-           <li>Cost: <span class='strikethrough'>${{cost}}</span> ${{newcost}}</li>
+           <li><span class = "boldspan" > Base Cost: </span> <span class='strikethrough'> ${{cost}}</span>  &nbsp;&nbsp;&nbsp;&nbsp;<span class = "boldspan" >Current Cost:</span> ${{newcost}}</li>
      <!--     <li>Map: {{>googleMap name="Map" options= "{center: new google.maps.LatLng({{latitude}}, {{longitude}})}" }}</li>  -->
            
            <li><button class="submit">Enroll!</button></li>

@@ -36,6 +36,17 @@ Template.layout.events({
 	"click #editprofile": function(){
 		Router.go("/editprofile", {name: $(".form-control").val()});
 	},
+	"click #navhomeid": function(){
+		if (Router.current().route.path() === "/"){
+			 document.location.reload(true);
+
+		}else{
+			Router.go("/", {name: $(".form-control").val()});
+		}
+	},
+	"click #moneylink": function(){
+		Router.go("/credit", {name: $(".form-control").val()});
+	},
 
   "click #studentprofile": function(){
     Router.go("/studentDashboard", {name: $(".form-control").val()});
@@ -50,7 +61,6 @@ Template.layout.events({
   "click #moneymanage": function(){
   	Router.go("/credit", {name: $(".form-control").val()});
   },
-
 
 	"click .aboutlink": function(e, template){
 		console.log("clickabout");
@@ -101,7 +111,7 @@ Template.layout.events({
 });
 
 Template._loginButtonsLoggedInDropdown.onRendered(function () {
-	 $(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='moneymanage'> Account Finances </button>");
+	 $(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='moneymanage'> Finances </button>");
 	$(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='editprofile'>  Edit Profile </button>");
   $(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='studentprofile'> Student Dashboard </button>");
   $(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='teacherprofile'> Teacher Dashboard </button>");

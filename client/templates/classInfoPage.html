@@ -3,27 +3,30 @@
   <div class ="_classInfoPage container-fluid">
 
     <!-- Top Level Class Info -->
-    <div class = "jumbotron">
+    <div class = "jumbotron" id = "topjumbo">
       <h2><hr>{{title}}<hr></h2>
       <div class = "row">
         <!-- TODO: Animate numbers flick up, model accelereation and decelleration -->
-        <span class="col-sm-4"> {{studentNumber}}<small>students</small></span>
+
+        <span class="col-sm-4"> {{studentNumber}}<small> students</small></span>
         <span class="col-sm-4">$<span class="strikethrough">{{cost}}</span> ${{newcost}} <small>per hr</small></span>
-        <span class="col-sm-4">4.65 <small>stars</small></span>
+        <span class="col-sm-4">{{review}} <small>stars</small></span>
       </div>
     </div>
 
     <div class="secondary-class-info">
       <div class = "row">
+      <div id = "centeringid">
         <!-- TODO: Animate numbers flick up, model accelereation and decelleration -->
         <span class="col-sm-6">{{teacher}}<small> teaching</small></span>
-        <span class="col-sm-6">7th<small> week</small></span>
+        </div>
+      <!--  <span class="col-sm-6">7th<small> week</small></span> -->
 
       </div>
 
     </div>
 
-    <button class="btn btn-primary">Enroll me!</button>
+<!--    <button class="btn btn-primary">Enroll me!</button> -->
 
 
     <!-- Main Class Content -->
@@ -32,14 +35,14 @@
       <div class ="page-header">
 
 
-        <h2>Your review: {{userReviewText}}</h2>
+        <h2>Your review: {{userReviewText}}</h2> 
 
         {{#if userHasReviewed}}
           {{> classReview review = userReview}}
         {{/if}}
       </div>
       <div class="user-review">
-        Your Rating:
+       {{> starsRating id='rating' mutable=true}}
         <!-- Star rating widget - source: http://codepen.io/jamesbarnett/pen/vlpkh-->
         <div class="rating-stars">
 

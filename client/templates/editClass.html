@@ -10,24 +10,24 @@
 
       <div class="input-group">
         <span class="input-group-addon" id="addon1">Title:</span>
-        <input type="text" class="form-control" value="{{title}}" placeholder="Ex: 8.01" aria-describedby="addon1" id="titleField" autofocus>
+        <input type="text" class="form-control" value="{{title}}" placeholder="Ex: 8.01" aria-describedby="addon1" id="titleField" autofocus readonly>
       </div>
 
 
       <div class="input-group">
         <span class="input-group-addon" id="addon3">Cost:</span>
-        <input type="number" class="form-control" value={{cost}} placeholder="" aria-describedby="addon3" id="costField">
+        <input type="number" class="form-control" value={{cost}} placeholder="" aria-describedby="addon3" id="costField" readonly>
       </div>
 
       <div class="input-group">
         <span class="input-group-addon" id="addon4">Description:</span>
-        <input type="text" class="form-control" value= "{{description}}" placeholder="" aria-describedby="addon4" id="descField">
+        <textarea type="text" class="form-control" value= "{{description}}" placeholder="" aria-describedby="addon4" id="descField"></textarea>
       </div>
 
       <div class="input-group">
         <span class="input-group-addon" id="addon5">Date of Class:</span>
         <input type="datetime-local" value="{{createdAt}}" class="form-control" placeholder="" aria-describedby="addon5" id="dateField">
-        Created At: {{createdAt}}
+        <!--Created At: {{createdAt}}-->
       </div>
 
 
@@ -50,7 +50,7 @@
       <div class="input-group">
         <span class="input-group-addon" id="addon9">Location of Class</span>
 
-          <input type = "text" class = "form-control" id = "mapidform" >
+          <input type = "text" class = "form-control" id = "mapidform" value={{address}} >
       </div>
 
       <div class="map-container" id="my_map">
@@ -59,7 +59,7 @@
 
 
 
-      <button class="btn btn-primary" id="createBtn">Create this class!</button>
+      <button class="btn btn-primary" id="createBtn2">Submit!</button>
       <a class="btn btn-warning" href="{{pathFor 'sellerDashboard'}}">Back to Dashboard</a>
 
     </div>
