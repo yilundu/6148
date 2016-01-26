@@ -35,7 +35,7 @@ var startCheck = function(id)
   SyncedCron.add({
     name: id,
     schedule: function(parser){
-      return parser.text('every 30 seconds');
+      return parser.text('every 300 seconds');
       //return parser.recur().every().second();
     },
     job: function(){
@@ -308,7 +308,7 @@ Meteor.methods({
         //push notificaton to the teacher that they have been reviewed
         var title = thisClass.title+" has reached it's start time!";
         var message = thisClass.title+" is beginning.";
-        var type = "student";
+        var type = "teacher";
         var options = null;
         Meteor.call('pushNotification',e, title, message, type, options);
         console.log("Sent push notification!");

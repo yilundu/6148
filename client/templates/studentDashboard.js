@@ -40,10 +40,20 @@ Template.studentDashboard.helpers({
   },
 
   transactionHistory: function(){
-    return Meteor.user().profile.transactionhistory.reverse();
+    if(Meteor.user() && Meteor.user().profile){
+      if(!Meteor.user().profile.transactionhistory)
+      {
+        Meteor.users.update(Meteor.userId(), {$set : {"profile.transactionhistory" : []}});
+      }
+      return Meteor.user().profile.transactionhistory.reverse();
+    }
+    else {
+      return [];
+    }
   },
 
   notifications: function(){
+    console.log("DEPS.ACTIVE="+Deps.active);
     if(Meteor.user() && Meteor.user().profile)
     {
       if(Meteor.user().profile.notifs)

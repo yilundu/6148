@@ -9,7 +9,16 @@ Template.sellerDashboard.helpers({
     return classes.find({teacherId: Meteor.userId()}).count();
   },
   transactionHistory: function(){
-    return Meteor.user().profile.transactionhistory.reverse();
+    if(Meteor.user() && Meteor.user().profile){
+      if(!Meteor.user().profile.transactionhistory)
+      {
+        Meteor.users.update(Meteor.userId(), {$set : {"profile.transactionhistory" : []}});
+      }
+      return Meteor.user().profile.transactionhistory.reverse();
+    }
+    else {
+      return [];
+    }
   },
   reviews: function(){
     results = classes.find({teacherId: Meteor.userId()}).fetch();
