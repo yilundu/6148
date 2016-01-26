@@ -549,6 +549,39 @@ Meteor.methods({
         }
       }});
 
+    },
+    UpdateClassOnEnd: function(classid) {
+      classes.find({}).forEach(
+    function(elem){
+      var newcost =(1*elem.cost*(elem.studentNumber/3+2)/(elem.studentNumber/3+1)/2).toFixed(2);
+      Meteor.call('setnewCash',elem._id, newcost);
+
+    }
+  );
+  console.log("UPDATECLASSONEND classid = " + classid);
+  console.log("findone = "+classes.findOne(classid));
+  var savings = parseInt(classes.findOne(classid).cost)-parseInt(classes.findOne(classid).newcost);
+  var classnew = classes.findOne(classid);
+  var studentList = classes.findOne(classid).studentList;
+
+  for (var i=0; i<studentList.length; i++){
+    Meteor.call('addCash', studentList[i], savings);
+    var string = "Recieved $"+savings+" for group savings from "+classnew.title+" on time: "+moment().format('LLLL');
+    Meteor.call('transactionHistory', studentList[i], string);
+
+    //notify user
+    Meteor.call('pushNotification', studentList[i], "Received Class Savings!", "Recieved $"+savings+" for group savings from "+classnew.title+" on time: "+moment().format('LLLL'), "student", null);
+
+
+  }
+  var total = studentList.length*parseInt(classes.findOne(classid).newcost);
+  Meteor.call('addCash', classnew.teacherId, total);
+  var string = "Recieved $"+total+" for teaching "+classnew.title+"on time: "+moment().format('LLLL');
+  Meteor.call('transactionHistory', classnew.teacherId, string);
+
+  //notify teacher
+  Meteor.call('pushNotification', classnew.teacherId, "Received Class Earnings!", "Recieved $"+total+" for teaching "+classnew.title+" on time: "+moment().format('LLLL'), "teacher", null);
+
     }
 
 });
