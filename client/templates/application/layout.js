@@ -105,6 +105,9 @@ Template.layout.events({
 	"click #search": function(e,template){
 			e.preventDefault();
 			Router.go('/search');
+	},
+	"click #login-buttons-logout": function(){
+		$(".dropdown-menu").append("<i class='icon-spinner icon-spin icon-large'></i> ");
 	}
 
 
