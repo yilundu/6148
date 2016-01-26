@@ -141,7 +141,8 @@ Meteor.methods({
         address: address,
         studentReviews: [],
         newcost: user_cost,
-        unixtime: unixtime
+        unixtime: unixtime,
+        triggered: false
       });
       }
     	else{
@@ -163,7 +164,8 @@ Meteor.methods({
             address: address,
           studentReviews: [],
           newcost: user_cost,
-          unixtime: unixtime
+          unixtime: unixtime,
+          triggered: false
 	      });
 
     	}
@@ -579,11 +581,11 @@ var UpdateClassOnEnd = function(classid) {
 
   for (var i=0; i<studentList.length; i++){
     Meteor.call('addCash', studentList[i], savings);
-    var string = "Recieved $"+savings+" for group savings from "+classnew.title+"on time: "+moment().format('LLLL');
+    var string = "Recieved $"+savings+" for group savings from "+classnew.title+" on time: "+moment().format('LLLL');
     Meteor.call('transactionHistory', studentList[i], string);
 
     //notify user
-    Meteor.call('pushNotification', studentList[i], "Received Class Savings!", "Recieved $"+savings+" for group savings from "+classnew.title+"on time: "+moment().format('LLLL'), "student", null);
+    Meteor.call('pushNotification', studentList[i], "Received Class Savings!", "Recieved $"+savings+" for group savings from "+classnew.title+" on time: "+moment().format('LLLL'), "student", null);
 
 
   }
@@ -593,7 +595,7 @@ var UpdateClassOnEnd = function(classid) {
   Meteor.call('transactionHistory', classnew.teacherId, string);
 
   //notify teacher
-  Meteor.call('pushNotification', classnew.teacherId, "Received Class Earnings!", "Recieved $"+total+" for teaching "+classnew.title+"on time: "+moment().format('LLLL'), "teacher", null);
+  Meteor.call('pushNotification', classnew.teacherId, "Received Class Earnings!", "Recieved $"+total+" for teaching "+classnew.title+" on time: "+moment().format('LLLL'), "teacher", null);
 
 
 }

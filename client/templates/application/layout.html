@@ -2,11 +2,11 @@
 
 
 <template name="layout">
-<head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
-<link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
-</head>
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+  </head>
   <header class = "{{navbarhelper}}">
     <nav class = "{{navbarhelper}} container-fluid" id = "{{navbartophelper}}">
       <div class = "navbar-header">
@@ -18,32 +18,33 @@
     </div>
     {{> sAlert}}
     <div class = "navbar-collapse collapse collapseclasser" id = "{{NavBarHelper}}">
-    <div id = "leftpart">
-      <ul class = "nav navbar-nav" id = "navtopclass">
-        {{#if toptabid12}}
-        <li class = 'toptab' id = 'toptabid'> <a href = '#about' class = 'aboutlink scroll-link navbartext' data-scroll> Why Overlaps? </a></li>
-        <li class = 'toptab' id = 'toptabid15'> <a href = '#pricing' class = 'pricelink scroll-link navbartext' data-scroll> Pricing Model </a></li>
-      <li> <a href = '#Topics' id = 'toptabid2' class = 'topicslink navbartext scroll-link'> How It Works </a></li>
-        {{/if}}
+      <div id = "leftpart">
+        <ul class = "nav navbar-nav" id = "navtopclass">
+          {{#if toptabid12}}
+          <li class = 'toptab' id = 'toptabid'> <a href = '#about' class = 'aboutlink scroll-link navbartext' data-scroll> Why Overlaps? </a></li>
+          <li class = 'toptab' id = 'toptabid15'> <a href = '#pricing' class = 'pricelink scroll-link navbartext' data-scroll> Pricing Model </a></li>
+          <li id = "toptabid2"> <a href = '#Topics' class = 'topicslink navbartext scroll-link'> How It Works </a></li>
+          {{/if}}
 
 
-        {{#if currentUser}}
-        {{#if toptabid33}}
-        <li> <a href = '#Mission' id = 'toptabid3' class = 'missionlink navbartext scroll-link'> Testimonials </a></li>
-        {{/if}}
+          {{#if currentUser}}
+          {{#if toptabid33}}
+          <li class = 'toptab' id = "toptabid3" > <a href = '#Mission' class = 'missionlink navbartext scroll-link'> Testimonials </a></li>
+          {{/if}}
 
-        {{/if}}
-        <li>{{{searchbarhelper}}}</li>
-      </ul>
-    </div>
-      <ul class = "nav navbar-right navbar-nav">
-        <li><span id = "moneylink" class = "money">${{money}}</span></li>
-        <li> <div class = "profpic">  <img class= "logoimage" src = "{{photoprof}}"> </div></li>
+          {{/if}}
+          <li class = 'toptab' >{{{searchbarhelper}}}</li>
+        </ul>
+      </div>
+
+<ul class = "nav navbar-right navbar-nav">
+        <li id = "spacjh"><span id = "moneylink" class = "money hidden-xs hidden-sm">${{money}}</span></li>
+        <li> <div class = "profpic hidden-xs hidden-sm">  <img class= "logoimage" src = "{{photoprof}}"> </div></li>
         <li> {{>loginButtons}}</li>
         <li> <div class = "btn"> </div> </li>
       </ul>
-
     </div>
+
   </nav>
 
 </header>
@@ -100,7 +101,7 @@
                 We are a platform for college students to learn useful skills from cooking to fixing up a bike. From quick demos to longer lessons, we want to allow everyone to share the diverse skills they have with others.
               </p>
 
- 
+
 
             </div>
 

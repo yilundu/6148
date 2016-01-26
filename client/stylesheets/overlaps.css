@@ -20,6 +20,8 @@
 	#guidebut{
     font-size: .3em;
 	}
+}.dropdown-menu{
+	max-width: 300px;
 }
 #guidebut{
 	    font-weight: 700;
@@ -28,6 +30,10 @@
     background-color: white;
     height: 70px;
     width: 100%;
+}
+.nav > li > a {
+	padding-left: 5px;
+	padding-right: 5px;
 }
 .navbarhome{
 	top: 0;
@@ -90,7 +96,9 @@ doesn't work, hover color
 	margin-top:15px;
 	color: white;
 }
-
+#spacjh{
+	margin-top: 7px;
+}
 .dropdown-toggle{
 	color: white;
 }
@@ -105,6 +113,6 @@ doesn't work, hover color
 
 .money {
 	color: white;
-	font-size: 25pt;
+	font-size: 20pt;
 	margin-right: 20px;
 }

@@ -13,7 +13,7 @@ Template.find.helpers({
 //  var search1 = new ReactiveVar(new RegExp($(".subject").val(),'i'));
 //	var search2 = new ReactiveVar(new RegExp($(".description").val(),'i'));
 //	return classes.find({subject: search1, description: search2});
-	classes.find({}).forEach(
+	classes.find({triggered: false}).forEach(
 		function(elem){
 			var newcost =(1*elem.cost*(elem.studentNumber/3+2)/(elem.studentNumber/3+1)/2).toFixed(2);	
 			Meteor.call('setnewCash',elem._id, newcost);
@@ -34,7 +34,7 @@ Template.find.helpers({
 	//return {posts: classes.find({subject: search1, description: search2})};
 
 
-	return classes.find({}, {limit: 10, sort: {studentNumber: -1}}).fetch();
+	return classes.find({triggered: false}, {limit: 10, sort: {studentNumber: -1}}).fetch();
 //	return classes.find({subject: {regex: "/"+$(".subject").val()+"/i"}, description: {regex: "/"+$(".description").val()+"/i"}});
 	}
 	},
@@ -81,12 +81,12 @@ Template.find.events({
 	 	var newCost = ((item.cost/2)*(item.studentNumber/3+2)/(item.studentNumber/3+1)).toFixed(2);
 		$(".Test").append(
 			"<div class='results' id='" + item._id+"''>"
-			+"<ul class = 'jumbotron insidesearch'>"
+			+"<ul class = 'jumbotron "+item.isOver+ " insidesearch'>"
 			+"<li class = 'hidethis'>"+item._id+"</li>"
-			+"<li class= 'classliid'>"+item.title+"</li>"
+			+"<li class= 'classliid' <span class = 'boldspan'>"+item.title+"</span></li>"
 			+"<li> Description: "+item.description+"</li>"
 			+"<li> Subject: "+item.subject+"</li>"
-			+"<li> Teacher: <a href='/profile?id="+item.teacherId+"'>"+ item.teacher+ "</a></li><li> Time: "+ moment(item.createdAt).format("dddd, MMMM Do YYYY, h:mm a")+ "</li>"
+			+"<li> Teacher: <a href='/profile?id="+item.teacherId+"'>"+ item.teacher+ "</a></li><li> Time: "+ item.createdAt+ "</li>"
 			+"<li> Students Enrolled: "+item.studentNumber+"</li>"
 			+"<li> Address: "+ item.address +"</li>"
 			+"<li> Cost: <span class='strikethrough'>$"+ item.cost +"</span>  $"+ item.newcost +"</li>"
@@ -125,7 +125,12 @@ Template.find.events({
 	 if (!user.findOne({meteor: Meteor.user()._id})){
 	 	Meteor.call('addNewUser', Meteor.userId());
 	 }
-	 
+	 if (classes.findOne(classid).unix < moment().unix)
+	 {
+	 	sAlert.error('Class has already occured!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
+
+	 }
+	 else {
 	 if (classes.findOne(classid).newcost < Meteor.user().profile.balance){
 	 	
      if ((user.find({meteor: Meteor.user()._id, classes: classid}).count())===0){
@@ -154,7 +159,7 @@ Template.find.events({
  		sAlert.error('You do not have enough credit! Please authenticate venmo to add credit.',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
 
  	}
- 	}
+ 	}}
  	else {
  		event.preventDefault();
  		Router.go('/register')
