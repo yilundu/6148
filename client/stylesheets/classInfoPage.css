@@ -106,7 +106,10 @@
 ._classInfoPage .main-body {
   margin: 50px;
 }
-
+#topjumbo{
+  background-image:url("lightfluw.png");
+  background-size: cover;
+}
 ._classInfoPage .secondary-class-info span {
   color: white;
   font-size: 20pt;
