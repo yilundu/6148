@@ -20,8 +20,8 @@ var performEndClass = function()
       UpdateClassOnEnd(each.class_id);
 
       //push notificaton to the teacher that they have been reviewed
-      Meteor.call('removeClass', each.class_id);
-      FutureTasks.update(each.class_id, {$set: {triggered: true}});//TODO: change this to rmeoved
+      Meteor.call('endClass', each.class_id);
+      FutureTasks.update({class_id : each.class_id}, {$set: {triggered: true}});//TODO: change this to rmeoved
 
     }
   }
@@ -35,7 +35,7 @@ var startCheck = function(id)
   SyncedCron.add({
     name: id,
     schedule: function(parser){
-      return parser.text('every 5 seconds');
+      return parser.text('every 30 seconds');
       //return parser.recur().every().second();
     },
     job: function(){
@@ -57,6 +57,10 @@ var scheduleClass = function (details){
   console.log("Added Class with id: "+details.class_id + " for time "+ details.date);
   return true;
 };
+
+var updateScheduledClass = function (details){
+  FutureTasks.update({'details.class_id' : details.class_id}, {$set : {details: details}});
+}
 
 Meteor.startup(function(){
   var tasksToRemove = [];
@@ -114,7 +118,7 @@ Meteor.methods({
         newcost: user_cost,
         unixtime: unixtime
       });
-    }
+      }
     	else{
     		Meteor.users.update(user_id,{$set:{"profile.name": actualusername}});
     		classid = classes.insert({
@@ -138,9 +142,8 @@ Meteor.methods({
 	      });
 
     	}
-
       //set up listener to fire when class date occurs
-      scheduleClass({date: unixtime, class_id: classid, triggered: falses});
+      scheduleClass({date: unixtime, class_id: classid, triggered: false});
 
     },
     'editClass': function(classId,address, class_date, user_title, user_cost, user_description, user_subject, user_id, username, actualusername, latitude, longitude, time, unixtime){
@@ -165,7 +168,8 @@ Meteor.methods({
         longitude: longitude,
         address: address,
         studentReviews: [],
-        newcost: 2*user_cost
+        newcost: 2*user_cost,
+        isOver: false
       }});
     }
     	else{
@@ -186,15 +190,16 @@ Meteor.methods({
             longitude: longitude,
             address: address,
           studentReviews: [],
-          newcost: 2*user_cost
+          newcost: 2*user_cost,
+          isOver: false
 	      }
         });
 
     	}
 
-
       //set up listener to fire when class date occurs
-      scheduleClass({date: unixtime, class_id: classid});
+      updateScheduledClass({date: unixtime, class_id: classid, triggered: false});
+
     },
     'incrementStudentNumber': function(classid){
         console.log(classes.findOne(classid,{studentNumber: 1, _id: 0}));
@@ -264,6 +269,9 @@ Meteor.methods({
     },
     'removeClass': function(id){
     	classes.remove({_id: id});
+    },
+    'endClass': function(id){//class has ended due to being over - not being cancelled
+    	classes.update({_id: id}, {$set : {isOver: true}});
     },
     'updateClass': function(id, newClasses){
     	user.update(id, {$set : {classes: newClasses}});
@@ -519,11 +527,13 @@ var UpdateClassOnEnd = function(classid) {
 
     }
   );
+  console.log("UPDATECLASSONEND classid = " + classid);
+  console.log("findone = "+classes.findOne(classid));
   var savings = parseInt(classes.findOne(classid).cost)-parseInt(classes.findOne(classid).newcost);
   var classnew = classes.findOne(classid);
   var studentList = classes.findOne(classid).studentList;
 
-  for (var i=0, i<studentList.length, i++){
+  for (var i=0; i<studentList.length; i++){
     Meteor.call('addCash', studentList[i], savings);
     var string = "Recieved $"+savings+" for group savings from "+classnew.title+"on time: "+moment().format('LLLL');
     Meteor.call('transactionHistory', studentList[i], string);
