@@ -57,11 +57,36 @@
 
 ._classInfoPage .jumbotron span {
   color: white;
-  font-size: 30pt;
+
   text-align: center;
   vertical-align: middle;
   font-family: inherit;
 }
+._classInfoPage .row{
+  margin-left: 0px;
+  margin-right: 0px;
+}
+@media screen and (min-width: 1100px){
+  ._classInfoPage .jumbotron span {
+      font-size: 30pt;
+  }
+}
+@media screen and (max-width: 1100px) and (min-width: 975px){
+  ._classInfoPage .jumbotron span {
+      font-size: 25pt;
+  }
+}
+@media screen and (max-width: 975px) and (min-width: 900px){
+  ._classInfoPage .jumbotron span {
+      font-size: 20pt;
+  }
+}
+@media screen and (max-width: 900px){
+  ._classInfoPage .jumbotron span {
+      font-size: 15pt;
+  }
+}
+
 
 ._classInfoPage .jumbotron small {
   font-size: 15pt;
