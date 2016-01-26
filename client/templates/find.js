@@ -83,7 +83,7 @@ Template.find.events({
 			"<div class='results' id='" + item._id+"''>"
 			+"<ul class = 'jumbotron "+item.triggered+ " insidesearch'>"
 			+"<li class = 'hidethis'>"+item._id+"</li>"
-			+"<li class= 'classliid'>"+item.title+"</li>"
+			+"<li class= 'classliid' <span class = 'boldspan'>"+item.title+"</span></li>"
 			+"<li> Description: "+item.description+"</li>"
 			+"<li> Subject: "+item.subject+"</li>"
 			+"<li> Teacher: <a href='/profile?id="+item.teacherId+"'>"+ item.teacher+ "</a></li><li> Time: "+ moment(item.createdAt).format("dddd, MMMM Do YYYY, h:mm a")+ "</li>"
@@ -125,7 +125,12 @@ Template.find.events({
 	 if (!user.findOne({meteor: Meteor.user()._id})){
 	 	Meteor.call('addNewUser', Meteor.userId());
 	 }
-	 
+	 if (classes.findOne(classid).unix < moment().unix)
+	 {
+	 	sAlert.error('Class has already occured!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
+
+	 }
+	 else {
 	 if (classes.findOne(classid).newcost < Meteor.user().profile.balance){
 	 	
      if ((user.find({meteor: Meteor.user()._id, classes: classid}).count())===0){
@@ -154,7 +159,7 @@ Template.find.events({
  		sAlert.error('You do not have enough credit! Please authenticate venmo to add credit.',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
 
  	}
- 	}
+ 	}}
  	else {
  		event.preventDefault();
  		Router.go('/register')

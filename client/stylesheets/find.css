@@ -49,11 +49,10 @@
     margin:auto;
     padding:0px;
 }
-/*
-.__find .true {
-    opacity: 0.5;
+.__find .true{
+    background-color: #2F4F4F;
 }
-*/
+
 .__find h1, h2{
 	text-align: center;
 }
