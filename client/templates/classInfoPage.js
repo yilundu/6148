@@ -135,7 +135,7 @@ Template.classInfoPage.helpers({
     var avgreview = classes.findOne(this._id).studentReviews;
     var total = 0;
     for(var i = 0; i < avgreview.length; i++) {
-        total += avgreview[i];
+        total += avgreview[i].rating;
     }
     var avg = total / avgreview.length
     return avg;
