@@ -5,7 +5,7 @@ function performEndClass(classId)
   //TODO:
   throw "Not Implemented";
 
-}
+};
 
 
 
@@ -25,7 +25,7 @@ function addTask(id, details)
     }
   })
 
-}
+};
 
 function scheduleClass(details){
   if(details.date < new Date()){
@@ -33,11 +33,14 @@ function scheduleClass(details){
   } else {
     var thisId = FutureTasks.insert(details);
     addTask(thisId, details);
-  }return true;
-}
-
+  }
+  return true;
+};
+/*
 Meteor.startup(function(){
   var tasksToRemove = [];
+
+
   FutureTasks.find().forEach(function(class){
     if(class.date < new Date()){
       performEndClass(class);
@@ -54,8 +57,8 @@ Meteor.startup(function(){
   }
 
   SyncedCron.start();
-})
-
+});
+*/
 /***** FIN ******/
 
 Meteor.methods({
@@ -376,12 +379,14 @@ Meteor.methods({
       }
 
       //add the notification to profile.notifs
-      Metoer.users.update(targetUserId, {$push: {'profile.notifs' :
+      Meteor.users.update(targetUserId, {$push: {'profile.notifs' :
         {
           title: title,
           message: message,
           type: type,
-          options: options
+          options: options,
+          seen: false,
+          time: new Date()
         }
       }});
 
