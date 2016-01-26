@@ -14,5 +14,12 @@ Template.studentBanner.helpers({
     else{
       return student.username;
     }
+  },
+  displayImage: function(){
+    if(!Meteor.user)
+      return "";
+    var thisUser = Meteor.users.findOne(String(this));
+
+    return thisUser.profile.binary || "/default.jpg";//if profile.name is set use that - else use username
   }
 })

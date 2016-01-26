@@ -50,7 +50,7 @@ Template.classInfoPage.events({
       displayName: displayName,
       userId: Meteor.userId(),
       postText: postText,
-      timePosted: new Date()});
+      timePosted: moment().format("dddd, MMMM Do YYYY, h:mm a")});
 
     console.log("entered click teacherPostBtn, this._id = "+this._id);
     Meteor.call('updateAnnouncements', this._id, updatedAnnouncements);
