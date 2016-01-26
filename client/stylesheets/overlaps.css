@@ -3,7 +3,14 @@
 	background-size: cover;
 	margin-top: 0px;
 }
-
+#editprofile{
+	width: 45%;
+	display:inline-block;
+}
+#moneymanage{
+	width: 55%;
+	display:inline-block;
+}
 .navbarhome{
 	top: 0;
 	width: 100%;
