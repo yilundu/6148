@@ -81,12 +81,12 @@ Template.find.events({
 	 	var newCost = ((item.cost/2)*(item.studentNumber/3+2)/(item.studentNumber/3+1)).toFixed(2);
 		$(".Test").append(
 			"<div class='results' id='" + item._id+"''>"
-			+"<ul class = 'jumbotron "+item.triggered+ " insidesearch'>"
+			+"<ul class = 'jumbotron "+item.isOver+ " insidesearch'>"
 			+"<li class = 'hidethis'>"+item._id+"</li>"
 			+"<li class= 'classliid' <span class = 'boldspan'>"+item.title+"</span></li>"
 			+"<li> Description: "+item.description+"</li>"
 			+"<li> Subject: "+item.subject+"</li>"
-			+"<li> Teacher: <a href='/profile?id="+item.teacherId+"'>"+ item.teacher+ "</a></li><li> Time: "+ moment(item.createdAt).format("dddd, MMMM Do YYYY, h:mm a")+ "</li>"
+			+"<li> Teacher: <a href='/profile?id="+item.teacherId+"'>"+ item.teacher+ "</a></li><li> Time: "+ item.createdAt+ "</li>"
 			+"<li> Students Enrolled: "+item.studentNumber+"</li>"
 			+"<li> Address: "+ item.address +"</li>"
 			+"<li> Cost: <span class='strikethrough'>$"+ item.cost +"</span>  $"+ item.newcost +"</li>"
