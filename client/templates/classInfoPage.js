@@ -131,6 +131,15 @@ Template.classInfoPage.helpers({
       return false;
     }
   },
+  review: function(){
+    var avgreview = classes.findOne(this._id).studentReviews;
+    var total = 0;
+    for(var i = 0; i < avgreview.length; i++) {
+        total += avgreview[i];
+    }
+    var avg = total / avgreview.length
+    return avg;
+  },
   studentList: function(){
     if(this.studentList)
     {
