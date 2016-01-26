@@ -137,7 +137,7 @@ Template.find.events({
 	 	//Meteor.call('addCash', classes.findOne(classid).teacherId, cost);
 	 	//string2 = "Recieved $"+cost+" for class "+classes.findOne(classid).title+"("+ classid + ") at time: "+time;
 	 	//Meteor.call('transactionHistory', classes.findOne(classid).teacherId, string2);
-     	//Meteor.call('incrementStudentNumber', classid);
+     	Meteor.call('incrementStudentNumber', classid);
 
      	var id = Meteor.user()._id;
      	Meteor.call('insertPlayerClass', id, classid);

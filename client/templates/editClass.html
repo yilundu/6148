@@ -27,7 +27,7 @@
       <div class="input-group">
         <span class="input-group-addon" id="addon5">Date of Class:</span>
         <input type="datetime-local" value="{{createdAt}}" class="form-control" placeholder="" aria-describedby="addon5" id="dateField">
-        Created At: {{createdAt}}
+        <!--Created At: {{createdAt}}-->
       </div>
 
 
@@ -50,7 +50,7 @@
       <div class="input-group">
         <span class="input-group-addon" id="addon9">Location of Class</span>
 
-          <input type = "text" class = "form-control" id = "mapidform" >
+          <input type = "text" class = "form-control" id = "mapidform" value={{address}} >
       </div>
 
       <div class="map-container" id="my_map">
