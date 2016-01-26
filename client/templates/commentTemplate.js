@@ -1,11 +1,11 @@
 Template.commentTemplate.events({
   'mouseenter ._commentTemplate' : function(){
-    console.log("mouseenter");
+    //console.log("mouseenter");
     //waiting on piazza //$('.glyphicon-remove').show();
   },
 
   'mouseleave ._commentTemplate' : function(){
-    console.log('mouseleave');
+    //console.log('mouseleave');
     //waiting on piazza //$('.glyphicon-remove').hide();
   },
 
@@ -73,10 +73,18 @@ Template.commentTemplate.helpers({
     'isOwnComment' : function(){
       if(Meteor.userId())
       {
-        return this.userId == Meteor.userId();
+        return this.userId == Meteor.userId;
       }
       else{
         return false;
       }
-    }
+    },
+
+    displayImage: function(){
+    if(!Meteor.user)
+      return "";
+    var thisUser = Meteor.users.findOne(this.userId);
+
+    return thisUser.profile.binary || "/default.jpg";//if profile.name is set use that - else use username
+  }
 })

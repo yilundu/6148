@@ -538,12 +538,18 @@ var UpdateClassOnEnd = function(classid) {
     var string = "Recieved $"+savings+" for group savings from "+classnew.title+"on time: "+moment().format('LLLL');
     Meteor.call('transactionHistory', studentList[i], string);
 
+    //notify user
+    Meteor.call('pushNotification', studentList[i], "Received Class Savings!", "Recieved $"+savings+" for group savings from "+classnew.title+"on time: "+moment().format('LLLL'), "student", null);
+
+
   }
   var total = studentList.length*parseInt(classes.findOne(classid).newcost);
   Meteor.call('addCash', classnew.teacherId, total);
   var string = "Recieved $"+total+" for teaching "+classnew.title+"on time: "+moment().format('LLLL');
   Meteor.call('transactionHistory', classnew.teacherId, string);
 
+  //notify teacher
+  Meteor.call('pushNotification', classnew.teacherId, "Received Class Earnings!", "Recieved $"+total+" for teaching "+classnew.title+"on time: "+moment().format('LLLL'), "teacher", null);
 
 
 }
