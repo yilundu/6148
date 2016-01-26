@@ -65,9 +65,6 @@ Template.home.onRendered( function(){
         var path = $('#user1').val();
         path = "/search?search=" + path;
         Router.go(path);
-    },
-    "click #guidebut":function(){
-      Router.go("/guide", {name: $(".form-control").val()});
     }
 
 
