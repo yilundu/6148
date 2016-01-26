@@ -154,6 +154,13 @@
 ._classInfoPage .main-body {
   margin: 30px;
 }
+#studco{
+  max-height: 200px;
+  overflow-y: scroll;
+}
+#studposter{
+  margin-bottom: 6px;
+}
 #topjumbo{
   min-height: 300px;
   background-image:url("lightfluw.png");

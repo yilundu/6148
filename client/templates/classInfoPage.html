@@ -86,9 +86,10 @@
 
     <div class="student-comments">
       {{#if currentUser}}
+      <div id = "studposter">
       <button class="btn btn-primary" id="studentPostBtn">Post</button>
       <input type="text" class="form-control" width = "90%" id="studentPostField">
-
+      </div>
       {{#each studentComments}}
       {{> commentTemplate}}
       {{/each}}
