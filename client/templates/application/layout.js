@@ -37,7 +37,12 @@ Template.layout.events({
 		Router.go("/editprofile", {name: $(".form-control").val()});
 	},
 	"click #navhomeid": function(){
-		Router.go("/", {name: $(".form-control").val()});
+		if (Router.current().route.path() === "/"){
+			 document.location.reload(true);
+
+		}else{
+			Router.go("/", {name: $(".form-control").val()});
+		}
 	},
 	"click #moneylink": function(){
 		Router.go("/credit", {name: $(".form-control").val()});
@@ -56,7 +61,6 @@ Template.layout.events({
   "click #moneymanage": function(){
   	Router.go("/credit", {name: $(".form-control").val()});
   },
-
 
 	"click .aboutlink": function(e, template){
 		console.log("clickabout");

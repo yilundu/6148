@@ -91,6 +91,9 @@ fade reference
 	margin-top: 50px;
 	font-size: .7em;
 }
+#login-username, #login-password, #login-password-again{
+	width: 100%;
+}
 #About-title, .searchtitle{
 	color: white;
 }
