@@ -36,6 +36,12 @@ Template.layout.events({
 	"click #editprofile": function(){
 		Router.go("/editprofile", {name: $(".form-control").val()});
 	},
+	"click #navhomeid": function(){
+		Router.go("/", {name: $(".form-control").val()});
+	},
+	"click #moneylink": function(){
+		Router.go("/credit", {name: $(".form-control").val()});
+	},
 
   "click #studentprofile": function(){
     Router.go("/studentDashboard", {name: $(".form-control").val()});

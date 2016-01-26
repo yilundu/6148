@@ -14,7 +14,7 @@
         data-target=".collapseclasser"> <span class="glyphicon glyphicon-th-list"></span>
       </button>
       <img class = "logoimage" src="/Logo.png">
-      <a class = "navbar-brand navbartext" href = "../"> Overlaps</a>
+      <a class = "navbar-brand navbartext" id = "navhomeid" > Overlaps</a>
     </div>
     {{> sAlert}}
     <div class = "navbar-collapse collapse collapseclasser" id = "{{NavBarHelper}}">
@@ -37,7 +37,7 @@
       </ul>
     </div>
       <ul class = "nav navbar-right navbar-nav">
-        <li><span class = "money">${{money}}</span></li>
+        <li><span id = "moneylink" class = "money">${{money}}</span></li>
         <li> <div class = "profpic">  <img class= "logoimage" src = "{{photoprof}}"> </div></li>
         <li> {{>loginButtons}}</li>
         <li> <div class = "btn"> </div> </li>
