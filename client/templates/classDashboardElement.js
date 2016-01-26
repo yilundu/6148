@@ -15,12 +15,14 @@ Template.classDashboardElement.events({
       time = new Date;
       user.find({classes: thisContext._id}).forEach(
         function(elem){
-          var string1 = "Paid $"+thisContext.newcost+" for class cancellation of "+thisContext.title+"("+ thisContext._id + ") at time: "+time;
-          Meteor.call('addCash',elem.meteor, thisContext.newcash);
+          var string1 = "Recieved $"+thisContext.cost+" for class cancellation of "+thisContext.title+"("+ thisContext._id + ") at time: "+time;
+          Meteor.call('addCash', elem.meteor, thisContext.cost);
+          console.log(elem.meteor);
+          console.log(thisContext.cost);
           Meteor.call('transactionHistory', elem.meteor, string1);
-          var string2 = "Refunded $"+(-1*thisContext.newcost)+" for class cancellation of "+thisContext.title+"("+ thisContext._id + ") at time: "+time;
+         /*var string2 = "Refunded $"+(-1*thisContext.newcost)+" for class cancellation of "+thisContext.title+"("+ thisContext._id + ") at time: "+time;
           Meteor.call('addCash',thisContext.teacherId, -1*thisContext.newcash);
-          Meteor.call('transactionHistory', thisContext.teacherId, string2);
+          Meteor.call('transactionHistory', thisContext.teacherId, string2);*/
 
       });
         Meteor.call('removeClasses', thisContext._id);
