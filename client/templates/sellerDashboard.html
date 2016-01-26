@@ -76,6 +76,12 @@
          <img class = "repclass" src = "iconrep1.png"> &nbsp; &nbsp; Reviews and Reputation
        </div>
        <div class="panel-body">
+        
+       <ul>
+        {{#each reviews}}
+          <li> {{this}} </li>
+        {{/each}}
+       </ul>
               <!--
               TODO: make this work
               <span style="font-family:Lato, font-size:50pt" id="reviewValue">4.5</span>

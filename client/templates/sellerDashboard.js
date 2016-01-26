@@ -10,5 +10,18 @@ Template.sellerDashboard.helpers({
   },
   transactionHistory: function(){
     return Meteor.user().profile.transactionhistory.reverse();
+  },
+  reviews: function(){
+    results = classes.find({teacherId: Meteor.userId()}).fetch();
+    var array = [];
+    results.forEach(
+    function(elem){
+      for(var i=0; i<elem.studentReviews.length; i++){
+        array.push(elem.studentReviews[i])
+      }
+
+    });
+    return array;
   }
+
 });
