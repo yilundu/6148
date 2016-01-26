@@ -32,7 +32,7 @@ Template.profile.helpers({
     results.forEach(
     function(elem){
       for(var i=0; i<elem.studentReviews.length; i++){
-        var string1="Review for "+elem.title+": "+elem.studentReviews[i].text+" Rating: "+elem.studentReviews[i].rating+"/5";
+        var string1=elem.studentReviews[i].text+"; Rated: "+elem.studentReviews[i].rating+"/5";
 
         console.log(string1);
         array.push(string1);

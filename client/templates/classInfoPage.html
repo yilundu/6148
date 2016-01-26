@@ -4,12 +4,12 @@
 
     <!-- Top Level Class Info -->
     <div class = "jumbotron" id = "topjumbo">
-      <h2><hr>{{title}}<hr></h2>
+      <h2 id = "hurdurtitle"><hr>{{title}}<hr></h2>
       <div class = "row">
         <!-- TODO: Animate numbers flick up, model accelereation and decelleration -->
 
         <span class="col-sm-4 col-xs-4"> {{studentNumber}}<small> students</small></span>
-        <span class="col-sm-4 col-xs-4">$<span class="strikethrough">{{cost}}</span> ${{newcost}} <small>per hr</small></span>
+        <span class="col-sm-4 col-xs-4"> ${{newcost}} <small>per hr</small></span>
         <span class="col-sm-4 col-xs-4">{{review}} <small>stars</small></span>
       </div>
       <div class = "row">
@@ -60,9 +60,14 @@
      </div>
 
 
+     
+
+     <div class = "col-xs-6 scrolldiss">
      <div class="page-header">
       <h1>Class Announcements</h1>
-    </div>
+
+
+
     <div class="teacher-announcements">
 
 
@@ -75,14 +80,15 @@
       {{> announcementTemplate}}
       {{/each}}
       {{/if}}
+      </div>
+    </div>
 
     </div>
 
-
-
+    <div class = "col-xs-6 scroldiss">
     <div class="page-header">
       <h1>Student Comments</h1>
-    </div>
+    
 
     <div class="student-comments" id = "studposterer">
       {{#if currentUser}}
@@ -95,19 +101,19 @@
       {{/each}}
       {{/if}}
     </div>
-
-
+</div>
+</div>
   </div>
 
   <div class = "jumbotron" id = "bottomjum">
-    <div class ="student-list col-md-6 col-xs-12 scrolldis">
+    <div class ="student-list col-md-6 col-xs-6 scrolldis">
       Students Enrolled:
       {{#each studentList}}
       {{> studentBanner}}
       {{/each}}
     </div>
 
-    <div class ="review-list col-md-6 col-xs-12 scrolldis">
+    <div class ="review-list col-md-6 col-xs-6 scrolldis">
       All Reviews:
       {{#each studentReviews}}
 

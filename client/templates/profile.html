@@ -51,17 +51,18 @@
             {{> profileDashboardElement}}
           {{/each}}
     {{/if}}
-  
-    <div class = "page-header">
-      <h3>Reviews:</h3>
+    
+    <div class = "jumbotron" id = "jumber">
+    <div class = "page-header" id = "pageh">
+      <h3 id = "Revid">Reviews:</h3>
     </div>
 
-    <ul>
+    <ul id = "ull">
         {{#each reviews}}
           <li> {{this}} </li>
         {{/each}}
     </ul>
-    
+    </div>
  <!--   <form id="propic">
       <input type="file" name="pic" accept="image/*">
       <input type="submit">

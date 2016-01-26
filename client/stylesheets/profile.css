@@ -9,8 +9,25 @@
 		 background-image: url("shelftransparent.png");
 
 }
+#jumber{
+	    padding: 10px;
+    height: auto;
+        margin: 5px;
+    background-color: #dff0d8;
+}
+#pageh{
+	    margin-top: 5px;
+    margin-bottom: 5px;
+}
 #ph-id{
 	margin-top: 0px;
+}
+#Revid{
+	margin-left: 10px;
+}
+#ull{}
+#bolder{
+	font-weight: 700;
 }
 #sjumbo{
 	margin-bottom: 5px;
