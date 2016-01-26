@@ -112,11 +112,12 @@ Template.classInfoPage.events({
  },
  'click #deleteReviewBtn' : function(){
   var string = "Are you sure you want to delete your review?" ;
+  var thisContext = this;
   bootbox.confirm(string, function(result){
        if (result === false) {}
         else{
-   console.log("clicked remove review. this._id = "+ this._id);
-   Meteor.call('removeClassReview',this._id, Meteor.userId());
+   console.log("clicked remove review. this._id = "+ thisContext._id);
+   Meteor.call('removeClassReview',thisContext._id, Meteor.userId());
  }});
  }
 });
@@ -155,7 +156,7 @@ Template.classInfoPage.helpers({
     {
       return null;
     }
-   
+
     var studentReviews = classes.findOne(this._id).studentReviews;
     for(var i = 0 ; i < studentReviews.length ; i++)
     {
@@ -167,7 +168,7 @@ Template.classInfoPage.helpers({
 
     }
 
-    
+
     console.log("No user reviews found!");
     return null;
 
@@ -185,16 +186,16 @@ Template.classInfoPage.helpers({
 
   userHasReviewed: function(){
    // var review = getUserReview(getClassId());
-    var classid = getClassId();
+    var classid = this._id;
     var specificclass = classes.findOne(classid);
-    
+
     for (var i=0; i<specificclass.studentReviews.length ;i++){
       if (specificclass.studentReviews[i].reviewer == Meteor.user()._id){
         return true;
       //  console.log("Has Reviewed!")
       }
     }
-    
+
     return false;
 
   },

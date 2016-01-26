@@ -68,17 +68,19 @@
           <div class = "panel-heading">
             Notifications
 
-            {{#each notifications}}
-
-                {{> notificationsTemplate}}
-              
-            {{/each}}
-
           </div>
-          <div class="panel-body">
+          <div id ="transscroll">
+            <div class="panel-body notification-body">
 
 
+              {{#each notifications}}
 
+                  {{> notificationsTemplate}}
+
+              {{/each}}
+
+
+            </div>
           </div>
       </div>
 

@@ -48,8 +48,15 @@ Template.studentDashboard.helpers({
     {
       if(Meteor.user().profile.notifs)
       {
-        return Meteor.user().profile.notifs;
+        var studentNotifs = [];
+        console.log("notifications entered");
+        Meteor.user().profile.notifs.forEach(function(entry){
+          if(entry.type == "student"){
+            studentNotifs.push(entry);
+          }
+        });
       }
+      return studentNotifs;
     }
   }
 
