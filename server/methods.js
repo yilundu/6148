@@ -536,6 +536,7 @@ Meteor.methods({
         Meteor.users.update(targetUserId, {$set: {'profile.notifs' : []}});
       }
 
+      console.log("MOMENT: "+moment().unix());
       //add the notification to profile.notifs
       Meteor.users.update(targetUserId, {$push: {'profile.notifs' :
         {
@@ -544,7 +545,7 @@ Meteor.methods({
           type: type,
           options: options,
           seen: false,
-          time: moment().unix()
+          time: moment().format()
         }
       }});
 
