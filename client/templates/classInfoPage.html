@@ -29,38 +29,43 @@
     <!-- Main Class Content -->
     <div class="main-body row" id = "mbbody">
 
-      <div class ="page-header">
 
-        <div class = "jumbotron" id = "urreview">
-          <h2>Your review</h2> 
+    <div class ="page-header">
+        {{#unless isTeacher}}
+              <div class = "jumbotron" id = "urreview">
+                <h2>Your review</h2>
 
-          {{#if userHasReviewed}}
-          {{> classReview review = userReview}}
-          {{/if}}
-        </div>
-      
-      <div class="user-review" id = "divuser">
-       {{> starsRating id='rating' mutable=true}}
-       <!-- Star rating widget - source: http://codepen.io/jamesbarnett/pen/vlpkh-->
-       <div class="rating-stars">
+                {{#if userHasReviewed}}
+                {{> classReview review = userReview}}
+                {{/if}}
+              </div>
 
-       </div>
-       Review Text:
-       <input class="form-control" id="reviewField" value={{userReviewText}}>
-       {{#if currentUser}}
 
-       {{#if userHasReviewed}}
-       <button class="btn btn-primary" id="editReviewBtn">Edit</button>
-       <button class="btn btn-warning" id="deleteReviewBtn">Delete</button>
-       {{else}}
-       <button class="btn btn-primary" id="saveReviewBtn">Save</button>
-       {{/if}}
-       {{/if}}
-       </div>
+          <div class="user-review" id = "divuser">
+           {{> starsRating id='rating' mutable=true}}
+           <!-- Star rating widget - source: http://codepen.io/jamesbarnett/pen/vlpkh-->
+           <div class="rating-stars">
+
+           </div>
+           Review Text:
+         <input class="form-control" id="reviewField" value={{userReviewText}}>
+
+
+         {{#if currentUser}}
+
+           {{#if userHasReviewed}}
+             <button class="btn btn-primary" id="editReviewBtn">Edit</button>
+             <button class="btn btn-warning" id="deleteReviewBtn">Delete</button>
+             {{else}}
+             <button class="btn btn-primary" id="saveReviewBtn">Save</button>
+           {{/if}}
+         {{/if}}
+         </div>
+         {{/unless}}
      </div>
 
 
-     
+
 
      <div class = "col-xs-6 scrolldiss">
      <div class="page-header">
@@ -88,7 +93,7 @@
     <div class = "col-xs-6 scroldiss">
     <div class="page-header">
       <h1>Student Comments</h1>
-    
+
 
     <div class="student-comments" id = "studposterer">
       {{#if currentUser}}

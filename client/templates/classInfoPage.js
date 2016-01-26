@@ -87,6 +87,10 @@ Template.classInfoPage.events({
  'click #saveReviewBtn' : function(){
    var reviewText = $('#reviewField').val();
    var starRating = $('#rating').data('userrating');//TODO: implement front end input of star rating
+   if(starRating == undefined || !starRating)
+   {
+     starRating = 0;
+   }
    var reviewer = Meteor.userId();//the user who wrote the review
 
    var reviewTime = new Date();
@@ -125,7 +129,8 @@ Template.classInfoPage.events({
 Template.classInfoPage.helpers({
   isTeacher : function(){
     if(Meteor.user()){//make sure user is loaded
-      return Meteor.userId() === this.teacherId;
+      console.log("isteacher: " + Meteor.userId() +"/"+ this.teacherId);
+      return (Meteor.userId() === this.teacherId);
     }
     else
     {
@@ -138,8 +143,14 @@ Template.classInfoPage.helpers({
     for(var i = 0; i < avgreview.length; i++) {
         total += avgreview[i].rating;
     }
-    var avg = total / avgreview.length
-    return avg;
+    if(total == 0)
+    {
+      return "(No Ratings)";
+    }
+    else{
+      var avg = total / avgreview.length
+      return avg;
+    }
   },
   studentList: function(){
     if(this.studentList)
