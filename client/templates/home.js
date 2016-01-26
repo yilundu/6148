@@ -66,7 +66,9 @@ Template.home.onRendered( function(){
         path = "/search?search=" + path;
         Router.go(path);
     },
-
+    "click #guidebut":function(){
+      Router.go("/guide", {name: $(".form-control").val()});
+    }
 
 
   });

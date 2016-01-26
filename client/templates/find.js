@@ -132,7 +132,7 @@ Template.find.events({
      	var cost = classes.findOne(classid).cost;
 	 	var negativecost = -1*cost;
 	 	Meteor.call('addCash', Meteor.user()._id, negativecost);
-	 	string = "Paid temporary $"+cost+" for class "+classes.findOne(classid).title+"("+ classid + ") at time: "+time;
+	 	string = "Paid temporary $"+cost+" for class "+classes.findOne(classid).title+" at time: "+time;
 	 	Meteor.call('transactionHistory', Meteor.user()._id, string);
 	 	//Meteor.call('addCash', classes.findOne(classid).teacherId, cost);
 	 	//string2 = "Recieved $"+cost+" for class "+classes.findOne(classid).title+"("+ classid + ") at time: "+time;
