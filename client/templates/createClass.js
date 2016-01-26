@@ -36,6 +36,7 @@ Template.createClass.events({
     var user_description = $("#descField").val();
     var user_subject;
     var class_date = $("#dateField").val();
+    class_date = moment(class_date).format("dddd, MMMM Do YYYY, h:mm a");
 
 
     $('.list-group-item').each(function(){
