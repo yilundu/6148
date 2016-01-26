@@ -1,3 +1,62 @@
+/***** CODE FOR UPDATING CLASSES AFTER THEY HAVE ENDED ******/
+//source: http://richsilv.github.io/meteor/scheduling-events-in-the-future-with-meteor/
+function performEndClass(classId)
+{
+  //TODO:
+  throw "Not Implemented";
+
+}
+
+
+
+function addTask(id, details)
+{
+
+  SyncedCron.add({
+    name: id,
+    schedule: function(parser){
+      return parser.recur().on(details.date).fullDate();
+    },
+    job: function(){
+      performEndClass(details);
+      FutureTasks.remove(id);
+      SyncedCron.remove(id);
+      return id;
+    }
+  })
+
+}
+
+function scheduleClass(details){
+  if(details.date < new Date()){
+    performEndClass(details);
+  } else {
+    var thisId = FutureTasks.insert(details);
+    addTask(thisId, details);
+  }return true;
+}
+
+Meteor.startup(function(){
+  var tasksToRemove = [];
+  FutureTasks.find().forEach(function(class){
+    if(class.date < new Date()){
+      performEndClass(class);
+      tasksToRemove.push(id);
+    } else {
+      addTask(class._id, class);
+    }
+  });
+
+  //remove any that were just handled
+  for(var i = 0 ; i < tasksToRemove.length ; i++)
+  {
+    FutureTasks.remove({tasksToRemove[i]});
+  }
+
+  SyncedCron.start();
+})
+
+/***** FIN ******/
 
 Meteor.methods({
     'insertPlayerClass': function(id, classid){
@@ -298,6 +357,34 @@ Meteor.methods({
     },
     'removeClasses': function(classid){
       user.update({},{$pull: {classes: classid}});
+    },
+    'pushNotification' : function(targetUserId, title, message, type, options)//type is either student or teacher - for which dashboard it should be displayed in
+    {
+      //essentially just add this information as a now entry to each users profile.notifs
+      var targetUser = Meteor.users.findOne(targetUserId);
+
+      if(!targetUser)//target not found
+      {
+        throw "Target user for notification not found!";
+      }
+
+      //add notification
+      //if no field exists yet, initialize it
+      if(!targetUser.profile.notifs)
+      {
+        Meteor.users.update(targetUserId, {$set: {'profile.notifs' : []}});
+      }
+
+      //add the notification to profile.notifs
+      Metoer.users.update(targetUserId, {$push: {'profile.notifs' :
+        {
+          title: title,
+          message: message,
+          type: type,
+          options: options
+        }
+      }});
+
     }
 
 });
