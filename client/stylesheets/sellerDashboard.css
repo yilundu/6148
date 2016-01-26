@@ -6,6 +6,11 @@
 
 
 }
+
+#transscroll2{
+  height: 100px;
+  overflow-y: scroll;
+}
 @media screen and (min-width: 1000px){
   .main-section{
     margin-left: 40%;
@@ -66,7 +71,13 @@
   width: 100%;
   border-radius: 4px;
 }
-
+#spac{
+  margin-bottom: 60px;
+}
+#create-class-btn{
+      border-radius: 5px;
+  margin-bottom: 10px;
+}
 .btn{
   font-family: "Nunito";
   font-weight: 300;
@@ -79,7 +90,7 @@
 }
 
 ._seller-dashboard .panel-body {
-  padding-bottom: 0px;
+  padding: 0px;
 }
 
 ._seller-dashboard .glyphicon-heart {

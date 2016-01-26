@@ -12,27 +12,25 @@
     <div class ="row">
 
       <div class="col-xs-12 col-sm-6 sidebar-offcanvas" id="sidebar1">
-        <div class ="panel panel-default">
 
 
-          <div class = "panel-heading">
-            <img class = "clipboardclass" src = "flatclipboard.png"> &nbsp; &nbsp;  Class Management
-          </div>
+
+         <!--
           <div class="panel-body">
             <div class="row">
               <div class="classes-overview col-xs-12">
-<!-- TODO: DO THIS
+TODO: DO THIS
                 Number of classes: <br/>
                 Total Revenue:<br/>
                 Number of Students:<br/>
                 Next Class Time:<br/>
                 New Students:<br/>
-              -->
+              
             </div>
 
             <div class="btn-group col-xs-12">
 
-              <!--TODO: Implement filtering-->
+              TODO: Implement filtering
               <button type="button" class="btn btn-primary dropdown-toggle disabled" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Filter by: <span class="caret"></span>
               </button>
@@ -43,14 +41,10 @@
                 <li><a href="#">Subject (A-Z)</a></li>
               </ul>
             </div>
-
-            <a class="btn btn-primary col-xs-12" id="create-class-btn" href="{{pathFor 'createClass'}}">Create a new Class!</a>
-
-          </div>
-
-        </div>
-      </div>
-
+-->
+            <div id = "spac">
+            <a class="btn btn-primary col-xs-12" id="create-class-btn" href="{{pathFor 'createClass'}}"><img class = "clipboardclass" src = "flatclipboard.png"> Create a new Class!</a>
+            </div>
       <div class ="panel panel-default">
         <div class ="panel-heading" id = "panelheadpink">
           <img class = "walletclass" src = "flatwallet.png"> &nbsp; &nbsp;  Transaction History
@@ -75,11 +69,11 @@
         <div class = "panel-heading">
          <img class = "repclass" src = "iconrep1.png"> &nbsp; &nbsp; Reviews and Reputation
        </div>
-       <div class="panel-body">
+       <div class="panel-body" id = "transscroll2">
         
-       <ul>
+       <ul class = "transaction_history">
         {{#each reviews}}
-          <li> {{this}} </li>
+          <li class = "jumbotron translist" id = "jumbotrans"> {{this}} </li>
         {{/each}}
        </ul>
               <!--
