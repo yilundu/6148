@@ -50,14 +50,12 @@ TODO: DO THIS
               <img class = "walletclass" src = "flatwallet.png"> &nbsp; &nbsp;  Transaction History
             </div>
 
-            <div id = "transscroll">
-              <ul class= "transaction_history">
-                {{#each transactionHistory}}
-                <li class = "jumbotron translist" id = "jumbotrans">{{this}}</li>
-                {{/each}}
+            <ul class= "transaction_history">
+              {{#each transactionHistory}}
+              <li class = "jumbotron translist" id = "jumbotrans">{{this}}</li>
+              {{/each}}
 
-              </ul>
-            </div>
+            </ul>
             <div class="panel-body">
 
 
@@ -90,8 +88,7 @@ TODO: DO THIS
             Notifications
 
           </div>
-          <div class="panel-body notification-body" id = "notifbodyid2">
-            <div id ="transscroll">
+          <div class="panel-body" id = "notifbodyid2">
 
               {{#each notifications}}
 
@@ -100,7 +97,6 @@ TODO: DO THIS
               {{/each}}
 
 
-            </div>
           </div>
         </div>
 
