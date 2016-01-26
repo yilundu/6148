@@ -42,7 +42,7 @@
           </div>
         </div>
 
-        
+
 
 
 
@@ -62,11 +62,16 @@
         </div>
         <div class="panel-body">
         </div>
-        
+
         </div>
         <div class ="panel panel-default">
           <div class = "panel-heading">
             Notifications
+
+            {{#each notifications}}
+              {{> notificationsTemplate}}
+            {{/each}}
+
           </div>
           <div class="panel-body">
 
@@ -77,7 +82,7 @@
 
 
 
-    </div> 
+    </div>
           <div class = "main-section col-xs-12 col-sm-6 ">
 
         {{#if numClasses}}

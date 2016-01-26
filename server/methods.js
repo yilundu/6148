@@ -253,6 +253,16 @@ Meteor.methods({
         timeReviewed: time});
 
       classes.update({_id: classId}, {$set : {studentReviews: reviews}});
+
+      //push notificaton to the teacher that they have been reviewed
+      var title = "New review for: "+ratedClass.title + "!";
+      var reviewerName = Meteor.users.find(reviewerUserId).profile.name || Meteor.users.find(reviewerUserId).username;
+      var message = reviewerName + "gave your class "+rating+" stars - saying: " + text;
+      var type = "teacher";
+      var options = null;
+      Meteor.call('pushNotification',ratedClass.teacherId, title, message, type, options);
+
+      }
     },
     'editClassReview' : function(classId, reviewerUserId, rating, text, time){
       var reviews = classes.findOne(classId);
