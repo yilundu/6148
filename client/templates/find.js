@@ -86,7 +86,7 @@ Template.find.events({
 			+"<li class= 'classliid'>"+item.title+"</li>"
 			+"<li> Description: "+item.description+"</li>"
 			+"<li> Subject: "+item.subject+"</li>"
-			+"<li> Teacher: "+ item.teacher+ "</li><li> Date: "+ moment.format(item.createdAt)+ "</li>"
+			+"<li> Teacher: <a href='/profile?id="+item.teacherId+"'>"+ item.teacher+ "</a></li><li> Time: "+ moment(item.createdAt).format("dddd, MMMM Do YYYY, h:mm a")+ "</li>"
 			+"<li> Students Enrolled: "+item.studentNumber+"</li>"
 			+"<li> Address: "+ item.address +"</li>"
 			+"<li> Cost: <span class='strikethrough'>$"+ item.cost +"</span>  $"+ item.newcost +"</li>"
