@@ -396,14 +396,14 @@ Meteor.methods({
 
 });
 
-Meteor.publish('classes', function(){
-	return classes.find({});
+Meteor.publish('data', function(){
+	return [classes.find({}), user.find({}), Meteor.users.find({}, {fields: {'profile.binary': 1,'profile.name':1, 'username':1, 'profile.age':1, 'profile.about':1, 'profile.balance':1}})];
 });
-
+/*
 Meteor.publish('user', function(){
 	return user.find({});
 });
 
 Meteor.publish("allUserData", function () {
     return Meteor.users.find({}, {fields: {'profile.binary': 1,'profile.name':1, 'username':1, 'profile.age':1, 'profile.about':1, 'profile.balance':1}});
-});
+});*/
