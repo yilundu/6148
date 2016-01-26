@@ -52,7 +52,7 @@ Template.classInfoPage.events({
       postText: postText,
       timePosted: moment().format("MMMM Do YYYY, h:mm a")});
 
-    console.log("entered click teacherPostBtn, this._id = "+this._id);
+    console.log("entered click teacherPostBtn, this._id = "+this._id+" postText= "+postText);
     Meteor.call('updateAnnouncements', this._id, updatedAnnouncements);
     //classes.update(this._id, {$set : {classAnnouncements: updatedAnnouncements}});
     sAlert.success('Information Updated!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
