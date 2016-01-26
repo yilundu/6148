@@ -1,21 +1,20 @@
 /***** CODE FOR UPDATING CLASSES AFTER THEY HAVE ENDED ******/
 //source: http://richsilv.github.io/meteor/scheduling-events-in-the-future-with-meteor/
-function performEndClass(classId)
+var performEndClass = function(classId)
 {
-  //TODO:
-  throw "Not Implemented";
+    console.log("CLASS FIRED!!!!!!" + classId);
 
 };
 
 
 
-function addTask(id, details)
+var addTask = function(id, details)
 {
 
   SyncedCron.add({
     name: id,
     schedule: function(parser){
-      return parser.recur().on(details.date).fullDate();
+      return parser.recur().on(details.date.toDate()).fullDate();
     },
     job: function(){
       performEndClass(details);
@@ -27,38 +26,42 @@ function addTask(id, details)
 
 };
 
-function scheduleClass(details){
-  if(details.date < new Date()){
+var scheduleClass = function (details){
+  if(details.date.toDate() < new Date()){
     performEndClass(details);
   } else {
     var thisId = FutureTasks.insert(details);
     addTask(thisId, details);
+
   }
+
+  console.log("Scheduled Class with id: "+details.class_id + " for time "+ details.date);
   return true;
 };
-/*
+
 Meteor.startup(function(){
   var tasksToRemove = [];
 
 
-  FutureTasks.find().forEach(function(class){
-    if(class.date < new Date()){
-      performEndClass(class);
+  FutureTasks.find({}).forEach(function(c){
+    if(c.date < new Date()){
+      performEndClass(c);
       tasksToRemove.push(id);
     } else {
-      addTask(class._id, class);
+      addTask(c._id, c);
     }
   });
 
   //remove any that were just handled
   for(var i = 0 ; i < tasksToRemove.length ; i++)
   {
-    FutureTasks.remove({tasksToRemove[i]});
+    var task = tasksToRemove[i];
+    FutureTasks.remove({task});
   }
 
   SyncedCron.start();
 });
-*/
+
 /***** FIN ******/
 
 Meteor.methods({
@@ -84,8 +87,9 @@ Meteor.methods({
     },
 
     'createClass': function(address, class_date, user_title, user_cost, user_description, user_subject, user_id, username, actualusername, latitude, longitude){
-    	if(username){
-    	classes.insert({
+      var classid;
+      if(username){
+    	classid = classes.insert({
         title: user_title,
         subject: user_subject,
         cost: user_cost,
@@ -107,13 +111,13 @@ Meteor.methods({
     }
     	else{
     		Meteor.users.update(user_id,{$set:{"profile.name": actualusername}});
-    		classes.insert({
+    		classid = classes.insert({
 	        title: user_title,
 	        subject: user_subject,
 	        cost: user_cost,
 	        teacher: actualusername,
 	        description: user_description,
-	        createdAt: new Date(),
+	        createdAt: class_date,
 	        studentNumber: 0, // current time
 	        teacherId: user_id,
 	        classAnnouncements: [],//empty at creation
@@ -127,6 +131,10 @@ Meteor.methods({
 	      });
 
     	}
+
+      //set up listener to fire when class date occurs
+      scheduleClass({date: class_date, class_id: classid});
+
     },
     'editClass': function(classId,address, class_date, user_title, user_cost, user_description, user_subject, user_id, username, actualusername, latitude, longitude){
 
@@ -211,6 +219,33 @@ Meteor.methods({
     },
     'updateAnnouncements': function(classid, classAnnouncements){
     	classes.update(classid, {$set : {classAnnouncements: classAnnouncements}});
+
+      //push notifications to all students
+      if(classes.studentList)
+      {
+        var thisClass = classes.findOne(classid);
+
+        classes.studentList.forEach(function(e){
+          //push notificaton to the teacher that they have been reviewed
+          var title = thisClass.title+": new class announcement!";
+          var studentName;
+          var studentObject = Meteor.users.findOne(e);
+          if(studentObject && studentObject.profile && studentObject.profile.name)
+          {
+            studentName = studentObject.profile.name;
+          }
+          else {
+            studentName = studentObject.username;
+          }
+          var message = thisClass.teacher + " sent to the class a new announcement";
+          var type = "student";
+          var options = null;
+          Meteor.call('pushNotification',e, title, message, type, options);
+          console.log("Sent push notification!");
+
+
+        })
+      }
     },
     'updateComments': function(classid, updatedComments){
 
@@ -256,13 +291,21 @@ Meteor.methods({
 
       //push notificaton to the teacher that they have been reviewed
       var title = "New review for: "+ratedClass.title + "!";
-      var reviewerName = Meteor.users.find(reviewerUserId).profile.name || Meteor.users.find(reviewerUserId).username;
+      var reviewerName;
+      var reviewerObject = Meteor.users.findOne(reviewerUserId);
+      if(reviewerObject && reviewerObject.profile && reviewerObject.profile.name)
+      {
+        reviewerName = reviewerObject.profile.name;
+      }
+      else {
+        reviewerName = reviewerObject.username;
+      }
       var message = reviewerName + "gave your class "+rating+" stars - saying: " + text;
       var type = "teacher";
       var options = null;
       Meteor.call('pushNotification',ratedClass.teacherId, title, message, type, options);
+      console.log("Sent push notification!");
 
-      }
     },
     'editClassReview' : function(classId, reviewerUserId, rating, text, time){
       var reviews = classes.findOne(classId);
@@ -308,6 +351,26 @@ Meteor.methods({
       console.log("check 3");
       console.log("edited review - new reviews is now: "+reviews);
       classes.update({_id: classId}, {$set : {studentReviews: reviews}});
+
+      //push notificaton to the teacher that they have been reviewed
+      var title = "New review for: "+reviews.title + "!";
+      var reviewerName;
+      var reviewerObject = Meteor.users.findOne(reviewerUserId);
+      if(reviewerObject && reviewerObject.profile && reviewerObject.profile.name)
+      {
+        reviewerName = reviewerObject.profile.name;
+      }
+      else {
+        reviewerName = reviewerObject.username;
+      }
+      var message = reviewerName + "gave your class "+rating+" stars - saying: " + text;
+      var type = "teacher";
+      var options = null;
+      Meteor.call('pushNotification',reviews.teacherId, title, message, type, options);
+      console.log("Sent push notification!");
+
+
+
     },
     'removeClassReview' : function(classId, userId){
       var reviews = classes.findOne(classId);
@@ -339,6 +402,24 @@ Meteor.methods({
       }
       console.log("deleted review - new reviews is now: "+reviews);
       classes.update({_id: classId}, {$set : {studentReviews: reviews}});
+
+      //push notificaton to the teacher that they have been reviewed
+      var title = "Review for "+reviews.title+" removed!";
+      var reviewerName;
+      var reviewerObject = Meteor.users.findOne(reviewerUserId);
+      if(reviewerObject && reviewerObject.profile && reviewerObject.profile.name)
+      {
+        reviewerName = reviewerObject.profile.name;
+      }
+      else {
+        reviewerName = reviewerObject.username;
+      }
+      var message = reviewerName + " removed their rating from your class.";
+      var type = "teacher";
+      var options = null;
+      Meteor.call('pushNotification',reviews.teacherId, title, message, type, options);
+      console.log("Sent push notification!");
+
     },
 
     'addCash': function(id, amount){
