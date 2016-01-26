@@ -184,14 +184,18 @@ Template.classInfoPage.helpers({
   },
 
   userHasReviewed: function(){
-    var review = getUserReview(getClassId());
-    if(!review)
-    {
-      return false;
+   // var review = getUserReview(getClassId());
+    var classid = getClassId();
+    var specificclass = classes.findOne(classid);
+    
+    for (var i=0; i<specificclass.studentReviews.length ;i++){
+      if (specificclass.studentReviews[i].reviewer == Meteor.user()._id){
+        return true;
+      //  console.log("Has Reviewed!")
+      }
     }
-    else{
-      return (getUserReview(getClassId()).text.length !== 0);
-    }
+    
+    return false;
 
   },
   allClassReviews: function(){
