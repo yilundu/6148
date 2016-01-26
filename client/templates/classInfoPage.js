@@ -50,7 +50,7 @@ Template.classInfoPage.events({
       displayName: displayName,
       userId: Meteor.userId(),
       postText: postText,
-      timePosted: moment().format("dddd, MMMM Do YYYY, h:mm a")});
+      timePosted: moment().format("MMMM Do YYYY, h:mm a")});
 
     console.log("entered click teacherPostBtn, this._id = "+this._id);
     Meteor.call('updateAnnouncements', this._id, updatedAnnouncements);
@@ -76,7 +76,7 @@ Template.classInfoPage.events({
       displayName: displayName,
       userId: Meteor.userId(),
       postText: postText,
-      timePosted: new Date()});
+      timePosted: moment().format("MMMM Do YYYY, h:mm a")});
       //rating: $('#rating').data('userrating');
     Meteor.call('updateComments', this._id, updatedComments);
     sAlert.success('Information Updated!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
