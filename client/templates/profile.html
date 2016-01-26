@@ -1,28 +1,33 @@
 <template name="profile">
-
+<div class = "page-section" id = "pagepic">
 <div class = "__Profile">
 
-	<div class = "page-header">
-      <h1>Profile for: {{username}}</h1>
+	<div class = "page-header" id = 'ph-id'>
+  <br>
+    <div class = "jumbotron" id = "sjumbo">
+      <h1>{{username}}'s Profile</h1>
     </div>
-
+    </div>
+    <div class = "jumbotron" id = "tjumbo">
+    <div class = "col-xs=6" id = "leftcol1">
     <div class = "page-header">
-      <h3>Profile Picture:</h3>
+      <h3 class = "darkgrey">Profile Picture:</h3>
     </div>
 
 
 
     <!-- Note: apparently image url's are case sensitive -->
    
-    <img src = "{{binary}}" width="250px" height="250px" class="img-circle">
-    
+    <img src = "{{binary}}" width="250px" height="250px" class="img-circle" id = "mediacircle">
+    </div>
+    <div class = "col-xs-6" id = "rightcol1">
     <div class = "page-header">
-      <h3>Basic Info:</h3>
+      <h3 class = "darkgrey">Basic Info:</h3>
     </div>
 
 
     <div class="input-group">
-      <span class="input-group-addon" id="basic-addon1">Display Name (separate from username)</span> <!-- Name inputted here will appear in top right accounts ui dropdown -->
+      <span class="input-group-addon" id="basic-addon1">Display Name</span> <!-- Name inputted here will appear in top right accounts ui dropdown -->
       <input type="text" class="form-control" id="name-field" placeholder="Ex: John Smith" aria-describedby="basic-addon1" value="{{name}}" readonly>
     </div>
 
@@ -35,6 +40,7 @@
       <span class="input-group-addon" id="basic-addon3">About me:</span>
       <input type="text" class="form-control" id="about-field" placeholder="Introduce yourself to start finding overlaps!" aria-describedby="basic-addon3" value={{about}} readonly>
     </div>
+    </div></div>
 
     <div class = "page-header">
     	<h3>Classes Taught:</h3>
@@ -60,5 +66,6 @@
 
 
 
+  </div>
   </div>
 </template>
