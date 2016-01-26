@@ -140,7 +140,11 @@ Meteor.methods({
     },
 
     'decrementStudentNumber': function(classid){
-    	classes.update({_id:classid},{$inc: {studentNumber: -1}});
+
+              console.log("before calling decrementStudentNumber - student number is now: "+classes.find(classid).studentNumber);
+    	classes.update({_id: classid}, {$inc: {studentNumber: -1}});
+
+        console.log("Called decrementStudentNumber - student number is now: "+classes.find(classid).studentNumber);
     },
     'updateAnnouncements': function(classid, classAnnouncements){
     	classes.update(classid, {$set : {classAnnouncements: classAnnouncements}});
