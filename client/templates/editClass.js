@@ -31,9 +31,10 @@ var checkNumberPositive = function(element){
 };
 
 Template.editClass.events({
-  "click #createBtn": function (event) {
+  "click #createBtn2": function (event) {
 
     console.log("Clicked createBtn");
+    event.preventDefault();
 
     // Get value from form element
     var user_title = $("#titleField").val();
@@ -75,9 +76,7 @@ Template.editClass.events({
               }
          });
      }
-     else{
 
-     }
     //check fields
     //NOTE: use singular & in order to avoid short-circuit evaluation: all methods must be called to label fields red as needed
     if(checkTextEmpty($('#titleField')) &
@@ -86,7 +85,7 @@ Template.editClass.events({
     checkTextEmpty($('#dateField')) &
     checkTextEmpty($('#mapidform'))){
 
-     Meteor.call('editClass', classId, address, class_date, user_title, user_cost, user_description, user_subject, Meteor.user()._id, Meteor.user().profile.name, Meteor.user().username, latitude, longitude);
+     Meteor.call('editClass', this._id, address, class_date, user_title, user_cost, user_description, user_subject, Meteor.user()._id, Meteor.user().profile.name, Meteor.user().username, latitude, longitude);
 
 
       //redirect to sellerDashboard

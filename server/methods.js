@@ -93,7 +93,7 @@ Meteor.methods({
     }
     	else{
     		Meteor.users.update(user_id,{$set:{"profile.name": actualusername}});
-    		classes.insert({
+    		classes.update(classId,{$set: {
 	        title: user_title,
 	        subject: user_subject,
 	        cost: user_cost,
@@ -110,7 +110,8 @@ Meteor.methods({
             address: address,
           studentReviews: [],
           newcost: 2*user_cost
-	      });
+	      }
+        });
 
     	}
     },
