@@ -29,13 +29,28 @@
 	padding: 15px;
 	list-style: none;
 }
-#signupdiv{
+.translist{
+	font-weight: 300;
+    font-family: "Nunito";
+    margin-bottom: 10px;
+}
+#transscroll{
+	height: 200px;
+	overflow-y: scroll;
+
+}
+#jumbotrans{
+	padding: 10px;
+}
+._student-dashboard #signupdiv{
 	height: 78px;
 	width: 100%
 	border-radius: 4px;
 }
 ._student-dashboard .panel-heading{
-	background-color: #DFF0D8
+	background-color: #DFF0D8;
+	font-family: "Nunito";
+	font-weight: 300;
 }
 ._seller-dashboard .panel-heading{
 	background-color: rgba(0, 239, 255, .12)
@@ -43,19 +58,28 @@
 .bs-callout{
     background-color: rgba(255, 255, 255, .93);
 }
-._student-dashboard #join-class-btn {
+#join-class-btn {
   border-top-right-radius: 0px;
+      border-color: white;
   border-top-left-radius: 0px;
       margin-left: auto;
     width: auto;
     margin-bottom: 10px;
     margin-right: auto;
+    font-weight: 300;
+    font-family: "Nunito";
   
 }
-._student-dashboard #join-class-btn2 {
+#join-class-btn2 {
+	width: 95%;
+    margin-left: 2.5%;
   border-top-right-radius: 0px;
   border-top-left-radius: 0px;
-  
+      font-weight: 300;
+    font-family: "Nunito";
+        border-color: white;
+    color: black;
+    background-color: rgba(217, 83, 79, 0.31);
 }
 
 

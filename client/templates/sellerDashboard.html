@@ -1,26 +1,26 @@
 <template name="sellerDashboard">
-<head>
-<link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
-</head>
+  <head>
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+  </head>
 
   <div class = "_seller-dashboard container-fluid"><!-- For css scoping in meteor -->
     <div class = "page-section">
-<div class = "jumbotron" id = "selldashjum">
-<h1 id = "sellerdashtitle"> Teacher Dashboard </h1>
-</div>
-</div>
+      <div class = "jumbotron" id = "selldashjum">
+        <h1 id = "sellerdashtitle"> Teacher Dashboard </h1>
+      </div>
+    </div>
     <div class ="row">
 
       <div class="col-xs-12 col-sm-6 sidebar-offcanvas" id="sidebar1">
         <div class ="panel panel-default">
 
 
-            <div class = "panel-heading">
-              <img class = "clipboardclass" src = "flatclipboard.png"> &nbsp; &nbsp;  Class Management
-            </div>
-            <div class="panel-body">
-              <div class="row">
-                <div class="classes-overview col-xs-12">
+          <div class = "panel-heading">
+            <img class = "clipboardclass" src = "flatclipboard.png"> &nbsp; &nbsp;  Class Management
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="classes-overview col-xs-12">
 <!-- TODO: DO THIS
                 Number of classes: <br/>
                 Total Revenue:<br/>
@@ -28,52 +28,61 @@
                 Next Class Time:<br/>
                 New Students:<br/>
               -->
-              </div>
-
-              <div class="btn-group col-xs-12">
-
-                <!--TODO: Implement filtering-->
-                <button type="button" class="btn btn-primary dropdown-toggle disabled" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Filter by: <span class="caret"></span>
-                </button>
-
-                <ul class="dropdown-menu">
-                  <li><a href="#">Name (A-Z)</a></li>
-                  <li><a href="#">Students Enrolled (Ascending Order)</a></li>
-                  <li><a href="#">Subject (A-Z)</a></li>
-                </ul>
-              </div>
-
-              <a class="btn btn-primary col-xs-12" id="create-class-btn" href="{{pathFor 'createClass'}}">Create a new Class!</a>
-
             </div>
+
+            <div class="btn-group col-xs-12">
+
+              <!--TODO: Implement filtering-->
+              <button type="button" class="btn btn-primary dropdown-toggle disabled" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Filter by: <span class="caret"></span>
+              </button>
+
+              <ul class="dropdown-menu">
+                <li><a href="#">Name (A-Z)</a></li>
+                <li><a href="#">Students Enrolled (Ascending Order)</a></li>
+                <li><a href="#">Subject (A-Z)</a></li>
+              </ul>
+            </div>
+
+            <a class="btn btn-primary col-xs-12" id="create-class-btn" href="{{pathFor 'createClass'}}">Create a new Class!</a>
 
           </div>
+
+        </div>
+      </div>
+
+      <div class ="panel panel-default">
+        <div class ="panel-heading" id = "panelheadpink">
+          <img class = "walletclass" src = "flatwallet.png"> &nbsp; &nbsp;  Transaction History
         </div>
 
-        <div class ="panel panel-default">
-            <div class ="panel-heading">
-              <img class = "walletclass" src = "flatwallet.png"> &nbsp; &nbsp;  Money Management
-            </div>
-            <div class="panel-body">
+        <div id = "transscroll">
+          <ul class= "transaction_history">
+            {{#each transactionHistory}}
+            <li class = "jumbotron translist" id = "jumbotrans">{{this}}</li>
+            {{/each}}
 
-
-
-            </div>
+          </ul>
         </div>
+        <div class="panel-body">
 
-        <div class ="panel panel-default">
-            <div class = "panel-heading">
-               <img class = "repclass" src = "iconrep1.png"> &nbsp; &nbsp; Reviews and Reputation
-            </div>
-            <div class="panel-body">
+
+
+        </div>
+      </div>
+
+      <div class ="panel panel-default">
+        <div class = "panel-heading">
+         <img class = "repclass" src = "iconrep1.png"> &nbsp; &nbsp; Reviews and Reputation
+       </div>
+       <div class="panel-body">
               <!--
               TODO: make this work
               <span style="font-family:Lato, font-size:50pt" id="reviewValue">4.5</span>
               <span class="glyphicon glyphicon-heart DeepPink"></span>
-              -->
+            -->
 
-            </div>
+          </div>
         </div>
       </div>
 
@@ -81,11 +90,11 @@
       <div class = "main-section col-xs-12 col-sm-6">
 
         {{#if numClasses}}
-          {{#each classes}}
-            {{> classDashboardElement}}
-          {{/each}}
+        {{#each classes}}
+        {{> classDashboardElement}}
+        {{/each}}
         {{else}}
-          {{ > classDashboardElementEmpty}}
+        {{ > classDashboardElementEmpty}}
         {{/if}}
 
       </div>
