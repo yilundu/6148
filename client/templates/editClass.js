@@ -1,3 +1,8 @@
+Template.editClass.onRendered(function(){
+  console.log("onredered: this = "+this );
+
+});
+
 var checkTextEmpty = function(element){
   if($(element).val()){
     $(element).parent().removeClass('has-error');
@@ -46,32 +51,40 @@ Template.editClass.events({
     var address=$('#mapidform').val();
     var latitude = 0;
     var longitude = 0;
-    $.ajax({
-        url: "https://maps.googleapis.com/maps/api/geocode/json",
-        type: "GET",
-        data:{
-            "address": address,
-            "key": "AIzaSyAL46_D20KBsAqUgDigLBQetRCJO3tiByM"
-          },
-
-            success: function(data){
-              latitude = data.results[0].geometry.location.lat;
-              longitude = data.results[0].geometry.location.lng;
-          //    sAlert.success('Transaction Recieved!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
-          //    Meteor.call('addCash', Meteor.user()._id, change);
-
-
+    if(address)
+    {
+      $.ajax({
+          url: "https://maps.googleapis.com/maps/api/geocode/json",
+          type: "GET",
+          data:{
+              "address": address,
+              "key": "AIzaSyAL46_D20KBsAqUgDigLBQetRCJO3tiByM"
             },
-            error: function(data){
-          //    sAlert.error('Error in Venmo transaction. Please reauthenticate.',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
-          //    console.log(error);
-            }
-       });
+
+              success: function(data){
+                latitude = data.results[0].geometry.location.lat;
+                longitude = data.results[0].geometry.location.lng;
+            //    sAlert.success('Transaction Recieved!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
+            //    Meteor.call('addCash', Meteor.user()._id, change);
+
+
+              },
+              error: function(data){
+            //    sAlert.error('Error in Venmo transaction. Please reauthenticate.',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
+            //    console.log(error);
+              }
+         });
+     }
+     else{
+
+     }
     //check fields
     //NOTE: use singular & in order to avoid short-circuit evaluation: all methods must be called to label fields red as needed
     if(checkTextEmpty($('#titleField')) &
     checkTextEmpty($('#descField')) &
-    checkNumberPositive($('#costField'))){
+    checkNumberPositive($('#costField')) &
+    checkTextEmpty($('#dateField')) &
+    checkTextEmpty($('#mapidform'))){
 
      Meteor.call('editClass', classId, address, class_date, user_title, user_cost, user_description, user_subject, Meteor.user()._id, Meteor.user().profile.name, Meteor.user().username, latitude, longitude);
 
@@ -97,7 +110,9 @@ Template.editClass.events({
   "keyup #descField": function(event){
     checkTextEmpty(event.target);
   },
-
+  "keyup #mapidform": function(event){
+    checkTextEmpty(event.target);
+  }
 });
 
 

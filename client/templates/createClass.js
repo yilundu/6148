@@ -101,6 +101,9 @@ Template.createClass.events({
   "keyup #descField": function(event){
     checkTextEmpty(event.target);
   },
+  "keyup #mapidform": function(event){
+    checkTextEmpty(event.target);
+  }
 
 });
 
@@ -119,7 +122,7 @@ Template.createClass.onRendered(function() {
     });
     }
   });
-  
+
 });
 
 Template.createClass.helpers({
