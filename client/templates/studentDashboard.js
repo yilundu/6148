@@ -41,6 +41,16 @@ Template.studentDashboard.helpers({
 
   transactionHistory: function(){
     return Meteor.user().profile.transactionhistory.reverse();
+  },
+
+  notifications: function(){
+    if(Meteor.user() && Meteor.user().profile)
+    {
+      if(Meteor.user().profile.notifs)
+      {
+        return Meteor.user().profile.notifs;
+      }
+    }
   }
 
 

@@ -42,6 +42,8 @@ Template.editClass.events({
     var user_description = $("#descField").val();
     var user_subject;
     var class_date = $("#dateField").val();
+    var unixtime = moment(class_date).unix();
+
     class_date = moment(class_date).format("dddd, MMMM Do YYYY, h:mm a");
 
 
@@ -86,7 +88,7 @@ Template.editClass.events({
     checkTextEmpty($('#dateField')) &
     checkTextEmpty($('#mapidform'))){
 
-     Meteor.call('editClass', this._id, address, class_date, user_title, user_cost, user_description, user_subject, Meteor.user()._id, Meteor.user().profile.name, Meteor.user().username, latitude, longitude);
+     Meteor.call('editClass', this._id, address, class_date, user_title, user_cost, user_description, user_subject, Meteor.user()._id, Meteor.user().profile.name, Meteor.user().username, latitude, longitude. unixtime);
 
 
       //redirect to sellerDashboard
