@@ -107,7 +107,7 @@ Template.layout.events({
 });
 
 Template._loginButtonsLoggedInDropdown.onRendered(function () {
-	 $(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='moneymanage'> Account Finances </button>");
+	 $(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='moneymanage'> Finances </button>");
 	$(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='editprofile'>  Edit Profile </button>");
   $(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='studentprofile'> Student Dashboard </button>");
   $(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='teacherprofile'> Teacher Dashboard </button>");
