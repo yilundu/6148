@@ -3,7 +3,7 @@
 var performEndClass = function()
 {
   console.log("Ran check");
-  var results = FutureTasks.find().fetch();
+  var results = FutureTasks.find({triggered: false}).fetch();
   console.log(results.length);
   console.log(results);
   for(var i = 0 ; i < results.length ; i++){
@@ -15,6 +15,14 @@ var performEndClass = function()
     if(moment().unix() > each.date)
     {
       console.log("EVENT TRIGGERED! id");
+
+      //call update class on end
+      UpdateClassOnEnd(each.class_id);
+
+      //push notificaton to the teacher that they have been reviewed
+      Meteor.call('removeClass', each.class_id);
+      FutureTasks.update(each.class_id, {$set: {triggered: true}});//TODO: change this to rmeoved
+
     }
   }
 };
@@ -132,7 +140,7 @@ Meteor.methods({
     	}
 
       //set up listener to fire when class date occurs
-      scheduleClass({date: unixtime, class_id: classid});
+      scheduleClass({date: unixtime, class_id: classid, triggered: falses});
 
     },
     'editClass': function(classId,address, class_date, user_title, user_cost, user_description, user_subject, user_id, username, actualusername, latitude, longitude, time, unixtime){
@@ -502,11 +510,11 @@ Meteor.publish("allUserData", function () {
     return Meteor.users.find({}, {fields: {'profile.binary': 1,'profile.name':1, 'username':1, 'profile.age':1, 'profile.about':1, 'profile.balance':1}});
 });*/
 
-/*
-UpdateClass(classid) {
+
+var UpdateClassOnEnd = function(classid) {
   classes.find({}).forEach(
     function(elem){
-      var newcost =(1*elem.cost*(elem.studentNumber/3+2)/(elem.studentNumber/3+1)/2).toFixed(2);  
+      var newcost =(1*elem.cost*(elem.studentNumber/3+2)/(elem.studentNumber/3+1)/2).toFixed(2);
       Meteor.call('setnewCash',elem._id, newcost);
 
     }
@@ -514,7 +522,7 @@ UpdateClass(classid) {
   var savings = parseInt(classes.findOne(classid).cost)-parseInt(classes.findOne(classid).newcost);
   var classnew = classes.findOne(classid);
   var studentList = classes.findOne(classid).studentList;
-  
+
   for (var i=0, i<studentList.length, i++){
     Meteor.call('addCash', studentList[i], savings);
     var string = "Recieved $"+savings+" for group savings from "+classnew.title+"on time: "+moment().format('LLLL');
@@ -528,4 +536,4 @@ UpdateClass(classid) {
 
 
 
-}*/
+}
