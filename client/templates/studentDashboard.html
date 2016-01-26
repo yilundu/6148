@@ -69,7 +69,9 @@
             Notifications
 
             {{#each notifications}}
-              {{> notificationsTemplate}}
+              {{#if notifications.type == "student"}}
+                {{> notificationsTemplate}}
+              {{/if}}
             {{/each}}
 
           </div>

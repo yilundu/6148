@@ -300,7 +300,7 @@ Meteor.methods({
     	classes.update({_id: id}, {$set : {isOver: true}});
       //push notifications to all students
 
-      var thisClass = classes.findOne(classid);
+      var thisClass = classes.findOne(id);
 
       thisClass.studentList.forEach(function(e){
         //push notificaton to the teacher that they have been reviewed
