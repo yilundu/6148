@@ -407,3 +407,31 @@ Meteor.publish('user', function(){
 Meteor.publish("allUserData", function () {
     return Meteor.users.find({}, {fields: {'profile.binary': 1,'profile.name':1, 'username':1, 'profile.age':1, 'profile.about':1, 'profile.balance':1}});
 });*/
+
+/*
+UpdateClass(classid) {
+  classes.find({}).forEach(
+    function(elem){
+      var newcost =(1*elem.cost*(elem.studentNumber/3+2)/(elem.studentNumber/3+1)/2).toFixed(2);  
+      Meteor.call('setnewCash',elem._id, newcost);
+
+    }
+  );
+  var savings = parseInt(classes.findOne(classid).cost)-parseInt(classes.findOne(classid).newcost);
+  var classnew = classes.findOne(classid);
+  var studentList = classes.findOne(classid).studentList;
+  
+  for (var i=0, i<studentList.length, i++){
+    Meteor.call('addCash', studentList[i], savings);
+    var string = "Recieved $"+savings+" for group savings from "+classnew.title+"on time: "+moment().format('LLLL');
+    Meteor.call('transactionHistory', studentList[i], string);
+
+  }
+  var total = studentList.length*parseInt(classes.findOne(classid).newcost);
+  Meteor.call('addCash', classnew.teacherId, total);
+  var string = "Recieved $"+total+" for teaching "+classnew.title+"on time: "+moment().format('LLLL');
+  Meteor.call('transactionHistory', classnew.teacherId, string);
+
+
+
+}*/
