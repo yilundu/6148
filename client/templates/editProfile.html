@@ -2,90 +2,87 @@
 <template name = "editProfile">
 
   <!-- Boilerplate div class to use in css scoping (so that input-group css can target only the ones in this template )-->
+
   <div class = "__editProfile">
-
-
-    <div class = "page-header">
-      <h3>Profile Picture:</h3>
-    </div>
-
-
-
-    <!-- Note: apparently image url's are case sensitive -->
-   
-    <img src = "{{picture}}" width="250px" height="250px" class="img-circle">
-    {{>drop}}
-    
-    <div class = "page-header">
-      <h3>Basic Info:</h3>
-    </div>
-
-
-    {{#if authenticated}}
-    
-    {{else}}
-    <div>
-      <a class = "btn btn-danger venmo" href= "{{url}}">Authenticate Venmo</a>
-    </div>
-    
-    {{/if}}
-
-
-    <div class="input-group">
-      <span class="input-group-addon" id="basic-addon1">Display Name (separate from username)</span> <!-- Name inputted here will appear in top right accounts ui dropdown -->
-      <input type="text" class="form-control" id="name-field" placeholder="Ex: John Smith" aria-describedby="basic-addon1" value="{{name}}">
-    </div>
-
-    <div class="input-group">
-      <span class="input-group-addon" id="basic-addon2">Age</span>
-      <input type="text" class="form-control" id="age-field" placeholder="Ex: 23" aria-describedby="basic-addon2" value={{age}}>
-    </div>
-
-    <div class="input-group">
-      <span class="input-group-addon" id="basic-addon3">About me:</span>
-      <input type="text" class="form-control" id="about-field" placeholder="Introduce yourself to start finding overlaps!" aria-describedby="basic-addon3" value={{about}}>
-    </div>
-
-    <div class="input-group">
-      <span class="input-group-addon" id="basic-addon3">Account Credit $:</span>
-      <input type="text" class="form-control" id="about-field" aria-describedby="basic-addon3" value={{cash}} readonly>
-    </div>
-
-    <div>
-      <a class = "btn btn-danger" id="addcredit" name = "NavBar" href= "/credit"  target="_top">Add Credit</a>
-    </div>
-
-    <br>
-    <br>
-
-    <div class="btn-group">
-      <button type="button" class="btn btn-primary" id="submit-btn">Submit</button>
-    </div>
-
-    <br>
-    <br>
-
-    
- <!--   <form id="propic">
-      <input type="file" name="pic" accept="image/*">
-      <input type="submit">
-    </form> -->
-    
-
-    <div>
-
-    </div>
+    <div class = "jumbotron" id = "jumt1">
+]
+      <div class = "jumbotron" id = "jumt2">
+        <div class = "col-xs-5">
+          <div class = "page-header">
+            <h3>Profile Picture:</h3>
+          </div>
 
 
 
+          <!-- Note: apparently image url's are case sensitive -->
+
+          <img id = "propcircle" src = "{{picture}}"  class="img-circle">
+          {{>drop}}
+        </div>
+        <div class = "col-xs-7">
+
+
+      <div class = "page-header">
+        <h3>Basic Info:</h3>
+      </div>
+
+
+      {{#if authenticated}}
+
+      {{else}}
+      <div>
+        <a class = "btn btn-danger venmo" href= "{{url}}">Authenticate Venmo</a>
+      </div>
+
+      {{/if}}
+
+
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">Display Name (separate from username)</span> <!-- Name inputted here will appear in top right accounts ui dropdown -->
+        <input type="text" class="form-control" id="name-field" placeholder="Ex: John Smith" aria-describedby="basic-addon1" value="{{name}}">
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon2">Age</span>
+        <input type="text" class="form-control" id="age-field" placeholder="Ex: 23" aria-describedby="basic-addon2" value={{age}}>
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon3">About me:</span>
+        <input type="text" class="form-control" id="about-field" placeholder="Introduce yourself to start finding overlaps!" aria-describedby="basic-addon3" value={{about}}>
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon3">Account Credit $:</span>
+        <input type="text" class="form-control" id="about-field" aria-describedby="basic-addon3" value={{cash}} readonly>
+      </div>
+
+      <div>
+        <a class = "btn btn-danger" id="addcredit" name = "NavBar" href= "/credit"  target="_top">Add Credit</a>
+      </div>
+
+      <br>
+      <br>
+
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary" id="submit-btn">Submit</button>
+      </div>
+
+      <br>
   </div>
+
+        </div>
+      </div>
+
+
+</div>
 </template>
 
 <template name="drop">
-<!--  <span class = "btn btn-default btn-file"> -->
-<form>
-  <input type="file" id="fileInput" accept="image/*">
-  
-</form> 
-<!--  </span> -->
+  <!--  <span class = "btn btn-default btn-file"> -->
+  <form>
+    <input type="file" id="fileInput" accept="image/*">
+
+  </form> 
+  <!--  </span> -->
 </template>

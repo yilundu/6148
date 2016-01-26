@@ -1,0 +1,47 @@
+.__Profile{
+	 margin-left: 20px;
+	 margin-right: 20px;
+	 margin-bottom:0px;
+	 margin-top: 0px;
+
+}
+#pagepic{
+		 background-image: url("shelftransparent.png");
+
+}
+#ph-id{
+	margin-top: 0px;
+}
+#sjumbo{
+	margin-bottom: 5px;
+	color: #555;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgba(91, 192, 222, 0.27);
+}
+.darkgrey{
+	color: #555;
+}
+#rightcol1{
+	float: right;
+}
+#leftcol1{
+	display: inline-block
+	
+}
+.__Profile #tjumbo{
+	background-color: rgba(252, 248, 227, 0.95);
+	border-radius: 10px;
+	    padding-top: 0px;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+@media screen and (max-width: 700px){
+	#mediacircle{
+		height: 150px;
+		width: 150px;
+	}
+}
