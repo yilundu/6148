@@ -154,10 +154,11 @@
 ._classInfoPage .main-body {
   margin: 30px;
 }
-#studco{
-  max-height: 200px;
+#studposterer{
+  max-height: 150px;
   overflow-y: scroll;
 }
+
 #studposter{
   margin-bottom: 6px;
 }
