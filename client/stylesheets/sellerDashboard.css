@@ -12,7 +12,10 @@
     padding: 15px;
 }
 
-
+#thhistoryy{
+  max-height: 150px;
+  overflow-y: scroll;
+}
 #transscroll2{
   height: 100px;
   overflow-y: scroll;

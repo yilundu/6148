@@ -6,7 +6,18 @@
 
 
 }
-
+#thhistory{
+  max-height: 150px;
+  overflow-y: scroll;
+}
+#notifbodyid{
+  max-height: 200px;
+  overflow-y: scroll;
+}
+#notifbodyid2{
+  max-height: 150px;
+  overflow-y: scroll;
+}
 ._student-dashboard #studentdashtitle, #sellerdashtitle{
 	    color: #3c763d;
 	font-family: "Nunito";
