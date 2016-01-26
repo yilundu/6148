@@ -1,4 +1,4 @@
-Template.classDashboardElement.events({
+ Template.classDashboardElement.events({
   "click .btn.btn-warning": function(){
     var thisContext = this;
     var string = "Are you sure you want to remove this class? All payments will be refunded."

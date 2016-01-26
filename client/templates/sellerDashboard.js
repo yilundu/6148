@@ -7,5 +7,8 @@ Template.sellerDashboard.helpers({
   numClasses: function(){
     //return number of classes taught by current user
     return classes.find({teacherId: Meteor.userId()}).count();
+  },
+  transactionHistory: function(){
+    return Meteor.user().profile.transactionhistory.reverse();
   }
 });

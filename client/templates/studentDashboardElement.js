@@ -1,5 +1,7 @@
 Template.studentDashboardElement.events({
   "click .btn.btn-warning": function(){
+    var thisContext = this;
+
     if(!user){
       alert("User db not loaded!");
       return;
@@ -37,7 +39,7 @@ Template.studentDashboardElement.events({
       Meteor.call('updateCurrentClass', Meteor.userId(), currentClasses)
       date = new Date();
       //remove the student from the class student list
-      var classStudentList = classes.findOne(this._id);
+      var classStudentList = classes.findOne(thisContext._id);
       if(classStudentList){
         classStudentList = classStudentList.studentList;
         console.log("classList is " + classStudentList);
@@ -52,25 +54,31 @@ Template.studentDashboardElement.events({
 
 
         //call server side method to update student list of class with this._id
-        Meteor.call('updateStudentList', this._id, classStudentList);
-        var string1 = "Refunded $"+this.newcost+" for dropping class "+classes.findOne(classid).title+"("+ classid + ") at time: "+time;
-        Meteor.call('addCash', Meteor.user()._id, this.newcost);
+        Meteor.call('updateStudentList', thisContext._id, classStudentList);
+        //decrement student count in the class db
+        Meteor.call('decrementStudentNumber', thisContext._id);
+
+        //money stuff
+        var string1 = "Refunded $"+thisContext.cost+" for dropping class "+classes.findOne(thisContext._id).title+"("+ thisContext._id + ") at time: "+date;
+        console.log(thisContext.cost);
+        Meteor.call('addCash', Meteor.user()._id, thisContext.cost);
         Meteor.call('transactionHistory', Meteor.user()._id, string1);
-        var string2 = "Refunded $-"+this.newcost+" for  student dropping class "+classes.findOne(classid).title+"("+ classid + ") at time: "+time;
+       /*
+        var string2 = "Refunded $-"+thisContext.newcost+" for  student dropping class "+classes.findOne(thisContext._id).title+"("+ thisContext._id + ") at time: "+date;
         Meteor.call('addCash', Meteor.user()._id, (-1*this.newcost));
         Meteor.call('transactionHistory', Meteor.user()._id, string2);
+*/
+        console.log("Successfully unenrolled user from class!");
+
       }
       else{
 
         throw "Error: No class found matching the given classid - can't remove student from class studnetlist!";
       }
 
-      //decrement student count in the class db
-      Meteor.call('decrementStudentNumber', this._id);
 
 
 
-      console.log("Successfully unenrolled user from class!");
     }
     else{
 

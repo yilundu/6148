@@ -35,29 +35,47 @@
 .teacherheader{
   margin-left: 20px;
 }
-._seller-dashboard .walletclass{
+.walletclass{
   height: 20px;
 }
 ._seller-dashboard .repclass{
   height: 30px;
   width: 35px;
-  margin-top: -10px;
+  margin-top: -5px;
 }
 .clipboardclass{
   height: 30px;
 }
+#panelheadpink{
+    background-color: rgba(217, 83, 79, 0.31);
+}
 ._seller-dashboard .main-section {
   display: inline-block;
 }
+._seller-dashboard .panel-heading{
 
+  font-family: "Nunito";
+  font-weight: 300;
+}
 ._seller-dashboard .btn-group {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+._seller-dashboard #signupdiv{
+  height: 36px;
+  width: 100%;
+  border-radius: 4px;
+}
 
+.btn{
+  font-family: "Nunito";
+  font-weight: 300;
+}
 ._seller-dashboard #create-class-btn {
   border-top-right-radius: 0px;
   border-top-left-radius: 0px;
+  font-family: "Nunito";
+  font-weight: 300;
 }
 
 ._seller-dashboard .panel-body {
