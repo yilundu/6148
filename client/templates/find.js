@@ -129,15 +129,15 @@ Template.find.events({
 	 if (classes.findOne(classid).newcost < Meteor.user().profile.balance){
 	 	
      if ((user.find({meteor: Meteor.user()._id, classes: classid}).count())===0){
-     	var cost = classes.findOne(classid).newcost;
+     	var cost = classes.findOne(classid).cost;
 	 	var negativecost = -1*cost;
 	 	Meteor.call('addCash', Meteor.user()._id, negativecost);
-	 	string = "Paid $"+cost+" for class "+classes.findOne(classid).title+"("+ classid + ") at time: "+time;
+	 	string = "Paid temporary $"+cost+" for class "+classes.findOne(classid).title+"("+ classid + ") at time: "+time;
 	 	Meteor.call('transactionHistory', Meteor.user()._id, string);
-	 	Meteor.call('addCash', classes.findOne(classid).teacherId, cost);
-	 	string2 = "Received $"+cost+" for class "+classes.findOne(classid).title+"("+ classid + ") at time: "+time;
-	 	Meteor.call('transactionHistory', classes.findOne(classid).teacherId, string2);
-     	Meteor.call('incrementStudentNumber', classid);
+	 	//Meteor.call('addCash', classes.findOne(classid).teacherId, cost);
+	 	//string2 = "Recieved $"+cost+" for class "+classes.findOne(classid).title+"("+ classid + ") at time: "+time;
+	 	//Meteor.call('transactionHistory', classes.findOne(classid).teacherId, string2);
+     	//Meteor.call('incrementStudentNumber', classid);
 
      	var id = Meteor.user()._id;
      	Meteor.call('insertPlayerClass', id, classid);

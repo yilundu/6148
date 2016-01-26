@@ -59,13 +59,15 @@ Template.studentDashboardElement.events({
         Meteor.call('decrementStudentNumber', thisContext._id);
 
         //money stuff
-        var string1 = "Refunded $"+thisContext.newcost+" for dropping class "+classes.findOne(thisContext._id).title+"("+ thisContext._id + ") at time: "+date;
-        Meteor.call('addCash', Meteor.user()._id, this.newcost);
+        var string1 = "Refunded $"+thisContext.cost+" for dropping class "+classes.findOne(thisContext._id).title+"("+ thisContext._id + ") at time: "+date;
+        console.log(thisContext.cost);
+        Meteor.call('addCash', Meteor.user()._id, thisContext.cost);
         Meteor.call('transactionHistory', Meteor.user()._id, string1);
+       /*
         var string2 = "Refunded $-"+thisContext.newcost+" for  student dropping class "+classes.findOne(thisContext._id).title+"("+ thisContext._id + ") at time: "+date;
         Meteor.call('addCash', Meteor.user()._id, (-1*this.newcost));
         Meteor.call('transactionHistory', Meteor.user()._id, string2);
-
+*/
         console.log("Successfully unenrolled user from class!");
 
       }
