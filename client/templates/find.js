@@ -137,7 +137,7 @@ Template.find.events({
 	 	//Meteor.call('addCash', classes.findOne(classid).teacherId, cost);
 	 	//string2 = "Recieved $"+cost+" for class "+classes.findOne(classid).title+"("+ classid + ") at time: "+time;
 	 	//Meteor.call('transactionHistory', classes.findOne(classid).teacherId, string2);
-     	//Meteor.call('incrementStudentNumber', classid);
+     	Meteor.call('incrementStudentNumber', classid);
 
      	var id = Meteor.user()._id;
      	Meteor.call('insertPlayerClass', id, classid);
@@ -151,7 +151,7 @@ Template.find.events({
      	sAlert.error('You have already enrolled!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
  	}}
  	else{
- 		sAlert.error('You do not have enough credit!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
+ 		sAlert.error('You do not have enough credit! Please authenticate venmo to add credit.',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
 
  	}
  	}
