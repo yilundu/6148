@@ -72,16 +72,42 @@ Meteor.startup(function(){
 
 /***** FIN ******/
 
+var getUserDisplayName = function(id)
+{
+  var teacherName;
+  var teacherObject = Meteor.users.findOne(id);
+  if(teacherObject && teacherObject.profile && teacherObject.profile.name)
+  {
+    teacherName = teacherObject.profile.name;
+  }
+  else {
+    teacherName = teacherObject.username;
+  }
+
+  return teacherName;
+}
+
 Meteor.methods({
     'insertPlayerClass': function(id, classid){
         //add class to user's class list
-        var classStudentList = classes.findOne(classid);
-        if(classStudentList){
-          classStudentList = classStudentList.studentList;
+        var matchClass = classes.findOne(classid);
+        var classStudentList;
+        if(matchClass){
+          classStudentList = matchClass.studentList;
           console.log("classList is " + classStudentList);
           //insert the students id into the class's studentList
           classStudentList.unshift(id);
           classes.update(classid, {$set : {studentList : classStudentList}});
+
+          //notify class teacher that a student has enrolled
+          //push notificaton to the teacher that they have been reviewed
+          var title = matchClass.title+": new student enrolled!";
+
+          var message = getUserDisplayName(id) + " enrolled in your class.";
+          var type = "teacher";
+          var options = null;
+          Meteor.call('pushNotification', matchClass.teacherId, title, message, type, options);
+
 
         }
         else{
@@ -89,7 +115,6 @@ Meteor.methods({
         }
 
         user.update({meteor: id}, {$push: {classes: classid}});
-        //add user to studentList of class
 
 
     },
@@ -158,18 +183,11 @@ Meteor.methods({
         teacher: username,
         description: user_description,
         createdAt: class_date,
-        studentNumber: 0, // current time
         teacherId: user_id,
-        classAnnouncements: [],//empty at creation
-        studentComments: [],//empty at creation
-        studentList: [],//empty at creation
-        studentReviews: [],
         latitude: latitude,
         longitude: longitude,
         address: address,
-        studentReviews: [],
         newcost: 2*user_cost,
-        isOver: false
       }});
     }
     	else{
@@ -180,23 +198,31 @@ Meteor.methods({
 	        cost: user_cost,
 	        teacher: actualusername,
 	        description: user_description,
-	        createdAt: new Date(),
-	        studentNumber: 0, // current time
+	        createdAt: class_date,
 	        teacherId: user_id,
-	        classAnnouncements: [],//empty at creation
-	        studentComments: [],//empty at creation
-	        studentList: [],//empty at creation
-            latitude: latitude,
-            longitude: longitude,
-            address: address,
-          studentReviews: [],
+          latitude: latitude,
+          longitude: longitude,
+          address: address,
           newcost: 2*user_cost,
-          isOver: false
 	      }
         });
 
     	}
 
+      var matchClass = classes.findOne(classId);
+      if(matchClass){
+        var studentList = matchClass.studentList;
+        for(var i = 0 ; studentList.length ; i++){
+          var studentId = studentList[i];
+
+          var title = matchClass.title + ": Class Info Changed!";
+          var message = "Some of the class information for this class was changed.";
+          var type = "student";
+          var options = null;
+          Meteor.call('pushNotification', matchClass.teacherId, title, message, type, options);
+
+        }
+      }
       //set up listener to fire when class date occurs
       updateScheduledClass({date: unixtime, class_id: classid, triggered: false});
 
@@ -237,41 +263,56 @@ Meteor.methods({
     	classes.update(classid, {$set : {classAnnouncements: classAnnouncements}});
 
       //push notifications to all students
-      if(classes.studentList)
-      {
-        var thisClass = classes.findOne(classid);
 
-        classes.studentList.forEach(function(e){
-          //push notificaton to the teacher that they have been reviewed
-          var title = thisClass.title+": new class announcement!";
-          var studentName;
-          var studentObject = Meteor.users.findOne(e);
-          if(studentObject && studentObject.profile && studentObject.profile.name)
-          {
-            studentName = studentObject.profile.name;
-          }
-          else {
-            studentName = studentObject.username;
-          }
-          var message = thisClass.teacher + " sent to the class a new announcement";
-          var type = "student";
-          var options = null;
-          Meteor.call('pushNotification',e, title, message, type, options);
-          console.log("Sent push notification!");
+      var thisClass = classes.findOne(classid);
+
+      thisClass.studentList.forEach(function(e){
+        //push notificaton to the students that there is a new class announcement
+        var title = thisClass.title+": new class announcement!";
+
+        var message = thisClass.teacher + " sent to the class a new announcement";
+        var type = "student";
+        var options = null;
+        Meteor.call('pushNotification',e, title, message, type, options);
+        console.log("Sent push notification!");
 
 
-        })
-      }
+      });
+
     },
     'updateComments': function(classid, updatedComments){
 
     	classes.update(classid, {$set : {studentComments: updatedComments}});
+
+      var thisClass = classes.findOne(classId);
+      //notify teacher that user has commented
+      //push notificaton to the teacher that one of their classes has received a comment
+      var title = thisClass.title+": new student comment!";
+      var message = "Your class received a new comment.";
+      var type = "student";
+      var options = null;
+      Meteor.call('pushNotification',thisClass.teacherId, title, message, type, options);
     },
     'removeClass': function(id){
     	classes.remove({_id: id});
     },
     'endClass': function(id){//class has ended due to being over - not being cancelled
     	classes.update({_id: id}, {$set : {isOver: true}});
+      //push notifications to all students
+
+      var thisClass = classes.findOne(classid);
+
+      thisClass.studentList.forEach(function(e){
+        //push notificaton to the teacher that they have been reviewed
+        var title = thisClass.title+" has reached it's start time!";
+        var message = thisClass.title+" is beginning.";
+        var type = "student";
+        var options = null;
+        Meteor.call('pushNotification',e, title, message, type, options);
+        console.log("Sent push notification!");
+
+
+      });
     },
     'updateClass': function(id, newClasses){
     	user.update(id, {$set : {classes: newClasses}});
