@@ -129,12 +129,14 @@
 }
 @media screen and (max-width: 960px){
   #teachid34{
-    font-size: 30px;
+    font-size: 25px;
+    margin-top: 15px;
   }
 }
 @media screen and (min-width: 960px){
   #teachid34{
-    font-size: 40px;
+    font-size: 30px;
+    margin-top: 10px;
   }
 }
 #teachid34{
@@ -150,7 +152,15 @@
   margin-right: auto;
   align-self: center;
 }
-
+#hurdurtitle{
+      margin-bottom: 0px;
+    margin-top: -10px;
+  font-size: 40px;
+}
+.scroldiss{
+  max-height: 300px;
+  overflow-y: scroll;
+}
 ._classInfoPage .main-body {
   margin: 30px;
 }

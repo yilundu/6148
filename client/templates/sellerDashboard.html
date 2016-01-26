@@ -41,41 +41,41 @@ TODO: DO THIS
                 <li><a href="#">Subject (A-Z)</a></li>
               </ul>
             </div>
--->
-            <div id = "spac">
+          -->
+          <div id = "spac">
             <a class="btn btn-primary col-xs-12" id="create-class-btn" href="{{pathFor 'createClass'}}"><img class = "clipboardclass" src = "flatclipboard.png"> Create a new Class!</a>
+          </div>
+          <div class ="panel panel-default">
+            <div class ="panel-heading" id = "panelheadpink">
+              <img class = "walletclass" src = "flatwallet.png"> &nbsp; &nbsp;  Transaction History
             </div>
-      <div class ="panel panel-default">
-        <div class ="panel-heading" id = "panelheadpink">
-          <img class = "walletclass" src = "flatwallet.png"> &nbsp; &nbsp;  Transaction History
-        </div>
 
-        <div id = "transscroll">
-          <ul class= "transaction_history">
-            {{#each transactionHistory}}
-            <li class = "jumbotron translist" id = "jumbotrans">{{this}}</li>
-            {{/each}}
+            <div id = "transscroll">
+              <ul class= "transaction_history">
+                {{#each transactionHistory}}
+                <li class = "jumbotron translist" id = "jumbotrans">{{this}}</li>
+                {{/each}}
 
-          </ul>
-        </div>
-        <div class="panel-body">
+              </ul>
+            </div>
+            <div class="panel-body">
 
 
 
-        </div>
-      </div>
+            </div>
+          </div>
 
-      <div class ="panel panel-default">
-        <div class = "panel-heading">
-         <img class = "repclass" src = "iconrep1.png"> &nbsp; &nbsp; Reviews and Reputation
-       </div>
-       <div class="panel-body" id = "transscroll2">
-        
-       <ul class = "transaction_history">
-        {{#each reviews}}
-          <li class = "jumbotron translist" id = "jumbotrans"> {{this}} </li>
-        {{/each}}
-       </ul>
+          <div class ="panel panel-default">
+            <div class = "panel-heading">
+             <img class = "repclass" src = "iconrep1.png"> &nbsp; &nbsp; Reviews and Reputation
+           </div>
+           <div class="panel-body" id = "transscroll2">
+            
+             <ul class = "transaction_history">
+              {{#each reviews}}
+              <li class = "jumbotron translist" id = "jumbotrans"> {{this}} </li>
+              {{/each}}
+            </ul>
               <!--
               TODO: make this work
               <span style="font-family:Lato, font-size:50pt" id="reviewValue">4.5</span>
