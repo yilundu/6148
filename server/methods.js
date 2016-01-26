@@ -1,63 +1,59 @@
 /***** CODE FOR UPDATING CLASSES AFTER THEY HAVE ENDED ******/
 //source: http://richsilv.github.io/meteor/scheduling-events-in-the-future-with-meteor/
-var performEndClass = function(classId)
+var performEndClass = function()
 {
-    console.log("CLASS FIRED!!!!!!" + classId);
+  console.log("Ran check");
+  var results = FutureTasks.find().fetch();
+  console.log(results.length);
+  console.log(results);
+  for(var i = 0 ; i < results.length ; i++){
+    var each = results[i];
+    console.log(each);
+    console.log("Result.date = "+each.date);
+    console.log("Current Unix Time: "+moment().unix());
 
+    if(moment().unix() > each.date)
+    {
+      console.log("EVENT TRIGGERED! id");
+    }
+  }
 };
 
 
 
-var addTask = function(id, details)
+var startCheck = function(id)
 {
-
+  console.log(id);
   SyncedCron.add({
     name: id,
     schedule: function(parser){
-      return parser.recur().on(details.date.toDate()).fullDate();
+      return parser.text('every 5 seconds');
+      //return parser.recur().every().second();
     },
     job: function(){
-      performEndClass(details);
-      FutureTasks.remove(id);
-      SyncedCron.remove(id);
+      performEndClass();
       return id;
     }
-  })
+  });
 
 };
 
 var scheduleClass = function (details){
-  if(details.date.toDate() < new Date()){
-    performEndClass(details);
-  } else {
-    var thisId = FutureTasks.insert(details);
-    addTask(thisId, details);
 
-  }
 
-  console.log("Scheduled Class with id: "+details.class_id + " for time "+ details.date);
+
+  FutureTasks.insert(details);
+
+
+
+  console.log("Added Class with id: "+details.class_id + " for time "+ details.date);
   return true;
 };
 
 Meteor.startup(function(){
   var tasksToRemove = [];
 
-
-  FutureTasks.find({}).forEach(function(c){
-    if(c.date < new Date()){
-      performEndClass(c);
-      tasksToRemove.push(id);
-    } else {
-      addTask(c._id, c);
-    }
-  });
-
-  //remove any that were just handled
-  for(var i = 0 ; i < tasksToRemove.length ; i++)
-  {
-    var task = tasksToRemove[i];
-    FutureTasks.remove({task});
-  }
+  startCheck("checkClassesEveryMinute");
 
   SyncedCron.start();
 });
@@ -86,7 +82,8 @@ Meteor.methods({
 
     },
 
-    'createClass': function(address, class_date, user_title, user_cost, user_description, user_subject, user_id, username, actualusername, latitude, longitude){
+    'createClass': function(address, class_date, user_title, user_cost, user_description,
+      user_subject, user_id, username, actualusername, latitude, longitude,unixtime){
       var classid;
       if(username){
     	classid = classes.insert({
@@ -106,7 +103,8 @@ Meteor.methods({
         longitude: longitude,
         address: address,
         studentReviews: [],
-        newcost: user_cost
+        newcost: user_cost,
+        unixtime: unixtime
       });
     }
     	else{
@@ -127,16 +125,17 @@ Meteor.methods({
             longitude: longitude,
             address: address,
           studentReviews: [],
-          newcost: user_cost
+          newcost: user_cost,
+          unixtime: unixtime
 	      });
 
     	}
 
       //set up listener to fire when class date occurs
-      scheduleClass({date: class_date, class_id: classid});
+      scheduleClass({date: unixtime, class_id: classid});
 
     },
-    'editClass': function(classId,address, class_date, user_title, user_cost, user_description, user_subject, user_id, username, actualusername, latitude, longitude){
+    'editClass': function(classId,address, class_date, user_title, user_cost, user_description, user_subject, user_id, username, actualusername, latitude, longitude, time, unixtime){
 
 
 
@@ -184,6 +183,10 @@ Meteor.methods({
         });
 
     	}
+
+
+      //set up listener to fire when class date occurs
+      scheduleClass({date: unixtime, class_id: classid});
     },
     'incrementStudentNumber': function(classid){
         console.log(classes.findOne(classid,{studentNumber: 1, _id: 0}));

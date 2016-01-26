@@ -36,8 +36,10 @@ Template.createClass.events({
     var user_description = $("#descField").val();
     var user_subject;
     var class_date = $("#dateField").val();
+    var unixtime = moment(class_date).unix();
     class_date = moment(class_date).format("dddd, MMMM Do YYYY, h:mm a");
 
+    var dateObject = new Date(class_date);
 
     $('.list-group-item').each(function(){
       if($(this).hasClass('active')){
@@ -74,7 +76,7 @@ Template.createClass.events({
     checkTextEmpty($('#descField')) &
     checkNumberPositive($('#costField'))&checkTextEmpty($('#dateField'))&checkTextEmpty($('#mapidform'))){
 
-     Meteor.call('createClass', address, class_date, user_title, user_cost, user_description, user_subject, Meteor.user()._id, Meteor.user().profile.name, Meteor.user().username, latitude, longitude);
+     Meteor.call('createClass', address, class_date, user_title, user_cost, user_description, user_subject, Meteor.user()._id, Meteor.user().profile.name, Meteor.user().username, latitude, longitude, unixtime);
 
 
       //redirect to sellerDashboard
