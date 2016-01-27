@@ -145,7 +145,8 @@ Meteor.methods({
         studentReviews: [],
         newcost: user_cost,
         unixtime: unixtime,
-        triggered: false
+        triggered: false,
+        isOver: false
       });
        }
        else{
@@ -168,7 +169,8 @@ Meteor.methods({
           studentReviews: [],
           newcost: user_cost,
           unixtime: unixtime,
-          triggered: false
+          triggered: false,
+          isOver: false
         });
 
       }

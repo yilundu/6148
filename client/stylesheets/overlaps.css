@@ -11,6 +11,31 @@
 	width: 50%;
 	display:inline-block;
 }
+#oneline{
+	display:inline-block;
+}
+#linotif{
+	color: white;
+	    text-align: center;
+    font-family: "Nunito";
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+#notifmax{
+	padding: 15px;
+	width: 300px;
+	max-height: 250px;
+	overflow-y: scroll;
+	background-color: #a94442;
+}
+#dropdownMenu1{
+	margin-left: 5px;
+	    margin-top: 10px;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
 @media screen and (min-width: 1000px){
 	#guidebut{
     font-size: .4em;
@@ -22,6 +47,13 @@
 	}
 }.dropdown-menu{
 	max-width: 300px;
+}
+#notifier{
+	    padding-right: 6px;
+    margin-top: 10px;
+    padding-left: 6px;
+    padding-top: 3px;
+    padding-bottom: 3px;
 }
 #guidebut{
 	    font-weight: 700;
@@ -95,6 +127,7 @@ doesn't work, hover color
 #login-dropdown-list{
 	margin-top:15px;
 	color: white;
+	    margin-left: 10px;
 }
 #spacjh{
 	margin-top: 7px;

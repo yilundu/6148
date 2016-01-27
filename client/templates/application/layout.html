@@ -37,12 +37,33 @@
         </ul>
       </div>
 
-<ul class = "nav navbar-right navbar-nav">
+      <ul class = "nav navbar-right navbar-nav">
         <li id = "spacjh"><span id = "moneylink" class = "money hidden-xs hidden-sm">${{money}}</span></li>
         <li> <div class = "profpic hidden-xs hidden-sm">  <img class= "logoimage" src = "{{photoprof}}"> </div></li>
         <li> {{>loginButtons}}</li>
-        <li> <div class = "btn"> </div> </li>
+
+
+
+
+
+
+        <div class="dropdown" id = "oneline">
+          <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+          {{notificationsnum}}
+            <span class="caret"></span>
+
+          </button>
+          <ul class="dropdown-menu navbar-right" id = "notifmax">
+          <li id = "linotif"> Notifications </li>
+            {{#each notifications}}
+
+            {{> notificationsTemplate}}
+
+            {{/each}}
+          </ul>
+        </div>
       </ul>
+
     </div>
 
   </nav>
@@ -55,55 +76,55 @@
 
 
 <!--
-    {{#if currentUser}}
-            {{> dashboard}}
-	        {{else}}
-		        {{> register}}
-			        {{> login}}
-				    {{/if}}
+  {{#if currentUser}}
+          {{> dashboard}}
+        {{else}}
+	        {{> register}}
+		        {{> login}}
+			    {{/if}}
 
-          -->
+        -->
 
-          <!-- Footer template is from http://tutorialzine.com/2015/01/freebie-5-responsive-footer-templates/ -->
-          <footer class="footer-distributed">
+        <!-- Footer template is from http://tutorialzine.com/2015/01/freebie-5-responsive-footer-templates/ -->
+        <footer class="footer-distributed">
 
-            <div class="footer-left">
+          <div class="footer-left">
 
-              <h3 id = "footerh">Overlaps <img class = "logoimage2" src="/Logo.png"></h3>
+            <h3 id = "footerh">Overlaps <img class = "logoimage2" src="/Logo.png"></h3>
 
-              <p class="footer-company-name">Overlaps &copy; 2015</p>
+            <p class="footer-company-name">Overlaps &copy; 2015</p>
+          </div>
+
+          <div class="footer-center">
+
+            <div>
+              <i class="fa fa-map-marker"></i>
+              <p> 500 Memorial Drive <br> Cambridge, MA</p>
             </div>
 
-            <div class="footer-center">
-
-              <div>
-                <i class="fa fa-map-marker"></i>
-                <p> 500 Memorial Drive <br> Cambridge, MA</p>
-              </div>
-
-              <div>
-                <i class="fa fa-phone"></i>
-                <p>+1 123 4567</p>
-              </div>
-
-              <div>
-                <i class="fa fa-envelope"></i>
-                <p><a href="mailto:team@overlaps.com">team@overlaps.com</a></p>
-                <p> Some of the art is original. Some art from freepik.com, flaticon.com, etc. </p>
-              </div>
-
+            <div>
+              <i class="fa fa-phone"></i>
+              <p>+1 123 4567</p>
             </div>
 
-            <div class="footer-right">
-
-              <p class="footer-company-about">
-                <span>About us</span>
-                We are a platform for college students to learn useful skills from cooking to fixing up a bike. From quick demos to longer lessons, we want to allow everyone to share the diverse skills they have with others.
-              </p>
-
-
-
+            <div>
+              <i class="fa fa-envelope"></i>
+              <p><a href="mailto:team@overlaps.com">team@overlaps.com</a></p>
+              <p> Some of the art is original. Some art from freepik.com, flaticon.com, etc. </p>
             </div>
 
-          </footer>
-        </template>
+          </div>
+
+          <div class="footer-right">
+
+            <p class="footer-company-about">
+              <span>About us</span>
+              We are a platform for college students to learn useful skills from cooking to fixing up a bike. From quick demos to longer lessons, we want to allow everyone to share the diverse skills they have with others.
+            </p>
+
+
+
+          </div>
+
+        </footer>
+      </template>
