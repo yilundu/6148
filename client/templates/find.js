@@ -27,14 +27,14 @@ Template.find.helpers({
 	var parts = search.trim().split(/[ \-\:]+/);
     var searchregex = new RegExp("(" + parts.join('|') + ")", "ig");
     $("#title1").val(search);
-	return classes.find({$or: [{title: searchregex}, {description: searchregex}, {subject: searchregex}]}, {limit: 10, sort: {studentNumber: -1}}).fetch();
+	return classes.find({$and: [{$or: [{title: searchregex}, {description: searchregex}, {subject: searchregex}]}, {isOver:false}]}, {limit: 10, sort: {studentNumber: -1}}).fetch();
 	}
 	else{
 	//var search1 = new RegExp($("#title1").val(),'i');
 	//return {posts: classes.find({subject: search1, description: search2})};
 
 
-	return classes.find({triggered: false}, {limit: 10, sort: {studentNumber: -1}}).fetch();
+	return classes.find({isOver: false}, {limit: 10, sort: {studentNumber: -1}}).fetch();
 //	return classes.find({subject: {regex: "/"+$(".subject").val()+"/i"}, description: {regex: "/"+$(".description").val()+"/i"}});
 	}
 	},
@@ -64,7 +64,7 @@ Template.find.events({
 	var search = $("#title1").val();
 	var parts = search.trim().split(/[ \-\:]+/);
     var searchregex = new RegExp("(" + parts.join('|') + ")", "ig");
-	var json = classes.find({$or: [{title: searchregex}, {description: searchregex}, {subject: searchregex}]}, {sort: {studentNumber: -1}});
+	var json = classes.find({$and: [{$or: [{title: searchregex}, {description: searchregex}, {subject: searchregex}]}, {isOver:false}]}, {sort: {studentNumber: -1}});
 
 	$(".Test").html("");
 	classes.find({}).forEach(
@@ -131,10 +131,11 @@ Template.find.events({
 
 	 }
 	 else {
+
 	 	console.log(classes.findOne(classid).unixtime);
 	 if (classes.findOne(classid).newcost < Meteor.user().profile.balance){
-	 	
-     if ((user.find({meteor: Meteor.user()._id, classes: classid}).count())===0){
+	 	Session.set(classid, true);
+     if ((user.find({meteor: Meteor.user()._id, classes: classid}).count())===0 && Session.get(classid)){
      	var cost = classes.findOne(classid).cost;
 	 	var negativecost = -1*cost;
 	 	Meteor.call('addCash', Meteor.user()._id, negativecost);
