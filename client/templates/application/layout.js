@@ -212,7 +212,7 @@ notifications: function(){
     {
       if(Meteor.user().profile.notifs)
       {
-	      return studentNotifs.length;
+	      return Meteor.user().profile.notifs.length;
       }
 			else {
 				return 0;
