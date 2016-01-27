@@ -14,6 +14,12 @@
 #oneline{
 	display:inline-block;
 }
+#notifmax{
+	padding: 15px;
+	width: 300px;
+	max-height: 250px;
+	overflow-y: scroll;
+}
 #dropdownMenu1{
 	    margin-top: 10px;
     padding-left: 6px;
@@ -112,6 +118,7 @@ doesn't work, hover color
 #login-dropdown-list{
 	margin-top:15px;
 	color: white;
+	    margin-left: 10px;
 }
 #spacjh{
 	margin-top: 7px;
