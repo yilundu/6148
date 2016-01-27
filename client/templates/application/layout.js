@@ -107,26 +107,26 @@ Template.layout.events({
 			Router.go('/search');
 	},
 	"click #login-buttons-logout": function(){
-		$(".dropdown-menu").append("<i class='icon-spinner icon-spin icon-large'></i> ");
+		$("#login-dropdown-list .dropdown-menu").append("<i class='icon-spinner icon-spin icon-large'></i> ");
 	},
 	"click #login-buttons-password": function(){
-		$(".dropdown-menu").append("<i class='icon-spinner icon-spin icon-large'></i> ");
+		$("#login-dropdown-list .dropdown-menu").append("<i class='icon-spinner icon-spin icon-large'></i> ");
 	}
 
 
 });
 
 Template._loginButtonsLoggedInDropdown.onRendered(function () {
-	 $(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='moneymanage'> Finances </button>");
-	$(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='editprofile'>  Edit Profile </button>");
-  $(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='studentprofile'> Student Dashboard </button>");
-  $(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='teacherprofile'> Teacher Dashboard </button>");
+	 $("#login-dropdown-list .dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='moneymanage'> Finances </button>");
+	$("#login-dropdown-list .dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='editprofile'>  Edit Profile </button>");
+  $("#login-dropdown-list .dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='studentprofile'> Student Dashboard </button>");
+  $("#login-dropdown-list .dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='teacherprofile'> Teacher Dashboard </button>");
  
   if (Meteor.user().profile.authenticated === true){
-  	$(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block btn-success' id='authorizevenmo'> Venmo Authenticated </button>");
+  	$("#login-dropdown-list .dropdown-menu").prepend("<button class= 'btn btn-default btn-block btn-success' id='authorizevenmo'> Venmo Authenticated </button>");
   }
   else {
-  	$(".dropdown-menu").prepend("<button class= 'btn btn-default btn-block btn-danger' id='authorizevenmo'> Authorize Venmo </button>");
+  	$("#login-dropdown-list .dropdown-menu").prepend("<button class= 'btn btn-default btn-block btn-danger' id='authorizevenmo'> Authorize Venmo </button>");
   }
 
 
