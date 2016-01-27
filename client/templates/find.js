@@ -28,14 +28,14 @@ Template.find.helpers({
 	var parts = search.trim().split(/[ \-\:]+/);
     var searchregex = new RegExp("(" + parts.join('|') + ")", "ig");
     $("#title1").val(search);
-	return classes.find({$and: [{$or: [{title: searchregex}, {description: searchregex}, {subject: searchregex}]}, {isOver:{$ne:true}}]}, {limit: 10, sort: {studentNumber: -1}}).fetch();
+	return classes.find({$and: [{$or: [{title: searchregex}, {description: searchregex}, {subject: searchregex}]}, {isOver:{$ne:true}}]}, {limit: 10, sort: {studentNumber: -1, unixtime: 1}}).fetch();
 	}
 	else{
 	//var search1 = new RegExp($("#title1").val(),'i');
 	//return {posts: classes.find({subject: search1, description: search2})};
 
 
-	return classes.find({isOver: {$ne:true}}, {limit: 10, sort: {studentNumber: -1}}).fetch();
+	return classes.find({isOver: {$ne:true}}, {limit: 10, sort: {studentNumber: -1, unixtime: 1}}).fetch();
 //	return classes.find({subject: {regex: "/"+$(".subject").val()+"/i"}, description: {regex: "/"+$(".description").val()+"/i"}});
 	}
 	},
@@ -71,7 +71,7 @@ Template.find.events({
     		$("#check").prop('checked', false);
     }
     else{
-	var json = classes.find({$and: [{$or: [{title: searchregex}, {description: searchregex}, {subject: searchregex}]}, {isOver:{$ne:true}}]}, {sort: {studentNumber: -1}});
+	var json = classes.find({$and: [{$or: [{title: searchregex}, {description: searchregex}, {subject: searchregex}]}, {isOver:{$ne:true}}]}, {sort: {studentNumber: -1, unixtime: 1}});
 	}
 	$(".Test").html("");
 	classes.find({}).forEach(
