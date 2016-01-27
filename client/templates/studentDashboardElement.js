@@ -26,6 +26,11 @@ Template.studentDashboardElement.events({
     }
     else{
       string = "Are you sure you want to drop this class?";
+      if (thisContext.unixtime < moment().unix()){
+          sAlert.error('Class has already occured!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
+
+      }
+      else {
       bootbox.confirm(string, function(result)
     {
 
@@ -84,7 +89,7 @@ Template.studentDashboardElement.events({
 
     }
     })
-    }
+    }}
 
 
   }

@@ -64,7 +64,7 @@ Template.find.events({
 	var search = $("#title1").val();
 	var parts = search.trim().split(/[ \-\:]+/);
     var searchregex = new RegExp("(" + parts.join('|') + ")", "ig");
-	var json = classes.find({$or: [{title: searchregex}, {description: searchregex}, {subject: searchregex}]});
+	var json = classes.find({$or: [{title: searchregex}, {description: searchregex}, {subject: searchregex}]}, {sort: {studentNumber: -1}});
 
 	$(".Test").html("");
 	classes.find({}).forEach(
@@ -125,12 +125,13 @@ Template.find.events({
 	 if (!user.findOne({meteor: Meteor.user()._id})){
 	 	Meteor.call('addNewUser', Meteor.userId());
 	 }
-	 if (classes.findOne(classid).unix < moment().unix)
+	 if (classes.findOne(classid).unixtime < moment().unix())
 	 {
 	 	sAlert.error('Class has already occured!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
 
 	 }
 	 else {
+	 	console.log(classes.findOne(classid).unixtime);
 	 if (classes.findOne(classid).newcost < Meteor.user().profile.balance){
 	 	
      if ((user.find({meteor: Meteor.user()._id, classes: classid}).count())===0){

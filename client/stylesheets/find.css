@@ -49,8 +49,8 @@
     margin:auto;
     padding:0px;
 }
-.__find .true{
-    background-color: #2F4F4F;
+.true{
+    background-color: #F2DEDE;
 }
 
 .__find h1, h2{
@@ -87,7 +87,6 @@
     padding-bottom: 20px;
     padding-right: 30px;
     padding-left: 30px;
-    background-color: white;
     padding-top: 20px;
     margin-top: 10px;
     width: 94%;

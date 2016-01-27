@@ -55,7 +55,6 @@
 	padding: 10px;
 }
 ._student-dashboard #signupdiv{
-	height: 78px;
 	width: 100%
 	border-radius: 4px;
 }
@@ -74,10 +73,9 @@
   border-top-right-radius: 0px;
       border-color: white;
   border-top-left-radius: 0px;
-      margin-left: auto;
+      margin-left: 15%;
     width: auto;
     margin-bottom: 10px;
-    margin-right: auto;
     font-weight: 300;
     font-family: "Nunito";
 
