@@ -64,7 +64,7 @@ Template.find.events({
 	var search = $("#title1").val();
 	var parts = search.trim().split(/[ \-\:]+/);
     var searchregex = new RegExp("(" + parts.join('|') + ")", "ig");
-	var json = classes.find({$or: [{title: searchregex}, {description: searchregex}, {subject: searchregex}]});
+	var json = classes.find({$or: [{title: searchregex}, {description: searchregex}, {subject: searchregex}]}, {sort: {studentNumber: -1}});
 
 	$(".Test").html("");
 	classes.find({}).forEach(
