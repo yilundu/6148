@@ -121,7 +121,7 @@ Template._loginButtonsLoggedInDropdown.onRendered(function () {
 	$("#login-dropdown-list .dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='editprofile'>  Edit Profile </button>");
   $("#login-dropdown-list .dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='studentprofile'> Student Dashboard </button>");
   $("#login-dropdown-list .dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='teacherprofile'> Teacher Dashboard </button>");
- 
+
   if (Meteor.user().profile.authenticated === true){
   	$("#login-dropdown-list .dropdown-menu").prepend("<button class= 'btn btn-default btn-block btn-success' id='authorizevenmo'> Venmo Authenticated </button>");
   }
@@ -214,15 +214,11 @@ toptabid33:function(){
     {
       if(Meteor.user().profile.notifs)
       {
-        var studentNotifs = [];
-        console.log("notifications entered");
-        Meteor.user().profile.notifs.forEach(function(entry){
-          if(entry.type == "teacher"){
-            studentNotifs.push(entry);
-          }
-        });
+	      return studentNotifs.length;
       }
-      return studentNotifs.length;
+			else {
+				return 0;
+			}
     }
   }
 });
