@@ -140,6 +140,17 @@ Template.classInfoPage.helpers({
   isOver : function(){
     return this.isOver;
   },
+  isStudent: function(){
+    thisContext = this;
+    if(user.findOne({meteor: Meteor.userId(), classes: thisContext._id})){
+      console.log("Is a student!");
+      return true;
+    }
+    else{
+      console.log("Is not a student!");
+      return false;
+    }
+  },
   review: function(){
     var avgreview = classes.findOne(this._id).studentReviews;
     var total = 0;

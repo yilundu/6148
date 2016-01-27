@@ -90,7 +90,7 @@ Template.find.events({
 			"<div class='results' id='" + item._id+"''>"
 			+"<ul class = 'jumbotron "+item.isOver+ " insidesearch'>"
 			+"<li class = 'hidethis'>"+item._id+"</li>"
-			+"<li class= 'classliid'> <span class = 'boldspan'>"+item.title+"</span></li>"
+			+"<li class= 'classliid'> <span class = 'boldspan'> <a href='/class/"+item._id+"'>"+item.title+"</a></span></li>"
 			+"<li> <span class = 'boldspan'>Description: </span> "+item.description+"</li>"
 			+"<li> <span class = 'boldspan'>Subject: </span> "+item.subject+"</li>"
 			+"<li> <span class = 'boldspan'>Teacher: <a href='/profile?id="+item.teacherId+"'> </span>"+ item.teacher+ "</a></li>"
