@@ -1,3 +1,5 @@
+
+
 Template.studentDashboard.helpers({
   classes: function(){
 
@@ -21,7 +23,9 @@ Template.studentDashboard.helpers({
 
 
     console.log("Entered classes helper function" + classes);
-    return classResults;
+    return classResults.sort(function (a,b) {
+      return (a.unixtime > b.unixtime);
+    });
   },
 
   numClasses: function(){
