@@ -18,12 +18,13 @@
     font-weight: 500;
 }
 .searchform label {
-    width:150px;
+    opacity: 0.8;
+    width:auto;
     margin-top: 4px;
     display:inline-block;
-    float:left;
+
     padding:3px;
-    margin-left: 10%;
+
 }
 
 .searchform #title1 {
