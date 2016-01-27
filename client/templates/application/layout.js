@@ -119,7 +119,7 @@ Template.layout.events({
 Template._loginButtonsLoggedInDropdown.onRendered(function () {
 	$("#login-dropdown-list .dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='moneymanage'> Finances </button>");
 	$("#login-dropdown-list .dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='editprofile'>  Edit Profile </button>");
-<<<<<<< HEAD
+
 	$("#login-dropdown-list .dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='studentprofile'> Student Dashboard </button>");
 	$("#login-dropdown-list .dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='teacherprofile'> Teacher Dashboard </button>");
 
@@ -129,17 +129,6 @@ Template._loginButtonsLoggedInDropdown.onRendered(function () {
 	else {
 		$("#login-dropdown-list .dropdown-menu").prepend("<button class= 'btn btn-default btn-block btn-danger' id='authorizevenmo'> Authorize Venmo </button>");
 	}
-=======
-  $("#login-dropdown-list .dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='studentprofile'> Student Dashboard </button>");
-  $("#login-dropdown-list .dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='teacherprofile'> Teacher Dashboard </button>");
-
-  if (Meteor.user().profile.authenticated === true){
-  	$("#login-dropdown-list .dropdown-menu").prepend("<button class= 'btn btn-default btn-block btn-success' id='authorizevenmo'> Venmo Authenticated </button>");
-  }
-  else {
-  	$("#login-dropdown-list .dropdown-menu").prepend("<button class= 'btn btn-default btn-block btn-danger' id='authorizevenmo'> Authorize Venmo </button>");
-  }
->>>>>>> be8b4a2cbbb0110f72d3f9800a255d9f2a173aa6
 
 
 });
