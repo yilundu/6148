@@ -512,13 +512,19 @@ Meteor.methods({
      classes.update({_id: id},{$set: {newcost: amount}});
    },
    'transactionHistory': function(id, transaction){
+     console.log("Transaction for id "+id+"recorded with text: "+transaction);
     if (Meteor.users.findOne(id).profile.transactionhistory){
+
+      console.log("Entered if of transaction history");
       Meteor.users.update(id, {$push: {'profile.transactionhistory': transaction}});
+      console.log("Transaction history after if = "+Meteor.users.findOne(id).profile.transactionhistory);
     }
     else {
+      console.log("Entered else of transaction history");
       var array = [];
       Meteor.users.update(id, {$set: {'profile.transactionhistory': array}});
       Meteor.users.update(id, {$push: {'profile.transactionhistory': transaction}});
+      console.log("Transaction history after else = "+Meteor.users.findOne(id).profile.transactionhistory);
     }
   },
   'clearNotifications' : function(userId){
@@ -558,42 +564,9 @@ Meteor.methods({
       }
     }});
 
-    },
-    UpdateClassOnEnd: function(classid) {
-      classes.find({}).forEach(
-    function(elem){
-      var newcost =(1*elem.cost*(elem.studentNumber/3+2)/(elem.studentNumber/3+1)/2).toFixed(2);
-      Meteor.call('setnewCash',elem._id, newcost);
-
-    }
+  }}
   );
-  console.log("UPDATECLASSONEND classid = " + classid);
-  console.log("findone = "+classes.findOne(classid));
-  var savings = parseInt(classes.findOne(classid).cost)-parseInt(classes.findOne(classid).newcost);
-  var classnew = classes.findOne(classid);
-  var studentList = classes.findOne(classid).studentList;
 
-  for (var i=0; i<studentList.length; i++){
-    Meteor.call('addCash', studentList[i], savings);
-    var string = "Recieved $"+savings+" for group savings from "+classnew.title+" on time: "+moment().format('LLLL');
-    Meteor.call('transactionHistory', studentList[i], string);
-
-    //notify user
-    Meteor.call('pushNotification', studentList[i], "Received Class Savings!", "Recieved $"+savings+" for group savings from "+classnew.title+" on time: "+moment().format('LLLL'), "student", null);
-
-
-  }
-  var total = studentList.length*parseInt(classes.findOne(classid).newcost);
-  Meteor.call('addCash', classnew.teacherId, total);
-  var string = "Recieved $"+total+" for teaching "+classnew.title+"on time: "+moment().format('LLLL');
-  Meteor.call('transactionHistory', classnew.teacherId, string);
-
-  //notify teacher
-  Meteor.call('pushNotification', classnew.teacherId, "Received Class Earnings!", "Recieved $"+total+" for teaching "+classnew.title+" on time: "+moment().format('LLLL'), "teacher", null);
-
-    }
-
-  });
 
 Meteor.publish('data', function(){
 	return [classes.find({}), user.find({}), Meteor.users.find({}, {fields: {'profile.binary': 1,'profile.name':1, 'username':1, 'profile.age':1, 'profile.about':1, 'profile.balance':1}})];
@@ -629,7 +602,7 @@ var UpdateClassOnEnd = function(classid) {
     Meteor.call('transactionHistory', studentList[i], string);
 
     //notify user
-    Meteor.call('pushNotification', studentList[i], "Received Class Savings!", "Received $"+savings+" for group savings from "+classnew.title+" on time: "+moment().format('LLLL'), "student", null);
+    Meteor.call('pushNotification', studentList[i], "Received Class Savings!", "Received $"+savings+" for group savings from "+classnew.title, "student", null);
 
 
   }
@@ -639,7 +612,7 @@ var UpdateClassOnEnd = function(classid) {
   Meteor.call('transactionHistory', classnew.teacherId, string);
 
   //notify teacher
-  Meteor.call('pushNotification', classnew.teacherId, "Received Class Earnings!", "Received $"+total+" for teaching "+classnew.title+" on time: "+moment().calendar(), "teacher", null);
+  Meteor.call('pushNotification', classnew.teacherId, "Received Class Earnings!", "Received $"+total+" for teaching "+classnew.title, "teacher", null);
 
 
 }

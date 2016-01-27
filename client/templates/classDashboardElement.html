@@ -5,13 +5,13 @@
 <template name = "classDashboardElement">
 <div class="_classDashboardElement">
   <div class="bs-callout bs-callout-info {{isOver}} ">
-    <h1>Title: {{title}}</h1>
+    <h1>{{title}}</h1>
+    <p><i><b>{{dateText}}</b></i></p>
     <p>Subject: {{subject}}</p>
     <p>Cost: $<span class="strikethrough">{{cost}}</span> ${{newcost}}</p>
     <p>Description: {{description}}</p>
-    <p>Student Number: {{studentNumber}}</p>
-
-    <i>{{dateText}}</i><br>
+    <p>{{studentNumber}} students are taking this class</p>
+    <p>Address: {{address}}</p>
 
     <!--TODO: implement update class-->
     <button class="btn btn-primary">Update Class</button>
