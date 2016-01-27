@@ -28,10 +28,10 @@ Template.studentDashboard.helpers({
         return (a.unixtime > b.unixtime);
     }
       else if (a.isOver && !b.isOver){
-        return -1;
+        return 1;
       }
       else if (!a.isOver && !b.isOver){
-        return 1;
+        return -1;
       }
     else{
       return (a.unixtime > b.unixtime);
