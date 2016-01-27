@@ -598,7 +598,7 @@ var UpdateClassOnEnd = function(classid) {
   for (var i=0; i<studentList.length; i++){
     Meteor.call('addCash', studentList[i], savings);
     //TODO: replace static strings with objects so that relative date formatting isn't just relative to the time it was created at
-    var string = "Received $"+savings+" for group savings from "+classnew.title+" on time: "+moment().calendar();
+    var string = "Received $"+savings+" for group savings from "+classnew.title;
     Meteor.call('transactionHistory', studentList[i], string);
 
     //notify user
@@ -608,7 +608,7 @@ var UpdateClassOnEnd = function(classid) {
   }
   var total = studentList.length*parseInt(classes.findOne(classid).newcost);
   Meteor.call('addCash', classnew.teacherId, total);
-  var string = "Received $"+total+" for teaching "+classnew.title+" on time: "+moment().calendar();
+  var string = "Received $"+total+" for teaching "+classnew.title;
   Meteor.call('transactionHistory', classnew.teacherId, string);
 
   //notify teacher

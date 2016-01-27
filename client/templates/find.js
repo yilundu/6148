@@ -28,14 +28,14 @@ Template.find.helpers({
 	var parts = search.trim().split(/[ \-\:]+/);
     var searchregex = new RegExp("(" + parts.join('|') + ")", "ig");
     $("#title1").val(search);
-	return classes.find({$and: [{$or: [{title: searchregex}, {description: searchregex}, {subject: searchregex}]}, {isOver:{$ne:true}}]}, {limit: 10, sort: {studentNumber: -1}}).fetch();
+	return classes.find({$and: [{$or: [{title: searchregex}, {description: searchregex}, {subject: searchregex}]}, {isOver:{$ne:true}}]}, {limit: 10, sort: {studentNumber: -1, unixtime: 1}}).fetch();
 	}
 	else{
 	//var search1 = new RegExp($("#title1").val(),'i');
 	//return {posts: classes.find({subject: search1, description: search2})};
 
 
-	return classes.find({isOver: {$ne:true}}, {limit: 10, sort: {studentNumber: -1}}).fetch();
+	return classes.find({isOver: {$ne:true}}, {limit: 10, sort: {studentNumber: -1, unixtime: 1}}).fetch();
 //	return classes.find({subject: {regex: "/"+$(".subject").val()+"/i"}, description: {regex: "/"+$(".description").val()+"/i"}});
 	}
 	},
@@ -71,7 +71,7 @@ Template.find.events({
     		$("#check").prop('checked', false);
     }
     else{
-	var json = classes.find({$and: [{$or: [{title: searchregex}, {description: searchregex}, {subject: searchregex}]}, {isOver:{$ne:true}}]}, {sort: {studentNumber: -1}});
+	var json = classes.find({$and: [{$or: [{title: searchregex}, {description: searchregex}, {subject: searchregex}]}, {isOver:{$ne:true}}]}, {sort: {studentNumber: -1, unixtime: 1}});
 	}
 	$(".Test").html("");
 	classes.find({}).forEach(
@@ -128,6 +128,7 @@ Template.find.events({
      var string = "";
      var string2 = "";
      var time = new Date();
+     var actualclass = classes.findOne(classid);
 
 		// console.log(classid);
 	 if (!user.findOne({meteor: Meteor.user()._id})){
@@ -138,7 +139,13 @@ Template.find.events({
 	 	sAlert.error('Class has already occured!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
 
 	 }
+	 
 	 else {
+	 	if (Meteor.user()._id === actualclass.teacherId) {
+	 		sAlert.error('You can not enroll in your own class!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
+
+	 	}
+	 else{
 
 	 	console.log(classes.findOne(classid).unixtime);
 	 if (classes.findOne(classid).newcost < Meteor.user().profile.balance){
@@ -169,6 +176,7 @@ Template.find.events({
  		sAlert.error('You do not have enough credit! Please authenticate venmo to add credit.',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
 
  	}
+ }
  	}}
  	else {
  		event.preventDefault();

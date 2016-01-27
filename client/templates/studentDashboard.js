@@ -30,7 +30,7 @@ Template.studentDashboard.helpers({
       else if (a.isOver && !b.isOver){
         return 1;
       }
-      else if (!a.isOver && !b.isOver){
+      else if (!a.isOver && b.isOver){
         return -1;
       }
     else{
