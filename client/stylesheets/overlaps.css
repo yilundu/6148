@@ -11,6 +11,9 @@
 	width: 50%;
 	display:inline-block;
 }
+#oneline{
+	display:inline-block;
+}
 @media screen and (min-width: 1000px){
 	#guidebut{
     font-size: .4em;
@@ -22,6 +25,13 @@
 	}
 }.dropdown-menu{
 	max-width: 300px;
+}
+#notifier{
+	    padding-right: 6px;
+    margin-top: 10px;
+    padding-left: 6px;
+    padding-top: 3px;
+    padding-bottom: 3px;
 }
 #guidebut{
 	    font-weight: 700;
