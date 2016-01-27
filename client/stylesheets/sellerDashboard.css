@@ -15,6 +15,9 @@
   max-height: 150px;
   overflow-y: scroll;
 }
+#create-class-btn{
+  text-align: left;
+}
 #transscroll2{
   height: 100px;
   overflow-y: scroll;

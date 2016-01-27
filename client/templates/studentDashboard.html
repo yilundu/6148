@@ -11,90 +11,62 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-6  sidebar-offcanvas" id="sidebar1">
-      <div class ="panel panel-default">
 
-
-        <div class = "panel-heading">
-          <img class = "clipboardclass" src = "flatclipboard.png"> &nbsp; &nbsp;  Class Management
-        </div>
-        <div class="panel-body">
-          <div class="row">
-            <div class="classes-overview col-xs-12">
-              <!--TODO: Implement! Number of classes: {{numClasses}}<br/>-->
-            </div>
-
-            <div class="btn-group col-xs-12">
-
-              <!--TODO: Implement filtering-->
-            <!--  <button type="button" class="btn btn-primary dropdown-toggle disabled" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Filter by: <span class="caret"></span>
-              </button> -->
-
-              <ul class="dropdown-menu">
-                <li><a href="#">Price</a></li>
-                <li><a href="#">Time</a></li>
-              </ul>
-            </div>
-            <div id = "signupdiv">
-              <a class="btn btn-primary col-xs-12" id="join-class-btn" href="/search">Sign up for a new class</a>
-            </div>
-
-          </div>
-        </div>
-
-
-
-
-
-      </div>
-      <div class ="panel panel-default" id = "thhistory">
-        <div class ="panel-heading" id = "panelheadpink">
-          <img class = "walletclass" src = "flatwallet.png"> &nbsp; &nbsp;  Transaction History
-        </div>
-
-          <ul class= "transaction_history">
-            {{#each transactionHistory}}
-            <li class = "jumbotron translist" id = "jumbotrans">{{this}}</li>
-            {{/each}}
-
-          </ul>
-        <div class="panel-body">
-        </div>
-
-        </div>
-        <div class ="panel panel-default" id = "notifbodyid">
-          <div class = "panel-heading">
-            Notifications
-
-          </div>
-            <div class="panel-body notification-body">
-
-
-              {{#each notifications}}
-
-                  {{> notificationsTemplate}}
-
-              {{/each}}
-
-
-            </div>
+      <div>
+      <a class="btn btn-primary col-xs-12" id="join-class-btn" href="/search"><img class = "walletclass" src = "flatclipboard.png"> &nbsp; &nbsp;  Sign up for a new class</a>
       </div>
 
 
+  
+
+    <div class ="panel panel-default" id = "thhistory">
+      <div class ="panel-heading" id = "panelheadpink">
+        <img class = "walletclass" src = "flatwallet.png"> &nbsp; &nbsp;  Transaction History
+      </div>
+
+      <ul class= "transaction_history">
+        {{#each transactionHistory}}
+        <li class = "jumbotron translist" id = "jumbotrans">{{this}}</li>
+        {{/each}}
+
+      </ul>
+      <div class="panel-body">
+      </div>
 
     </div>
-          <div class = "main-section col-xs-12 col-sm-6 ">
-
-        {{#if numClasses}}
-        {{#each classes}}
-        {{> studentDashboardElement}}
-        {{/each}}
-        {{else}}
-        {{ > studentDashboardElementEmpty}}
-        {{/if}}
+    <div class ="panel panel-default" id = "notifbodyid">
+      <div class = "panel-heading">
+        <img class = "walletclass" src = "flatbell.png"> &nbsp; &nbsp;  Notifications
 
       </div>
+      <div class="panel-body notification-body">
+
+
+        {{#each notifications}}
+
+        {{> notificationsTemplate}}
+
+        {{/each}}
+
+
+      </div>
+    </div>
+
+
+
   </div>
+  <div class = "main-section col-xs-12 col-sm-6 ">
+
+    {{#if numClasses}}
+    {{#each classes}}
+    {{> studentDashboardElement}}
+    {{/each}}
+    {{else}}
+    {{ > studentDashboardElementEmpty}}
+    {{/if}}
+
+  </div>
+</div>
 
 
 </template>
