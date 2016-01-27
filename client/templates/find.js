@@ -18,6 +18,7 @@ Template.find.helpers({
 			var newcost =(1*elem.cost*(elem.studentNumber/3+2)/(elem.studentNumber/3+1)/2).toFixed(2);	
 			Meteor.call('setnewCash',elem._id, newcost);
 
+
 		}
 
 
@@ -27,14 +28,14 @@ Template.find.helpers({
 	var parts = search.trim().split(/[ \-\:]+/);
     var searchregex = new RegExp("(" + parts.join('|') + ")", "ig");
     $("#title1").val(search);
-	return classes.find({$or: [{title: searchregex}, {description: searchregex}, {subject: searchregex}]}, {limit: 10, sort: {studentNumber: -1}}).fetch();
+	return classes.find({$and: [{$or: [{title: searchregex}, {description: searchregex}, {subject: searchregex}]}, {isOver:{$ne:true}}]}, {limit: 10, sort: {studentNumber: -1}}).fetch();
 	}
 	else{
 	//var search1 = new RegExp($("#title1").val(),'i');
 	//return {posts: classes.find({subject: search1, description: search2})};
 
 
-	return classes.find({triggered: false}, {limit: 10, sort: {studentNumber: -1}}).fetch();
+	return classes.find({isOver: {$ne:true}}, {limit: 10, sort: {studentNumber: -1}}).fetch();
 //	return classes.find({subject: {regex: "/"+$(".subject").val()+"/i"}, description: {regex: "/"+$(".description").val()+"/i"}});
 	}
 	},
@@ -64,7 +65,7 @@ Template.find.events({
 	var search = $("#title1").val();
 	var parts = search.trim().split(/[ \-\:]+/);
     var searchregex = new RegExp("(" + parts.join('|') + ")", "ig");
-	var json = classes.find({$or: [{title: searchregex}, {description: searchregex}, {subject: searchregex}]}, {sort: {studentNumber: -1}});
+	var json = classes.find({$and: [{$or: [{title: searchregex}, {description: searchregex}, {subject: searchregex}]}, {isOver:{$ne:true}}]}, {sort: {studentNumber: -1}});
 
 	$(".Test").html("");
 	classes.find({}).forEach(
@@ -83,13 +84,14 @@ Template.find.events({
 			"<div class='results' id='" + item._id+"''>"
 			+"<ul class = 'jumbotron "+item.isOver+ " insidesearch'>"
 			+"<li class = 'hidethis'>"+item._id+"</li>"
-			+"<li class= 'classliid' <span class = 'boldspan'>"+item.title+"</span></li>"
-			+"<li> Description: "+item.description+"</li>"
-			+"<li> Subject: "+item.subject+"</li>"
-			+"<li> Teacher: <a href='/profile?id="+item.teacherId+"'>"+ item.teacher+ "</a></li><li> Time: "+ item.createdAt+ "</li>"
-			+"<li> Students Enrolled: "+item.studentNumber+"</li>"
-			+"<li> Address: "+ item.address +"</li>"
-			+"<li> Cost: <span class='strikethrough'>$"+ item.cost +"</span>  $"+ item.newcost +"</li>"
+			+"<li class= 'classliid'> <span class = 'boldspan'>"+item.title+"</span></li>"
+			+"<li> <span class = 'boldspan'>Description: </span> "+item.description+"</li>"
+			+"<li> <span class = 'boldspan'>Subject: </span> "+item.subject+"</li>"
+			+"<li> <span class = 'boldspan'>Teacher: <a href='/profile?id="+item.teacherId+"'> </span>"+ item.teacher+ "</a></li>"
+			+"<li> <span class = 'boldspan'>Student Number: </span>"+item.studentNumber+"</li>"
+			+"<li> <span class = 'boldspan'>Time: </span>"+ item.createdAt+ " </li>"
+			+"<li> <span class = 'boldspan'>Address: </span>"+ item.address +"</li>"
+			+"<li> <span class = 'boldspan'>Base Cost: </span> <span class='strikethrough'>$"+ item.cost +"</span> <span class = 'boldspan'> &nbsp;&nbsp;&nbsp;   Current Cost: </span> $"+ item.newcost +"</li>"
 			+"<li><button class='submit'>Enroll!</button></li>"
 			+"</ul></div>");
 		/*GoogleMaps.create({
@@ -131,10 +133,11 @@ Template.find.events({
 
 	 }
 	 else {
+
 	 	console.log(classes.findOne(classid).unixtime);
 	 if (classes.findOne(classid).newcost < Meteor.user().profile.balance){
-	 	
-     if ((user.find({meteor: Meteor.user()._id, classes: classid}).count())===0){
+	 	Session.set(classid, true);
+     if ((user.find({meteor: Meteor.user()._id, classes: classid}).count())===0 && Session.get(classid)){
      	var cost = classes.findOne(classid).cost;
 	 	var negativecost = -1*cost;
 	 	Meteor.call('addCash', Meteor.user()._id, negativecost);
