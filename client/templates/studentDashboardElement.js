@@ -98,7 +98,7 @@ Template.studentDashboardElement.events({
 
 Template.studentDashboardElement.helpers({
   dateText: function(){
-    //var momentObject = moment(this.unixtime*1000);//unix time is in seconds, exepcted in milliseconds
+    var momentObject = moment(this.unixtime*1000);//unix time is in seconds, exepcted in milliseconds
     //console.log(this.unixtime);
     //console.log(momentObject);
     if (this.unixtime < moment().unix()){
