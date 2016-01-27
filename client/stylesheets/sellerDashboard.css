@@ -7,7 +7,6 @@
 
 }
 
-
 ._seller-dashboard .notification-body  #transscroll {
     padding: 15px;
 }
@@ -92,8 +91,6 @@
   font-weight: 300;
 }
 ._seller-dashboard #create-class-btn {
-  border-top-right-radius: 0px;
-  border-top-left-radius: 0px;
   font-family: "Nunito";
   font-weight: 300;
 }
