@@ -2,7 +2,18 @@ Template.sellerDashboard.helpers({
   classes: function(){
     //return classes taught by the current user
     return classes.find({teacherId: Meteor.userId()}).fetch().sort(function (a,b) {
+      if (a.isOver && b.isOver){
+        return (a.unixtime > b.unixtime);
+    }
+      else if (a.isOver && !b.isOver){
+        return -1;
+      }
+      else if (!a.isOver && !b.isOver){
+        return 1;
+      }
+    else{
       return (a.unixtime > b.unixtime);
+    }
     });
   },
 
