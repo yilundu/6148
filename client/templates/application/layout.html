@@ -38,16 +38,19 @@
       </div>
 
       <ul class = "nav navbar-right navbar-nav">
+      {{#if currentUser}}
         <li id = "spacjh"><span id = "moneylink" class = "money hidden-xs hidden-sm">${{money}}</span></li>
         <li> <div class = "profpic hidden-xs hidden-sm">  <img class= "logoimage" src = "{{photoprof}}"> </div></li>
+        {{/if}}
         <li> {{>loginButtons}}</li>
 
 
 
 
 
-
+        {{#if currentUser}}
         <div class="dropdown" id = "oneline">
+
           <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
           {{notificationsnum}}
             <span class="caret"></span>
@@ -62,6 +65,7 @@
             {{/each}}
           </ul>
         </div>
+        {{/if}}
       </ul>
 
     </div>
