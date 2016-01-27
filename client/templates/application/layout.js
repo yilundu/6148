@@ -200,7 +200,7 @@ notifications: function(){
 		{
 			var studentNotifs = [];
 			console.log("notifications entered");
-			return Meteor.user().profile.notifs;
+			return Meteor.user().profile.notifs.reverse();
 		}
 	}
 },
