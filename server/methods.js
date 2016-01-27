@@ -554,7 +554,7 @@ Meteor.methods({
         type: type,
         options: options,
         seen: false,
-        time: moment().unix();
+        time: moment().unix()
       }
     }});
 

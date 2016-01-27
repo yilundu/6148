@@ -67,6 +67,7 @@
 },
 
   "click .btn-primary": function(){
+    var thisContext = this;
     if (thisContext.unixtime < moment().unix()){
       //class has already occured
       sAlert.error('Class has already occured!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});

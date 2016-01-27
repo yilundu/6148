@@ -3,8 +3,8 @@
   -thanks slava - https://github.com/meteor/meteor/issues/1602
 -->
 <template name = "classDashboardElement">
-
-  <div class="bs-callout bs-callout-info">
+<div class="_classDashboardElement">
+  <div class="bs-callout bs-callout-info {{isOver}} ">
     <h1>Title: {{title}}</h1>
     <p>Subject: {{subject}}</p>
     <p>Cost: $<span class="strikethrough">{{cost}}</span> ${{newcost}}</p>
@@ -19,5 +19,5 @@
     <button class="btn btn-warning">Cancel Class</button>
 
   </div>
-
+</div>
 </template>
