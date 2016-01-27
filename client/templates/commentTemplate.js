@@ -69,7 +69,7 @@ Template.commentTemplate.helpers({
         return false;
       }
     },
-
+    
     'isOwnComment' : function(){
       if(Meteor.userId())
       {
