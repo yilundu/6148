@@ -14,6 +14,13 @@
 #oneline{
 	display:inline-block;
 }
+#dropdownMenu1{
+	    margin-top: 10px;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
 @media screen and (min-width: 1000px){
 	#guidebut{
     font-size: .4em;
