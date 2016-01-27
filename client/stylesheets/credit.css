@@ -13,13 +13,15 @@ width: 30%;
 	        margin-right: auto;
     margin-left: auto;
         background-color: #dff0d8;
+        border-radius: 15px;
 
 }
 ._credit{
 	font-family: "Nunito";
 }
 ._credit .page-header{
-	margin-top: 20px;
+	margin-top: 0px;
+	padding-top: 20px;
 }
 .containercred{
 	/*<a href='http://www.freepik.com/free-vector/piggybank-with-money_789915.htm'>Designed by Freepik</a>
