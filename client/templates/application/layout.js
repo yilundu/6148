@@ -206,7 +206,6 @@ toptabid33:function(){
           }
         });
       }
-      return studentNotifs;
     }
   },
   notificationsnum: function(){
