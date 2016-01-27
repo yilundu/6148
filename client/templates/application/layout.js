@@ -4,33 +4,33 @@ Template.layout.helpers({
 		//check if user is loaded or logged in - avoids exceptions
 		if(Meteor.user()){
 			if (Meteor.user().profile.binary){
-			return Meteor.user().profile.binary;}
+				return Meteor.user().profile.binary;}
+				else{
+					return '/default.jpg';
+				}
+
+			}
 			else{
-				return '/default.jpg';
+				return "";
 			}
-
-		}
-		else{
-			return "";
-		}
-	},
-	money: function(){
-		if(Meteor.user())
-		{
-			if(!Meteor.user().profile.balance)
+		},
+		money: function(){
+			if(Meteor.user())
 			{
-				Meteor.call('setCash', Meteor.user()._id);
-				return 0.00;
-			}
-			else
-			{
-				return Math.round(Meteor.user().profile.balance*100)/100;
-			}
+				if(!Meteor.user().profile.balance)
+				{
+					Meteor.call('setCash', Meteor.user()._id);
+					return 0.00;
+				}
+				else
+				{
+					return Math.round(Meteor.user().profile.balance*100)/100;
+				}
 
+			}
 		}
-	}
 
-});
+	});
 
 Template.layout.events({
 	"click #editprofile": function(){
@@ -38,7 +38,7 @@ Template.layout.events({
 	},
 	"click #navhomeid": function(){
 		if (Router.current().route.path() === "/"){
-			 document.location.reload(true);
+			document.location.reload(true);
 
 		}else{
 			Router.go("/", {name: $(".form-control").val()});
@@ -48,19 +48,19 @@ Template.layout.events({
 		Router.go("/credit", {name: $(".form-control").val()});
 	},
 
-  "click #studentprofile": function(){
-    Router.go("/studentDashboard", {name: $(".form-control").val()});
-  },
-  "click #teacherprofile": function(){
-    Router.go("/sellerDashboard", {name: $(".form-control").val()});
-  },
-  "click #authorizevenmo": function(){
-  	var string = "https://api.venmo.com/v1/oauth/authorize?client_id=3446&scope=make_payments&response_type=code&state="+Meteor.userId();
-    window.location.replace(string);
-  },
-  "click #moneymanage": function(){
-  	Router.go("/credit", {name: $(".form-control").val()});
-  },
+	"click #studentprofile": function(){
+		Router.go("/studentDashboard", {name: $(".form-control").val()});
+	},
+	"click #teacherprofile": function(){
+		Router.go("/sellerDashboard", {name: $(".form-control").val()});
+	},
+	"click #authorizevenmo": function(){
+		var string = "https://api.venmo.com/v1/oauth/authorize?client_id=3446&scope=make_payments&response_type=code&state="+Meteor.userId();
+		window.location.replace(string);
+	},
+	"click #moneymanage": function(){
+		Router.go("/credit", {name: $(".form-control").val()});
+	},
 
 	"click .aboutlink": function(e, template){
 		console.log("clickabout");
@@ -103,8 +103,8 @@ Template.layout.events({
 		}
 	},
 	"click #search": function(e,template){
-			e.preventDefault();
-			Router.go('/search');
+		e.preventDefault();
+		Router.go('/search');
 	},
 	"click #login-buttons-logout": function(){
 		$("#login-dropdown-list .dropdown-menu").append("<i class='icon-spinner icon-spin icon-large'></i> ");
@@ -117,17 +117,19 @@ Template.layout.events({
 });
 
 Template._loginButtonsLoggedInDropdown.onRendered(function () {
-	 $("#login-dropdown-list .dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='moneymanage'> Finances </button>");
+	$("#login-dropdown-list .dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='moneymanage'> Finances </button>");
 	$("#login-dropdown-list .dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='editprofile'>  Edit Profile </button>");
-  $("#login-dropdown-list .dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='studentprofile'> Student Dashboard </button>");
-  $("#login-dropdown-list .dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='teacherprofile'> Teacher Dashboard </button>");
 
-  if (Meteor.user().profile.authenticated === true){
-  	$("#login-dropdown-list .dropdown-menu").prepend("<button class= 'btn btn-default btn-block btn-success' id='authorizevenmo'> Venmo Authenticated </button>");
-  }
-  else {
-  	$("#login-dropdown-list .dropdown-menu").prepend("<button class= 'btn btn-default btn-block btn-danger' id='authorizevenmo'> Authorize Venmo </button>");
-  }
+	$("#login-dropdown-list .dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='studentprofile'> Student Dashboard </button>");
+	$("#login-dropdown-list .dropdown-menu").prepend("<button class= 'btn btn-default btn-block' id='teacherprofile'> Teacher Dashboard </button>");
+
+	if (Meteor.user().profile.authenticated === true){
+		$("#login-dropdown-list .dropdown-menu").prepend("<button class= 'btn btn-default btn-block btn-success' id='authorizevenmo'> Venmo Authenticated </button>");
+	}
+	else {
+		$("#login-dropdown-list .dropdown-menu").prepend("<button class= 'btn btn-default btn-block btn-danger' id='authorizevenmo'> Authorize Venmo </button>");
+	}
+
 
 
 });
@@ -193,32 +195,29 @@ toptabid33:function(){
 ,
 
 
-  notifications: function(){
-    if(Meteor.user() && Meteor.user().profile)
-    {
-      if(Meteor.user().profile.notifs)
-      {
-        var studentNotifs = [];
-        console.log("notifications entered");
-        Meteor.user().profile.notifs.forEach(function(entry){
-          if(entry.type == "teacher"){
-            studentNotifs.push(entry);
-          }
-        });
-      }
-      return studentNotifs;
-    }
-  },
+notifications: function(){
+	if(Meteor.user() && Meteor.user().profile)
+	{
+		if(Meteor.user().profile.notifs)
+		{
+			var studentNotifs = [];
+			console.log("notifications entered");
+			return Meteor.user().profile.notifs.reverse();
+		}
+	}
+},
+
   notificationsnum: function(){
     if(Meteor.user() && Meteor.user().profile)
     {
       if(Meteor.user().profile.notifs)
       {
-	      return studentNotifs.length;
+	      return Meteor.user().profile.notifs.length;
       }
 			else {
 				return 0;
 			}
     }
   }
+
 });
