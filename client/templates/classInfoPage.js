@@ -34,6 +34,10 @@ var getUserReview = function(classId){
 
 
 Template.classInfoPage.events({
+  'click #example1' :function(){
+    $("#buyers").toggle("medium");
+  },
+  
   'click #teacherPostBtn' : function(){
     console.log(this);
     var postText = $('#teacherPostField').val();
@@ -212,6 +216,11 @@ Template.classInfoPage.helpers({
   },
   allClassReviews: function(){
     return this.studentReviews;
+  },
+  datahelper:function(){
+    var classcost = this.cost;
+    var a = [.5*classcost*((1./3 +2)/(1./3 +1)),.5*classcost*((2./3 +2)/(2./3 +1)),.5*classcost*((3./3 +2)/(3./3 +1)),.5*classcost*((4./3 +2)/(4./3 +1)),.5*classcost*((5./3 +2)/(5./3 +1)),.5*classcost*((6./3 +2)/(6./3 +1)), .5*classcost*((7./3 +2)/(7./3 +1)),.5*classcost*((8./3 +2)/(8./3 +1)),.5*classcost*((9./3 +2)/(9./3 +1)),.5*classcost*((10./3 +2)/(10./3 +1)),.5*classcost*((11./3 +2)/(11./3 +1)),.5*classcost*((12./3 +2)/(12./3 +1)),.5*classcost*((13./3 +2)/(13./3 +1)), .5*classcost*((14./3 +2)/(14./3 +1)), .5*classcost*((15./3 +2)/(15./3 +1))];
+    return ("[" + a.toString() +"]")
   }
 
 });

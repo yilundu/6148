@@ -1,131 +1,161 @@
 <template name = "classInfoPage">
+ <head>
+  <meta charset="utf-8" />
+  <title>Chart.js demo</title>
+  <script src='Chart.min.js'></script>
+</head>
+<div class ="_classInfoPage container-fluid">
 
-  <div class ="_classInfoPage container-fluid">
+  <!-- Top Level Class Info -->
+  <div class = "jumbotron" id = "topjumbo">
+    <h2 id = "hurdurtitle"><hr>{{title}}<hr></h2>
+    <div class = "row">
+      <!-- TODO: Animate numbers flick up, model accelereation and decelleration -->
 
-    <!-- Top Level Class Info -->
-    <div class = "jumbotron" id = "topjumbo">
-      <h2 id = "hurdurtitle"><hr>{{title}}<hr></h2>
-      <div class = "row">
-        <!-- TODO: Animate numbers flick up, model accelereation and decelleration -->
+      <span class="col-sm-4 col-xs-4"> {{studentNumber}}<small> students</small></span>
+      <span class="col-sm-4 col-xs-4"> ${{newcost}} <small>per hr</small>
 
-        <span class="col-sm-4 col-xs-4"> {{studentNumber}}<small> students</small></span>
-        <span class="col-sm-4 col-xs-4"> ${{newcost}} <small>per hr</small></span>
-        <span class="col-sm-4 col-xs-4">{{review}} <small>stars</small></span>
-      </div>
-      <div class = "row">
-        <div id = "centeringid">
-          <!-- TODO: Animate numbers flick up, model accelereation and decelleration -->
-          <span class="col-sm-6" id = "teachid34">Teacher: {{teacher}}</span>
-        </div>
-        <!--  <span class="col-sm-6">7th<small> week</small></span> -->
 
-      </div>
+        <div><a href="#" id="example1" rel="popover" data-original-title="A Title 1"> Pricing Model</a></div>
+
+
+      </span>
+      <span class="col-sm-4 col-xs-4">{{review}} <small>stars</small></span>
     </div>
+    <div class = "row">
+      <div id = "centeringid">
+        <!-- TODO: Animate numbers flick up, model accelereation and decelleration -->
+        <span class="col-sm-6" id = "teachid34">Teacher: {{teacher}}</span>
+      </div>
+      <!--  <span class="col-sm-6">7th<small> week</small></span> -->
+
+    </div>
+  </div>
+
+<canvas type = "hidden" id='buyers' width='600' height='300'></canvas>
 
 
-    <!--    <button class="btn btn-primary">Enroll me!</button> -->
+  <!--    <button class="btn btn-primary">Enroll me!</button> -->
 
 
-    <!-- Main Class Content -->
-    <div class="main-body row" id = "mbbody">
+  <!-- Main Class Content -->
+  <div class="main-body row" id = "mbbody">
 
 
     <div class ="page-header">
-        {{#unless isTeacher}}
-              <div class = "jumbotron" id = "urreview">
-                <h2>Your review</h2>
+      {{#unless isTeacher}}
+      <div class = "jumbotron" id = "urreview">
+        <h2>Your review</h2>
 
-                {{#if userHasReviewed}}
-                {{> classReview review = userReview}}
-                {{/if}}
-              </div>
-
-
-          <div class="user-review" id = "divuser">
-           {{> starsRating id='rating' mutable=true}}
-           <!-- Star rating widget - source: http://codepen.io/jamesbarnett/pen/vlpkh-->
-           <div class="rating-stars">
-
-           </div>
-           Review Text:
-         <input class="form-control" id="reviewField" value={{userReviewText}}>
+        {{#if userHasReviewed}}
+        {{> classReview review = userReview}}
+        {{/if}}
+      </div>
 
 
-         {{#if currentUser}}
+      <div class="user-review" id = "divuser">
+       {{> starsRating id='rating' mutable=true}}
+       <!-- Star rating widget - source: http://codepen.io/jamesbarnett/pen/vlpkh-->
+       <div class="rating-stars">
 
-           {{#if userHasReviewed}}
-             <button class="btn btn-primary" id="editReviewBtn">Edit</button>
-             <button class="btn btn-warning" id="deleteReviewBtn">Delete</button>
-             {{else}}
-             <button class="btn btn-primary" id="saveReviewBtn">Save</button>
-           {{/if}}
-         {{/if}}
-         </div>
-         {{/unless}}
+       </div>
+       Review Text:
+       <input class="form-control" id="reviewField" value={{userReviewText}}>
+
+
+       {{#if currentUser}}
+
+       {{#if userHasReviewed}}
+       <button class="btn btn-primary" id="editReviewBtn">Edit</button>
+       <button class="btn btn-warning" id="deleteReviewBtn">Delete</button>
+       {{else}}
+       <button class="btn btn-primary" id="saveReviewBtn">Save</button>
+       {{/if}}
+       {{/if}}
      </div>
+     {{/unless}}
+   </div>
 
 
 
 
-     <div class = "col-xs-6 scrolldiss">
+   <div class = "col-xs-6 scrolldiss">
      <div class="page-header">
       <h1>Class Announcements</h1>
 
 
 
-    <div class="teacher-announcements">
+      <div class="teacher-announcements">
 
 
-      {{#if currentUser}}
-      {{#if isTeacher}}
-      <button class="btn btn-primary" id="teacherPostBtn" visible="{{isTeacher}}">Post:</button>
-      <input type="text" class="form-control" width = "90%" id="teacherPostField" visible="{{isTeacher}}">
-      {{/if}}
-      {{#each classAnnouncements}}
-      {{> announcementTemplate}}
-      {{/each}}
-      {{/if}}
+        {{#if currentUser}}
+        {{#if isTeacher}}
+        <button class="btn btn-primary" id="teacherPostBtn" visible="{{isTeacher}}">Post:</button>
+        <input type="text" class="form-control" width = "90%" id="teacherPostField" visible="{{isTeacher}}">
+        {{/if}}
+        {{#each classAnnouncements}}
+        {{> announcementTemplate}}
+        {{/each}}
+        {{/if}}
       </div>
     </div>
 
-    </div>
+  </div>
 
-    <div class = "col-xs-6 scroldiss">
+  <div class = "col-xs-6 scroldiss">
     <div class="page-header">
       <h1>Student Comments</h1>
 
 
-    <div class="student-comments" id = "studposterer">
-      {{#if currentUser}}
-      <div id = "studposter">
-      <button class="btn btn-primary" id="studentPostBtn">Post</button>
-      <input type="text" class="form-control" width = "90%" id="studentPostField">
+      <div class="student-comments" id = "studposterer">
+        {{#if currentUser}}
+        <div id = "studposter">
+          <button class="btn btn-primary" id="studentPostBtn">Post</button>
+          <input type="text" class="form-control" width = "90%" id="studentPostField">
+        </div>
+        {{#each studentComments}}
+        {{> commentTemplate}}
+        {{/each}}
+        {{/if}}
       </div>
-      {{#each studentComments}}
-      {{> commentTemplate}}
-      {{/each}}
-      {{/if}}
-    </div>
-</div>
-</div>
-  </div>
-
-  <div class = "jumbotron" id = "bottomjum">
-    <div class ="student-list col-md-6 col-xs-6 scrolldis">
-      Students Enrolled:
-      {{#each studentList}}
-      {{> studentBanner}}
-      {{/each}}
-    </div>
-
-    <div class ="review-list col-md-6 col-xs-6 scrolldis">
-      All Reviews:
-      {{#each studentReviews}}
-
-      {{> classReview review = this}}
-
-      {{/each}}
     </div>
   </div>
 </div>
+
+<div class = "jumbotron" id = "bottomjum">
+  <div class ="student-list col-md-6 col-xs-6 scrolldis">
+    Students Enrolled:
+    {{#each studentList}}
+    {{> studentBanner}}
+    {{/each}}
+  </div>
+
+  <div class ="review-list col-md-6 col-xs-6 scrolldis">
+    All Reviews:
+    {{#each studentReviews}}
+
+    {{> classReview review = this}}
+
+    {{/each}}
+  </div>
+</div>
+</div>
+<script>
+  var buyerData = {
+    labels : ["1","2","3","4","5","6","7","8","9","10","11","12","13,","14","15"],
+    datasets : [
+    {
+      fillColor : "rgba(172,194,132,0.4)",
+      strokeColor : "#ACC26D",
+      pointColor : "#fff",
+      pointStrokeColor : "#9DB86D",
+      data : {{datahelper}}
+    }
+    ]
+  }
+  var buyers = document.getElementById('buyers').getContext('2d');
+  new Chart(buyers).Line(buyerData, {
+    scaleBeginAtZero: true
+  });
+</script>
 </template>
