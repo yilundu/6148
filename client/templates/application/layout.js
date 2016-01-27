@@ -208,5 +208,21 @@ toptabid33:function(){
       }
       return studentNotifs;
     }
+  },
+  notificationsnum: function(){
+    if(Meteor.user() && Meteor.user().profile)
+    {
+      if(Meteor.user().profile.notifs)
+      {
+        var studentNotifs = [];
+        console.log("notifications entered");
+        Meteor.user().profile.notifs.forEach(function(entry){
+          if(entry.type == "teacher"){
+            studentNotifs.push(entry);
+          }
+        });
+      }
+      return studentNotifs.length;
+    }
   }
 });
