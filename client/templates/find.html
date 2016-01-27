@@ -1,7 +1,7 @@
 <template name = "find">
-<head>
-<link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
-</head>
+  <head>
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+  </head>
   <div class="__find">
     <title>Browse Sellers</title>
     <div class = "page-section" id = "searchidsection">
@@ -16,47 +16,52 @@
         
         <li>
          <button class="submit" type="submit">Search</button>
-       </li>
-     </ul>
-   </form>
-   </div>
-   <div>
-     <header>
-      <h2> Search Results </h2>
-    </header>
-    <!--{{>searchResult}} Not working right now-->
 
-    <div class="container jumbotron outsidesearch" id = "fourpushdown">
-     <p class="Test">
-       {{#if results}}
-       {{#each results}} 
-       <div class= 'results'>
-         <ul class = "{{isOver}} jumbotron insidesearch">
-           <li class = "hidethis">{{_id}}</li>
-            <li class = 'classliid'><span class = "boldspan" > {{title}}</span></li>
-            <li><span class = "boldspan" >Description:</span> {{description}}</li>
-           <li><span class = "boldspan" >Subject:</span> {{subject}}</li>
-           <li><span class = "boldspan" >Teacher:</span> <a href="/profile?id={{teacherId}}">{{teacher}}</a></li>
-           <li><span class = "boldspan" >Student Number:</span> {{studentNumber}}</li>
-           <li><span class = "boldspan" >Time:</span> {{createdAt}}</li>
-           <li><span class = "boldspan" > Address:</span> {{address}}</li>
+          <label>
+            <input type="checkbox"> Check me out
+          </label>
+
+      </li>
+    </ul>
+  </form>
+</div>
+<div>
+ <header>
+  <h2> Search Results </h2>
+</header>
+<!--{{>searchResult}} Not working right now-->
+
+<div class="container jumbotron outsidesearch" id = "fourpushdown">
+ <p class="Test">
+   {{#if results}}
+   {{#each results}} 
+   <div class= 'results'>
+     <ul class = "{{isOver}} jumbotron insidesearch">
+       <li class = "hidethis">{{_id}}</li>
+       <li class = 'classliid'><span class = "boldspan" > {{title}}</span></li>
+       <li><span class = "boldspan" >Description:</span> {{description}}</li>
+       <li><span class = "boldspan" >Subject:</span> {{subject}}</li>
+       <li><span class = "boldspan" >Teacher:</span> <a href="/profile?id={{teacherId}}">{{teacher}}</a></li>
+       <li><span class = "boldspan" >Student Number:</span> {{studentNumber}}</li>
+       <li><span class = "boldspan" >Time:</span> {{createdAt}}</li>
+       <li><span class = "boldspan" > Address:</span> {{address}}</li>
        <!--    <li>Map: {{>googleMap name="Map" options=exampleMapOptions }}</li> -->
-           <li><span class = "boldspan" > Base Cost: </span> <span class='strikethrough'> ${{cost}}</span>  &nbsp;&nbsp;&nbsp;&nbsp;<span class = "boldspan" >Current Cost:</span> ${{newcost}}</li>
-     <!--     <li>Map: {{>googleMap name="Map" options= "{center: new google.maps.LatLng({{latitude}}, {{longitude}})}" }}</li>  -->
-           
-           <li><button class="submit">Enroll!</button></li>
+       <li><span class = "boldspan" > Base Cost: </span> <span class='strikethrough'> ${{cost}}</span>  &nbsp;&nbsp;&nbsp;&nbsp;<span class = "boldspan" >Current Cost:</span> ${{newcost}}</li>
+       <!--     <li>Map: {{>googleMap name="Map" options= "{center: new google.maps.LatLng({{latitude}}, {{longitude}})}" }}</li>  -->
 
-         </ul>
+       <li><button class="submit">Enroll!</button></li>
 
-       </div>
+     </ul>
 
-       {{/each}}
-       {{else}}
-       <p> Sorry, but no results were found for your query. Create this <a href="/createClass"> class </a> now!</p>
-       {{/if}}
-     </p>
    </div>
- </div>
+
+   {{/each}}
+   {{else}}
+   <p> Sorry, but no results were found for your query. Create this <a href="/createClass"> class </a> now!</p>
+   {{/if}}
+ </p>
+</div>
+</div>
 </div>
 
 </template>
