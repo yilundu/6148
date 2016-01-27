@@ -172,7 +172,9 @@
   max-height: 150px;
   overflow-y: scroll;
 }
-
+#fat{
+  width: 100%;
+}
 #studposter{
   margin-bottom: 6px;
 }
