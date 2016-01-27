@@ -88,7 +88,7 @@ var getUserDisplayName = function(id)
 }
 
 Meteor.methods({
-    'insertPlayerClass': function(id, classid){
+  'insertPlayerClass': function(id, classid){
         //add class to user's class list
         var matchClass = classes.findOne(classid);
         var classStudentList;
@@ -117,19 +117,19 @@ Meteor.methods({
         user.update({meteor: id}, {$push: {classes: classid}});
 
 
-    },
+      },
 
-    'createClass': function(address, class_date, user_title, user_cost, user_description,
-      user_subject, user_id, username, actualusername, latitude, longitude,unixtime){
-      var classid;
-      if(username){
-    	classid = classes.insert({
-        title: user_title,
-        subject: user_subject,
-        cost: user_cost,
-        teacher: username,
-        description: user_description,
-        createdAt: class_date,
+      'createClass': function(address, class_date, user_title, user_cost, user_description,
+        user_subject, user_id, username, actualusername, latitude, longitude,unixtime){
+        var classid;
+        if(username){
+         classid = classes.insert({
+          title: user_title,
+          subject: user_subject,
+          cost: user_cost,
+          teacher: username,
+          description: user_description,
+          createdAt: class_date,
         studentNumber: 0, // current time
         teacherId: user_id,
         classAnnouncements: [],//empty at creation
@@ -144,31 +144,31 @@ Meteor.methods({
         unixtime: unixtime,
         triggered: false
       });
-      }
-    	else{
-    		Meteor.users.update(user_id,{$set:{"profile.name": actualusername}});
-    		classid = classes.insert({
-	        title: user_title,
-	        subject: user_subject,
-	        cost: user_cost,
-	        teacher: actualusername,
-	        description: user_description,
-	        createdAt: class_date,
+       }
+       else{
+        Meteor.users.update(user_id,{$set:{"profile.name": actualusername}});
+        classid = classes.insert({
+         title: user_title,
+         subject: user_subject,
+         cost: user_cost,
+         teacher: actualusername,
+         description: user_description,
+         createdAt: class_date,
 	        studentNumber: 0, // current time
 	        teacherId: user_id,
 	        classAnnouncements: [],//empty at creation
 	        studentComments: [],//empty at creation
 	        studentList: [],//empty at creation
-            latitude: latitude,
-            longitude: longitude,
-            address: address,
+          latitude: latitude,
+          longitude: longitude,
+          address: address,
           studentReviews: [],
           newcost: user_cost,
           unixtime: unixtime,
           triggered: false
-	      });
+        });
 
-    	}
+      }
       //set up listener to fire when class date occurs
       scheduleClass({date: unixtime, class_id: classid, triggered: false});
 
@@ -178,7 +178,7 @@ Meteor.methods({
 
 
       if(username){
-    	classes.update(classId,{$set : {
+       classes.update(classId,{$set : {
         title: user_title,
         subject: user_subject,
         cost: user_cost,
@@ -191,54 +191,54 @@ Meteor.methods({
         address: address,
         newcost: 2*user_cost,
       }});
+     }
+     else{
+      Meteor.users.update(user_id,{$set:{"profile.name": actualusername}});
+      classes.update(classId,{$set: {
+       title: user_title,
+       subject: user_subject,
+       cost: user_cost,
+       teacher: actualusername,
+       description: user_description,
+       createdAt: class_date,
+       teacherId: user_id,
+       latitude: latitude,
+       longitude: longitude,
+       address: address,
+       newcost: 2*user_cost,
+     }
+   });
+
     }
-    	else{
-    		Meteor.users.update(user_id,{$set:{"profile.name": actualusername}});
-    		classes.update(classId,{$set: {
-	        title: user_title,
-	        subject: user_subject,
-	        cost: user_cost,
-	        teacher: actualusername,
-	        description: user_description,
-	        createdAt: class_date,
-	        teacherId: user_id,
-          latitude: latitude,
-          longitude: longitude,
-          address: address,
-          newcost: 2*user_cost,
-	      }
-        });
 
-    	}
+    var matchClass = classes.findOne(classId);
+    if(matchClass){
+      var studentList = matchClass.studentList;
+      for(var i = 0 ; studentList.length ; i++){
+        var studentId = studentList[i];
 
-      var matchClass = classes.findOne(classId);
-      if(matchClass){
-        var studentList = matchClass.studentList;
-        for(var i = 0 ; studentList.length ; i++){
-          var studentId = studentList[i];
+        var title = matchClass.title + ": Class Info Changed!";
+        var message = "Some of the class information for this class was changed.";
+        var type = "student";
+        var options = null;
+        Meteor.call('pushNotification', matchClass.teacherId, title, message, type, options);
 
-          var title = matchClass.title + ": Class Info Changed!";
-          var message = "Some of the class information for this class was changed.";
-          var type = "student";
-          var options = null;
-          Meteor.call('pushNotification', matchClass.teacherId, title, message, type, options);
-
-        }
       }
+    }
       //set up listener to fire when class date occurs
       updateScheduledClass({date: unixtime, class_id: classId, triggered: false});
 
     },
     'incrementStudentNumber': function(classid){
-        console.log(classes.findOne(classid,{studentNumber: 1, _id: 0}));
-    	classes.update({_id:classid},{$inc: {studentNumber: 1}});
-        console.log(classes.findOne(classid,{studentNumber: 1, _id: 0}));
+      console.log(classes.findOne(classid,{studentNumber: 1, _id: 0}));
+      classes.update({_id:classid},{$inc: {studentNumber: 1}});
+      console.log(classes.findOne(classid,{studentNumber: 1, _id: 0}));
     },
     'editUserInfo': function(user_id, name, age, about){
-    	 Meteor.users.update({_id: user_id}, {$set: {"profile.name": name, "profile.age": age, "profile.about": about}});
+      Meteor.users.update({_id: user_id}, {$set: {"profile.name": name, "profile.age": age, "profile.about": about}});
     },
     'editUserPhoto': function(user_id, photo){
-    	 Meteor.users.update({_id: user_id},{$set: {"profile.binary": photo}});
+      Meteor.users.update({_id: user_id},{$set: {"profile.binary": photo}});
 
     },
 
@@ -256,10 +256,10 @@ Meteor.methods({
 
     'decrementStudentNumber': function(classid){
 
-              console.log("before calling decrementStudentNumber - student number is now: "+classes.find(classid).studentNumber);
-    	classes.update({_id: classid}, {$inc: {studentNumber: -1}});
+      console.log("before calling decrementStudentNumber - student number is now: "+classes.find(classid).studentNumber);
+      classes.update({_id: classid}, {$inc: {studentNumber: -1}});
 
-        console.log("Called decrementStudentNumber - student number is now: "+classes.find(classid).studentNumber);
+      console.log("Called decrementStudentNumber - student number is now: "+classes.find(classid).studentNumber);
     },
     'updateAnnouncements': function(classid, classAnnouncements){
     	classes.update(classid, {$set : {classAnnouncements: classAnnouncements}});
@@ -320,13 +320,13 @@ Meteor.methods({
     	user.update(id, {$set : {classes: newClasses}});
     },
     'addVenmo': function(id, authentication_token){
-        Meteor.users.update(id,{$set: {"profile.venmo": authentication_token, "profile.authenticated": true}});
+      Meteor.users.update(id,{$set: {"profile.venmo": authentication_token, "profile.authenticated": true}});
     },
     'addNewUser': function(id){
-        user.insert({meteor: id});
+      user.insert({meteor: id});
     },
     'setCash': function(id){
-        Meteor.users.update(id, {$set: {"profile.balance": 0.00}});
+      Meteor.users.update(id, {$set: {"profile.balance": 0.00}});
     },
     'addClassReview': function(classId, reviewerUserId, rating, text, time){
       var ratedClass = classes.findOne(classId);
@@ -490,35 +490,35 @@ Meteor.methods({
     'addCash': function(id, amount){
 
      // try{
-        if (Meteor.users.findOne(id).profile.balance){
-          Meteor.users.update(id, {$inc: {"profile.balance": parseInt(amount)}});
-          console.log("Money Updated!")
-        }
-        else {
-          Meteor.users.update(id, {$set: {"profile.balance": 0.00}});
-          Meteor.users.update(id, {$inc: {"profile.balance": parseInt(amount)}});
-        }
+      if (Meteor.users.findOne(id).profile.balance){
+        Meteor.users.update(id, {$inc: {"profile.balance": parseInt(amount)}});
+        console.log("Money Updated!")
+      }
+      else {
+        Meteor.users.update(id, {$set: {"profile.balance": 0.00}});
+        Meteor.users.update(id, {$inc: {"profile.balance": parseInt(amount)}});
+      }
    /*   }
       catch(err){
         console.log("caught exception - no biggie - carry on");
       }*/
     },
     'setnewCash': function(id, amount){
-       classes.update({_id: id},{$set: {newcost: amount}});
-    },
-    'transactionHistory': function(id, transaction){
-      if (Meteor.users.findOne(id).profile.transactionhistory){
+     classes.update({_id: id},{$set: {newcost: amount}});
+   },
+   'transactionHistory': function(id, transaction){
+    if (Meteor.users.findOne(id).profile.transactionhistory){
       Meteor.users.update(id, {$push: {'profile.transactionhistory': transaction}});
     }
-      else {
-        var array = [];
-        Meteor.users.update(id, {$set: {'profile.transactionhistory': array}});
-        Meteor.users.update(id, {$push: {'profile.transactionhistory': transaction}});
-      }
-    },
-    'removeClasses': function(classid){
-      user.update({},{$pull: {classes: classid}});
-    },
+    else {
+      var array = [];
+      Meteor.users.update(id, {$set: {'profile.transactionhistory': array}});
+      Meteor.users.update(id, {$push: {'profile.transactionhistory': transaction}});
+    }
+  },
+  'removeClasses': function(classid){
+    user.update({},{$pull: {classes: classid}});
+  },
     'pushNotification' : function(targetUserId, title, message, type, options)//type is either student or teacher - for which dashboard it should be displayed in
     {
       //essentially just add this information as a now entry to each users profile.notifs
@@ -539,19 +539,19 @@ Meteor.methods({
       console.log("MOMENT: "+moment().unix());
       //add the notification to profile.notifs
       Meteor.users.update(targetUserId, {$push: {'profile.notifs' :
-        {
-          title: title,
-          message: message,
-          type: type,
-          options: options,
-          seen: false,
-          time: moment().format()
-        }
-      }});
+      {
+        title: title,
+        message: message,
+        type: type,
+        options: options,
+        seen: false,
+        time: moment().format()
+      }
+    }});
 
     }
 
-});
+  });
 
 Meteor.publish('data', function(){
 	return [classes.find({}), user.find({}), Meteor.users.find({}, {fields: {'profile.binary': 1,'profile.name':1, 'username':1, 'profile.age':1, 'profile.about':1, 'profile.balance':1}})];
@@ -563,7 +563,7 @@ Meteor.publish('user', function(){
 
 Meteor.publish("allUserData", function () {
     return Meteor.users.find({}, {fields: {'profile.binary': 1,'profile.name':1, 'username':1, 'profile.age':1, 'profile.about':1, 'profile.balance':1}});
-});*/
+  });*/
 
 
 var UpdateClassOnEnd = function(classid) {
@@ -573,7 +573,7 @@ var UpdateClassOnEnd = function(classid) {
       Meteor.call('setnewCash',elem._id, newcost);
 
     }
-  );
+    );
   console.log("UPDATECLASSONEND classid = " + classid);
   console.log("findone = "+classes.findOne(classid));
   var savings = parseInt(classes.findOne(classid).cost)-parseInt(classes.findOne(classid).newcost);
