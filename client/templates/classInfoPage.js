@@ -137,6 +137,9 @@ Template.classInfoPage.helpers({
       return false;
     }
   },
+  isOver : function(){
+    return this.isOver;
+  },
   review: function(){
     var avgreview = classes.findOne(this._id).studentReviews;
     var total = 0;

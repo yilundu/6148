@@ -32,6 +32,7 @@
 
     <div class ="page-header">
         {{#unless isTeacher}}
+        {{#if isOver}}
               <div class = "jumbotron" id = "urreview">
                 <h2>Your review</h2>
 
@@ -61,7 +62,8 @@
            {{/if}}
          {{/if}}
          </div>
-         {{/unless}}
+        {{/if}}
+        {{/unless}}
      </div>
 
 

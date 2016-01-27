@@ -65,8 +65,14 @@ Template.find.events({
 	var search = $("#title1").val();
 	var parts = search.trim().split(/[ \-\:]+/);
     var searchregex = new RegExp("(" + parts.join('|') + ")", "ig");
+    if ($("#check").prop('checked')){
+    		var json = classes.find({$and: [{$or: [{title: searchregex}, {description: searchregex}, {subject: searchregex}]}]}, {sort: {studentNumber: -1}});
+    		console.log("Checked!");
+    		$("#check").prop('checked', false);
+    }
+    else{
 	var json = classes.find({$and: [{$or: [{title: searchregex}, {description: searchregex}, {subject: searchregex}]}, {isOver:{$ne:true}}]}, {sort: {studentNumber: -1}});
-
+	}
 	$(".Test").html("");
 	classes.find({}).forEach(
 		function(elem){
