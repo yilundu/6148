@@ -629,7 +629,7 @@ var UpdateClassOnEnd = function(classid) {
   }
   var total = studentList.length*parseInt(classes.findOne(classid).newcost);
   Meteor.call('addCash', classnew.teacherId, total);
-  var string = "Received $"+total+" for teaching "+classnew.title+"on time: "+moment().calendar();
+  var string = "Received $"+total+" for teaching "+classnew.title+" on time: "+moment().calendar();
   Meteor.call('transactionHistory', classnew.teacherId, string);
 
   //notify teacher

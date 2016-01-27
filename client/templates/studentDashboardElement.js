@@ -94,3 +94,16 @@ Template.studentDashboardElement.events({
 
   }
 });
+
+
+Template.studentDashboardElement.helpers({
+  dateText: function(){
+    if (this.unixtime < moment().unix()){
+      //class has already occured
+      return "Occurred "+this.calendar();
+    }
+    else{
+      return "Scheduled for "+this.calendar();
+    }
+  }
+});

@@ -67,7 +67,30 @@
 },
 
   "click .btn-primary": function(){
-    Router.go('/editClass/'+this._id);
+    if (thisContext.unixtime < moment().unix()){
+      //class has already occured
+      sAlert.error('Class has already occured!',  {effect: 'genie', position: 'bottom-right', timeout: 3000, onRouteClose: false, stack: true, offset: '100px'});
+    }
+    else{
+      Router.go('/editClass/'+this._id);
+    }
   }
 
+});
+
+Template.classDashboardElement.helpers({
+  dateText: function(){
+    var momentObject = moment(this.unixtime);
+    console.log(this.unixtime);
+    console.log(momentObject);
+    if (this.unixtime < moment().unix()){
+      //class has already occured
+      console.log("has already occured.");
+      return "Occurred "+momentObject.calendar();
+    }
+    else{
+      console.log("is scheduled to occur in the future.");
+      return "Scheduled for "+momentObject.calendar();
+    }
+  }
 });
