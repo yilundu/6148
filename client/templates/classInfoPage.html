@@ -10,7 +10,9 @@
         <!-- TODO: Animate numbers flick up, model accelereation and decelleration -->
 
         <span class="col-sm-4 col-xs-4"> {{studentNumber}}<small> students</small></span>
-        <span class="col-sm-4 col-xs-4"> ${{newcost}} <small>per hr</small></span>
+        <span class="col-sm-4 col-xs-4"> ${{newcost}} <small>per hr</small>
+        <div><div><a href="#" id="example1" rel="popover" data-original-title="A Title 1"> Pricing Model</a></div></div></span>
+        
         <span class="col-sm-4 col-xs-4">{{review}} <small>stars</small></span>
       </div>
       <div class = "row">
@@ -22,7 +24,9 @@
 
       </div>
     </div>
-
+<div id = "fat">
+<canvas type = "hidden" id='buyers' width='600' height='300'></canvas>
+</div>
 
     <!--    <button class="btn btn-primary">Enroll me!</button> -->
 
@@ -141,4 +145,22 @@
     </div>
   </div>
 </div>
+<script>
+  var buyerData = {
+    labels : ["1","2","3","4","5","6","7","8","9","10","11","12","13,","14","15"],
+    datasets : [
+    {
+      fillColor : "rgba(172,194,132,0.4)",
+      strokeColor : "#ACC26D",
+      pointColor : "#fff",
+      pointStrokeColor : "#9DB86D",
+      data : {{datahelper}}
+    }
+    ]
+  }
+  var buyers = document.getElementById('buyers').getContext('2d');
+  new Chart(buyers).Line(buyerData, {
+    scaleBeginAtZero: true
+  });
+</script>
 </template>
