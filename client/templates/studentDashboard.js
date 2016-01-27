@@ -58,6 +58,7 @@ Template.studentDashboard.helpers({
     if(Meteor.user() && Meteor.user().profile){
       if(!Meteor.user().profile.transactionhistory)
       {
+        console.log("Set transactionhistory to []");
         Meteor.users.update(Meteor.userId(), {$set : {"profile.transactionhistory" : []}});
       }
       return Meteor.user().profile.transactionhistory.reverse();
@@ -71,9 +72,10 @@ Template.studentDashboard.helpers({
     console.log("DEPS.ACTIVE="+Deps.active);
     if(Meteor.user() && Meteor.user().profile)
     {
+
+      var studentNotifs = [];
       if(Meteor.user().profile.notifs)
       {
-        var studentNotifs = [];
         console.log("notifications entered");
         Meteor.user().profile.notifs.forEach(function(entry){
           if(entry.type == "student"){
@@ -81,7 +83,7 @@ Template.studentDashboard.helpers({
           }
         });
       }
-      return studentNotifs;
+      return studentNotifs.reverse();
     }
   }
 

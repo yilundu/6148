@@ -12,7 +12,7 @@
         <span class="col-sm-4 col-xs-4"> {{studentNumber}}<small> students</small></span>
         <span class="col-sm-4 col-xs-4"> ${{newcost}} <small>per hr</small>
         <div><div><a href="#" id="example1" rel="popover" data-original-title="A Title 1"> Pricing Model</a></div></div></span>
-        
+
         <span class="col-sm-4 col-xs-4">{{review}} <small>stars</small></span>
       </div>
       <div class = "row">
@@ -105,12 +105,12 @@
     <div class="student-comments" id = "studposterer">
       {{#if currentUser}}
       {{#if isStudent}}
-      
+
       <div id = "studposter">
       <button class="btn btn-primary" id="studentPostBtn">Post</button>
       <input type="text" class="form-control" width = "90%" id="studentPostField">
       </div>
-     
+
       {{/if}}
       {{#if isTeacher}}
        <div id = "studposter">

@@ -52,9 +52,10 @@ Template.sellerDashboard.helpers({
   notifications: function(){
     if(Meteor.user() && Meteor.user().profile)
     {
+
+      var studentNotifs = [];
       if(Meteor.user().profile.notifs)
       {
-        var studentNotifs = [];
         console.log("notifications entered");
         Meteor.user().profile.notifs.forEach(function(entry){
           if(entry.type == "teacher"){
@@ -62,7 +63,7 @@ Template.sellerDashboard.helpers({
           }
         });
       }
-      return studentNotifs;
+      return studentNotifs.reverse();
     }
   }
 
