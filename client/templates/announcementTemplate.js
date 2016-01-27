@@ -35,5 +35,13 @@ Template.announcementTemplate.helpers({
     {
       return false;
     }
+  },
+
+    displayImage: function(){
+    if(!Meteor.user)
+      return "";
+    var thisUser = Meteor.users.findOne(this.userId);
+    console.log("asofhasdofasd");
+    return thisUser.profile.binary || "/default.jpg";//if profile.name is set use that - else use username
   }
 });
