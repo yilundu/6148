@@ -6,12 +6,15 @@ var performEndClass = function()
   var results = FutureTasks.find({triggered: false}).fetch();
   //console.log(results.length);
   //console.log(results);
+  console.log("Current unix time: "+moment().unix());
   for(var i = 0 ; i < results.length ; i++){
     var each = results[i];
+    console.log("Unix time: "+ each.date);
+
     //console.log(each);
     //console.log("Result.date = "+each.date);
     //console.log("Current Unix Time: "+moment().unix());
-
+    console.log(moment().unix() + " > "+each.date + " = "+ (moment().unix() > each.date));
     if(moment().unix() > each.date)
     {
       console.log("EVENT TRIGGERED! id");
@@ -35,7 +38,7 @@ var startCheck = function(id)
   SyncedCron.add({
     name: id,
     schedule: function(parser){
-      return parser.text('every 45 seconds');
+      return parser.text('every 15 seconds');
       //return parser.recur().every().second();
     },
     job: function(){
@@ -364,7 +367,7 @@ Meteor.methods({
       else {
         reviewerName = reviewerObject.username;
       }
-      var message = reviewerName + "gave your class "+rating+" stars - saying: " + text;
+      var message = reviewerName + " rated "+ratedClass.title+" "+rating+" stars - saying: " + text;
       var type = "teacher";
       var options = null;
       Meteor.call('pushNotification',ratedClass.teacherId, title, message, type, options);
@@ -428,7 +431,7 @@ Meteor.methods({
         reviewerName = reviewerObject.username;
       }
       console.log("check 4 +"+reviewerName);
-      var message = reviewerName + "gave your class "+rating+" stars - saying: " + text;
+      var message = reviewerName + " gave "+reviews.title+" "+rating+" stars - saying: " + text;
       var type = "teacher";
       var options = null;
       Meteor.call('pushNotification',classes.findOne(classId).teacherId, title, message, type, options);
@@ -481,7 +484,7 @@ Meteor.methods({
       else {
         reviewerName = reviewerObject.username;
       }
-      var message = reviewerName + " removed their rating from your class.";
+      var message = reviewerName + " removed their rating from "+reviews.title+".";
       var type = "teacher";
       var options = null;
       Meteor.call('pushNotification',classes.findOne(classId).teacherId, title, message, type, options);
@@ -518,6 +521,10 @@ Meteor.methods({
       Meteor.users.update(id, {$push: {'profile.transactionhistory': transaction}});
     }
   },
+  'clearNotifications' : function(userId){
+    Meteor.users.update(userId, {$set : {'profile.notifs' : []}});
+  }
+  ,
   'removeClasses': function(classid){
     user.update({},{$pull: {classes: classid}});
   },
@@ -547,7 +554,7 @@ Meteor.methods({
         type: type,
         options: options,
         seen: false,
-        time: moment().format()
+        time: moment().unix();
       }
     }});
 
@@ -617,21 +624,22 @@ var UpdateClassOnEnd = function(classid) {
 
   for (var i=0; i<studentList.length; i++){
     Meteor.call('addCash', studentList[i], savings);
-    var string = "Recieved $"+savings+" for group savings from "+classnew.title+" on time: "+moment().format('LLLL');
+    //TODO: replace static strings with objects so that relative date formatting isn't just relative to the time it was created at
+    var string = "Received $"+savings+" for group savings from "+classnew.title+" on time: "+moment().calendar();
     Meteor.call('transactionHistory', studentList[i], string);
 
     //notify user
-    Meteor.call('pushNotification', studentList[i], "Received Class Savings!", "Recieved $"+savings+" for group savings from "+classnew.title+" on time: "+moment().format('LLLL'), "student", null);
+    Meteor.call('pushNotification', studentList[i], "Received Class Savings!", "Received $"+savings+" for group savings from "+classnew.title+" on time: "+moment().format('LLLL'), "student", null);
 
 
   }
   var total = studentList.length*parseInt(classes.findOne(classid).newcost);
   Meteor.call('addCash', classnew.teacherId, total);
-  var string = "Recieved $"+total+" for teaching "+classnew.title+"on time: "+moment().format('LLLL');
+  var string = "Received $"+total+" for teaching "+classnew.title+" on time: "+moment().calendar();
   Meteor.call('transactionHistory', classnew.teacherId, string);
 
   //notify teacher
-  Meteor.call('pushNotification', classnew.teacherId, "Received Class Earnings!", "Recieved $"+total+" for teaching "+classnew.title+" on time: "+moment().format('LLLL'), "teacher", null);
+  Meteor.call('pushNotification', classnew.teacherId, "Received Class Earnings!", "Received $"+total+" for teaching "+classnew.title+" on time: "+moment().calendar(), "teacher", null);
 
 
 }

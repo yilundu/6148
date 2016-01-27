@@ -94,3 +94,21 @@ Template.studentDashboardElement.events({
 
   }
 });
+
+
+Template.studentDashboardElement.helpers({
+  dateText: function(){
+    var momentObject = moment(this.unixtime*1000);//unix time is in seconds, exepcted in milliseconds
+    //console.log(this.unixtime);
+    //console.log(momentObject);
+    if (this.unixtime < moment().unix()){
+      //class has already occured
+      console.log("has already occured.");
+      return "Occurred "+momentObject.calendar();
+    }
+    else{
+      console.log("is scheduled to occur in the future.");
+      return "Scheduled for "+momentObject.calendar();
+    }
+  }
+});
