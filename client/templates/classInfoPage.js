@@ -36,6 +36,7 @@ var getUserReview = function(classId){
 Template.classInfoPage.events({
   'click #example1' :function(){
     $("#buyers").toggle("medium");
+    $("#buyerstitle").toggle("medium");
   },
   
   'click #teacherPostBtn' : function(){
