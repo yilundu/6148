@@ -289,7 +289,14 @@ padding-bottom: 20%;
 }
 
 
-
+._home .cover{
+	margin-top: 5px;
+	top: 25%;
+	margin-top: 10%;
+	margin-left: 30%;
+	z-index: 10;
+	position: absolute;
+}
 
 @media screen and (min-width: 1300px){
 	#title{
@@ -337,6 +344,7 @@ padding-bottom: 20%;
 		min-height:400px;
 	}
 	#title{
+		margin-left: 40px;
 		font-size: 50px;
 	}
 	._home .registerBar{
@@ -565,14 +573,7 @@ input:required:valid, textarea:required:valid { /* when a field is considered va
 }
 
 
-._home .cover{
-	margin-top: 5px;
-	top: 25%;
-	margin-top: 10%;
-	margin-left: 30%;
-	z-index: 10;
-	position: absolute;
-}
+
 
 /*****       Card Flipping Adapted from here:   https://davidwalsh.name/css-flip         *****/
 
