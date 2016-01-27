@@ -108,6 +108,9 @@ Template.layout.events({
 	},
 	"click #login-buttons-logout": function(){
 		$(".dropdown-menu").append("<i class='icon-spinner icon-spin icon-large'></i> ");
+	},
+	"click #login-buttons-password": function(){
+		$(".dropdown-menu").append("<i class='icon-spinner icon-spin icon-large'></i> ");
 	}
 
 
