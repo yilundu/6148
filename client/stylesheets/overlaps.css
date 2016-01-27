@@ -14,13 +14,22 @@
 #oneline{
 	display:inline-block;
 }
+#linotif{
+	color: white;
+	    text-align: center;
+    font-family: "Nunito";
+    margin-bottom: 5px;
+    font-weight: 700;
+}
 #notifmax{
 	padding: 15px;
 	width: 300px;
 	max-height: 250px;
 	overflow-y: scroll;
+	background-color: #a94442;
 }
 #dropdownMenu1{
+	margin-left: 5px;
 	    margin-top: 10px;
     padding-left: 6px;
     padding-right: 6px;
