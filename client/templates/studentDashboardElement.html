@@ -3,8 +3,8 @@
   -thanks slava - https://github.com/meteor/meteor/issues/1602
 -->
 <template name = "studentDashboardElement">
-
-  <div class="bs-callout bs-callout-info">
+<div class= "_studentDashboardElement">
+  <div class="bs-callout bs-callout-info {{isOver}}">
 
     <h1>{{title}}</h1>
     <p>Subject: {{subject}}</p>
@@ -14,10 +14,10 @@
     <p>Teacher: {{teacher}}</p>
     <p>Address: {{address}}</p>
 
-    <i>{{dateText}}</i><br>
+    <i>{{dateText}}</i><br>`
 
     <button class="btn btn-warning">Drop Class</button>
     <a class="btn btn-primary" href="/class/{{_id}}">Class Page</a>
   </div>
-
+</div>
 </template>
