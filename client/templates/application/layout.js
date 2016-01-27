@@ -33,6 +33,9 @@ Template.layout.helpers({
 	});
 
 Template.layout.events({
+	"click #btndelete":function(){
+		Meteor.call("clearNotifications", Meteor.userId());
+	},
 	"click #editprofile": function(){
 		Router.go("/editprofile", {name: $(".form-control").val()});
 	},
