@@ -35,7 +35,7 @@ var startCheck = function(id)
   SyncedCron.add({
     name: id,
     schedule: function(parser){
-      return parser.text('every 300 seconds');
+      return parser.text('every 45 seconds');
       //return parser.recur().every().second();
     },
     job: function(){
