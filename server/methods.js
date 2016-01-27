@@ -519,6 +519,10 @@ Meteor.methods({
       Meteor.users.update(id, {$push: {'profile.transactionhistory': transaction}});
     }
   },
+  'clearNotifications' : function(userId){
+    Meteor.users.update(userId, {$set : {'profile.notifs' : []}});
+  }
+  ,
   'removeClasses': function(classid){
     user.update({},{$pull: {classes: classid}});
   },
