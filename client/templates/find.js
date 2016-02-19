@@ -4,7 +4,7 @@ function Regex(text){
 	var parts = search.trim().split(/[ \-\:]+/);
 	return new RegExp("(" + parts.join('|') + ")", "ig");
 }
-
+ 
 
 Template.find.helpers({
 	results: function() {
